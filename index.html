@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>project vocabularies</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.3.0/fuse.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>    
+    <script src="js/pv_config.js"></script>
+    <script src="js/pv.js"></script>
+
+    <style>
+        .dropdown-item:hover {
+            background-color: #ecf0f1 !important;
+        }
+        #allConcepts {
+            min-height: 380px;
+        }
+        .cardHeaderRight { /*right, left buttons*/
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+        #allConceptsHeader {
+            padding-right: 5rem;
+        }
+        .card-body:not(#searchCard) {
+            font-size: small;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        @media screen and (min-width: 1000px) {
+            #title {
+                font-size: 3vw;
+            }
+        }
+        #dropdown {
+            background-color: white;
+            min-width: 200px;
+            position: relative;
+            z-index: 999;
+        }
+        #dropdown a {
+            color: black;
+        }
+        #dropdown td {
+            padding: .1rem;
+            padding-left: .75rem;
+        }
+        .searchLink {
+            color: black;
+            cursor: pointer;
+        }
+        .searchPropTyp {
+            color: #777;
+            font-size: small;
+            font-weight: 700;
+        }
+        .searchResultText {
+            font-size: small;
+        }
+        .addVoc {
+            font-size: small;
+            color: gray;
+        }
+        ul.altLabel, ul.notation {
+            list-style-position: inside;
+            display: inline-block;
+            padding: 0;
+            margin-bottom: -0.2rem;
+        }
+        ul.altLabel li {
+            display: inline;
+            float: left;
+            padding-right: 15px;
+        }
+        .skosRel {
+            background: #eee;
+            width: 120px;
+            text-align: center;
+            border: 3px solid white;
+        }
+        .skosRel-1 {
+            background: lightgray;
+            width: 120px;
+            text-align: center;
+            border: 3px solid white;
+        }
+        .skosRelUl {
+            padding: 0.5rem 0rem 0rem 1rem;
+        }
+        .datatype {
+            display: inline-block;
+            padding: 2px;
+            font-size: 60%;
+            border-radius: 2px;
+            color: white;
+            background: #444;
+        }
+        .lang {
+            display: inline-block;
+            padding: 0px 2px;
+            font-size: 60%;
+            font-weight: 600;
+            border-radius: 2px;
+            color: white;
+            background: #444;
+        }
+        .propTech {
+            padding-right: 5px;
+        }
+        #details th {
+            text-align: left;
+            padding-top: 0.3rem;
+        }
+        #details td {
+            vertical-align: middle;
+            padding-bottom: 0.7rem;
+        }
+        #details ul {
+            margin-bottom: 0rem;
+        }
+        .tooltip-inner {
+            text-align:left;
+            background-color: #27292b;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div id="pageContent" class="col-lg-8">
+                <!-- Page description -->
+                <div id="page_desc"></div>
+                <hr>
+                <!-- Project descriptions -->
+                <div id="proj_desc"></div>
+                <hr>
+                <!-- other descriptions -->
+                <div id="other_desc"></div>
+                <br>
+            </div>
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+                <!-- Search Widget -->
+                <div id="search_widget" class="card my-4 text-white bg-success mb-3">
+                    <h5 class="card-header"><a href="javascript:window.location.href = BASE;">home</a></h5>
+                    <div id="searchCard" class="card-body">
+                        <div id="searchGroup" class="input-group">
+                            <input id="searchInput" type="text" class="form-control" placeholder="Search for...">
+                            <div style="position: absolute; top: 39px;">
+                                <table id="dropdown" class="table table-hover"></table>
+                            </div>
+                            <span class="input-group-btn"><button id="searchBtn" class="btn btn-secondary" type="button">Go!</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Widgets -->
+                <div id="proj_links"></div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</body>
+
+</html>
