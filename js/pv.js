@@ -135,7 +135,7 @@ function insertSearchCard(widgetID) {
                     if (c.indexOf(entry) !== c.lastIndexOf(entry)) {
                         entry = entry + ' <span class="addVoc">(' + value.s.value.split('\/')[3] + ')</span>';
                     }
-                    $('#dropdown').append('<tr><td class="searchLink" onclick="document.location.href = \'' + BASE + '?uri=' + value.s.value + '&lang=' + USER_LANG + '\';">' + entry + '</td></tr>');
+                    $('#dropdown').append('<tr><td class="searchLink dropdown-item" onclick="document.location.href = \'' + BASE + '?uri=' + value.s.value + '&lang=' + USER_LANG + '\';">' + entry + '</td></tr>');
                 });
             }
         }, 200);
