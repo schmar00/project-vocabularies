@@ -1,32 +1,26 @@
-# project-vocabularies
-
-# draft website (SKOS frontend)
+# project-vocabularies (SKOS frontend)
 Website to browse Linked Data vocabularies (HTML, JQuery) for SKOS/RDF thesauri for the project GeoERA (http://geoera.eu/).
 This website provides a semantic navigation, view and search of SKOS concepts. 
 
 ## Deployment
-
 * This project is not ready to deploy by installation packages!
 * hardcoded urls for the details site or endpoints for Sparql queries
 * adapted to the GBA Thesaurus vocabularies
 * Javascript coding to be revised (conventions, best practices)!
 
 ## Built With
-
 * HTML5, CSS, Javascript, ES6, JQuery
 * Fuse.js for fuzzy search - https://github.com/krisk/Fuse
 * Bootstrap
 * see the [LICENSE.md](LICENSE) file for details
 
 ## Authors
-
 * **Martin Schiegl** - *Initial work* 
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
-## GeoERA Project Vocabularies
+# GeoERA Project Vocabularies
 
 ### Project GeoERA (http://geoera.eu/):
 The project GeoERA GIP-P WP4 initiates, designs, tests the development of vocabulary data within the framework of the GeoERA IP project, which is to support GeoERA projects. This includes suggestions for a technical infrastructure for sustainable data storage, the organization of governance and maintenance of the vocabularies, as well as the technical possibilities of coding data sets with vocabulary (e.g. within the EGDI metadata catalogue). The supported use cases are “Multilingual Semantic Text Search” and “GeoERA project vocabularies” via Linked Open Data and SKOS/RDF.
