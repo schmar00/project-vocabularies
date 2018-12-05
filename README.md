@@ -2,6 +2,9 @@
 Website to browse Linked Data vocabularies (HTML, JQuery) for SKOS/RDF thesauri for the project GeoERA (http://geoera.eu/).
 This website provides a semantic navigation, view and search of SKOS concepts. 
 
+## Test link
+preview http://www.geolba.net/project-vocabularies/
+
 ## Deployment
 * This project is not ready to deploy by installation packages!
 * hardcoded urls for the details site or endpoints for Sparql queries
