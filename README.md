@@ -3,7 +3,7 @@ Website to browse Linked Data vocabularies (HTML, JQuery) for SKOS/RDF thesauri 
 This website provides a semantic navigation, view and search of SKOS concepts. 
 
 ## Test link
-preview http://www.geolba.net/project-vocabularies/
+preview https://schmar00.github.io/project-vocabularies/
 
 ## Deployment
 * This project is not ready to deploy by installation packages!
