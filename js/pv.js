@@ -1,7 +1,7 @@
 //******************************************************************************************************
 //*****START********************************************************************************************
 
-let USER_LANG = (navigator.language || navigator.language).substring(0, 2);
+let USER_LANG = 'en';
 let BASE = location.protocol + '//' + location.host + location.pathname;
 
 $(document).ready(function () {
@@ -9,13 +9,9 @@ $(document).ready(function () {
     addVocProj(vocProjects); //-> var assigned in projects.js
     let urlParams = new URLSearchParams(window.location.search);
 
-    if (urlParams.has('lang')) {
-        USER_LANG = urlParams.get('lang');
-    }
-
     insertSearchCard('search_widget'); //inserts search widget only                
 
-    if (urlParams.has('search')) { //need lang parameter only for sparql requests
+    if (urlParams.has('search')) {
         search(decodeURI(urlParams.get('search')), vocProjects);
 
     } else if (urlParams.has('uri')) {
@@ -37,27 +33,28 @@ $(document).ready(function () {
 
 function insertPageDesc() {
 
-    $('#page_desc').append('<br><h1 id="title">Project Vocabularies</h1>');
+    $('#page_desc').append('<br><h1 id="title">GeoERA Project Vocabularies</h1>');
     $('#page_desc').append('<h3>project vocabularies - subtitle</h3>');
     $('#page_desc').append('<p>..description of project vocabularies: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>');
 }
 
 //*********************descriptions insert of vocabularies for the start page******************************       
 
-function insertVocDesc(vocProjects, divID) {
+function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT überarbeiten
 
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/> 
                                     PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
                                     SELECT ?cs ?Title ?Desc (COUNT(?c) AS ?count) (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts) ?modified
                                     WHERE { 
-                                    ?cs a skos:ConceptScheme; dcterms:title ?cslEN; dcterms:description ?csdEN; dcterms:modified ?modified . FILTER(lang(?cslEN)="en") . FILTER(lang(?csdEN)="en") .
-                                    ?cs skos:hasTopConcept ?tc . ?tc skos:prefLabel ?tclEN . FILTER(lang(?tclEN)="en") . ?c skos:broader* ?tc
-                                    OPTIONAL {?cs dcterms:title ?csl . FILTER(lang(?csl)="${USER_LANG}")} 
-                                    OPTIONAL {?cs dcterms:description ?csd . FILTER(lang(?csd)="${USER_LANG}")} 
-                                    OPTIONAL {?tc skos:prefLabel ?tcl . FILTER(lang(?tcl)="${USER_LANG}")} 
-                                    BIND(CONCAT(STR(?tc),"$",STR(COALESCE(?tcl, ?tclEN))) AS ?L)
-                                    BIND(COALESCE(?csl, ?cslEN) AS ?Title)
-                                    BIND(COALESCE(?csd, ?csdEN) AS ?Desc)
+                                    ?cs a skos:ConceptScheme; skos:hasTopConcept ?tc; dcterms:title ?Title . FILTER(lang(?Title)="en")
+                                    OPTIONAL {?cs dcterms:description ?D . FILTER(lang(?D)="en")}
+                                    OPTIONAL {?cs dcterms:created ?r}
+                                    OPTIONAL {?cs dcterms:modified ?m}
+                                    ?tc skos:narrower* ?c; skos:prefLabel ?tcl .
+                                    FILTER(lang(?tcl)="en")
+                                    BIND(CONCAT(STR(?tc),"$",STR(?tcl)) AS ?L)
+                                    BIND(COALESCE(?D, "") AS ?Desc)
+                                    BIND(COALESCE(?r, ?m, "") AS ?modified)
                                     } 
                                     GROUP BY ?cs ?Title ?Desc ?modified`);
 
@@ -81,9 +78,8 @@ function insertVocDesc(vocProjects, divID) {
                                         <br><br>
                                         <p class="text-muted">
                                             <strong>Top concepts:</strong> ${topConcepts}
-                                            <br><strong>Published:</strong> ${item.modified.value.split('T')[0]}
-                                            <br><strong>Concepts:</strong> <span class="badge badge-success badge-pill">${item.count.value}</span>
-                                            <br><strong>Download:</strong> <a href="">RDF/XML</a>
+                                            <br><strong>Modified:</strong> ${item.modified.value.split('T')[0]}
+                                            <br><strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
                                         </p>
                                     </div>
                                 </div>`);
@@ -215,7 +211,7 @@ function search(searchText, vocProjects) {
                                         </a>
                                         <br>
                                         <span class="searchPropTyp">URI: </span>
-                                        <span class="searchResultURI text-success">
+                                        <span class="searchResultURI text-info">
                                             ${a.s.value}
                                         </span>
                                         <br>
@@ -266,7 +262,9 @@ const n = {
     geo: 'http://www.w3.org/2003/01/geo/wgs84_pos#',
     owl: 'http://www.w3.org/2002/07/owl#',
     rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-    dbpo: 'http://dbpedia.org/ontology/'
+    dbpo: 'http://dbpedia.org/ontology/',
+    rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+    geoconnect: 'http://resource.geolba.ac.at/schema/GeoConnect#'
 };
 
 const PREF_LABEL = [n.skos + 'prefLabel'];
@@ -274,12 +272,13 @@ const PICTURE = [n.foaf + 'depiction'];
 const SYNONYMS = [n.skos + 'altLabel'];
 const NOTATION = [n.skos + 'notation'];
 const DESCRIPTION_1 = [n.skos + 'definition'];
-const DESCRIPTION_2 = [n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
+const DESCRIPTION_2 = [n.rdf + 'type', n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
 const CITATION = [n.dcterms + 'bibliographicCitation'];
 const REF_LINKS = [n.dcterms + 'references'];
 const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'];
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
+const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo'];
 const DATA_LINKS = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
@@ -292,11 +291,11 @@ const FRONT_LIST = {
     notation: NOTATION,
     abstract: DESCRIPTION_1,
     citation: CITATION,
-    relatedConcepts: [...RELATIONS_1, ...RELATIONS_2]
+    relatedConcepts: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_EGDI]
 };
 const TECHNICAL_LIST = {
     descriptions: [...PREF_LABEL, ...SYNONYMS, ...DESCRIPTION_1, ...DESCRIPTION_2],
-    scientificReferences: CITATION,
+    scientificReferences: [...CITATION, ...REF_LINKS],
     semanticRelations: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_3],
     dataLinks: DATA_LINKS,
     visualization: [...PICTURE, ...VISUALIZATION],
@@ -309,12 +308,17 @@ const TECHNICAL_LIST = {
 function details(divID, uri) { //build the web page content
 
     let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
-                    SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label) 
-                    WHERE { 
-                    VALUES ?s {<${uri}>} ?s ?p ?o . 
-                    OPTIONAL {?o skos:prefLabel ?L}
-                    } 
-                    GROUP BY ?p ?o`);
+                                    SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label)
+                                    WHERE {
+                                    VALUES ?s {<${uri}>}
+                                    {?s ?p ?o .
+                                    OPTIONAL {?o skos:prefLabel ?L}
+                                    }UNION{
+                                    VALUES ?p {<http://purl.org/dc/terms/bibliographicCitation>}
+                                    ?s ?x ?r .
+                                    ?r ?p ?o }
+                                    }
+                                    GROUP BY ?p ?o`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
         .then(res => res.json())
@@ -323,7 +327,7 @@ function details(divID, uri) { //build the web page content
 
             $('#' + divID).append(`<hr>
                                 <div style="cursor: pointer; color: #777;" id="detailsBtn" 
-                                    onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"> &#9654; <em>read more ..</em>
+                                    onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"> &#9658; <em>read more ..</em>
                                 </div>
                                 <div style="display:none;" id="detailsToggle">
                                 <br>
@@ -341,7 +345,7 @@ function details(divID, uri) { //build the web page content
 //************************toggle the hidden details / because HTML5 is not fully supported by MS Edge**************        
 
 function toggleRead(divBtn, divTxt, text) {
-    let txt = $('#' + divTxt).is(':visible') ? '&#9654; <em>' + text + ' ..</em>' : '&#9660; <em>' + text + ' ..</em>';
+    let txt = $('#' + divTxt).is(':visible') ? '&#9658; <em>' + text + ' ..</em>' : '&#9660; <em>' + text + ' ..</em>';
     $('#' + divBtn).html(txt);
     $('#' + divTxt).slideToggle();
 }
@@ -360,8 +364,6 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<h1 class="mt-4">' + pL + '</h1>';
                     html += `   <p class="lead">URI: 
                                     <span id="uri" class="">${uri}</span>
-                                        &nbsp;&nbsp;&nbsp;&#8658;
-                                    <a href="#"> RDF download</a>
                                 </p>
                                 <hr>`;
                     break;
@@ -386,7 +388,7 @@ function createFrontPart(divID, uri, data, props) {
                     if (html.search('<h4') == -1) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
-                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '') + '</td><td class="skosRelUl"><ul><li>' +
+                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '') + '</td><td class="skosRelUl"><ul><li>' +
                         shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
 
                     break;
@@ -454,7 +456,7 @@ function createTechnicalPart(divID, data, props) { //loop all single properties
 }
 //******************transform the sparql json query result into a set of HTML elements like <a> *************************************   
 
-function getObj(data, i) {
+function getObj(data, i) { console.log(data, i);
     return new Set($.map(data.results.bindings.filter(item => item.p.value === i), (a => (a.Label.value !== '' ? '<a href="' + BASE +
         '?uri=' + a.o.value + '&lang=' + USER_LANG + '">' + setUserLang(a.Label.value) + '</a> ' : createHref(a.o.value) + ' ' +
         createDTLink(a.o.datatype) + ' ' + langTag(a.o['xml:lang'])))));
@@ -554,7 +556,7 @@ function insertConceptBrowser(divID, uri, offset) {
                 </li>
                 <li>
                     <button type="button" id="rightBtn" class="btn btn-outline-secondary btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)+50)">
-                        &#9654;
+                        &#9658;
                     </button>
                 </li>
             </ul>
