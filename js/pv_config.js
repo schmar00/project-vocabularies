@@ -1,4 +1,4 @@
-let ENDPOINT = 'http://resource.geolba.ac.at/PoolParty/sparql/geoconnect3d';
+let ENDPOINT = 'https://resource.geolba.ac.at/PoolParty/sparql/geoconnect3d';
 
 function addVocProj(vocProjects) {
 /*    vocProjects.set('hike', {
