@@ -558,8 +558,9 @@ function iPC(project, divID) {
     $('#' + divID).append(`
                 <div class="card my-4">
                     <h5 class="card-header">
-                        <strong>${project.acronym}</strong> - ${project.title}
+                        <strong>${project.acronym}</strong><small> - ${project.title}</small>
                     </h5>
+
                     <div class="card-body">
                         ${project.description.slice(0, 180)}..<br>
                         Project: <a href="${project.project_page}">${project.project_page}</a><br>
