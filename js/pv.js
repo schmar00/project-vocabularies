@@ -23,7 +23,7 @@ $(document).ready(function () {
     } else {
         insertPageDesc(); //general intro
         insertVocDesc(vocProjects, 'proj_desc');
-        insertProjCards('proj_links', vocProjects);  
+        insertProjCards('proj_links', vocProjects);
     }
 
     initSearch(); //provides js for fuse search 
@@ -34,8 +34,8 @@ $(document).ready(function () {
 function insertPageDesc() {
 
     $('#page_desc').append('<br><h1 id="title">GeoERA Project Vocabularies</h1>');
-    $('#page_desc').append('<h3>project vocabularies - subtitle</h3>');
-    $('#page_desc').append('<p>..description of project vocabularies: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>');
+    $('#page_desc').append('<h4>EGDI - European Geological Data Infrastructure</h4>');
+    $('#page_desc').append('<p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>');
 }
 
 //*********************descriptions insert of vocabularies for the start page******************************       
@@ -45,7 +45,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/> 
                                     PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
                                     SELECT ?cs ?Title ?Desc (COUNT(?c) AS ?count) (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts) ?modified
-                                    WHERE { 
+                                    WHERE { SELECT * {
                                     ?cs a skos:ConceptScheme; skos:hasTopConcept ?tc; dcterms:title ?Title . FILTER(lang(?Title)="en")
                                     OPTIONAL {?cs dcterms:description ?D . FILTER(lang(?D)="en")}
                                     OPTIONAL {?cs dcterms:created ?r}
@@ -55,6 +55,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                     BIND(CONCAT(STR(?tc),"$",STR(?tcl)) AS ?L)
                                     BIND(COALESCE(?D, "") AS ?Desc)
                                     BIND(COALESCE(?r, ?m, "") AS ?modified)
+                                    } ORDER BY ?tcl
                                     } 
                                     GROUP BY ?cs ?Title ?Desc ?modified`);
 
@@ -203,7 +204,7 @@ function search(searchText, vocProjects) {
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
         .then(res => res.json())
         .then(jsonData => { //console.log(jsonData);
-            jsonData.results.bindings.forEach(function (a) {  // insert project name ${vocProjects.get(a.s.value.split('\/')[3]).acronym}
+            jsonData.results.bindings.forEach(function (a) { // insert project name ${vocProjects.get(a.s.value.split('\/')[3]).acronym}
                 $('#searchresults').append(`
                                         <li>
                                         <a href="${BASE}?uri=${a.s.value}&lang=${USER_LANG}">
@@ -264,7 +265,8 @@ const n = {
     rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
     dbpo: 'http://dbpedia.org/ontology/',
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    geoconnect: 'http://resource.geolba.ac.at/schema/GeoConnect#'
+    geoconnect: 'http://resource.geolba.ac.at/schema/GeoConnect#',
+    schema: 'https://schema.org/'
 };
 
 const PREF_LABEL = [n.skos + 'prefLabel'];
@@ -273,13 +275,14 @@ const SYNONYMS = [n.skos + 'altLabel'];
 const NOTATION = [n.skos + 'notation'];
 const DESCRIPTION_1 = [n.skos + 'definition'];
 const DESCRIPTION_2 = [n.rdf + 'type', n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
+const DESCRIPTION_3 = [n.skos + 'scopeNote'];
 const CITATION = [n.dcterms + 'bibliographicCitation'];
 const REF_LINKS = [n.dcterms + 'references'];
 const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'];
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
 const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo'];
-const DATA_LINKS = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier'];
+const DATA_LINKS = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.schema + 'mainEntityOfPage', n.foaf + 'page'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
 const CREATOR = [n.dcterms + 'creator', n.dcterms + 'created', n.dcterms + 'modified', n.dcterms + 'contributor'];
@@ -290,6 +293,7 @@ const FRONT_LIST = {
     altLabel: [...PREF_LABEL, ...SYNONYMS],
     notation: NOTATION,
     abstract: DESCRIPTION_1,
+    scope: DESCRIPTION_3,
     citation: CITATION,
     relatedConcepts: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_EGDI]
 };
@@ -354,7 +358,7 @@ function toggleRead(divBtn, divTxt, text) {
 
 function createFrontPart(divID, uri, data, props) {
 
-    let html = '';
+    let html = ''; //console.log(data, props);
     props.forEach((i) => {
         let ul = getObj(data, i);
         if (ul.size > 0) {
@@ -377,6 +381,9 @@ function createFrontPart(divID, uri, data, props) {
                 case 'abstract':
                     html += '<hr><div class="' + key + '">' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
                     break;
+                case 'scope':
+                    html += '<div class="' + key + '"><strong>Interpretation: </strong>' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
+                    break;
                 case 'citation':
                     let a = [];
                     for (let i of ul) {
@@ -390,12 +397,33 @@ function createFrontPart(divID, uri, data, props) {
                     }
                     html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '') + '</td><td class="skosRelUl"><ul><li>' +
                         shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
-
+                    break;
+                case 'picture':
+                    insertImage(Array.from(ul).map(a => a.split('\"')[1]), 'image_links');
                     break;
             }
         }
     });
     $('#' + divID).append(html);
+}
+
+
+
+function insertImage(links, divID) {
+    links.forEach((i) => {
+        let capt = i.split('\/').pop().split('.')[0];
+        $('#' + divID).append(`
+                <div class="card my-4">
+                    <div class="card-body">
+                        <figure>
+                            <a href="${i}">
+                              <img class="img-fluid" src="${i}" alt="Chania" title="">
+                              <figcaption>${capt}</figcaption>
+                            </a>
+                        </figure>
+                    </div>
+                </div>`);
+    });
 }
 
 //*******************replace long URIs by acronyms************************************************************************
@@ -456,7 +484,7 @@ function createTechnicalPart(divID, data, props) { //loop all single properties
 }
 //******************transform the sparql json query result into a set of HTML elements like <a> *************************************   
 
-function getObj(data, i) { console.log(data, i);
+function getObj(data, i) { //console.log(data, i);
     return new Set($.map(data.results.bindings.filter(item => item.p.value === i), (a => (a.Label.value !== '' ? '<a href="' + BASE +
         '?uri=' + a.o.value + '&lang=' + USER_LANG + '">' + setUserLang(a.Label.value) + '</a> ' : createHref(a.o.value) + ' ' +
         createDTLink(a.o.datatype) + ' ' + langTag(a.o['xml:lang'])))));
