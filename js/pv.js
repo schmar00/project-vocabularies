@@ -569,7 +569,7 @@ function iPC(project, divID) {
                     <div class="card-body">
                         ${project.description.slice(0, 350)}..<br>
                         Home: <a href="${project.project_page}">${project.project_page}</a><br>
-                        Dowload: ${rdf_dl}
+                        Download: ${rdf_dl}
                     </div>
                 </div>`);
 }
