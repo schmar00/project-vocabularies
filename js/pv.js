@@ -558,6 +558,8 @@ function insertProjCards(divID, projects, p) {
 //***************************get the corresponding vocabulary description********************************      
 
 function iPC(project, divID) {
+    let rdf_dl = project.rdf_download.map(a => `<a href="${'rdf/' + a}">${a.split('.')[1].toUpperCase()}</a>`).join(', ')
+
     $('#' + divID).append(`
                 <div class="card my-4">
                     <h5 class="card-header">
@@ -565,9 +567,9 @@ function iPC(project, divID) {
                     </h5>
 
                     <div class="card-body">
-                        ${project.description.slice(0, 180)}..<br>
-                        Project: <a href="${project.project_page}">${project.project_page}</a><br>
-                        RDF: <a href="${project.rdf_download}">${project.rdf_download}</a>
+                        ${project.description.slice(0, 350)}..<br>
+                        Home: <a href="${project.project_page}">${project.project_page}</a><br>
+                        Dowload: ${rdf_dl}
                     </div>
                 </div>`);
 }
