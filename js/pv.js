@@ -143,11 +143,14 @@ function insertSearchCard(widgetID) {
 
 function initSearch() {
 
-    let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
+    let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+                                    PREFIX dcterms:<http://purl.org/dc/terms/>
+                                    PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                                     SELECT ?s ?L 
                                     WHERE { 
                                     VALUES ?p {skos:prefLabel skos:altLabel} 
                                     ?s a skos:Concept; ?p ?lEN . FILTER(lang(?lEN)="en")
+                                    FILTER NOT EXISTS {?s rdf:type dcterms:BibliographicResource}
                                     OPTIONAL{?s ?p ?l . FILTER(lang(?l)="${USER_LANG}")}
                                     BIND(COALESCE(?l, ?lEN) AS ?L)
                                     } 
