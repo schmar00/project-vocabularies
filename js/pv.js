@@ -9,7 +9,7 @@ $(document).ready(function () {
     addVocProj(vocProjects); //-> var assigned in projects.js
     let urlParams = new URLSearchParams(window.location.search);
 
-    insertSearchCard('search_widget'); //inserts search widget only                
+    insertSearchCard('search_widget'); //inserts search widget only
 
     if (urlParams.has('search')) {
         search(decodeURI(urlParams.get('search')), vocProjects);
@@ -18,7 +18,7 @@ $(document).ready(function () {
         let uri = decodeURI(urlParams.get('uri').replace(/["';><]/gi, '')); //avoid injection
         $('#pageContent').empty();
         details('pageContent', uri);
-        insertProjCards('proj_links', vocProjects, uri.split('\/')[3]);
+        insertProjCards('proj_links', vocProjects, uri.split('\/')[5]);
 
     } else {
         insertPageDesc(); //general intro
@@ -26,7 +26,7 @@ $(document).ready(function () {
         insertProjCards('proj_links', vocProjects);
     }
 
-    initSearch(); //provides js for fuse search 
+    initSearch(); //provides js for fuse search
 });
 
 //********set the title of PV homepage********************************************************************
@@ -38,12 +38,12 @@ function insertPageDesc() {
     $('#page_desc').append('<p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>');
 }
 
-//*********************descriptions insert of vocabularies for the start page******************************       
+//*********************descriptions insert of vocabularies for the start page******************************
 
 function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT überarbeiten
 
-    let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/> 
-                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
+    let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
+                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
                                     SELECT ?cs ?Title ?Desc (COUNT(?c) AS ?count) (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts) ?modified
                                     WHERE { SELECT * {
                                     ?cs a skos:ConceptScheme; skos:hasTopConcept ?tc; dcterms:title ?Title . FILTER(lang(?Title)="en")
@@ -56,7 +56,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                     BIND(COALESCE(?D, "") AS ?Desc)
                                     BIND(COALESCE(?r, ?m, "") AS ?modified)
                                     } ORDER BY ?tcl
-                                    } 
+                                    }
                                     GROUP BY ?cs ?Title ?Desc ?modified`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
@@ -90,7 +90,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
 }
 
 //***************************************************************************************************
-//***********************set the input box for concept search****************************************         
+//***********************set the input box for concept search****************************************
 
 function insertSearchCard(widgetID) {
 
@@ -102,7 +102,7 @@ function insertSearchCard(widgetID) {
         }
     });
 
-    $('#searchBtn').click(function (e) { //provide search results 
+    $('#searchBtn').click(function (e) { //provide search results
         openSearchList('search=' + encodeURI($('#searchInput').val()));
         $('#dropdown').empty();
         $('#searchInput').val('');
@@ -139,21 +139,21 @@ function insertSearchCard(widgetID) {
     });
 }
 
-//**********************the initial sparql query to build the fuse (trie) object - stored in window*****************************         
+//**********************the initial sparql query to build the fuse (trie) object - stored in window*****************************
 
 function initSearch() {
 
     let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
                                     PREFIX dcterms:<http://purl.org/dc/terms/>
                                     PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-                                    SELECT ?s ?L 
-                                    WHERE { 
-                                    VALUES ?p {skos:prefLabel skos:altLabel} 
+                                    SELECT ?s ?L
+                                    WHERE {
+                                    VALUES ?p {skos:prefLabel skos:altLabel}
                                     ?s a skos:Concept; ?p ?lEN . FILTER(lang(?lEN)="en")
                                     FILTER NOT EXISTS {?s rdf:type dcterms:BibliographicResource}
                                     OPTIONAL{?s ?p ?l . FILTER(lang(?l)="${USER_LANG}")}
                                     BIND(COALESCE(?l, ?lEN) AS ?L)
-                                    } 
+                                    }
                                     ORDER BY STRLEN(STR(?L)) ?L`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
@@ -174,7 +174,7 @@ function openSearchList(queryString) { //zB 'info=disclaimer'
     window.open(BASE + '?' + queryString + '&lang=' + USER_LANG, '_self', '', 'false');
 }
 
-//************************perform the search for a term typed in the inputbox************************         
+//************************perform the search for a term typed in the inputbox************************
 
 function search(searchText, vocProjects) {
     let HITS_SEARCHRESULTS = '0 results for ';
@@ -187,31 +187,38 @@ function search(searchText, vocProjects) {
 
     //NEU*******************************
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
-                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
-                                    SELECT DISTINCT ?s ?title ?text 
-                                    WHERE { 
-                                    VALUES ?n {"${searchText.toLowerCase()}"} 
+                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+                                    SELECT DISTINCT ?s ?title ?text
+                                    WHERE {
+                                    VALUES ?n {"${searchText.toLowerCase()}"}
                                     VALUES ?p {skos:prefLabel skos:altLabel skos:definition skos:scopeNote dcterms:description}
                                     ?s a skos:Concept; ?p ?lEN . FILTER((lang(?lEN)="en"))
                                     OPTIONAL{?s ?p ?l . FILTER(lang(?l)="${USER_LANG}")}
-                                    BIND(COALESCE(?l, ?lEN) AS ?L) . FILTER(regex(?L,?n,"i")) 
+                                    BIND(COALESCE(?l, ?lEN) AS ?L) . FILTER(regex(?L,?n,"i"))
                                     ?s skos:prefLabel ?plEN . FILTER((lang(?plEN)="en"))
                                     OPTIONAL{?s skos:prefLabel ?pl . FILTER(lang(?pl)="${USER_LANG}")}
                                     BIND(COALESCE(?pl, ?plEN) AS ?title)
                                     BIND(CONCAT(STR(?p),"|",STR(?L)) AS ?text)
                                     BIND(IF(?p=skos:prefLabel,1,2) AS ?sort)
-                                    } 
-                                    ORDER BY ?sort 
+                                    }
+                                    ORDER BY ?sort
                                     LIMIT 100`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
         .then(res => res.json())
         .then(jsonData => { //console.log(jsonData);
             jsonData.results.bindings.forEach(function (a) { // insert project name ${vocProjects.get(a.s.value.split('\/')[3]).acronym}
+                let projName = 'unknown';
+                try {
+                    projName = vocProjects.get(a.s.value.split('\/')[5]).acronym;
+                } catch (e) {
+                    //Catch Statement
+                }
+
                 $('#searchresults').append(`
                                         <li>
                                         <a href="${BASE}?uri=${a.s.value}&lang=${USER_LANG}">
-                                            <strong>${a.title.value}</strong> (project)
+                                            <strong>${a.title.value}</strong> (${projName})
                                         </a>
                                         <br>
                                         <span class="searchPropTyp">URI: </span>
@@ -233,7 +240,7 @@ function search(searchText, vocProjects) {
         });
 }
 
-//***************************prepare the character string what is actually used to search***************************          
+//***************************prepare the character string what is actually used to search***************************
 
 function createSearchResultsText(sparqlText, searchText) {
 
@@ -257,7 +264,7 @@ function createSearchResultsText(sparqlText, searchText) {
 }
 
 //**************************************************************************************
-//*******definition of selected RDF properties******************************************   
+//*******definition of selected RDF properties******************************************
 
 const n = {
     skos: 'http://www.w3.org/2004/02/skos/core#',
@@ -310,11 +317,11 @@ const TECHNICAL_LIST = {
     creator: CREATOR
 };
 
-//************set the "details page" to view a single concept ***********************************************************************   
+//************set the "details page" to view a single concept ***********************************************************************
 
 function details(divID, uri) { //build the web page content
 
-    let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
+    let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
                                     SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label)
                                     WHERE {
                                     VALUES ?s {<${uri}>}
@@ -333,7 +340,7 @@ function details(divID, uri) { //build the web page content
             for (key in FRONT_LIST) createFrontPart(divID, uri, jsonData, Array.from(FRONT_LIST[key].values()));
 
             $('#' + divID).append(`<hr>
-                                <div style="cursor: pointer; color: #777;" id="detailsBtn" 
+                                <div style="cursor: pointer; color: #777;" id="detailsBtn"
                                     onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"> &#9658; <em>read more ..</em>
                                 </div>
                                 <div style="display:none;" id="detailsToggle">
@@ -349,7 +356,7 @@ function details(divID, uri) { //build the web page content
         });
 }
 
-//************************toggle the hidden details / because HTML5 is not fully supported by MS Edge**************        
+//************************toggle the hidden details / because HTML5 is not fully supported by MS Edge**************
 
 function toggleRead(divBtn, divTxt, text) {
     let txt = $('#' + divTxt).is(':visible') ? '&#9658; <em>' + text + ' ..</em>' : '&#9660; <em>' + text + ' ..</em>';
@@ -357,7 +364,7 @@ function toggleRead(divBtn, divTxt, text) {
     $('#' + divTxt).slideToggle();
 }
 
-//*************create the upper part of details page - always visible *********************************************************************   
+//*************create the upper part of details page - always visible *********************************************************************
 
 function createFrontPart(divID, uri, data, props) {
 
@@ -369,7 +376,7 @@ function createFrontPart(divID, uri, data, props) {
                 case 'prefLabel':
                     let pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
                     html += '<h1 class="mt-4">' + pL + '</h1>';
-                    html += `   <p class="lead">URI: 
+                    html += `   <p class="lead">URI:
                                     <span id="uri" class="">${uri}</span>
                                 </p>
                                 <hr>`;
@@ -451,7 +458,7 @@ function shortenText(text) {
 
 }
 
-//******************create the hidden part of concept descriptions ***********************************************************************    
+//******************create the hidden part of concept descriptions ***********************************************************************
 
 function createTechnicalPart(divID, data, props) { //loop all single properties
     let html = '';
@@ -485,7 +492,7 @@ function createTechnicalPart(divID, data, props) { //loop all single properties
                     </tr>`);
     }
 }
-//******************transform the sparql json query result into a set of HTML elements like <a> *************************************   
+//******************transform the sparql json query result into a set of HTML elements like <a> *************************************
 
 function getObj(data, i) { //console.log(data, i);
     return new Set($.map(data.results.bindings.filter(item => item.p.value === i), (a => (a.Label.value !== '' ? '<a href="' + BASE +
@@ -504,7 +511,7 @@ function createHref(x) {
     return x;
 }
 
-//*******************create beautiful language tags*******************************************************************           
+//*******************create beautiful language tags*******************************************************************
 
 function langTag(x) {
     if (typeof x !== 'undefined') {
@@ -515,7 +522,7 @@ function langTag(x) {
     return x;
 }
 
-//********************create beautiful xsd data format tags******************************************************************************           
+//********************create beautiful xsd data format tags******************************************************************************
 
 function createDTLink(x) {
     if (typeof x !== 'undefined') {
@@ -528,7 +535,7 @@ function createDTLink(x) {
     return x;
 }
 
-//********************select the adequate language *********************************************************************  
+//********************select the adequate language *********************************************************************
 
 function setUserLang(x) {
     if (x.indexOf('@' + USER_LANG) > 0) {
@@ -543,39 +550,52 @@ function setUserLang(x) {
 }
 
 //********************************************************************************************************
-//************************insert the corresponding vocabulary description*********************************         
+//************************insert the corresponding vocabulary description*********************************
 
 function insertProjCards(divID, projects, p) {
-    if (projects.has(p)) {
-        iPC(projects.get(p), divID);
+    if (projects.has(p)) { console.log(p);
+        iPC(projects.get(p), divID, false);
     } else {
         for (let project of projects.values()) {
-            iPC(project, divID);
+            iPC(project, divID, true);
         }
     }
 }
 
-//***************************get the corresponding vocabulary description********************************      
+//***************************get the corresponding vocabulary description********************************
 
-function iPC(project, divID) {
+function iPC(project, divID, startPage) {
     let rdf_dl = project.rdf_download.map(a => `<a href="${'rdf/' + a}">${a.split('.')[1].toUpperCase()}</a>`).join(', ')
 
-    $('#' + divID).append(`
+    if (startPage) {
+        $('#' + divID).append(`
+                <div class="card my-4">
+                    <h5 class="card-header">
+                        <strong>${project.acronym}</strong>
+                    </h5>
+                    <div class="card-body">
+                        ${project.title}<br>
+                        <a href="${project.project_page}">${project.project_page}</a><br>
+                        Download: ${rdf_dl}
+                    </div>
+                </div>`);
+    } else {
+         $('#' + divID).append(`
                 <div class="card my-4">
                     <h5 class="card-header">
                         <strong>${project.acronym}</strong><small> - ${project.title}</small>
                     </h5>
-
                     <div class="card-body">
-                        ${project.description.slice(0, 350)}..<br>
-                        Home: <a href="${project.project_page}">${project.project_page}</a><br>
+                        ${project.description.slice(0, 480)}..<br>
+                        <a href="${project.project_page}">${project.project_page}</a><br>
                         Download: ${rdf_dl}
                     </div>
                 </div>`);
+    }
 }
 
 //*******************************************************************************************************
-//***************create a bootstrap card with all concept links within a concept scheme****************** 
+//***************create a bootstrap card with all concept links within a concept scheme******************
 
 function insertConceptBrowser(divID, uri, offset) {
 
@@ -600,12 +620,12 @@ function insertConceptBrowser(divID, uri, offset) {
                            `);
     provideAll('allConcepts', uri, 0);
 }
-//*******************the query to provide all concept links within a concept scheme****************************************************  
+//*******************the query to provide all concept links within a concept scheme****************************************************
 
 function provideAll(divID, uri, offset) { //provide all available concepts for navigation
 
-    let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/> 
-                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#> 
+    let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
+                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
                                     SELECT DISTINCT ?c (COALESCE(?l, ?lEN) AS ?Label) (COALESCE(?csl, ?cslEN) AS ?Title)
                                     (COALESCE(?csd, ?csdEN, "") AS ?Desc) (EXISTS{?cs skos:hasTopConcept ?c} AS ?isTopConcept)
                                     WHERE {
@@ -661,5 +681,5 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
         });
 }
 
-//***********************************************************************************************************      
+//***********************************************************************************************************
 //********************************END************************************************************************

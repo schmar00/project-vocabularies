@@ -23,10 +23,20 @@ function addVocProj(vocProjects) {
         acronym: 'GeoConnect³d',
         title: 'Cross-border, cross-thematic multiscale framework for combining geological models and data for resource appraisal and policy support',
         description: 'The GeoConnect³d project develops and tests a new methodological approach to prepare and disclose geological information for policy support and subsurface management. The improved approach uses two regional case studies – the Roer-to-Rhine region and the Pannonian Basin. These regional, cross-border case studies are chosen to be complementary and sufficiently different in geological setting and degree of implementation of subsurface exploitation and management, in order to maximize their pan-European relevance. A novel bottom-up approach introduces two concepts that increase the geological understanding of an area and are aimed at providing a coherent geological context for evaluating subsurface applications and resolving subsurface management issues. The first new concept is the structural framework as a means of joining existing models of different scale and resolution to clarify the importance of planar structures in a way that makes the geology understandable to stakeholders involved in subsurface management. The second concept is that of geomanifestations. These specific expressions of geological processes are important sources of information for improving geological understanding. The structural framework models annotated with geomanifestations allow the integration and evaluation of complex cross-thematic research. The two bottom-up regional case studies form the study material for a top-down, more generic evaluation of potentially interacting subsurface activities that allows revisiting and refining state-of-the-art methods. Valorisation of regional results at pan-European level is ensured by testing the methodologies in two smaller pilot areas in Germany and Ireland.',
-        image: 'geoconnect3d.png',
+        image: 'geoera.png',
         project_page: 'https://geoera.eu/projects/geoconnect3d6/',
         rdf_download: ['geoconnect3d.rdf', 'geoconnect3d.trig']
     });
+
+    vocProjects.set('hotLime', {
+        acronym: 'HotLime',
+        title: 'Mapping and Assessment of Geothermal Plays in Deep Carbonate Rocks – Cross-domain Implications and Impacts (Hotlime)',
+        description: 'Hydrothermal systems in deep carbonate bedrock are among the most promising low-enthalpy geothermal plays across Europe. Apart from a few areas where viability of hydrothermal heat and power generation has been proved, most deep carbonate bedrock has received relatively little attention, because such rocks are perceived as ‘tight’. Exploration and development of the deep subsurface is an acknowledged high-risk investment, particularly in low-enthalpy systems, where tapping suitable temperatures for geothermal energy commonly requires drilling to depths of more than 3 km. In order to de-risk these challenging geothermal plays, it is crucial to improve our understanding of geological conditions that determine the distribution and technical recoverability of their potential resources. The efficacy of carbonate-bedrock geothermal plays is crucially dependent on groundwater yield controlled by fracture conduits and karstification. This project will identify the generic structural controls in deep carbonate formations, through a comparison of geological situations and their structural inventory, as well as collation of deep borehole data and their petro- and hydro-physical characteristics. A consistent assessment and the sharing of knowledge – bringing all partners to a common high level – will result in uniformly applicable best practice workflows for estimation, comparison and prospectranking of hydrothermal resources in deep carbonate bedrock. Applied in specific target areas by means of 2D or 3D mapping and characterization, these spatial assessments will help in de-risking the setup or maturation of regional plays, will reveal possible cross-domain implications, and will support sustainable subsurface management.',
+        image: 'geoera.png',
+        project_page: 'https://geoera.eu/projects/hotlime6/',
+        rdf_download: ['hotlime.rdf', 'hotlime.trig']
+    });
+
 
     /*    vocProjects.set('keywords', {
             acronym: 'GIP-P keywords',
