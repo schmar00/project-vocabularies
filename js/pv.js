@@ -62,7 +62,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
 
         .then(res => res.json())
-        .then(jsonData => {
+        .then(jsonData => { console.log(jsonData);
             for (let [key, value] of vocProjects.entries()) {
                 let uri_path = new RegExp(key);
                 jsonData.results.bindings.filter(item => uri_path.test(item.cs.value)).forEach(function (item) {

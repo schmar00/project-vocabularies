@@ -1,23 +1,6 @@
 let ENDPOINT = 'https://resource.geolba.ac.at/PoolParty/sparql/geoera';
 
 function addVocProj(vocProjects) {
-    /*    vocProjects.set('hike', {
-            acronym: 'HIKE',
-            title: 'Hazard and Impact Knowledge for Europe',
-            description: 'The HIKE project aims to support research and assessments of induced hazards and impacts that are related to the exploitation of subsurface resources and capacities throughout Europe. This will be achieved through development, demonstration and implementation of harmonized subsurface data sets and methodologies, investigation of applied use cases, and facilitation of knowledge shared between geological surveys and stakeholders. WP-2 focuses on the development of a European fault database covering a comprehensive set of static and dynamic geological and physical characteristics needed for the assessment of seismic hazards, ground movements, leakage and fluid migration, sealing capacities, fluid flow and other types of dynamic behaviour. This database will be developed, populated and tested in conjunction with several other GeoERA projects and external stakeholder involvement. WP-3 establishes novel hazard and impact research methods and investigates the added value of the established fault information in several case studies and geological settings across Europe. WP-4 concludes the research activities with future recommendations and the establishment of a share point for information, knowledge and preferred practices related to hazard and impact research. This share point is intended to provide a collaboration and knowledge exchange platform for future research by geological surveys and other stakeholders. WP-5 governs the embedding of the results into the GeoERA Information Platform.',
-            image: 'falte.png',
-            project_page: 'http://geoera.eu/projects/hike/',
-            rdf_download: 'https://egdi.geology.cz/records/123'
-        });
-
-        vocProjects.set('structure', {
-            acronym: 'HIKE-GBA',
-            title: 'Fault systems from Maps of the Geological Survey of Austria',
-            description: 'The Theme Geologic Structures includes linear and planar predominantly deformation structures in geologic maps. Shear sense indicators and fold structures are also covered by this theme.',
-            image: 'HIKE.png',
-            project_page: 'http://resource.geolba.ac.at/structure.html',
-            rdf_download: 'http://resource.geolba.ac.at/structure/export/structure.rdf'
-        });*/
 
     vocProjects.set('geoconnect3d', {
         acronym: 'GeoConnect³d',
@@ -26,6 +9,15 @@ function addVocProj(vocProjects) {
         image: 'geoera.png',
         project_page: 'https://geoera.eu/projects/geoconnect3d6/',
         rdf_download: ['geoconnect3d.rdf', 'geoconnect3d.trig']
+    });
+
+    vocProjects.set('hike', {
+        acronym: 'HIKE',
+        title: 'Hazard and Impact Knowledge for Europe',
+        description: 'The HIKE project aims to support research and assessments of induced hazards and impacts that are related to the exploitation of subsurface resources and capacities throughout Europe. This will be achieved through development, demonstration and implementation of harmonized subsurface data sets and methodologies, investigation of applied use cases, and facilitation of knowledge shared between geological surveys and stakeholders. WP-2 focuses on the development of a European fault database covering a comprehensive set of static and dynamic geological and physical characteristics needed for the assessment of seismic hazards, ground movements, leakage and fluid migration, sealing capacities, fluid flow and other types of dynamic behaviour. This database will be developed, populated and tested in conjunction with several other GeoERA projects and external stakeholder involvement. WP-3 establishes novel hazard and impact research methods and investigates the added value of the established fault information in several case studies and geological settings across Europe. WP-4 concludes the research activities with future recommendations and the establishment of a share point for information, knowledge and preferred practices related to hazard and impact research. This share point is intended to provide a collaboration and knowledge exchange platform for future research by geological surveys and other stakeholders. WP-5 governs the embedding of the results into the GeoERA Information Platform.',
+        image: 'geoera.png',
+        project_page: 'https://geoera.eu/projects/hike10/',
+        rdf_download: ['hike.rdf', 'hike.trig']
     });
 
     vocProjects.set('hotLime', {
