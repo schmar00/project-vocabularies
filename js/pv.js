@@ -276,7 +276,8 @@ const n = {
     dbpo: 'http://dbpedia.org/ontology/',
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     geoconnect: 'http://resource.geolba.ac.at/schema/GeoConnect#',
-    schema: 'https://schema.org/'
+    schema: 'https://schema.org/',
+    geosparql: 'http://www.opengis.net/ont/geosparql#'
 };
 
 const PREF_LABEL = [n.skos + 'prefLabel'];
@@ -291,7 +292,7 @@ const REF_LINKS = [n.dcterms + 'references'];
 const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'];
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
-const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo'];
+const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
 const DATA_LINKS = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.schema + 'mainEntityOfPage', n.foaf + 'page'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
@@ -311,6 +312,7 @@ const TECHNICAL_LIST = {
     descriptions: [...PREF_LABEL, ...SYNONYMS, ...DESCRIPTION_1, ...DESCRIPTION_2],
     scientificReferences: [...CITATION, ...REF_LINKS],
     semanticRelations: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_3],
+    topologyRelations: [...RELATIONS_EGDI],
     dataLinks: DATA_LINKS,
     visualization: [...PICTURE, ...VISUALIZATION],
     location: LOCATION,
@@ -405,7 +407,7 @@ function createFrontPart(divID, uri, data, props) {
                     if (html.search('<h4') == -1) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
-                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '') + '</td><td class="skosRelUl"><ul><li>' +
+                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' +
                         shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
                     break;
                 case 'picture':
