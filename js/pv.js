@@ -95,7 +95,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
 function insertSearchCard(widgetID) {
 
     $('#searchInput').keydown(function (e) {
-        if (e.which == 13) {
+        if (e.which == 13 && $('#searchInput').val().length > 0) {
             openSearchList('search=' + encodeURI($('#searchInput').val()));
             $('#dropdown').empty();
             $('#searchInput').val('');
@@ -103,9 +103,11 @@ function insertSearchCard(widgetID) {
     });
 
     $('#searchBtn').click(function (e) { //provide search results
-        openSearchList('search=' + encodeURI($('#searchInput').val()));
-        $('#dropdown').empty();
-        $('#searchInput').val('');
+        if ($('#searchInput').val().length > 0) {
+            openSearchList('search=' + encodeURI($('#searchInput').val()));
+            $('#dropdown').empty();
+            $('#searchInput').val('');
+        }
     });
 
     $('#searchInput').focusout(function () {
