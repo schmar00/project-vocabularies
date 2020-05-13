@@ -17,6 +17,23 @@
     <script src="js/pv.js"></script>
 
     <style>
+        #banner {
+            background-color: rgba(222, 255, 51, 0.7);
+            width: 280px;
+            position: fixed;
+            top: 40px;
+            right: -84px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 1px 1px 5px grey;
+            -moz-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            z-index: 999;
+        }
+
         a {
             color: #3498DB;
         }
@@ -164,11 +181,15 @@
             text-align: left;
             background-color: #27292b;
         }
+
     </style>
 
 </head>
 
 <body>
+    <div id="banner">
+        <span>under construction</span>
+    </div>
     <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -187,7 +208,7 @@
             <div class="col-md-4">
                 <!-- Search Widget -->
                 <div id="search_widget" class="card my-4 text-white bg-primary mb-3">
-                    <h5 class="card-header"><a href="javascript:window.location.href = BASE;">home</a></h5>
+                    <h5 class="card-header"><a href="javascript:window.location.href = BASE;">home</a><span style="float: right;"><a href="https://resource.geolba.ac.at/PoolParty/sparql/geoera">API (Sparql)</a></span></h5>
                     <div id="searchCard" class="card-body">
                         <div id="searchGroup" class="input-group">
                             <input id="searchInput" type="text" class="form-control" placeholder="Search for...">
@@ -206,4 +227,6 @@
         </div>
         <!-- /.row -->
     </div>
-</body></html>
+</body>
+
+</html>

@@ -62,7 +62,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
 
         .then(res => res.json())
-        .then(jsonData => { console.log(jsonData);
+        .then(jsonData => { //console.log(jsonData);
             for (let [key, value] of vocProjects.entries()) {
                 let uri_path = new RegExp(key);
                 jsonData.results.bindings.filter(item => uri_path.test(item.cs.value)).forEach(function (item) {
@@ -557,7 +557,7 @@ function setUserLang(x) {
 //************************insert the corresponding vocabulary description*********************************
 
 function insertProjCards(divID, projects, p) {
-    if (projects.has(p)) { console.log(p);
+    if (projects.has(p)) { //console.log(p);
         iPC(projects.get(p), divID, false);
     } else {
         for (let project of projects.values()) {
