@@ -326,17 +326,20 @@ const TECHNICAL_LIST = {
 function details(divID, uri) { //build the web page content
 
     let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                                    SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label)
-                                    WHERE {
-                                    VALUES ?s {<${uri}>}
-                                    {?s ?p ?o .
-                                    OPTIONAL {?o skos:prefLabel ?L}
-                                    }UNION{
-                                    VALUES ?p {<http://purl.org/dc/terms/bibliographicCitation>}
-                                    ?s ?x ?r .
-                                    ?r ?p ?o }
-                                    }
-                                    GROUP BY ?p ?o`);
+        SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label)
+        (COUNT(distinct(?sr)) AS ?count)
+        WHERE {
+        VALUES ?s {<${uri}>}
+        {?s ?p ?o .
+        OPTIONAL {?o skos:prefLabel ?L}
+        OPTIONAL {?o skos:narrower|skos:related ?sr}
+        }UNION{
+        VALUES ?p {<http://purl.org/dc/terms/bibliographicCitation>}
+        ?s ?x ?r .
+        ?r ?p ?o }
+        }
+        GROUP BY ?p ?o
+        ORDER BY ?Label`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
         .then(res => res.json())
@@ -372,18 +375,20 @@ function toggleRead(divBtn, divTxt, text) {
 
 function createFrontPart(divID, uri, data, props) {
 
-    let html = ''; //console.log(data, props);
+    let html = '';
+    //console.log(data);
     props.forEach((i) => {
         let ul = getObj(data, i);
         if (ul.size > 0) {
             switch (key) {
                 case 'prefLabel':
+                    //console.log(ul);
                     let pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
                     html += '<h1 class="mt-4">' + pL + '</h1>';
                     html += `   <p class="lead">URI:
                                     <span id="uri" class="">${uri}</span>
                                 </p>
-                                <hr>`;
+                                <hr>`; //console.log(pL);
                     break;
                 case 'altLabel':
                     html += '<ul class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
@@ -409,8 +414,10 @@ function createFrontPart(divID, uri, data, props) {
                     if (html.search('<h4') == -1) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
+                    //console.log(ul); //***TODO add circled plus
                     html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' +
                         shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
+
                     break;
                 case 'picture':
                     insertImage(Array.from(ul).map(a => a.split('\"')[1]), 'image_links');
@@ -500,8 +507,18 @@ function createTechnicalPart(divID, data, props) { //loop all single properties
 
 function getObj(data, i) { //console.log(data, i);
     return new Set($.map(data.results.bindings.filter(item => item.p.value === i), (a => (a.Label.value !== '' ? '<a href="' + BASE +
-        '?uri=' + a.o.value + '&lang=' + USER_LANG + '">' + setUserLang(a.Label.value) + '</a> ' : createHref(a.o.value) + ' ' +
-        createDTLink(a.o.datatype) + ' ' + langTag(a.o['xml:lang'])))));
+        '?uri=' + a.o.value + '&lang=' + USER_LANG + '">' + setUserLang(a.Label.value) + '</a> ' + ' ' + addPlusSign(a.count['value']) : createHref(a.o.value) + ' ' + createDTLink(a.o.datatype) + ' ' + langTag(a.o['xml:lang'])))));
+}
+
+//*******************count of further concepts if > 0*******************
+function addPlusSign(x) {
+    if (x == "0") {
+        x = '';
+    } else {
+        x = `<span class="plusSign">(${x})</span>`; //cycled plus for narrower concepts
+    }
+    //console.log(x);
+    return x;
 }
 
 //*******************prepare HTML links for browsing the vocabulary***************************************************
@@ -584,7 +601,7 @@ function iPC(project, divID, startPage) {
                     </div>
                 </div>`);
     } else {
-         $('#' + divID).append(`
+        $('#' + divID).append(`
                 <div class="card my-4">
                     <h5 class="card-header">
                         <strong>${project.acronym}</strong><small> - ${project.title}</small>
