@@ -176,6 +176,24 @@ function openSearchList(queryString) { //zB 'info=disclaimer'
     window.open(BASE + '?' + queryString + '&lang=' + USER_LANG, '_self', '', 'false');
 }
 
+
+function sparqlEncode(str) {
+    var hex, i;
+    str = str.toLowerCase();
+    var result = "";
+    for (i = 0; i < str.length; i++) {
+        hex = str.charCodeAt(i);
+        if (hex < 32 || hex > 128)
+            result += "\\u" + ("000" + hex.toString(16)).slice(-4);
+        else
+            result += str.charAt(i);
+    }
+
+    return result
+}
+
+
+
 //************************perform the search for a term typed in the inputbox************************
 
 function search(searchText, vocProjects) {
@@ -192,7 +210,7 @@ function search(searchText, vocProjects) {
                                     PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
                                     SELECT DISTINCT ?s ?title ?text
                                     WHERE {
-                                    VALUES ?n {"${searchText.toLowerCase()}"}
+                                    VALUES ?n {"${sparqlEncode(searchText.toLowerCase())}"}
                                     VALUES ?p {skos:prefLabel skos:altLabel skos:definition skos:scopeNote dcterms:description}
                                     ?s a skos:Concept; ?p ?lEN . FILTER((lang(?lEN)="en"))
                                     OPTIONAL{?s ?p ?l . FILTER(lang(?l)="${USER_LANG}")}
