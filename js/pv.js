@@ -313,7 +313,9 @@ const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
 const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
-const DATA_LINKS = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.schema + 'mainEntityOfPage', n.foaf + 'page'];
+const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.schema + 'mainEntityOfPage', n.schema + 'subjectOf', n.foaf + 'page'];
+const APPS = [n.schema + 'mainEntityOfPage', n.schema + 'subjectOf', n.foaf + 'page'];
+const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>', '<i style="color:#3498DB;" class="fas fa-map"></i>'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
 const CREATOR = [n.dcterms + 'creator', n.dcterms + 'created', n.dcterms + 'modified', n.dcterms + 'contributor'];
@@ -323,6 +325,7 @@ const FRONT_LIST = {
     picture: PICTURE,
     altLabel: [...PREF_LABEL, ...SYNONYMS],
     notation: NOTATION,
+    apps: APPS,
     abstract: DESCRIPTION_1,
     scope: DESCRIPTION_3,
     citation: CITATION,
@@ -333,8 +336,8 @@ const TECHNICAL_LIST = {
     scientificReferences: [...CITATION, ...REF_LINKS],
     semanticRelations: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_3],
     topologyRelations: [...RELATIONS_EGDI],
-    dataLinks: DATA_LINKS,
-    visualization: [...PICTURE, ...VISUALIZATION],
+    webLink: [...WEB_LINK],
+    image: [...PICTURE, ...VISUALIZATION],
     location: LOCATION,
     creator: CREATOR
 };
@@ -414,6 +417,19 @@ function createFrontPart(divID, uri, data, props) {
                 case 'notation':
                     $('#' + divID).append('<hr><span>Notation: </span>');
                     html += '<ul class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
+                    break;
+                case 'apps':
+                    html += '<div style="float:right;">';
+                    for (let i of ul) { //console.log(i);
+                        for (let j of appIcons) {
+                            if (i.search(j.split('-')[1].split('\"')[0]) > -1) {
+                                html += `<span style="margin: 5px;">
+                                            <a href="${i.split('\"')[1]}">${j}</a>
+                                        </span>`;
+                            }
+                        }
+                    }
+                    html += '</div>';
                     break;
                 case 'abstract':
                     html += '<hr><div class="' + key + '">' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
