@@ -422,9 +422,10 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<div style="float:right;">';
                     for (let i of ul) { //console.log(i);
                         for (let j of appIcons) {
-                            if (i.search(j.split('-')[1].split('\"')[0]) > -1) {
+                            let tag = j.split('-')[1].split('\"')[0];
+                            if (i.search(tag) > -1) {
                                 html += `<span style="margin: 5px;">
-                                            <a href="${i.split('\"')[1]}">${j}</a>
+                                            <a title="${tag}" href="${i.split('\"')[1]}">${j}</a>
                                         </span>`;
                             }
                         }
