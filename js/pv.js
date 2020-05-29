@@ -348,7 +348,7 @@ function details(divID, uri) { //build the web page content
 
     let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
         SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label)
-        (COUNT(distinct(?sr)) AS ?count)
+        (COUNT(distinct(?sr)) AS ?count) (GROUP_CONCAT(?source ; separator="|") AS ?pdf)
         WHERE {
         VALUES ?s {<${uri}>}
         {?s ?p ?o .
@@ -356,8 +356,9 @@ function details(divID, uri) { //build the web page content
         OPTIONAL {?o skos:narrower|skos:related ?sr}
         }UNION{
         VALUES ?p {<http://purl.org/dc/terms/bibliographicCitation>}
-        ?s ?x ?r .
-        ?r ?p ?o }
+        ?s ?x ?r . ?r ?p ?o
+        OPTIONAL{?r <http://purl.org/dc/terms/source> ?source}
+        }
         }
         GROUP BY ?p ?o
         ORDER BY ?Label`);
@@ -395,6 +396,9 @@ function toggleRead(divBtn, divTxt, text) {
 //*************create the upper part of details page - always visible *********************************************************************
 
 function createFrontPart(divID, uri, data, props) {
+
+    let sourceLinks = data.results.bindings.map(a => [a.pdf.value, a.o.value]).filter(b => b[0].length > 0);
+    //console.log(sourceLinks);
 
     let html = '';
     //console.log(data);
@@ -439,9 +443,15 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<div class="' + key + '"><strong>Interpretation: </strong>' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
                     break;
                 case 'citation':
-                    let a = [];
+                    let a = []; //console.log(ul);
                     for (let i of ul) {
-                        a.push(i.replace('\:', ':<cite title="Source Title">') + '</cite>');
+                        let pdf = '';
+                        for (let k of sourceLinks) {
+                            if (k[1] + '  ' === i) {
+                                pdf = `<a href="${k[0]}">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a>`;
+                            }
+                        }
+                        a.push(i.replace('\:', ':<cite title="Source Title">') + '</cite>' + pdf);
                     }
                     html += '<br><footer class="blockquote-footer">' + Array.from(a).join('</footer><footer class="blockquote-footer">') + '</footer>';
                     break;
