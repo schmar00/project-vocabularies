@@ -336,7 +336,7 @@ const TECHNICAL_LIST = {
     scientificReferences: [...CITATION, ...REF_LINKS],
     semanticRelations: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_3],
     topologyRelations: [...RELATIONS_EGDI],
-    webLink: [...WEB_LINK],
+    seeAlso: [...WEB_LINK],
     image: [...PICTURE, ...VISUALIZATION],
     location: LOCATION,
     creator: CREATOR
@@ -477,7 +477,7 @@ function createFrontPart(divID, uri, data, props) {
 
 function insertImage(links, divID) {
     links.forEach((i) => {
-        let capt = i.split('\/').pop().split('.')[0];
+        let capt = i.split('\/').pop().split('.')[0].replace(/_/g, ' ').replace(/%20/g, ' ');
         $('#' + divID).append(`
                 <div class="card my-4">
                     <div class="card-body">
