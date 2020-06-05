@@ -374,9 +374,9 @@ function details(divID, uri) { //build the web page content
         .then(jsonData => {
             for (key in FRONT_LIST) createFrontPart(divID, uri, jsonData, Array.from(FRONT_LIST[key].values()));
 
-            let r_links = jsonData.results.bindings.map(a => [a.p.value, a.o.value]).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join('> <');
+            let r_links = jsonData.results.bindings.map(a => [a.p.value, '<'+a.o.value+'>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
 
-            let r = `<a href="javascript:rdfTS('<${uri}> <${r_links}>')" title="RDF download">
+            let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
                         <span>
                             <img
                                 src="img/rdf_flyer.svg"
