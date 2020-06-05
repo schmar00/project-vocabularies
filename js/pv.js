@@ -377,7 +377,7 @@ function details(divID, uri) { //build the web page content
             let r_links = jsonData.results.bindings.map(a => [a.p.value, '<'+a.o.value+'>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
 
             let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
-                        <span>
+                        <span style="margin-right:15px;">
                             <img
                                 src="img/rdf_flyer.svg"
                                 alt="rdf"
@@ -392,6 +392,7 @@ function details(divID, uri) { //build the web page content
             } else {
                 $('#altLabel').after('<div style="float:right;">' + r + '</div>');
             }
+
 
             $('#' + divID).append(`<hr>
                                 <div style="cursor: pointer; color: #777;" id="detailsBtn"
@@ -426,6 +427,7 @@ function createFrontPart(divID, uri, data, props) {
     //console.log(sourceLinks);
 
     let html = '';
+    let pL = '';
     let uris4rdf = '<' + uri + '>';
     //console.log(data);
     props.forEach((i) => {
@@ -434,8 +436,8 @@ function createFrontPart(divID, uri, data, props) {
             switch (key) {
                 case 'prefLabel':
                     //console.log(ul);
-                    let pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
-                    html += '<h1 class="mt-4">' + pL + '</h1>';
+                    pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
+                    html += '<h1 id="prefLabel" class="mt-4">' + pL + '</h1>';
                     html += `   <p class="lead">URI:
                                     <span id="uri" class="">${uri}</span>
                                 </p>
@@ -485,7 +487,7 @@ function createFrontPart(divID, uri, data, props) {
                     if (html.search('<h4') == -1) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
-                    //console.log(ul); //***TODO add circled plus
+
                     html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' +
                         shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
 
@@ -519,7 +521,7 @@ function insertImage(links, divID) {
 
 //*******************replace long URIs by acronyms************************************************************************
 
-function shortenText(text) {
+function shortenText(txt) {
 
     let shorten = {
         INSPIRE: 'http://inspire.ec.europa.eu/codelist/',
@@ -527,16 +529,17 @@ function shortenText(text) {
         ICS: 'http://resource.geosciml.org/classifier/ics/',
         DBpedia: 'http://dbpedia.org/resource/',
         BGS: 'http://data.bgs.ac.uk/id/EarthMaterialClass/',
-        WIKIDATA: 'http://www.wikidata.org/entity/'
+        WIKIDATA: 'http://www.wikidata.org/entity/',
+        GBA: 'http://resource.geolba.ac.at/'
     };
 
     for (let i in shorten) {
-        if (text.search(shorten[i]) != -1) {
-            text = text.split('>' + shorten[i])[0] + '>' + text.split('>' + shorten[i])[1].replace('<', ' (' + i + ')<');
+        if (txt.search(shorten[i]) != -1) {
+            txt = txt.split('>' + shorten[i])[0] + '>' + txt.split('>' + shorten[i])[1].replace('<', ' (' + i + ')<');
         }
     }
-    return text;
 
+    return txt;
 }
 
 //******************create the hidden part of concept descriptions ***********************************************************************
@@ -587,6 +590,10 @@ function addPlusSign(x) {
     } else {
         x = `<span class="plusSign">(${x})</span>`; //cycled plus for narrower concepts
     }
+
+
+
+
     //console.log(x);
     return x;
 }
