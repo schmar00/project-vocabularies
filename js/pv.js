@@ -342,9 +342,15 @@ const TECHNICAL_LIST = {
     creator: CREATOR
 };
 
+function rdfTS(v) {
+    document.getElementById('irdfQuery').value = "CONSTRUCT {?s ?p ?o} WHERE {VALUES ?s {" + v + "} ?s ?p ?o}";
+    document.getElementById('irdfForm').submit();
+}
+
 //************set the "details page" to view a single concept ***********************************************************************
 
 function details(divID, uri) { //build the web page content
+    $('#' + divID).append(`<form id="irdfForm" target="_blank" style="display:none;" method="post" action="${ENDPOINT}"><input type="hidden" name="query" id="irdfQuery"/></form>`);
 
     let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
         SELECT DISTINCT ?p ?o (GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|") AS ?Label)
@@ -367,6 +373,25 @@ function details(divID, uri) { //build the web page content
         .then(res => res.json())
         .then(jsonData => {
             for (key in FRONT_LIST) createFrontPart(divID, uri, jsonData, Array.from(FRONT_LIST[key].values()));
+
+            let r_links = jsonData.results.bindings.map(a => [a.p.value, a.o.value]).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join('> <');
+
+            let r = `<a href="javascript:rdfTS('<${uri}> <${r_links}>')" title="RDF download">
+                        <span>
+                            <img
+                                src="img/rdf_flyer.svg"
+                                alt="rdf"
+                                width="17" />
+                        </span>
+                    </a>`;
+
+            if ($('#appsInsert').length > 0) {
+                $('#appsInsert').append(r);
+            } else if ($('#notation').length > 0) {
+                $('#notation').after('<div style="float:right;">' + r + '</div>');
+            } else {
+                $('#altLabel').after('<div style="float:right;">' + r + '</div>');
+            }
 
             $('#' + divID).append(`<hr>
                                 <div style="cursor: pointer; color: #777;" id="detailsBtn"
@@ -401,6 +426,7 @@ function createFrontPart(divID, uri, data, props) {
     //console.log(sourceLinks);
 
     let html = '';
+    let uris4rdf = '<' + uri + '>';
     //console.log(data);
     props.forEach((i) => {
         let ul = getObj(data, i);
@@ -416,15 +442,15 @@ function createFrontPart(divID, uri, data, props) {
                                 <hr>`; //console.log(pL);
                     break;
                 case 'altLabel':
-                    html += '<ul class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
+                    html += '<ul id="altLabel" class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
                     break;
                 case 'notation':
                     $('#' + divID).append('<hr><span>Notation: </span>');
-                    html += '<ul class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
+                    html += '<ul id="notation" class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
                     break;
                 case 'apps':
-                    html += '<div style="float:right;">';
-                    for (let i of ul) { //console.log(i);
+                    html += '<div style="float:right;" id="appsInsert">';
+                    for (let i of ul) {
                         for (let j of appIcons) {
                             let tag = j.split('-')[1].split('\"')[0];
                             if (i.search(tag) > -1) {
@@ -434,7 +460,7 @@ function createFrontPart(divID, uri, data, props) {
                             }
                         }
                     }
-                    html += '</div>';
+                    html += `</div>`;
                     break;
                 case 'abstract':
                     html += '<hr><div class="' + key + '">' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
@@ -472,7 +498,6 @@ function createFrontPart(divID, uri, data, props) {
     });
     $('#' + divID).append(html);
 }
-
 
 
 function insertImage(links, divID) {
