@@ -372,42 +372,52 @@ function details(divID, uri) { //build the web page content
     fetch(ENDPOINT + '?query=' + query + '&format=application/json')
         .then(res => res.json())
         .then(jsonData => {
-            for (key in FRONT_LIST) createFrontPart(divID, uri, jsonData, Array.from(FRONT_LIST[key].values()));
 
-            let r_links = jsonData.results.bindings.map(a => [a.p.value, '<'+a.o.value+'>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
+            //console.log(jsonData);
+            if (jsonData.results.bindings.length > 1) {
+                for (key in FRONT_LIST) createFrontPart(divID, uri, jsonData, Array.from(FRONT_LIST[key].values()));
 
-            let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
+                let r_links = jsonData.results.bindings.map(a => [a.p.value, '<' + a.o.value + '>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
+
+                let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
                         <span style="margin-right:15px;">
-                            <img
-                                src="img/rdf_flyer.svg"
-                                alt="rdf"
-                                width="17" />
+                        <img
+                        src="img/rdf_flyer.svg"
+                        alt="rdf"
+                        width="17" />
                         </span>
-                    </a>`;
+                        </a>`;
 
-            if ($('#appsInsert').length > 0) {
-                $('#appsInsert').append(r);
-            } else if ($('#notation').length > 0) {
-                $('#notation').after('<div style="float:right;">' + r + '</div>');
+                if ($('#appsInsert').length > 0) {
+                    $('#appsInsert').append(r);
+                } else if ($('#notation').length > 0) {
+                    $('#notation').after('<div style="float:right;">' + r + '</div>');
+                } else {
+                    $('#altLabel').after('<div style="float:right;">' + r + '</div>');
+                }
+
+
+                $('#' + divID).append(`<hr>
+                        <div style="cursor: pointer; color: #777;" id="detailsBtn"
+                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"> &#9658; <em>read more ..</em>
+                        </div>
+                        <div style="display:none;" id="detailsToggle">
+                        <br>
+                        <table id="details"></table>
+                        </div>
+                        `);
+
+                for (key in TECHNICAL_LIST) createTechnicalPart('details', jsonData, Array.from(TECHNICAL_LIST[key].values()));
+                $('#' + divID).append('');
+
+                insertConceptBrowser(divID, uri, 50);
             } else {
-                $('#altLabel').after('<div style="float:right;">' + r + '</div>');
+                $('#' + divID).append(`<hr><div class="alert alert-dismissible alert-warning">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <h4 class="alert-heading">Can´t open the page!</h4>
+                          <p class="mb-0">404 Resource Not Found<br>${uri}</p>
+                        </div>`);
             }
-
-
-            $('#' + divID).append(`<hr>
-                                <div style="cursor: pointer; color: #777;" id="detailsBtn"
-                                    onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"> &#9658; <em>read more ..</em>
-                                </div>
-                                <div style="display:none;" id="detailsToggle">
-                                <br>
-                                    <table id="details"></table>
-                                </div>
-                                `);
-
-            for (key in TECHNICAL_LIST) createTechnicalPart('details', jsonData, Array.from(TECHNICAL_LIST[key].values()));
-            $('#' + divID).append('');
-
-            insertConceptBrowser(divID, uri, 50);
         });
 }
 
