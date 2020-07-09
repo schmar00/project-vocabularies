@@ -294,7 +294,7 @@ const n = {
     rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
     dbpo: 'http://dbpedia.org/ontology/',
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    geoconnect: 'http://resource.geolba.ac.at/schema/GeoConnect#',
+    geoconnect: 'http://resource.geolba.ac.at/schema/geoconnect3d#',
     schema: 'https://schema.org/',
     geosparql: 'http://www.opengis.net/ont/geosparql#'
 };
@@ -439,7 +439,7 @@ function createFrontPart(divID, uri, data, props) {
     let pL = '';
     let uris4rdf = '<' + uri + '>';
     //console.log(data);
-    let hyperlinksAbstract = [];
+    //let hyperlinksAbstract = []; //HotLime hyperlinked description texts
     props.forEach((i) => {
         let ul = getObj(data, i);
         if (ul.size > 0) {
@@ -497,9 +497,11 @@ function createFrontPart(divID, uri, data, props) {
                     if (html.search('<h4') == -1) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
-                    hyperlinksAbstract = hyperlinksAbstract.concat(Array.from(ul).map(a => a.split('</a>')[0].split('href="')[1].split('&lang=en">')));
+                    //hyperlinksAbstract = hyperlinksAbstract.concat(Array.from(ul).map(a => a.split('</a>')[0].split('href="')[1].split('&lang=en">')));
                     html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
 
+                    //hyperlinksAbstract = hyperlinksAbstract.sort((a, b) => b[1].length - a[1].length);
+                    //console.log(hyperlinksAbstract);
                     break;
                 case 'picture':
                     insertImage(Array.from(ul).map(a => a.split('\"')[1]), 'image_links');
@@ -509,7 +511,6 @@ function createFrontPart(divID, uri, data, props) {
     });
     $('#' + divID).append(html);
 
-console.log(hyperlinksAbstract);
 
 }
 
