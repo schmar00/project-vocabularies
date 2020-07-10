@@ -304,7 +304,7 @@ const PICTURE = [n.foaf + 'depiction'];
 const SYNONYMS = [n.skos + 'altLabel'];
 const NOTATION = [n.skos + 'notation'];
 const DESCRIPTION_1 = [n.skos + 'definition'];
-const DESCRIPTION_2 = [n.rdf + 'type', n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
+const DESCRIPTION_2 = [n.rdf + 'type', n.dcterms + 'type', n.geoconnect + 'unitTypeValue', n.geoconnect + 'limitTypeValue', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
 const DESCRIPTION_3 = [n.skos + 'scopeNote'];
 const CITATION = [n.dcterms + 'bibliographicCitation'];
 const REF_LINKS = [n.dcterms + 'references'];
@@ -312,12 +312,12 @@ const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
 const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
-const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.schema + 'mainEntityOfPage', n.schema + 'subjectOf', n.foaf + 'page'];
-const APPS = [n.schema + 'mainEntityOfPage', n.schema + 'subjectOf', n.foaf + 'page'];
+const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page'];
+const APPS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page'];
 const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>', '<i style="color:#3498DB;" class="fas fa-map"></i>'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
-const CREATOR = [n.dcterms + 'creator', n.dcterms + 'created', n.dcterms + 'modified', n.dcterms + 'contributor'];
+const CREATOR = [n.dcterms + 'creator', n.dcterms + 'contributor', n.dcterms + 'created', n.dcterms + 'modified'];
 
 const FRONT_LIST = {
     prefLabel: PREF_LABEL,
@@ -336,7 +336,7 @@ const TECHNICAL_LIST = {
     semanticRelations: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_3],
     topologyRelations: [...RELATIONS_EGDI],
     seeAlso: [...WEB_LINK],
-    image: [...PICTURE, ...VISUALIZATION],
+    images: [...PICTURE, ...VISUALIZATION],
     location: LOCATION,
     creator: CREATOR
 };
