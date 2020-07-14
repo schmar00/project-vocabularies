@@ -398,7 +398,7 @@ function details(divID, uri) { //build the web page content
 
                 $('#' + divID).append(`<hr>
                         <div style="cursor: pointer; color: #777;" id="detailsBtn"
-                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');">&#x25B6;<em>&nbsp;&nbsp;read more ..</em>
+                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"><i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;read more ..</em>
                         </div>
                         <div style="display:none;" id="detailsToggle">
                         <br>
@@ -423,7 +423,7 @@ function details(divID, uri) { //build the web page content
 //************************toggle the hidden details / because HTML5 is not fully supported by MS Edge**************
 
 function toggleRead(divBtn, divTxt, text) {
-    let txt = $('#' + divTxt).is(':visible') ? '&#x25B6;<em>&nbsp;&nbsp;' + text + ' ..</em>' : '&#x25BC<em>&nbsp;&nbsp;' + text + ' ..</em>';
+    let txt = $('#' + divTxt).is(':visible') ? '<i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;' + text + ' ..</em>' : '<i class="fas fa-caret-down fa-lg"></i><em>&nbsp;&nbsp;' + text + ' ..</em>';
     $('#' + divBtn).html(txt);
     $('#' + divTxt).slideToggle();
 }
@@ -721,12 +721,12 @@ function insertConceptBrowser(divID, uri, offset) {
             <ul id="coBr" class="pagination mb-4 cardHeaderRight">
                 <li>
                     <button type="button" id="leftBtn" class="btn btn-outline-secondary btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)-50)">
-                        &#x25C0;
+                        <i class="fas fa-caret-left fa-lg"></i>
                     </button>
                 </li>
                 <li>
                     <button type="button" id="rightBtn" class="btn btn-outline-secondary btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)+50)">
-                        &#x25B6;
+                        <i class="fas fa-caret-right fa-lg"></i>
                     </button>
                 </li>
             </ul>
