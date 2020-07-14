@@ -535,7 +535,7 @@ function insertImage(links, divID) {
 //*******************replace long URIs by acronyms************************************************************************
 
 function shortenText(txt) {
-
+    console.log(txt);
     let shorten = {
         INSPIRE: 'http://inspire.ec.europa.eu/codelist/',
         CGI: 'http://resource.geosciml.org/classifier/cgi/',
@@ -547,7 +547,7 @@ function shortenText(txt) {
     };
 
     for (let i in shorten) {
-        if (txt.search(shorten[i]) != -1) {
+        if (txt.search('>' + shorten[i]) != -1) {
             txt = txt.split('>' + shorten[i])[0] + '>' + txt.split('>' + shorten[i])[1].replace('<', ' (' + i + ')<');
         }
     }
