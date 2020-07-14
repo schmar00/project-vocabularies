@@ -304,14 +304,14 @@ const PICTURE = [n.foaf + 'depiction'];
 const SYNONYMS = [n.skos + 'altLabel'];
 const NOTATION = [n.skos + 'notation'];
 const DESCRIPTION_1 = [n.skos + 'definition'];
-const DESCRIPTION_2 = [n.rdf + 'type', n.dcterms + 'type', n.geoconnect + 'unitTypeValue', n.geoconnect + 'limitTypeValue', n.skos + 'inScheme', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
+const DESCRIPTION_2 = [n.rdf + 'type', n.dcterms + 'type', n.gc3d + 'unitTypeValue', n.gc3d + 'limitTypeValue', n.skos + 'inScheme', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
 const DESCRIPTION_3 = [n.skos + 'scopeNote'];
 const CITATION = [n.dcterms + 'bibliographicCitation'];
 const REF_LINKS = [n.dcterms + 'references'];
 const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'];
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
-const RELATIONS_EGDI = [n.geoconnect + 'limitedBy', n.geoconnect + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
+const RELATIONS_EGDI = [n.gc3d + 'limitedBy', n.gc3d + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
 const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page'];
 const APPS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.schema + 'hasMap', n.foaf + 'page'];
 const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>', '<i style="color:#3498DB;" class="fas fa-map"></i>'];
@@ -498,7 +498,7 @@ function createFrontPart(divID, uri, data, props) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
                     //hyperlinksAbstract = hyperlinksAbstract.concat(Array.from(ul).map(a => a.split('</a>')[0].split('href="')[1].split('&lang=en">')));
-                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.geoconnect, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
+                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.gc3d, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
 
                     //hyperlinksAbstract = hyperlinksAbstract.sort((a, b) => b[1].length - a[1].length);
                     //console.log(hyperlinksAbstract);
@@ -568,7 +568,7 @@ function createTechnicalPart(divID, data, props) { //loop all single properties
     let coord = {};
 
     props.forEach((i) => {
-        let ul = getObj(data, i);
+        let ul = getObj(data, i); //console.log(ul);
         if (ul.size > 0) {
             html += '<tr><td class="propTech">' + createHref(i) + '</td><td><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr>';
 
