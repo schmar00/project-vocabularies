@@ -294,7 +294,7 @@ const n = {
     rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
     dbpo: 'http://dbpedia.org/ontology/',
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    geoconnect: 'http://resource.geolba.ac.at/schema/geoconnect3d#',
+    gc3d: 'http://resource.geolba.ac.at/schema/geoconnect3d#',
     schema: 'https://schema.org/',
     geosparql: 'http://www.opengis.net/ont/geosparql#'
 };
@@ -398,7 +398,7 @@ function details(divID, uri) { //build the web page content
 
                 $('#' + divID).append(`<hr>
                         <div style="cursor: pointer; color: #777;" id="detailsBtn"
-                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"> &#9658; <em>read more ..</em>
+                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');">&#x25B6;<em>&nbsp;&nbsp;read more ..</em>
                         </div>
                         <div style="display:none;" id="detailsToggle">
                         <br>
@@ -423,7 +423,7 @@ function details(divID, uri) { //build the web page content
 //************************toggle the hidden details / because HTML5 is not fully supported by MS Edge**************
 
 function toggleRead(divBtn, divTxt, text) {
-    let txt = $('#' + divTxt).is(':visible') ? '&#9658; <em>' + text + ' ..</em>' : '&#9660; <em>' + text + ' ..</em>';
+    let txt = $('#' + divTxt).is(':visible') ? '&#x25B6;<em>&nbsp;&nbsp;' + text + ' ..</em>' : '&#x25BC<em>&nbsp;&nbsp;' + text + ' ..</em>';
     $('#' + divBtn).html(txt);
     $('#' + divTxt).slideToggle();
 }
@@ -538,12 +538,16 @@ function shortenText(txt) {
     //console.log(txt);
     let shorten = {
         INSPIRE: 'http://inspire.ec.europa.eu/codelist/',
+        INSPIRE: 'http://inspire.ec.europa.eu/featureconcept/',
         CGI: 'http://resource.geosciml.org/classifier/cgi/',
+        CGI: 'http://resource.geosciml.org/classifier/cgi/faulttype/',
         ICS: 'http://resource.geosciml.org/classifier/ics/',
         DBpedia: 'http://dbpedia.org/resource/',
+        nlDBpedia: 'http://nl.dbpedia.org/resource/',
         BGS: 'http://data.bgs.ac.uk/id/EarthMaterialClass/',
         WIKIDATA: 'http://www.wikidata.org/entity/',
         GBA: 'http://resource.geolba.ac.at/',
+        GeoConnect3D: 'https://data.geoscience.earth/ncl/geoera/geoconnect3d/',
         GeoERA: 'https://data.geoscience.earth/ncl/geoera/'
     };
 
@@ -717,12 +721,12 @@ function insertConceptBrowser(divID, uri, offset) {
             <ul id="coBr" class="pagination mb-4 cardHeaderRight">
                 <li>
                     <button type="button" id="leftBtn" class="btn btn-outline-secondary btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)-50)">
-                        &#9664;
+                        &#x25C0;
                     </button>
                 </li>
                 <li>
                     <button type="button" id="rightBtn" class="btn btn-outline-secondary btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)+50)">
-                        &#9658;
+                        &#x25B6;
                     </button>
                 </li>
             </ul>
