@@ -304,7 +304,7 @@ const PICTURE = [n.foaf + 'depiction'];
 const SYNONYMS = [n.skos + 'altLabel'];
 const NOTATION = [n.skos + 'notation'];
 const DESCRIPTION_1 = [n.skos + 'definition'];
-const DESCRIPTION_2 = [n.rdf + 'type', n.dcterms + 'type', n.geoconnect + 'unitTypeValue', n.geoconnect + 'limitTypeValue', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
+const DESCRIPTION_2 = [n.rdf + 'type', n.dcterms + 'type', n.geoconnect + 'unitTypeValue', n.geoconnect + 'limitTypeValue', n.skos + 'inScheme', n.skos + 'scopeNote', n.dcterms + 'description', n.dcterms + 'abstract'];
 const DESCRIPTION_3 = [n.skos + 'scopeNote'];
 const CITATION = [n.dcterms + 'bibliographicCitation'];
 const REF_LINKS = [n.dcterms + 'references'];
@@ -535,7 +535,7 @@ function insertImage(links, divID) {
 //*******************replace long URIs by acronyms************************************************************************
 
 function shortenText(txt) {
-    console.log(txt);
+    //console.log(txt);
     let shorten = {
         INSPIRE: 'http://inspire.ec.europa.eu/codelist/',
         CGI: 'http://resource.geosciml.org/classifier/cgi/',
@@ -543,7 +543,8 @@ function shortenText(txt) {
         DBpedia: 'http://dbpedia.org/resource/',
         BGS: 'http://data.bgs.ac.uk/id/EarthMaterialClass/',
         WIKIDATA: 'http://www.wikidata.org/entity/',
-        GBA: 'http://resource.geolba.ac.at/'
+        GBA: 'http://resource.geolba.ac.at/',
+        GeoERA: 'https://data.geoscience.earth/ncl/geoera/'
     };
 
     for (let i in shorten) {
@@ -565,7 +566,7 @@ function createTechnicalPart(divID, data, props) { //loop all single properties
     props.forEach((i) => {
         let ul = getObj(data, i);
         if (ul.size > 0) {
-            html += '<tr><td class="propTech">' + createHref(i) + '</td><td><ul><li>' + Array.from(ul).join('</li><li>') + '</li></ul></td></tr>';
+            html += '<tr><td class="propTech">' + createHref(i) + '</td><td><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr>';
 
             if (i == geoPath + 'lat') {
                 coord.lat = Number(ul.values().next().value);
