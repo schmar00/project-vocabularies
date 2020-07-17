@@ -313,8 +313,9 @@ const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'rel
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
 const RELATIONS_EGDI = [n.gc3d + 'limitedBy', n.gc3d + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
 const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page'];
-const APPS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.schema + 'hasMap', n.foaf + 'page'];
-const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>', '<i style="color:#3498DB;" class="fas fa-map"></i>'];
+const ICONS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page'];
+const MAPS = [n.schema + 'hasMap'];
+const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
 const CREATOR = [n.dcterms + 'creator', n.dcterms + 'contributor', n.dcterms + 'created', n.dcterms + 'modified'];
@@ -324,7 +325,7 @@ const FRONT_LIST = {
     picture: PICTURE,
     altLabel: [...PREF_LABEL, ...SYNONYMS],
     notation: NOTATION,
-    apps: APPS,
+    apps: [...ICONS, ...MAPS],
     abstract: DESCRIPTION_1,
     scope: DESCRIPTION_3,
     citation: CITATION,
@@ -376,6 +377,7 @@ function details(divID, uri) { //build the web page content
             if (jsonData.results.bindings.length > 1) {
                 for (key in FRONT_LIST) createFrontPart(divID, uri, jsonData, Array.from(FRONT_LIST[key].values()));
 
+                // RDF download icon added to apps (notation div or altLabel div)
                 let r_links = jsonData.results.bindings.map(a => [a.p.value, '<' + a.o.value + '>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
 
                 let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
@@ -462,7 +464,7 @@ function createFrontPart(divID, uri, data, props) {
                     break;
                 case 'apps':
                     html += '<div style="float:right;" id="appsInsert">';
-                    for (let i of ul) {
+                    for (let i of ul) { //inserted by string occurrence in url
                         for (let j of appIcons) {
                             let tag = j.split('-')[1].split('\"')[0];
                             if (i.search(tag) > -1) {
@@ -470,6 +472,13 @@ function createFrontPart(divID, uri, data, props) {
                                             <a title="${tag}" href="${i.split('\"')[1]}">${j}</a>
                                         </span>`;
                             }
+                        }
+                    }
+                    for (let j of data.results.bindings) { //inserted by hasMap link
+                        if (MAPS.indexOf(j.p.value) > -1) {
+                            html += `<span style="margin: 5px;">
+                                            <a title="map" href="${j.o.value}"><i style="color:#3498DB;" class="fas fa-map"></i></a>
+                                        </span>`;
                         }
                     }
                     html += `</div>`;
