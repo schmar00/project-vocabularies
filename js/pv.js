@@ -459,8 +459,8 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<ul id="altLabel" class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
                     break;
                 case 'notation':
-                    $('#' + divID).append('<hr><span>Notation: </span>');
-                    html += '<ul id="notation" class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
+                    $('#' + divID).append('<hr><span></span>');
+                    html += '<ul id="notation" class="' + key + '"><li>Notation:</li><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
                     break;
                 case 'apps':
                     html += '<div style="float:right;" id="appsInsert">';
