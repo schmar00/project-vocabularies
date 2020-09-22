@@ -29,6 +29,14 @@ function addVocProj(vocProjects) {
         rdf_download: ['hotlime.rdf', 'hotlime.trig']
     });
 
+    vocProjects.set('hover', {
+        acronym: 'HOVER',
+        title: 'Hydrological processes and Geological settings over Europe controlling dissolved geogenic and anthropogenic elements in groundwater of relevance to human health and the status of dependent ecosystems',
+        description: 'The challenge is to gain understanding of the controls on groundwater quality across Europe using the combined expertise and data held by member states. The project will address groundwater management issues related to drinking water, human and ecosystem health across Europe in relation to both geogenic elements and anthropogenic pollutants by data sharing, technical and scientific exchange between European GSOs[1]. We will link our knowledge of geological settings and understanding of hydrogeological processes to the natural variability of groundwater quality and to the risk of transfer of anthropogenic dissolved compounds to aquifers. For natural water quality this will include evaluating health risks and spatial variability of concentrations of geogenic elements and using a common approach to assessing thermal and mineral water. For diffuse pollutant behaviour we will increase understanding of ecology and microbial diversity controls on transforming pollutants at groundwater-surface water transition zones, quantify groundwater age distributions and nitrate and pesticide travel times in the subsurface and their attenuation patterns for evaluating the efficiency of programme of measures, the design and assessment of monitoring programmes, pollution trends, and create EU-wide aquifer vulnerability maps by comparing assessment methods across Europe. New compounds will be addressed by developing a consistent approach to groundwater monitoring for organic emerging contaminants. Common standards, databases and maps will be developed and project outputs will include thematic maps and web service tools at pan-European scale and databases available through the Information Platform to increase political and public awareness and improve groundwater management at the EU scale.',
+        image: 'geoera.png',
+        project_page: 'https://geoera.eu/projects/hover8/',
+        rdf_download: ['hover.rdf', 'hover.trig']
+    });
 
     /*    vocProjects.set('keywords', {
             acronym: 'GIP-P keywords',
