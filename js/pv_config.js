@@ -38,6 +38,16 @@ function addVocProj(vocProjects) {
         rdf_download: ['hover.rdf', 'hover.trig']
     });
 
+    vocProjects.set('muse', {
+        acronym: 'MUSE',
+        title: 'Managing Urban Shallow geothermal Energy',
+        description: 'MUSE investigates resources and possible conflicts of use associated with the use of shallow geothermal energy (SGE) in European urban areas and delivers key geoscientific subsurface data to stakeholders via a user-friendly web based GeoERA information platform (GIP). The assessment of geothermal resources and conflicts of use will lead to the development of management strategies considering both efficient planning and monitoring of environmental impacts to feed into general framework strategies of cities like Sustainable Energy Action Plans (SEAPs). The developed methods and approaches will be tested and evaluated together with input from local stakeholders in 14 urban pilot areas across Europe representative for different conditions of SGE use. The pilot areas are geologically and climatologically diverse and have a range of heating and cooling degree day characteristics, making the project outcomes and shared learnings relevant to the whole of Europe and beyond. In the MUSE project, we want to address all relevant aspects by capitalising upon existing knowledge, identifying and closing specific knowledge gaps and providing joint proposals on methodologies, criteria and concepts on SGE management. We adapt workflows to focus on local scale investigations suitable for densely-populated urban areas, where national heating and cooling demand is generally highest, and which will represent the most important SGE market in the future. The outcomes of the project represent a comprehensive collection of methods, approaches and tools, which can be transferred to other urban regions in Europe and adapted by other organisations.',
+        image: 'geoera.png',
+        project_page: 'https://geoera.eu/projects/muse3/',
+        rdf_download: ['muse.rdf', 'muse.trig']
+    });
+
+
     /*    vocProjects.set('keywords', {
             acronym: 'GIP-P keywords',
             title: 'Compilation of a keyword thesaurus',

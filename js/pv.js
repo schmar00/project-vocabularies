@@ -450,8 +450,9 @@ function createFrontPart(divID, uri, data, props) {
                     //console.log(ul);
                     pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
                     html += '<h1 id="prefLabel" class="mt-4">' + pL + '</h1>';
+
                     html += `   <p class="lead">URI:
-                                    <span id="uri" class="">${uri}</span>
+                                    <span id="uri" class="${(uri.search('geoscience.earth')<0?'uriImp':'uriOrg')}">${uri}</span>
                                 </p>
                                 <hr>`; //console.log(pL);
                     break;
