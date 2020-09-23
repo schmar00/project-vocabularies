@@ -47,6 +47,15 @@ function addVocProj(vocProjects) {
         rdf_download: ['muse.rdf', 'muse.trig']
     });
 
+    vocProjects.set('eurolithos', {
+        acronym: 'EuroLithos',
+        title: 'European Ornamental stone resources',
+        description: 'Ornamental stone has contributed significantly in shaping our rural and urban landscapes, through its use in our built heritage from different historical periods. Ornamental stone is today a raw material produced with great skills all over Europe, exploiting the vast diversity of European natural stone resources. Yet, the actual use of local and regional stone resources in Europe is decreasing, and so is the knowledge of the resources, traditions and skills.',
+        image: 'geoera.png',
+        project_page: 'https://geoera.eu/projects/eurolithos1/',
+        rdf_download: ['eurolithos.rdf', 'eurolithos.trig']
+    });
+
 
     /*    vocProjects.set('keywords', {
             acronym: 'GIP-P keywords',
