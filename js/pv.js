@@ -325,7 +325,8 @@ const FRONT_LIST = {
     picture: PICTURE,
     altLabel: [...PREF_LABEL, ...SYNONYMS],
     notation: NOTATION,
-    apps: [...ICONS, ...MAPS],
+    apps: ICONS,
+    maps: MAPS,
     abstract: DESCRIPTION_1,
     scope: DESCRIPTION_3,
     citation: CITATION,
@@ -475,12 +476,14 @@ function createFrontPart(divID, uri, data, props) {
                             }
                         }
                     }
-                    for (let j of data.results.bindings) { //inserted by hasMap link
-                        if (MAPS.indexOf(j.p.value) > -1) {
-                            html += `<span style="margin: 5px;">
-                                            <a title="map" href="${j.o.value}"><i style="color:#3498DB;" class="fas fa-map"></i></a>
-                                        </span>`;
-                        }
+                    html += `</div>`;
+                    break;
+                case 'maps':
+                    html += '<div style="float:right;" id="mapsInsert">';
+                    for (let i of ul) {
+                        html += `<span style="margin: 5px;">
+                                    ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-map"></i></a>'}
+                                </span>`;
                     }
                     html += `</div>`;
                     break;
