@@ -313,8 +313,9 @@ const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'rel
 const RELATIONS_3 = [n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
 const RELATIONS_EGDI = [n.gc3d + 'limitedBy', n.gc3d + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
 const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page', n.schema + 'hasMap'];
-const ICONS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page'];
+const ICONS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page', n.dcterms + 'isPartOf', n.dcterms + 'hasPart'];
 const MAPS = [n.schema + 'hasMap'];
+const OTHERLINKS = [n.schema + 'subjectOf', n.foaf + 'page', n.dcterms + 'isPartOf', n.dcterms + 'hasPart'];
 const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
@@ -327,6 +328,7 @@ const FRONT_LIST = {
     notation: NOTATION,
     apps: ICONS,
     maps: MAPS,
+    otherLinks: OTHERLINKS,
     abstract: DESCRIPTION_1,
     scope: DESCRIPTION_3,
     citation: CITATION,
@@ -483,6 +485,15 @@ function createFrontPart(divID, uri, data, props) {
                     for (let i of ul) {
                         html += `<span style="margin: 5px;">
                                     ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-map"></i></a>'}
+                                </span>`;
+                    }
+                    html += `</div>`;
+                    break;
+                case 'otherLinks':
+                    html += '<div style="float:right;" id="otherInsert">';
+                    for (let i of ul) {
+                        html += `<span style="margin: 5px;">
+                                    ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-external-link-square-alt"></i></a>'}
                                 </span>`;
                     }
                     html += `</div>`;
