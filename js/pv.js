@@ -315,7 +315,6 @@ const RELATIONS_EGDI = [n.gc3d + 'limitedBy', n.gc3d + 'limitTo', n.geosparql + 
 const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page', n.schema + 'hasMap'];
 const ICONS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page', n.dcterms + 'isPartOf', n.dcterms + 'hasPart'];
 const MAPS = [n.schema + 'hasMap'];
-const OTHERLINKS = [n.schema + 'subjectOf', n.foaf + 'page', n.dcterms + 'isPartOf', n.dcterms + 'hasPart'];
 const appIcons = ['<i style="color:#3498DB;" class="fab fa-twitter"></i>', '<i style="color:#3498DB;" class="fas fa-blog"></i>', '<i style="color:#3498DB;" class="fab fa-youtube"></i>', '<i style="color:#3498DB;" class="fab fa-wikipedia-w"></i>'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
@@ -328,7 +327,6 @@ const FRONT_LIST = {
     notation: NOTATION,
     apps: ICONS,
     maps: MAPS,
-    otherLinks: OTHERLINKS,
     abstract: DESCRIPTION_1,
     scope: DESCRIPTION_3,
     citation: CITATION,
@@ -468,14 +466,22 @@ function createFrontPart(divID, uri, data, props) {
                     break;
                 case 'apps':
                     html += '<div style="float:right;" id="appsInsert">';
+
                     for (let i of ul) { //inserted by string occurrence in url
+                        let iconExists = false;
                         for (let j of appIcons) {
                             let tag = j.split('-')[1].split('\"')[0];
                             if (i.search(tag) > -1) {
                                 html += `<span style="margin: 5px;">
                                             <a title="${tag}" href="${i.split('\"')[1]}">${j}</a>
                                         </span>`;
+                                iconExists = true;
                             }
+                        }
+                        if (!iconExists) {
+                            html += `<span style="margin: 5px;">
+                                    ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-paperclip"></i></a>'}
+                                </span>`;
                         }
                     }
                     html += `</div>`;
@@ -485,15 +491,6 @@ function createFrontPart(divID, uri, data, props) {
                     for (let i of ul) {
                         html += `<span style="margin: 5px;">
                                     ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-map"></i></a>'}
-                                </span>`;
-                    }
-                    html += `</div>`;
-                    break;
-                case 'otherLinks':
-                    html += '<div style="float:right;" id="otherInsert">';
-                    for (let i of ul) {
-                        html += `<span style="margin: 5px;">
-                                    ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-external-link-square-alt"></i></a>'}
                                 </span>`;
                     }
                     html += `</div>`;
