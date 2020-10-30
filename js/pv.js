@@ -723,7 +723,7 @@ function iPC(project, divID, startPage) {
                         <strong>${project.acronym}</strong><small> - ${project.title}</small>
                     </h5>
                     <div class="card-body">
-                        ${project.description.slice(0, 480)}..<br>
+                        ${project.description.slice(0, 490)}..<br>
                         <a href="${project.project_page}">${project.project_page}</a><br>
                         Download: ${rdf_dl}
                     </div>
