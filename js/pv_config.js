@@ -23,7 +23,7 @@ function addVocProj(vocProjects) {
     vocProjects.set('hotLime', {
         acronym: 'HotLime',
         title: 'Mapping and Assessment of Geothermal Plays in Deep Carbonate Rocks – Cross-domain Implications and Impacts',
-        description: 'Hydrothermal systems in deep carbonate rocks are among the most promising low-enthalpy geothermal systems across Europe. Their assessment specifically requires the mapping and characterization of the fault network. Fault density as the determinant for the groundwater yield of carbonate reservoirs at depth, thus the capability of the hydrothermal system, is the only one of crucial factors that can be a reliably assessed on a larger scale and at the forefront of exploration. Consequently, the detailed inventory of tectonic boundaries has been a prime focus of HotLime’s evaluation of hydrothermal reservoirs.',
+        description: 'Hydrothermal systems in deep carbonate rocks are the most promising low-enthalpy geothermal systems across Europe. Their assessment requires the mapping and characterization of the fault network, as fault density determines the groundwater yield of the reservoirs, thus the capability of the hydrothermal system. As the only one of crucial factors that can be a reliably assessed at the forefront of exploration, the detailed inventory of tectonic boundaries has been prime focus of HotLime.',
         image: 'geoera.png',
         project_page: 'https://geoera.eu/projects/hotlime6/',
         rdf_download: ['hotlime.rdf', 'hotlime.trig']
