@@ -18,7 +18,9 @@ $(document).ready(function () {
         let uri = decodeURI(urlParams.get('uri').replace(/["';><]/gi, '')); //avoid injection
         $('#pageContent').empty();
         details('pageContent', uri);
-        insertProjCards('proj_links', vocProjects, uri.split('\/')[5]);
+        if (uri.indexOf('geoscience') > 0) {
+            insertProjCards('proj_links', vocProjects, uri.split('\/')[5]);
+        }
 
     } else {
         insertPageDesc(); //general intro
@@ -452,8 +454,8 @@ function createFrontPart(divID, uri, data, props) {
                     pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
                     html += '<h1 id="prefLabel" class="mt-4">' + pL + '</h1>';
 
-                    html += `   <p class="lead">URI:
-                                    <span id="uri" class="${(uri.search('geoscience.earth')<0?'uriImp':'uriOrg')}">${uri}</span>
+                    html += `<p class="">${(uri.search('geoscience.earth')<0?`<a title="external URI" href="${uri}"><i class="fas fa-external-link-square-alt uriImp"></i></a>`:'')}
+                                    <span id="uri" style="word-wrap: break-word;"><strong> URI</strong>: ${uri}</span>
                                 </p>
                                 <hr>`; //console.log(pL);
                     break;
@@ -499,7 +501,7 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<hr><div class="' + key + '">' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
                     break;
                 case 'scope':
-                    html += '<div class="' + key + '"><strong>Interpretation: </strong>' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
+                    html += '<br><p class="text-secondary">Interpretation: ' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</p>';
                     break;
                 case 'citation':
                     let a = []; //console.log(ul);
@@ -515,6 +517,7 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<br><footer class="blockquote-footer">' + Array.from(a).join('</footer><footer class="blockquote-footer">') + '</footer>';
                     break;
                 case 'relatedConcepts':
+
                     if (html.search('<h4') == -1) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
@@ -555,9 +558,9 @@ function insertImage(links, divID) {
 
 //*******************replace long URIs by acronyms************************************************************************
 
-function shortenText(txt) {
-    //console.log(txt);
-    let shorten = {
+function shortenText(htmlText) {
+
+    let abbrev = {
         INSPIRE: 'http://inspire.ec.europa.eu/codelist/',
         INSPIRE: 'http://inspire.ec.europa.eu/featureconcept/',
         CGI: 'http://resource.geosciml.org/classifier/cgi/',
@@ -571,14 +574,10 @@ function shortenText(txt) {
         GeoConnect3D: 'https://data.geoscience.earth/ncl/geoera/geoconnect3d/',
         GeoERA: 'https://data.geoscience.earth/ncl/geoera/'
     };
-
-    for (let i in shorten) {
-        if (txt.search('>' + shorten[i]) != -1) {
-            txt = txt.split('>' + shorten[i])[0] + '>' + txt.split('>' + shorten[i])[1].replace('<', ' (' + i + ')<');
-        }
+    for (let i in abbrev) {
+        htmlText = htmlText.split('>' + abbrev[i]).map(a => a.replace('<', ` (${i})<`)).join('>').replace(` (${i})`, '');
     }
-
-    return txt;
+    return htmlText;
 }
 
 //******************create the hidden part of concept descriptions ***********************************************************************
@@ -690,7 +689,8 @@ function setUserLang(x) {
 //************************insert the corresponding vocabulary description*********************************
 
 function insertProjCards(divID, projects, p) {
-    if (projects.has(p)) { //console.log(p);
+    if (projects.has(p)) {
+        //console.log(p);
         iPC(projects.get(p), divID, false);
     } else {
         for (let project of projects.values()) {
