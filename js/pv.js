@@ -452,12 +452,23 @@ function createFrontPart(divID, uri, data, props) {
                 case 'prefLabel':
                     //console.log(ul);
                     pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
-                    html += '<h1 id="prefLabel" class="mt-4">' + pL + '</h1>';
+                    html += `<h1 id="prefLabel" class="mt-4${(uri.search('geoscience.earth')<0?` text-muted`:'')}">${pL}</h1>`;
 
-                    html += `<p class="">${(uri.search('geoscience.earth')<0?`<a title="external URI" href="${uri}"><i class="fas fa-external-link-square-alt uriImp"></i></a>`:'')}
-                                    <span id="uri" style="word-wrap: break-word;"><strong> URI</strong>: ${uri}</span>
-                                </p>
-                                <hr>`; //console.log(pL);
+                    html += `<p class="${(uri.search('geoscience.earth')<0?' text-muted"><a title="external URI" href="' + uri + '"><i class="fas fa-external-link-square-alt uriImp"></i></a>&nbsp;&nbsp;&nbsp;':'">')}
+                        <span id="uri" style="word-wrap: break-word;">
+                            <strong>URI</strong>: ${uri}
+                        </span>
+                        &nbsp;&nbsp;&nbsp;
+                        <button
+                            title="copy URI to clip board"
+                            style="padding: 0; border: none; background: none; color:#3498db;"
+                            onclick="javascript:
+                            var dummy = $('<input>').val('${uri}').appendTo('body').select()
+                            document.execCommand('copy');">
+                            <i class="fas fa-long-arrow-alt-right"></i>&nbsp;&nbsp;<i class="fas fa-clipboard"></i>
+                        </button>
+                    </p>
+                    <hr>`; //console.log(pL);
                     break;
                 case 'altLabel':
                     html += '<ul id="altLabel" class="' + key + '"><li>' + Array.from(ul).join('</li><li>') + '</li></ul>';
