@@ -461,13 +461,13 @@ function createFrontPart(divID, uri, data, props) {
                             onclick="javascript:
                             var dummy = $('<input>').val('${uri}').appendTo('body').select();
                             document.execCommand('copy');
-                            dummy.attr('type','hidden');">
+                            dummy.remove();">
                             <span class="badge badge-info">URI</span>
                         </button>
                         <span id="uri" style="word-wrap: break-word;">
                             &nbsp;&nbsp;&nbsp;${uri}
                         </span>
-                        ${(uri.search('geoscience.earth')<0?'&nbsp;&nbsp;&nbsp;<a title="external URI" href="' + uri + '"><i class="fas fa-external-link-square-alt uriImp"></i></a>':'')}
+                        ${(uri.search('geoscience.earth')<0?'&nbsp;&nbsp;&nbsp;<a title="external URI" href="' + uri + '"><i class="fas fa-external-link-alt uriImp"></i></a>':'')}
                     </p>
                     <hr>`; //console.log(pL);
                     break;
