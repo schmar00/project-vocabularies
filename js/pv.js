@@ -81,8 +81,12 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                         <br><br>
                                         <p class="text-muted">
                                             <strong>Top concepts:</strong> ${topConcepts}
-                                            <br><strong>Modified:</strong> ${item.modified.value.split('T')[0]}
-                                            <br><strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
+                                            <br>
+                                            <strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <strong>Created:</strong> ${item.modified.value.split('T')[0]}
+                                            &nbsp;&nbsp;&nbsp;
+                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace('§',item.cs.value))}&format=text/html">HTML</a>
                                         </p>
                                     </div>
                                 </div>`);
@@ -91,7 +95,25 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
         });
 }
 
-//***************************************************************************************************
+//***********************HTML Table download***************************************
+
+let CODELIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+select (IF(contains(str(?s), "inspire"), CONCAT("\u003Cspan style='color:red;'\u003E",str(?s),"\u003C\u002Fspan\u003E"), ?s) as ?URI)
+(concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?s),"'>",str(?L),"</a>") as ?Label)
+(GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
+(GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
+(GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
+where {
+<§> skos:hasTopConcept ?tc .
+?tc skos:narrower* ?s . ?s skos:prefLabel ?L filter(lang(?L)="en")
+optional {?s skos:definition ?D filter(lang(?D)="en")}
+optional {?s skos:scopeNote ?N filter(lang(?N)="en")}
+optional {?s skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
+}
+group by ?s ?L
+order by ?L`;
+
+
 //***********************set the input box for concept search****************************************
 
 function insertSearchCard(widgetID) {
