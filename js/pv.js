@@ -454,19 +454,20 @@ function createFrontPart(divID, uri, data, props) {
                     pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
                     html += `<h1 id="prefLabel" class="mt-4${(uri.search('geoscience.earth')<0?` text-muted`:'')}">${pL}</h1>`;
 
-                    html += `<p class="${(uri.search('geoscience.earth')<0?' text-muted"><a title="external URI" href="' + uri + '"><i class="fas fa-external-link-square-alt uriImp"></i></a>&nbsp;&nbsp;&nbsp;':'">')}
-                        <span id="uri" style="word-wrap: break-word;">
-                            <strong>URI</strong>: ${uri}
-                        </span>
-                        &nbsp;&nbsp;&nbsp;
+                    html += `<p class="${(uri.search('geoscience.earth')<0?' text-muted">':'">')}
                         <button
                             title="copy URI to clip board"
                             style="padding: 0; border: none; background: none; color:#3498db;"
                             onclick="javascript:
-                            var dummy = $('<input>').val('${uri}').appendTo('body').select()
-                            document.execCommand('copy');">
-                            <i class="fas fa-long-arrow-alt-right"></i>&nbsp;&nbsp;<i class="fas fa-clipboard"></i>
+                            var dummy = $('<input>').val('${uri}').appendTo('body').select();
+                            document.execCommand('copy');
+                            dummy.attr('type','hidden');">
+                            <span class="badge badge-info">URI</span>
                         </button>
+                        <span id="uri" style="word-wrap: break-word;">
+                            &nbsp;&nbsp;&nbsp;${uri}
+                        </span>
+                        ${(uri.search('geoscience.earth')<0?'&nbsp;&nbsp;&nbsp;<a title="external URI" href="' + uri + '"><i class="fas fa-external-link-square-alt uriImp"></i></a>':'')}
                     </p>
                     <hr>`; //console.log(pL);
                     break;
