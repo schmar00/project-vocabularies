@@ -86,7 +86,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                             &nbsp;&nbsp;&nbsp;
                                             <strong>Created:</strong> ${item.modified.value.split('T')[0]}
                                             &nbsp;&nbsp;&nbsp;
-                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace('§',item.cs.value))}&format=text/html">HTML</a>
+                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=text/html">HTML</a>
                                         </p>
                                     </div>
                                 </div>`);
@@ -98,7 +98,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
 //***********************HTML Table download***************************************
 
 let CODELIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-select (IF(contains(str(?s), "inspire"), CONCAT("\u003Cspan style='color:red;'\u003E",str(?s),"\u003C\u002Fspan\u003E"), ?s) as ?URI)
+select (IF(contains(str(?s), "§"), ?s, CONCAT("\u003Cspan style='color:red;'\u003E",str(?s),"\u003C\u002Fspan\u003E")) as ?URI)
 (concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?s),"'>",str(?L),"</a>") as ?Label)
 (GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
 (GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
