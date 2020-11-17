@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <title>project vocabularies</title>
 
-    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <link rel="stylesheet" id="bootswatch" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="css/FontAwesome/all.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.3.0/fuse.min.js" charset="utf-8"></script>
@@ -193,14 +193,17 @@
 
         .uriImp {
             color: #3498db;
-/*            font-size: 90%;*/
+            /*            font-size: 90%;*/
         }
 
         .uriOrg {
-/*            color: green;*/
-/*            font-size: 90%;*/
+            /*            color: green;*/
+            /*            font-size: 90%;*/
         }
 
+        .card-header a {
+            color: white;
+        }
     </style>
 
 </head>
@@ -229,8 +232,10 @@
                 <div id="search_widget" class="card my-4 text-white bg-primary mb-3">
                     <h5 class="card-header">
                         <div style="text-align: left;"><a href="javascript:window.location.href = BASE;">home</a> |
-                        <a href="https://github.com/GeoEra-GIP/WP4-Semantics/tree/master/Project%20Vocabularies">docs</a> |
-                        <a href="https://resource.geolba.ac.at/PoolParty/sparql/geoera">API (Sparql)</a></div></h5>
+                            <a href="https://github.com/GeoEra-GIP/WP4-Semantics/tree/master/Project%20Vocabularies">docs</a> |
+                            <a href="https://resource.geolba.ac.at/PoolParty/sparql/geoera">API (Sparql)</a>
+                        </div>
+                    </h5>
                     <div id="searchCard" class="card-body">
                         <div id="searchGroup" class="input-group">
                             <input id="searchInput" type="text" class="form-control" placeholder="Search for...">
@@ -247,8 +252,24 @@
                 <div id="proj_links"></div>
             </div>
         </div>
-        <!-- /.row -->
-    </div>
-</body>
 
-</html>
+        <div>
+        view this page in different styles like <a href="javascript:refreshCSS('cosmo')">cosmo</a>,
+            <a href="javascript:refreshCSS('lumen')">lumen</a>,
+            <a href="javascript:refreshCSS('simplex')">simplex</a>,
+            <a href="javascript:refreshCSS('yeti')">yeti</a>,
+            <a href="javascript:refreshCSS('minty')">minty</a>,
+            <a href="javascript:refreshCSS('materia')">materia</a>,
+            <a href="javascript:refreshCSS('united')">united</a>, or
+            <a href="javascript:refreshCSS('sandstone')">sandstone</a>
+        </div><br>
+    </div>
+
+
+    <script>
+        refreshCSS = a => { //https://bootswatch.com/4/flatly/bootstrap.min.css
+            let link = document.getElementById('bootswatch');
+            link.setAttribute('href', 'https://bootswatch.com/4/' + a + '/bootstrap.min.css');
+        }
+    </script>
+</body></html>
