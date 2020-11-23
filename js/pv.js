@@ -176,6 +176,7 @@ function initSearch() {
                                     WHERE {
                                     VALUES ?p {skos:prefLabel skos:altLabel}
                                     ?s a skos:Concept; ?p ?lEN . FILTER(lang(?lEN)="en")
+                                    FILTER(!regex(str(?lEN), "\\\\["))
                                     FILTER NOT EXISTS {?s rdf:type dcterms:BibliographicResource}
                                     OPTIONAL{?s ?p ?l . FILTER(lang(?l)="${USER_LANG}")}
                                     BIND(COALESCE(?l, ?lEN) AS ?L)
