@@ -113,6 +113,21 @@ optional {?s skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
 group by ?s ?L
 order by ?L`;
 
+let CONCEPTSLIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+select ?URI
+(concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?URI),"'>",str(?L),"</a>") as ?Label)
+(GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
+(GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
+(GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
+where {
+<§> skos:narrower* ?URI . ?URI skos:prefLabel ?L filter(lang(?L)="en")
+optional {?URI skos:definition ?D filter(lang(?D)="en")}
+optional {?URI skos:scopeNote ?N filter(lang(?N)="en")}
+optional {?URI skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
+}
+group by ?URI ?L
+order by ?L`;
+
 
 //***********************set the input box for concept search****************************************
 
@@ -407,12 +422,17 @@ function details(divID, uri) { //build the web page content
                 let r_links = jsonData.results.bindings.map(a => [a.p.value, '<' + a.o.value + '>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
 
                 let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
-                        <span style="margin-right:15px;">
-                        <img
-                        src="img/rdf_flyer.svg"
-                        alt="rdf"
-                        width="17" />
-                        </span>
+                            <span style="margin-right:7px;">
+                            <img
+                            src="img/rdf_flyer.svg"
+                            alt="rdf"
+                            width="17" />
+                            </span>
+                        </a>
+                        <a href="${ENDPOINT}?query=${encodeURIComponent(CONCEPTSLIST_QUERY.replace('§', uri))}&format=text/html" title="HTML list">
+                            <span style="margin-right:15px;">
+                                <i class="far fa-list-alt"></i>
+                            </span>
                         </a>`;
 
                 if ($('#appsInsert').length > 0) {
