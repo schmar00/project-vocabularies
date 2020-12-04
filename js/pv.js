@@ -100,12 +100,14 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
 let CODELIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
 select (IF(contains(str(?s), "§"), ?s, CONCAT("\u003Cspan style='color:red;'\u003E",str(?s),"\u003C\u002Fspan\u003E")) as ?URI)
 (concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?s),"'>",str(?L),"</a>") as ?Label)
+(GROUP_CONCAT(distinct ?n; separator = '; ') as ?Notation)
 (GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
 (GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
 (GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
 where {
 <§> skos:hasTopConcept ?tc .
 ?tc skos:narrower* ?s . ?s skos:prefLabel ?L filter(lang(?L)="en")
+optional {?s skos:notation ?n}
 optional {?s skos:definition ?D filter(lang(?D)="en")}
 optional {?s skos:scopeNote ?N filter(lang(?N)="en")}
 optional {?s skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
@@ -116,11 +118,13 @@ order by ?L`;
 let CONCEPTSLIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
 select ?URI
 (concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?URI),"'>",str(?L),"</a>") as ?Label)
+(GROUP_CONCAT(distinct ?n; separator = '; ') as ?Notation)
 (GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
 (GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
 (GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
 where {
 <§> skos:narrower* ?URI . ?URI skos:prefLabel ?L filter(lang(?L)="en")
+optional {?URI skos:notation ?n}
 optional {?URI skos:definition ?D filter(lang(?D)="en")}
 optional {?URI skos:scopeNote ?N filter(lang(?N)="en")}
 optional {?URI skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
