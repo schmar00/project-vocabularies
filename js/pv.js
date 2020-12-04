@@ -631,7 +631,8 @@ function shortenText(htmlText) {
         WIKIDATA: 'http://www.wikidata.org/entity/',
         GBA: 'http://resource.geolba.ac.at/',
         GeoConnect3D: 'https://data.geoscience.earth/ncl/geoera/geoconnect3d/',
-        GeoERA: 'https://data.geoscience.earth/ncl/geoera/'
+        GeoERA: 'https://data.geoscience.earth/ncl/geoera/',
+        BGR: 'https://vocabulary.bgr.de/'
     };
     for (let i in abbrev) {
         htmlText = htmlText.split('>' + abbrev[i]).map(a => a.replace('<', ` (${i})<`)).join('>').replace(` (${i})`, '');
