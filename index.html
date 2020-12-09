@@ -8,8 +8,9 @@
     <meta name="author" content="">
     <title>project vocabularies</title>
 
-    <link rel="stylesheet" id="bootswatch" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <link rel="stylesheet" id="bootswatch" href="https://bootswatch.com/4/pulse/bootstrap.min.css">
     <link rel="stylesheet" href="css/FontAwesome/all.min.css" />
+    <link rel="stylesheet" id="" href="http://www.europe-geology.eu/wp-content/uploads/dynamic_avia/enfold.css?ver=5f75ccfef0e53">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.3.0/fuse.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,7 +19,7 @@
     <script src="js/pv.js"></script>
 
     <style>
-        #banner {
+        /*#banner {
             background-color: rgba(222, 255, 51, 0.7);
             width: 280px;
             position: fixed;
@@ -33,10 +34,14 @@
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);
             z-index: 999;
-        }
+        }*/
 
         a {
-            color: #3498DB;
+            color: #719430;
+        }
+
+        a:hover {
+            color: #719430;
         }
 
         .dropdown-item:hover {
@@ -80,17 +85,13 @@
             z-index: 999;
         }
 
-        #dropdown a {
-            color: black;
-        }
-
         #dropdown td {
             padding: .1rem;
             padding-left: .75rem;
         }
 
         .searchLink {
-            color: black;
+            color: #316db7;
             cursor: pointer;
         }
 
@@ -192,7 +193,7 @@
         }
 
         .uriImp {
-            color: #3498db;
+            color: #719430;
             /*            font-size: 90%;*/
         }
 
@@ -202,26 +203,42 @@
         }
 
         .card-header a {
-            color: white;
+            color: #316db7;
+        }
+
+        #search_widget {
+            background-color: #f8f8f8;
+            color: #316db7;
+        }
+
+        #searchBtn {
+            background-color: #719430;
+        }
+
+        .badge {
+            background-color: #719430;
+        }
+        .text-sec {
+            color: #888;
         }
     </style>
 
 </head>
 
 <body>
-    <div id="banner">
+    <!--<div id="banner">
         <span>under construction</span>
-    </div>
+    </div>-->
     <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div id="pageContent" class="col-lg-8">
                 <!-- Page description -->
-                <div id="page_desc"></div>
-                <hr>
+                <!-- <div id="page_desc"></div>-->
+                <br>
                 <!-- Project descriptions -->
                 <div id="proj_desc"></div>
-                <hr>
+
                 <!-- other descriptions -->
                 <div id="other_desc"></div>
                 <br>
@@ -229,7 +246,7 @@
             <!-- Sidebar Widgets Column -->
             <div class="col-md-4">
                 <!-- Search Widget -->
-                <div id="search_widget" class="card my-4 text-white bg-primary mb-3">
+                <div id="search_widget" class="card my-4 mb-3">
                     <h5 class="card-header">
                         <div style="text-align: left;"><a href="javascript:window.location.href = BASE;">home</a> |
                             <a href="https://github.com/GeoEra-GIP/WP4-Semantics/tree/master/Project%20Vocabularies">docs</a> |
@@ -242,7 +259,7 @@
                             <div style="position: absolute; top: 39px;">
                                 <table id="dropdown" class="table table-hover"></table>
                             </div>
-                            <span class="input-group-btn"><button id="searchBtn" class="btn btn-info" type="button">Go!</button></span>
+                            <span class="input-group-btn"><button id="searchBtn" class="btn" type="button"><i style="color: white;" class="fas fa-search"></i></button></span>
                         </div>
                     </div>
                 </div>
@@ -252,24 +269,9 @@
                 <div id="proj_links"></div>
             </div>
         </div>
-
-        <div>
-        view this page in different styles like <a href="javascript:refreshCSS('cosmo')">cosmo</a>,
-            <a href="javascript:refreshCSS('lumen')">lumen</a>,
-            <a href="javascript:refreshCSS('simplex')">simplex</a>,
-            <a href="javascript:refreshCSS('yeti')">yeti</a>,
-            <a href="javascript:refreshCSS('minty')">minty</a>,
-            <a href="javascript:refreshCSS('materia')">materia</a>,
-            <a href="javascript:refreshCSS('united')">united</a>, or
-            <a href="javascript:refreshCSS('sandstone')">sandstone</a>
-        </div><br>
+        <br>
     </div>
 
+</body>
 
-    <script>
-        refreshCSS = a => { //https://bootswatch.com/4/flatly/bootstrap.min.css
-            let link = document.getElementById('bootswatch');
-            link.setAttribute('href', 'https://bootswatch.com/4/' + a + '/bootstrap.min.css');
-        }
-    </script>
-</body></html>
+</html>
