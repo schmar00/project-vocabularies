@@ -6,6 +6,9 @@ let REG_EXCLUDE = []; //subregisters to exclude in PV viewer
 
 function addVocProj(vocProjects) {
 
+    //REMOVE acronym, title, description, project_page, rdf_download !!!
+    //ADD EGR uri like "https://data.geoscience.earth/ncl/project/26" for "EuroLithos"
+
     vocProjects.set('geoconnect3d', {
         acronym: 'GeoConnect³d',
         title: 'Cross-border, cross-thematic multiscale framework for combining geological models and data for resource appraisal and policy support',

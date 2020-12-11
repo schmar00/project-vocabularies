@@ -59,6 +59,9 @@ function getSubregisterUris() {
 
 function insertVocDesc(vocProjects, divID) {
 
+    //only SKOS ConceptSchemes with TopConcepts Concepts and prefLabels!
+    //within TOPREGISTERS
+
     let query = encodeURIComponent(`prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                         prefix dct: <http://purl.org/dc/terms/>
                         prefix skos: <http://www.w3.org/2004/02/skos/core#>
@@ -74,6 +77,7 @@ function insertVocDesc(vocProjects, divID) {
                           ?c rdfs:label ?Title .
                           OPTIONAL{?c dct:description ?Desc}
                           OPTIONAL{?c dct:modified ?modified}
+                          #need for SKOS prefLabel
                           ?tc skos:topConceptOf ?cs; skos:narrower* ?s; skos:prefLabel ?tcl FILTER(lang(?tcl)="en")
                           BIND(CONCAT(STR(?tc),"$",STR(?tcl)) AS ?L)
                         }
@@ -83,7 +87,7 @@ function insertVocDesc(vocProjects, divID) {
 
         .then(res => res.json())
         .then(jsonData => {
-            //console.log(jsonData);
+            //console.log(jsonData.results.bindings);
             for (let [key, value] of vocProjects.entries()) {
                 let uri_path = new RegExp(key);
                 jsonData.results.bindings.filter(item => uri_path.test(item.cs.value)).forEach(function (item) {
@@ -103,9 +107,9 @@ function insertVocDesc(vocProjects, divID) {
                                             <br>
                                             <strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
                                             &nbsp;&nbsp;&nbsp;
-                                            <strong>Created:</strong> ${item.modified.value.split('T')[0]}
+                                            <strong>Modified:</strong> ${item.modified.value.split('T')[0]}
                                             &nbsp;&nbsp;&nbsp;
-                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=CSV">CSV</a>
+                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=CSV">CSV</a>, <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=TSV">TSV</a>
                                         </p>
                                     </div>
                                 </div>`);
@@ -455,7 +459,7 @@ function details(divID, uri) { //build the web page content
                             width="17" />
                             </span>
                         </a>
-                        <a href="${ENDPOINT}?query=${encodeURIComponent(CONCEPTSLIST_QUERY.replace('§', uri))}&format=CSV" title="CSV download">
+                        <a href="${ENDPOINT}?query=${encodeURIComponent(CONCEPTSLIST_QUERY.replace('§', uri))}&format=TSV" title="download TSV table">
                             <span style="margin-right:15px;">
                                 <i class="far fa-list-alt"></i>
                             </span>
