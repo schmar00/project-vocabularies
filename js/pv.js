@@ -32,21 +32,7 @@ $(document).ready(function () {
 });
 
 
-/*
-function getSubregisterUris() {
-    let query = encodeURIComponent(``);
-    //fetch(ENDPOINT + '?query=' + query + '&format=json')
-    fetch('https://data.geoscience.earth/ncl/geoera')
-        .then(res => res.text())
-        .then(data => {
-            console.log(data);
-        });
-}
-*/
-
-
-
-//********set the title of PV homepage********************************************************************
+//********set the title of PV homepage****************************************
 
 /*function insertPageDesc() {
 
@@ -55,7 +41,7 @@ function getSubregisterUris() {
     $('#page_desc').append('<p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>');
 }*/
 
-//*********************descriptions insert of vocabularies for the start page******************************
+//**********descriptions insert of vocabularies for the start page********************
 
 function insertVocDesc(vocProjects, divID) {
 
@@ -272,23 +258,19 @@ function search(searchText, vocProjects) {
 
     //NEU*******************************
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
-                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                                    SELECT DISTINCT ?s ?title ?text
-                                    WHERE {
-                                    VALUES ?n {"${sparqlEncode(searchText.toLowerCase())}"}
-                                    VALUES ?p {skos:prefLabel skos:altLabel skos:definition skos:scopeNote dcterms:description}
-                                    ?s a skos:Concept; ?p ?lEN . FILTER((lang(?lEN)="en"))
-                                    OPTIONAL{?s ?p ?l . FILTER(lang(?l)="${USER_LANG}")}
-                                    BIND(COALESCE(?l, ?lEN) AS ?L) . FILTER(regex(?L,?n,"i"))
-                                    ?s skos:prefLabel ?plEN . FILTER((lang(?plEN)="en"))
-                                    OPTIONAL{?s skos:prefLabel ?pl . FILTER(lang(?pl)="${USER_LANG}")}
-                                    BIND(COALESCE(?pl, ?plEN) AS ?title)
-                                    BIND(CONCAT(STR(?p),"|",STR(?L)) AS ?text)
-                                    BIND(IF(?p=skos:prefLabel,1,2) AS ?sort)
-                                    }
-                                    ORDER BY ?sort
-                                    LIMIT 100`);
-
+                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+                    SELECT DISTINCT ?s ?title ?text
+                    WHERE {
+                    VALUES ?n {"${sparqlEncode(searchText.toLowerCase())}"}
+                    VALUES ?p {skos:prefLabel skos:altLabel skos:definition skos:scopeNote}
+                    ?s a skos:Concept; ?p ?l; skos:prefLabel ?title .
+                    FILTER(!regex(str(?s),"keyword") && regex(?l,?n,"i") && lang(?title)="en")
+                    BIND(CONCAT(STR(?p),"|",STR(?l)) AS ?text)
+                    BIND(IF(?p=skos:prefLabel,1,2) AS ?sort)
+                    }
+                    ORDER BY ?sort
+                    LIMIT 100`);
+console.log(decodeURIComponent(query));
     fetch(ENDPOINT + '?query=' + query + '&format=json')
         .then(res => res.json())
         .then(jsonData => { //console.log(jsonData);
