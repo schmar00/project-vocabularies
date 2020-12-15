@@ -54,12 +54,14 @@ function insertVocDesc(vocProjects, divID) {
                         prefix version: <http://purl.org/linked-data/version#>
                         prefix reg: <http://purl.org/linked-data/registry#>
 
-                        SELECT ?projName ?cs ?Title ?Desc ?modified (COUNT(DISTINCT(?s)) AS ?count)
-                                (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts)
+                        SELECT ?status ?projName ?cs ?Title ?Desc ?modified (COUNT(DISTINCT(?s)) AS ?count)
+                        (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts)
                         WHERE {
                           ?a dct:isVersionOf <${TOPREGISTERS[0]}>; reg:subregister ?proj.
                           ?b dct:isVersionOf ?proj; reg:subregister ?cs; rdfs:label ?projName .
                           ?cs version:currentVersion ?c .
+                          ?d reg:definition ?e; reg:status ?status . ?e reg:entity ?cs .
+                          ?f version:currentVersion ?d .
                           ?c rdfs:label ?Title .
                           OPTIONAL{?c dct:description ?Desc}
                           OPTIONAL{?c dct:modified ?modified}
@@ -67,7 +69,7 @@ function insertVocDesc(vocProjects, divID) {
                           ?tc skos:topConceptOf ?cs; skos:narrower* ?s; skos:prefLabel ?tcl FILTER(lang(?tcl)="en")
                           BIND(CONCAT(STR(?tc),"$",STR(?tcl)) AS ?L)
                         }
-                        GROUP BY ?projName ?cs ?Title ?Desc ?modified`);
+                        GROUP BY ?projName ?cs ?Title ?Desc ?modified ?status`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=json')
 
@@ -84,7 +86,7 @@ function insertVocDesc(vocProjects, divID) {
                                     <img class="d-flex mr-3 rounded-circle" src="img/${value.image}">
                                         <div id="" class="media-body">
                                         <h4 class="mt-0">
-                                            ${item.Title.value} (${value.acronym})
+                                            ${item.Title.value} (${value.acronym}) <small><span class="badge badge-info badge-pill" style="float: right;" >${item.status.value.replace('http://purl.org/linked-data/registry#status','')}</span></small>
                                         </h4>
                                         ${item.Desc.value}
                                         <br><br>
