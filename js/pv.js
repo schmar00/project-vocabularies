@@ -649,10 +649,10 @@ function shortenText(htmlText) {
 
     let abbrev = {
         INSPIRE: 'http://inspire.ec.europa.eu/codelist/',
-        INSPIRE: 'http://inspire.ec.europa.eu/featureconcept/',
+        INSPIRE_fc: 'http://inspire.ec.europa.eu/featureconcept/',
         CGI: 'http://resource.geosciml.org/classifier/cgi/',
         CGI: 'http://resource.geosciml.org/classifier/cgi/faulttype/',
-        ICS: 'http://resource.geosciml.org/classifier/ics/',
+        ICS: 'http://resource.geosciml.org/classifier/ics/ischart/',
         DBpedia: 'http://dbpedia.org/resource/',
         nlDBpedia: 'http://nl.dbpedia.org/resource/',
         BGS: 'http://data.bgs.ac.uk/id/EarthMaterialClass/',
@@ -660,7 +660,8 @@ function shortenText(htmlText) {
         GBA: 'http://resource.geolba.ac.at/',
         GeoConnect3D: 'https://data.geoscience.earth/ncl/geoera/geoconnect3d/',
         GeoERA: 'https://data.geoscience.earth/ncl/geoera/',
-        BGR: 'https://vocabulary.bgr.de/'
+        BGR: 'https://vocabulary.bgr.de/',
+        GEMET: 'http://www.eionet.europa.eu/gemet/concept/'
     };
     for (let i in abbrev) {
         htmlText = htmlText.split('>' + abbrev[i]).map(a => a.replace('<', ` (${i})<`)).join('>').replace(` (${i})`, '');
