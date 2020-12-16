@@ -6,6 +6,8 @@ let BASE = location.protocol + '//' + location.host + location.pathname;
 
 $(document).ready(function () {
     //getSubregisterUris();
+
+
     let vocProjects = new Map(); //key of vocProjects is identical with URI path!
     addVocProj(vocProjects); //-> var assigned in projects.js
     let urlParams = new URLSearchParams(window.location.search);
@@ -20,13 +22,15 @@ $(document).ready(function () {
         $('#pageContent').empty();
         details('pageContent', uri);
         if (uri.indexOf('geoscience') > 0) {
-            insertProjCards('proj_links', vocProjects, uri.split('\/')[5]);
+            //insertProjCards('proj_links', vocProjects, uri.split('\/')[5]);
+            setProjBox([`${uri.split('\/')[5]}`], 'proj_links');
         }
 
     } else {
         //insertPageDesc(); //general intro
         insertVocDesc(vocProjects, 'proj_desc');
-        insertProjCards('proj_links', vocProjects);
+        setProjBox(['eurolithos','hike','hotlime','hover','muse'], 'proj_links');
+        //insertProjCards('proj_links', vocProjects);
     }
     initSearch(Array.from(vocProjects.keys())); //provides js for fuse search
 });
@@ -86,7 +90,7 @@ function insertVocDesc(vocProjects, divID) {
                                     <img class="d-flex mr-3 rounded-circle" src="img/${value.image}">
                                         <div id="" class="media-body">
                                         <h4 class="mt-0">
-                                            ${item.Title.value} (${value.acronym}) <small><span class="badge badge-info badge-pill" style="float: right;" >${item.status.value.replace('http://purl.org/linked-data/registry#status','')}</span></small>
+                                            ${item.Title.value} (${value.acronym})
                                         </h4>
                                         ${item.Desc.value}
                                         <br><br>
@@ -98,6 +102,9 @@ function insertVocDesc(vocProjects, divID) {
                                             <strong>Modified:</strong> ${item.modified.value.split('T')[0]}
                                             &nbsp;&nbsp;&nbsp;
                                             <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=CSV">CSV</a>, <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=TSV">TSV</a>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <strong>Status:</strong> ${item.status.value.replace('http://purl.org/linked-data/registry#status','')}
+
                                         </p>
                                     </div>
                                 </div>`);
@@ -345,7 +352,9 @@ const n = {
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     gc3d: 'http://resource.geolba.ac.at/schema/geoconnect3d#',
     schema: 'https://schema.org/',
-    geosparql: 'http://www.opengis.net/ont/geosparql#'
+    geosparql: 'http://www.opengis.net/ont/geosparql#',
+    version: 'http://purl.org/linked-data/version#',
+    reg: 'http://purl.org/linked-data/registry#'
 };
 
 const PREF_LABEL = [n.skos + 'prefLabel'];
@@ -367,7 +376,7 @@ const MAPS = [n.schema + 'hasMap'];
 const appIcons = ['<i style="color:#719430;" class="fab fa-twitter"></i>', '<i style="color:#719430;" class="fas fa-blog"></i>', '<i style="color:#719430;" class="fab fa-youtube"></i>', '<i style="color:#719430;" class="fab fa-wikipedia-w"></i>'];
 const VISUALIZATION = [n.dbpo + 'colourHexCode'];
 const LOCATION = [n.geo + 'lat', n.geo + 'long', n.geo + 'location', n.dcterms + 'spatial'];
-const CREATOR = [n.dcterms + 'creator', n.dcterms + 'contributor', n.dcterms + 'created', n.dcterms + 'modified'];
+const CREATOR = [n.version + 'currentVersion', n.dcterms + 'creator', n.dcterms + 'contributor', n.dcterms + 'created', n.dcterms + 'modified'];
 
 const FRONT_LIST = {
     prefLabel: PREF_LABEL,
@@ -408,21 +417,28 @@ function details(divID, uri) { //build the web page content
 
 
     let query = encodeURIComponent(`PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-        SELECT DISTINCT ?p ?o (COALESCE(GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|"), "") AS ?Label)
-        (COUNT(distinct(?sr)) AS ?count) (COALESCE(GROUP_CONCAT(?source ; separator="|"), "") AS ?pdf)
-        WHERE {
-        VALUES ?s {<${uri}>}
-        {?s ?p ?o .
-        OPTIONAL {?o skos:prefLabel ?L}
-        OPTIONAL {?o skos:narrower|skos:related ?sr}
-        }UNION{
-        VALUES ?p {<http://purl.org/dc/terms/bibliographicCitation>}
-        ?s ?x ?r . ?r ?p ?o
-        OPTIONAL{?r <http://purl.org/dc/terms/source> ?source}
-        }
-        }
-        GROUP BY ?p ?o
-        ORDER BY ?Label`);
+                PREFIX reg: <http://purl.org/linked-data/registry#>
+                PREFIX version: <http://purl.org/linked-data/version#>
+                SELECT DISTINCT ?p ?o
+                (COALESCE(GROUP_CONCAT(DISTINCT CONCAT(STR(?L), "@", lang(?L)) ; separator="|"), "") AS ?Label)
+                (COUNT(distinct(?sr)) AS ?count) (COALESCE(GROUP_CONCAT(?source ; separator="|"), "") AS ?pdf)
+                WHERE {
+                VALUES ?s {<${uri}>}
+                {?s ?p ?o .
+                OPTIONAL {?o skos:prefLabel ?L}
+                OPTIONAL {?o skos:narrower|skos:related ?sr}
+                }UNION{
+                VALUES ?p {<http://purl.org/dc/terms/bibliographicCitation>}
+                ?s ?x ?r . ?r ?p ?o
+                OPTIONAL{?r <http://purl.org/dc/terms/source> ?source}
+                }UNION{
+                ?d reg:definition ?e; reg:status ?o .
+                ?e reg:entity ?s . ?f version:currentVersion ?d
+                BIND(version:currentVersion AS ?p)
+                }
+                }
+                GROUP BY ?p ?o
+                ORDER BY ?Label`);
 
     fetch(ENDPOINT + '?query=' + query + '&format=json')
         .then(res => res.json())
@@ -759,6 +775,62 @@ function setUserLang(x) {
 }
 
 //********************************************************************************************************
+function setProjBox(projAbbrev, divID) {
+
+       let query = encodeURIComponent(`prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                                        prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                                        prefix dct: <http://purl.org/dc/terms/>
+                                        prefix foaf: <http://xmlns.com/foaf/0.1/>
+                                        prefix skos: <http://www.w3.org/2004/02/skos/core#>
+                                        prefix version: <http://purl.org/linked-data/version#>
+                                        prefix cerif: <http://purl.org/cerif/frapo/>
+                                        prefix time: <http://www.w3.org/2006/time#>
+                                        prefix reg: <http://purl.org/linked-data/registry#>
+                                        prefix schema: <https://schema.org/>
+                                        select ?s ?n (COALESCE(MIN(?L), "") AS ?Label)
+                                        (COALESCE(MIN(?page1), "") AS ?page)
+                                        (COALESCE(MIN(?description1), "") AS ?description)
+                                        (COALESCE(MIN(?primaryTopic1), "") AS ?primaryTopic)
+                                        (COALESCE(MIN(?sameAs1), "") AS ?cordis)
+                                        (COALESCE(MIN(?years1), "") AS ?years)
+                                        (COALESCE(MIN(?isFundedBy1), "") AS ?isFundedBy)
+                                        where {
+                                        ?s a foaf:Project; skos:notation ?n; skos:prefLabel ?L .
+                                        FILTER(lcase(?n)="${projAbbrev.join('" || lcase(?n)="')}")
+                                          OPTIONAL{?s foaf:page ?page1}
+                                          OPTIONAL{?s dct:description ?description1}
+                                          OPTIONAL{?s foaf:primaryTopic ?primaryTopic1}
+                                          OPTIONAL{?s schema:sameAs ?sameAs1}
+                                          OPTIONAL{?s time:years ?years1}
+                                          OPTIONAL{?s cerif:isFundedBy ?isFundedBy1}
+                                        }
+                                        GROUP BY ?s ?n`);
+
+    fetch(ENDPOINT + '?query=' + query + '&format=json')
+
+        .then(res => res.json())
+        .then(jsonData => {
+            //console.log(jsonData.results.bindings);
+        for (let a of jsonData.results.bindings) {
+            $('#' + divID).append(`
+                <div class="card my-4">
+                    <h5 class="card-header">
+                        <strong>${a.n.value}</strong> (${a.years.value})
+                    </h5>
+                    <div class="card-body">
+                        subject: ${a.primaryTopic.value}<br>
+                        URI: <a href="${a.s.value}">${a.s.value}</a>
+                        ${a.Label.value}<br>
+                        Website: <a href="${a.page.value}">${a.page.value}</a><br>
+                        funded by: <a href="${a.cordis.value}">${a.isFundedBy.value}</a><br>
+
+                    </div>
+                </div>`);
+        }
+    });
+
+}
+
 //************************insert the corresponding vocabulary description*********************************
 
 function insertProjCards(divID, projects, p) {
