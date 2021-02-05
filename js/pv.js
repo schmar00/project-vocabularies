@@ -834,7 +834,7 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
                                     OPTIONAL {?cs dcterms:description ?csd . FILTER(lang(?csd)="${USER_LANG}")}
                                     OPTIONAL {?cs dcterms:description ?csdEN . FILTER(lang(?csdEN)="en")}
                                     }
-                                    #ORDER BY ?Label
+                                    ORDER BY ?Label
                                     LIMIT 50
                                     OFFSET ${offset}`);
 
