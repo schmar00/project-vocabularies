@@ -98,39 +98,39 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
 //***********************HTML Table download***************************************
 
 let CODELIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-select (IF(contains(str(?s), "§"), ?s, CONCAT("\u003Cspan style='color:red;'\u003E",str(?s),"\u003C\u002Fspan\u003E")) as ?URI)
-(concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?s),"'>",str(?L),"</a>") as ?Label)
+select ?URI ?Label
+(concat("https://schmar00.github.io/project-vocabularies/?uri=",str(?URI)) as ?testURL)
 (GROUP_CONCAT(distinct ?n; separator = '; ') as ?Notation)
 (GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
 (GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
 (GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
 where {
 <§> skos:hasTopConcept ?tc .
-?tc skos:narrower* ?s . ?s skos:prefLabel ?L filter(lang(?L)="en")
-optional {?s skos:notation ?n}
-optional {?s skos:definition ?D filter(lang(?D)="en")}
-optional {?s skos:scopeNote ?N filter(lang(?N)="en")}
-optional {?s skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
-}
-group by ?s ?L
-order by ?L`;
-
-let CONCEPTSLIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-select ?URI
-(concat("<a href='https://schmar00.github.io/project-vocabularies/?uri=",str(?URI),"'>",str(?L),"</a>") as ?Label)
-(GROUP_CONCAT(distinct ?n; separator = '; ') as ?Notation)
-(GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
-(GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
-(GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
-where {
-<§> skos:narrower* ?URI . ?URI skos:prefLabel ?L filter(lang(?L)="en")
+?tc skos:narrower* ?URI . ?URI skos:prefLabel ?Label filter(lang(?Label)="en")
 optional {?URI skos:notation ?n}
 optional {?URI skos:definition ?D filter(lang(?D)="en")}
 optional {?URI skos:scopeNote ?N filter(lang(?N)="en")}
 optional {?URI skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
 }
-group by ?URI ?L
-order by ?L`;
+group by ?URI ?Label
+order by ?Label`;
+
+let CONCEPTSLIST_QUERY = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+select ?URI ?Label
+(concat("https://schmar00.github.io/project-vocabularies/?uri=",str(?URI)) as ?testURL)
+(GROUP_CONCAT(distinct ?n; separator = '; ') as ?Notation)
+(GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
+(GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
+(GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
+where {
+<§> skos:narrower* ?URI . ?URI skos:prefLabel ?Label filter(lang(?Label)="en")
+optional {?URI skos:notation ?n}
+optional {?URI skos:definition ?D filter(lang(?D)="en")}
+optional {?URI skos:scopeNote ?N filter(lang(?N)="en")}
+optional {?URI skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
+}
+group by ?URI ?Label
+order by ?Label`;
 
 
 //***********************set the input box for concept search****************************************
