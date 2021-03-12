@@ -46,7 +46,8 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
 
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
                                     PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                                    SELECT ?cs ?Title ?Desc (COUNT(?c) AS ?count) (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts) ?modified
+                                    SELECT ?cs ?Title ?Desc (COUNT(?c) AS ?count) (SUM(?x) AS ?new)
+                                    (GROUP_CONCAT(DISTINCT ?L; separator = "|") as ?topConcepts) ?modified
                                     WHERE { SELECT * {
                                     ?cs a skos:ConceptScheme; skos:hasTopConcept ?tc; dcterms:title ?Title . FILTER(lang(?Title)="en")
                                     OPTIONAL {?cs dcterms:description ?D . FILTER(lang(?D)="en")}
@@ -57,6 +58,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                     BIND(CONCAT(STR(?tc),"$",STR(?tcl)) AS ?L)
                                     BIND(COALESCE(?D, "") AS ?Desc)
                                     BIND(COALESCE(?r, ?m, "") AS ?modified)
+                                    BIND(IF(strStarts(str(?c),str(?cs)),0,1) AS ?x)
                                     } ORDER BY ?tcl
                                     }
                                     GROUP BY ?cs ?Title ?Desc ?modified`);
@@ -83,6 +85,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                             <strong>Top concepts:</strong> ${topConcepts}
                                             <br>
                                             <strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
+                                            ${(item.new.value>0)?('&nbsp;&nbsp;('+item.new.value+' in scheme)'):''}
                                             &nbsp;&nbsp;&nbsp;
                                             <strong>Created:</strong> ${item.modified.value.split('T')[0]}
                                             &nbsp;&nbsp;&nbsp;
