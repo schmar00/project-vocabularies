@@ -380,7 +380,7 @@ const FRONT_LIST = {
     relatedConcepts: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_EGDI]
 };
 const TECHNICAL_LIST = {
-    descriptions: [...PREF_LABEL, ...SYNONYMS, ...DESCRIPTION_1, ...DESCRIPTION_2],
+    descriptions: [...NOTATION, ...PREF_LABEL, ...SYNONYMS, ...DESCRIPTION_1, ...DESCRIPTION_2],
     scientificReferences: [...CITATION, ...REF_LINKS],
     semanticRelations: [...RELATIONS_1, ...RELATIONS_2, ...RELATIONS_3],
     topologyRelations: [...RELATIONS_EGDI],
