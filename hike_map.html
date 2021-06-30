@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>HIKE Fault Database</title>
+    <meta name="" content="">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <style>
+        @charset "utf-8";
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        #info-pane {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 400;
+            padding: 1em;
+            background: white;
+        }
+
+        #getFile {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 70px;
+            width: 60px;
+            z-index: 500;
+            background: rgba(255, 255, 255, 0.7);
+            font-family: sans-serif;
+            font-size: 11px;
+            border: 0px;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1000;
+            color: aqua;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        #map {
+            background: white;
+            outline: 10;
+        }
+
+        .faultLabel {
+            font-size: 10px;
+            padding: 0px;
+            opacity: 1;
+        }
+
+        .leaflet-tooltip {
+            background-color: rgba(255, 255, 255, .5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        //let USER_LANG = (navigator.language || navigator.language).substring(0, 2);
+        let URI = 'https://data.geoscience.earth/ncl/geoera/hike/faults/493';
+        if (urlParams.has('uri')) {
+            //USER_LANG = urlParams.get('lang');
+            URI = decodeURI(urlParams.get('uri').replace(/["';><]/gi, ''));
+            console.log(URI);
+        } else {
+
+        }
+
+        let map = L.map('map');
+
+        L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+            'layers': 'OSM-WMS',
+            'opacity': '0.6',
+            'format': 'image/png'
+        }).addTo(map);
+
+        L.tileLayer.wms('https://egditest01.geus.dk/egdi/wms/', {
+            'layers': 'hike_faultdb_overview',
+            'mapname': 'hike_preview',
+            'transparent': 'true',
+            'opacity': '0.4',
+            'format': 'image/png'
+        }).addTo(map);
+        //https://data.geoscience.earth/ncl/geoera/hike/faults/493 periadria, 502 Vienna
+
+        let queryDownLoad = encodeURIComponent(`PREFIX geoera:<https://data.geoscience.earth/ncl/geoera/>
+                PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+                SELECT DISTINCT ?notation
+                WHERE {
+                <${URI}> skos:narrower* ?uri .
+                ?uri skos:notation ?notation
+                }`);
+
+        fetch(`https://resource.geolba.ac.at/PoolParty/sparql/geoera?query=${queryDownLoad}&format=application/json`)
+            .then(res => res.json())
+            .then(jsonData => {
+                console.log(jsonData.results.bindings.map(a => a.notation.value));
+
+                let numbers = jsonData.results.bindings.map(a => a.notation.value);
+                let ogcFilter = `<ogc:Filter>
+                    <ogc:Or>
+                      <ogc:PropertyIsEqualTo>
+                        <ogc:PropertyName>ms:id</ogc:PropertyName>
+                        <ogc:Literal>
+                        ${numbers.join(`</ogc:Literal>
+                            </ogc:PropertyIsEqualTo>
+                            <ogc:PropertyIsEqualTo>
+                              <ogc:PropertyName>ms:id</ogc:PropertyName>
+                          <ogc:Literal>`)}
+                        </ogc:Literal>
+                      </ogc:PropertyIsEqualTo>
+                    </ogc:Or>
+                  </ogc:Filter>`;
+                ogcFilter = ogcFilter.replace(/\r?\n|\r|\s/g, "");
+                //console.log(ogcFilter);
+
+                fetch(
+                        `https://egditest01.geus.dk/egdi/wfs/3034/?LAYERS=hike_faultdb_overview&SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=hike_faultdb_overview&MAXFEATURES=500&Filter=${ogcFilter}`
+                    )
+                    .then(res => res.text())
+                    .then(data => {
+                        //console.log(data);
+
+                        let parser = new DOMParser(),
+                            xmlDoc = parser.parseFromString(data, 'text/xml');
+
+                        let showToolTip = true;
+                        let labels = $(xmlDoc).find("ms\\:local_name");
+                        if ((labels.length - [...new Set(labels.text().split(' '))].length) > 20) {
+                            showToolTip = false;
+                        }
+
+                        let ext = $(xmlDoc).find("gml\\:coordinates").first().text().split(' ').map(a => a
+                            .split(','));
+                        try {
+                            let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2, (parseFloat(ext[
+                                0][0]) + parseFloat(
+                                ext[1][0])) / 2];
+                            map.setView(setView, 7);
+
+                        } catch (e) {
+                            alert('map data not found')
+                        }
+
+                        let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2, (parseFloat(ext[0][
+                            0]) + parseFloat(
+                            ext[1][0])) / 2];
+                        map.setView(setView, 7);
+
+                        $(xmlDoc).find("gml\\:featureMember")
+                            .find("ms\\:HIKE_FaultDB_Overview")
+                            .each(function () {
+                                let polylinePoints = $(this).find("ms\\:msGeometry")
+                                    .find("gml\\:coordinates")
+                                    .text().split(' ').map(a => [a.split(',')[1], a.split(',')[0]]);
+                                polylinePoints.pop();
+                                let toolTipLabel = $(this).find("ms\\:local_name").text();
+                                if (toolTipLabel.length > 25) {
+                                    toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
+                                        ' Subfault', '<br>Subfault');
+                                }
+
+                                try {
+                                    L.polyline(polylinePoints, {
+                                            color: 'red',
+                                            //smoothFactor: 1,
+                                            weight: 5
+                                        }).addTo(map)
+                                        .bindPopup(`<h4><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
+                                  <strong>${$(this).find("ms\\:local_name").text()}</strong>
+                                </a></h4>
+                                Fault type: <a href="${$(this).find("ms\\:fault_type_uri").text()}" target="_blank">
+                                              ${$(this).find("ms\\:fault_type").text()}
+                                            </a>
+                                , Time: <a href="${$(this).find("ms\\:timing_uri").text()}" target="_blank">
+                                        ${$(this).find("ms\\:timing").text()}
+                                      </a><br>
+                                Observation method: <a href="${$(this).find("ms\\:observ_meth_uri").text()}" target="_blank">
+                                                      ${$(this).find("ms\\:observ_meth").text()}
+                                                    </a><br>
+                                Dip angle: ${$(this).find("ms\\:dip_angle").text()}
+                                , Dip direction: ${$(this).find("ms\\:dip_direct").text()}
+                                , Strike: ${$(this).find("ms\\:strike").text()}<br>
+                                Movement sense: <a href="${$(this).find("ms\\:move_sense_uri").text()}" target="_blank">
+                                                ${$(this).find("ms\\:move_sense").text()}
+                                                </a><br>
+                                Offset determination: <a href="${$(this).find("ms\\:offset_det_uri").text()}" target="_blank">
+                                                ${$(this).find("ms\\:offset_det").text()}
+                                                </a><br>
+                                Reference surface: <a href="${$(this).find("ms\\:ref_surf_uri").text()}" target="_blank">
+                                                ${$(this).find("ms\\:ref_surf").text()}
+                                                </a><br>`)
+                                        .bindTooltip(toolTipLabel, {
+                                            permanent: showToolTip,
+                                            className: "faultLabel",
+                                            offset: [0, 0]
+                                        });
+                                } catch (e) {
+                                    //console.log(e);
+                                }
+                            });
+                    });
+                let popup = L.popup();
+            });
+    </script>
+</body>
+
+</html>

@@ -445,9 +445,9 @@ function details(divID, uri) { //build the web page content
                 if ($('#appsInsert').length > 0) {
                     $('#appsInsert').append(r);
                 } else if ($('#notation').length > 0) {
-                    $('#notation').after('<div style="float:right;">' + r + '</div>');
+                    $('#notation').after('<div id="appsInsert" style="float:right;">' + r + '</div>');
                 } else {
-                    $('#altLabel').after('<div style="float:right;">' + r + '</div>');
+                    $('#altLabel').after('<div id="appsInsert" style="float:right;">' + r + '</div>');
                 }
 
 
@@ -458,8 +458,21 @@ function details(divID, uri) { //build the web page content
                         <div style="display:none;" id="detailsToggle">
                         <br>
                         <table id="details"></table>
-                        </div>
-                        `);
+                        </div>`);
+                
+                let mapCheckArr = jsonData.results.bindings.map(a => [a.p.value, a.o.value]);
+                if (mapCheckArr.find(b => b[1] == 'https://data.geoscience.earth/ncl/geoera/hike/faults')) {
+                    if (mapCheckArr.find(c => c[0] == 'http://www.w3.org/2004/02/skos/core#topConceptOf') == undefined) {
+                        console.log('OK');
+                        $('#appsInsert').append(`<a href="hike_map.html?uri=${uri}" title="HIKE map" target="_blank">
+                                                    <span style="margin-right:15px;">
+                                                        <i class="fas fa-map-marked-alt"></i>
+                                                    </span>
+                                                </a>`);
+                    }
+                }
+
+
 
                 for (key in TECHNICAL_LIST) createTechnicalPart('details', jsonData, Array.from(TECHNICAL_LIST[key].values()));
                 $('#' + divID).append('');
@@ -496,7 +509,7 @@ function createFrontPart(divID, uri, data, props) {
     //console.log(data);
     //let hyperlinksAbstract = []; //HotLime hyperlinked description texts
     props.forEach((i) => {
-        let ul = getObj(data, i);
+        let ul = getObj(data, i); //console.log(i, ul);
         if (ul.size > 0) {
             switch (key) {
                 case 'prefLabel':
@@ -563,7 +576,9 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<hr><div class="' + key + '">' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</div>';
                     break;
                 case 'scope':
-                    html += '<br><p class="text-secondary">Interpretation: ' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</p>';
+                    //console.log(ul);
+                    //html += '<br><p class="text-secondary">Interpretation: ' + setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, '')) + '</p>';
+                    html += '<br><p class="text-secondary">Interpretation:<br>' + Array.from(ul).map(a => a.split('<')[0]).join('<br><br>') + '</p>';
                     break;
                 case 'citation':
                     let a = []; //console.log(ul);
