@@ -72,7 +72,10 @@
         }
 
         .popUpText {
-            font-size: 70%;
+            font-size: 80%;
+            line-height: 100%;
+            margin-top: -10px;
+            margin-bottom: 4px;
         }
 
         /* .leaflet-tooltip-left:before {
@@ -94,7 +97,9 @@
 
     <script>
         let urlParams = new URLSearchParams(window.location.search);
-        //let USER_LANG = (navigator.language || navigator.language).substring(0, 2);
+        let USER_LANG = (navigator.language || navigator.language).substring(0, 2);
+        //console.log(USER_LANG);
+
         let URI = 'https://data.geoscience.earth/ncl/geoera/hike/faults/493';
         if (urlParams.has('uri')) {
             //USER_LANG = urlParams.get('lang');
@@ -124,10 +129,13 @@
 
         let queryDownLoad = encodeURIComponent(`PREFIX geoera:<https://data.geoscience.earth/ncl/geoera/>
                 PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                SELECT DISTINCT ?uri (coalesce(?d,"") as ?def)
+                SELECT DISTINCT ?uri (coalesce(?dX,?dEN,"") as ?def) (coalesce(?lX,?lEN,"") as ?label)
                 WHERE {
                 <${URI}> skos:narrower* ?uri . 
-                optional {?uri skos:definition ?d . filter(lang(?d)='en')}
+                optional {?uri skos:prefLabel ?lEN . filter(lang(?lEN)='en')}
+                optional {?uri skos:prefLabel ?lX . filter(lang(?lX)='${USER_LANG}')}
+                optional {?uri skos:definition ?dEN . filter(lang(?dEN)='en')}
+                optional {?uri skos:definition ?dX . filter(lang(?dX)='${USER_LANG}')}
                 }`);
 
         fetch(`https://resource.geolba.ac.at/PoolParty/sparql/geoera?query=${queryDownLoad}&format=application/json`)
@@ -135,7 +143,7 @@
             .then(jsonData => {
                 //console.log(jsonData.results.bindings.map(a => a.uri.value.split('/').pop()));
 
-                let numbers = jsonData.results.bindings.map(a => [a.uri.value.split('/').pop(), a.def.value]);
+                let numbers = jsonData.results.bindings.map(a => [a.uri.value.split('/').pop(), a.label.value, a.def.value]);
 
                 let orPart = (numbers.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
                 let ogcFilter = `<ogc:Filter>
@@ -199,10 +207,12 @@
                                     ' - local_name: ' + $(this).find("ms\\:local_name").text(),
                                     ' - bounds: ' + $(this).find("gml\\:Box").text());
 
+                                let label = '';
                                 let def = '';
                                 for (let i of numbers) {
                                     if (i[0] == $(this).find("ms\\:pv_link").text()) {
-                                        def = i[1];
+                                        label = i[1];
+                                        def = i[2];
                                     }
                                 }
 
@@ -213,9 +223,9 @@
                                             weight: 5
                                         }).addTo(map)
                                         .bindPopup(`<h2><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
-                                  ${$(this).find("ms\\:local_name").text()}
-                                </a></h2>
-                                ${(def.length>0)?(`<p class="popUpText">${def.substr(0,300)+'..'}</p>`):''}
+                                                    ${label}
+                                                    </a></h2>
+                                ${(def.length>0)?(`<div class="popUpText">${def.substr(0,400)+'..'}</div>`):''}
                                 Fault type: <a href="${$(this).find("ms\\:fault_type_uri").text()}" target="_blank">
                                               ${$(this).find("ms\\:fault_type").text()}
                                             </a>
@@ -246,7 +256,7 @@
                                     //console.log(e);
                                 }
                             });
-                        console.log(data);
+                        //***********************console.log(data);
                     });
                 let popup = L.popup();
             });
