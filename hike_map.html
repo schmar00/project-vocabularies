@@ -24,6 +24,8 @@
             bottom: 0;
             right: 0;
             left: 0;
+            background: white;
+            outline: 10;
         }
 
         #info-pane {
@@ -58,11 +60,6 @@
             height: 3rem;
         }
 
-        #map {
-            background: white;
-            outline: 10;
-        }
-
         .faultLabel {
             font-size: 10px;
             padding: 0px;
@@ -71,7 +68,20 @@
 
         .leaflet-tooltip {
             background-color: rgba(255, 255, 255, .5);
+            border: 1px;
         }
+
+        /* .leaflet-tooltip-left:before {
+      right: 0;
+      margin-right: -12px;
+      border-left-color: rgba(0, 0, 0, 0);
+    }
+
+    .leaflet-tooltip-right:before {
+      left: 0;
+      margin-left: -12px;
+      border-right-color: rgba(0, 0, 0, 0);
+    } */
     </style>
 </head>
 
@@ -85,7 +95,7 @@
         if (urlParams.has('uri')) {
             //USER_LANG = urlParams.get('lang');
             URI = decodeURI(urlParams.get('uri').replace(/["';><]/gi, ''));
-            console.log(URI);
+            //console.log(URI);
         } else {
 
         }
@@ -95,7 +105,8 @@
         L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
             'layers': 'OSM-WMS',
             'opacity': '0.6',
-            'format': 'image/png'
+            'format': 'image/png',
+            'attribution': '&copy; <a href="https://www.mundialis.d">mundialis topo</a>, <a href="https://geoera.eu/projects/hike10/"> / GeoERA - HIKE Fault Database</a>'
         }).addTo(map);
 
         L.tileLayer.wms('https://egditest01.geus.dk/egdi/wms/', {
@@ -109,37 +120,37 @@
 
         let queryDownLoad = encodeURIComponent(`PREFIX geoera:<https://data.geoscience.earth/ncl/geoera/>
                 PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                SELECT DISTINCT ?notation
+                SELECT DISTINCT ?uri
                 WHERE {
-                <${URI}> skos:narrower* ?uri .
-                ?uri skos:notation ?notation
+                <${URI}> skos:narrower* ?uri
                 }`);
 
         fetch(`https://resource.geolba.ac.at/PoolParty/sparql/geoera?query=${queryDownLoad}&format=application/json`)
             .then(res => res.json())
             .then(jsonData => {
-                console.log(jsonData.results.bindings.map(a => a.notation.value));
+                //console.log(jsonData.results.bindings.map(a => a.uri.value.split('/').pop()));
 
-                let numbers = jsonData.results.bindings.map(a => a.notation.value);
+                let numbers = jsonData.results.bindings.map(a => a.uri.value.split('/').pop());
+                let orPart = (numbers.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
                 let ogcFilter = `<ogc:Filter>
-                    <ogc:Or>
-                      <ogc:PropertyIsEqualTo>
-                        <ogc:PropertyName>ms:id</ogc:PropertyName>
-                        <ogc:Literal>
-                        ${numbers.join(`</ogc:Literal>
-                            </ogc:PropertyIsEqualTo>
+                          ${orPart[0]}
                             <ogc:PropertyIsEqualTo>
-                              <ogc:PropertyName>ms:id</ogc:PropertyName>
-                          <ogc:Literal>`)}
-                        </ogc:Literal>
-                      </ogc:PropertyIsEqualTo>
-                    </ogc:Or>
-                  </ogc:Filter>`;
+                              <ogc:PropertyName>ms:pv_link</ogc:PropertyName>
+                              <ogc:Literal>
+                              ${numbers.join(`</ogc:Literal>
+                                  </ogc:PropertyIsEqualTo>
+                                  <ogc:PropertyIsEqualTo>
+                                    <ogc:PropertyName>ms:pv_link</ogc:PropertyName>
+                                <ogc:Literal>`)}
+                              </ogc:Literal>
+                            </ogc:PropertyIsEqualTo>
+                          ${orPart[1]}
+                        </ogc:Filter>`;
                 ogcFilter = ogcFilter.replace(/\r?\n|\r|\s/g, "");
                 //console.log(ogcFilter);
 
                 fetch(
-                        `https://egditest01.geus.dk/egdi/wfs/3034/?LAYERS=hike_faultdb_overview&SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=hike_faultdb_overview&MAXFEATURES=500&Filter=${ogcFilter}`
+                        `https://egditest01.geus.dk/egdi/wfs/3034/?LAYERS=hike_faultdb_overview_pvtest&SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=hike_faultdb_overview_pvtest&MAXFEATURES=1000&Filter=${ogcFilter}`
                     )
                     .then(res => res.text())
                     .then(data => {
@@ -156,23 +167,17 @@
 
                         let ext = $(xmlDoc).find("gml\\:coordinates").first().text().split(' ').map(a => a
                             .split(','));
-                        try {
-                            let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2, (parseFloat(ext[
-                                0][0]) + parseFloat(
-                                ext[1][0])) / 2];
-                            map.setView(setView, 7);
 
+                        try {
+                            let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2, 
+                            (parseFloat(ext[0][0]) + parseFloat(ext[1][0])) / 2];
+                            map.setView(setView, 7);
                         } catch (e) {
-                            alert('map data not found')
+                            alert('map data not found');
                         }
 
-                        let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2, (parseFloat(ext[0][
-                            0]) + parseFloat(
-                            ext[1][0])) / 2];
-                        map.setView(setView, 7);
-
                         $(xmlDoc).find("gml\\:featureMember")
-                            .find("ms\\:HIKE_FaultDB_Overview")
+                            .find("ms\\:HIKE_FaultDB_Overview_pvTest")
                             .each(function () {
                                 let polylinePoints = $(this).find("ms\\:msGeometry")
                                     .find("gml\\:coordinates")
@@ -183,6 +188,9 @@
                                     toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
                                         ' Subfault', '<br>Subfault');
                                 }
+                                console.log('ogc_fid: ' + $(this).find("ms\\:ogc_fid").text(),
+                                    ' - local_name: ' + $(this).find("ms\\:local_name").text(),
+                                    ' - bounds: ' + $(this).find("gml\\:Box").text());
 
                                 try {
                                     L.polyline(polylinePoints, {
@@ -190,9 +198,9 @@
                                             //smoothFactor: 1,
                                             weight: 5
                                         }).addTo(map)
-                                        .bindPopup(`<h4><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
-                                  <strong>${$(this).find("ms\\:local_name").text()}</strong>
-                                </a></h4>
+                                        .bindPopup(`<h2><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
+                                  ${$(this).find("ms\\:local_name").text()}
+                                </a></h2>
                                 Fault type: <a href="${$(this).find("ms\\:fault_type_uri").text()}" target="_blank">
                                               ${$(this).find("ms\\:fault_type").text()}
                                             </a>
@@ -223,6 +231,7 @@
                                     //console.log(e);
                                 }
                             });
+                        console.log(data);
                     });
                 let popup = L.popup();
             });
