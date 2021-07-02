@@ -102,11 +102,11 @@
 
         let map = L.map('map');
 
-        L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+        L.tileLayer.wms('https://ows.mundialis.de/services/service?', {
             'layers': 'OSM-WMS',
             'opacity': '0.6',
             'format': 'image/png',
-            'attribution': '&copy; <a href="https://www.mundialis.d">mundialis topo</a>, <a href="https://geoera.eu/projects/hike10/"> / GeoERA - HIKE Fault Database</a>'
+            'attribution': '&copy; <a href="https://www.mundialis.de">mundialis topo</a>, <a href="https://geoera.eu/projects/hike10/"> / GeoERA - HIKE Fault Database</a>'
         }).addTo(map);
 
         L.tileLayer.wms('https://egditest01.geus.dk/egdi/wms/', {
