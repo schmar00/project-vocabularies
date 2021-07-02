@@ -71,6 +71,10 @@
             border: 1px;
         }
 
+        .popUpText {
+            font-size: 70%;
+        }
+
         /* .leaflet-tooltip-left:before {
       right: 0;
       margin-right: -12px;
@@ -120,9 +124,10 @@
 
         let queryDownLoad = encodeURIComponent(`PREFIX geoera:<https://data.geoscience.earth/ncl/geoera/>
                 PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                SELECT DISTINCT ?uri
+                SELECT DISTINCT ?uri (coalesce(?d,"") as ?def)
                 WHERE {
-                <${URI}> skos:narrower* ?uri
+                <${URI}> skos:narrower* ?uri . 
+                optional {?uri skos:definition ?d . filter(lang(?d)='en')}
                 }`);
 
         fetch(`https://resource.geolba.ac.at/PoolParty/sparql/geoera?query=${queryDownLoad}&format=application/json`)
@@ -130,14 +135,15 @@
             .then(jsonData => {
                 //console.log(jsonData.results.bindings.map(a => a.uri.value.split('/').pop()));
 
-                let numbers = jsonData.results.bindings.map(a => a.uri.value.split('/').pop());
+                let numbers = jsonData.results.bindings.map(a => [a.uri.value.split('/').pop(), a.def.value]);
+
                 let orPart = (numbers.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
                 let ogcFilter = `<ogc:Filter>
                           ${orPart[0]}
                             <ogc:PropertyIsEqualTo>
                               <ogc:PropertyName>ms:pv_link</ogc:PropertyName>
                               <ogc:Literal>
-                              ${numbers.join(`</ogc:Literal>
+                              ${numbers.map(a=>a[0]).join(`</ogc:Literal>
                                   </ogc:PropertyIsEqualTo>
                                   <ogc:PropertyIsEqualTo>
                                     <ogc:PropertyName>ms:pv_link</ogc:PropertyName>
@@ -169,8 +175,9 @@
                             .split(','));
 
                         try {
-                            let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2, 
-                            (parseFloat(ext[0][0]) + parseFloat(ext[1][0])) / 2];
+                            let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2,
+                                (parseFloat(ext[0][0]) + parseFloat(ext[1][0])) / 2
+                            ];
                             map.setView(setView, 7);
                         } catch (e) {
                             alert('map data not found');
@@ -192,6 +199,13 @@
                                     ' - local_name: ' + $(this).find("ms\\:local_name").text(),
                                     ' - bounds: ' + $(this).find("gml\\:Box").text());
 
+                                let def = '';
+                                for (let i of numbers) {
+                                    if (i[0] == $(this).find("ms\\:pv_link").text()) {
+                                        def = i[1];
+                                    }
+                                }
+
                                 try {
                                     L.polyline(polylinePoints, {
                                             color: 'red',
@@ -201,6 +215,7 @@
                                         .bindPopup(`<h2><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
                                   ${$(this).find("ms\\:local_name").text()}
                                 </a></h2>
+                                ${(def.length>0)?(`<p class="popUpText">${def.substr(0,300)+'..'}</p>`):''}
                                 Fault type: <a href="${$(this).find("ms\\:fault_type_uri").text()}" target="_blank">
                                               ${$(this).find("ms\\:fault_type").text()}
                                             </a>
