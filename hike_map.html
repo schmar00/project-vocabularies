@@ -143,7 +143,9 @@
             .then(jsonData => {
                 //console.log(jsonData.results.bindings.map(a => a.uri.value.split('/').pop()));
 
-                let numbers = jsonData.results.bindings.map(a => [a.uri.value.split('/').pop(), a.label.value, a.def.value]);
+                let numbers = jsonData.results.bindings.map(a => [a.uri.value.split('/').pop(), a.label.value, a.def
+                    .value
+                ]);
 
                 let orPart = (numbers.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
                 let ogcFilter = `<ogc:Filter>
@@ -194,10 +196,16 @@
                         $(xmlDoc).find("gml\\:featureMember")
                             .find("ms\\:HIKE_FaultDB_Overview_pvTest")
                             .each(function () {
-                                let polylinePoints = $(this).find("ms\\:msGeometry")
-                                    .find("gml\\:coordinates")
-                                    .text().split(' ').map(a => [a.split(',')[1], a.split(',')[0]]);
-                                polylinePoints.pop();
+                                let latlang = [];
+                                $(this).find("ms\\:msGeometry").each(function () {
+                                    let lineArr = $(this).find("gml\\:coordinates").text()
+                                        .split(' ').map(a => [parseFloat(a.split(',')[1]),
+                                            parseFloat(a.split(',')[0])
+                                        ]);
+                                    lineArr.pop();
+                                    latlang.push(lineArr);
+                                });
+
                                 let toolTipLabel = $(this).find("ms\\:local_name").text();
                                 if (toolTipLabel.length > 25) {
                                     toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
@@ -205,6 +213,8 @@
                                 }
                                 console.log('ogc_fid: ' + $(this).find("ms\\:ogc_fid").text(),
                                     ' - local_name: ' + $(this).find("ms\\:local_name").text(),
+                                    ' - scale_from: ' + $(this).find("ms\\:scale_from").text(),
+                                    ' - scale_to: ' + $(this).find("ms\\:scale_to").text(),
                                     ' - bounds: ' + $(this).find("gml\\:Box").text());
 
                                 let label = '';
@@ -217,7 +227,7 @@
                                 }
 
                                 try {
-                                    L.polyline(polylinePoints, {
+                                    L.polyline(latlang, {
                                             color: 'red',
                                             //smoothFactor: 1,
                                             weight: 5
