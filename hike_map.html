@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
+        <link rel="stylesheet" href="css/FontAwesome/all.min.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
@@ -71,11 +72,16 @@
             border: 1px;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .popUpText {
             font-size: 80%;
             line-height: 100%;
             margin-top: -10px;
             margin-bottom: 4px;
+
         }
 
         /* .leaflet-tooltip-left:before {
@@ -129,23 +135,25 @@
 
         let queryDownLoad = encodeURIComponent(`PREFIX geoera:<https://data.geoscience.earth/ncl/geoera/>
                 PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
-                SELECT DISTINCT ?uri (coalesce(?dX,?dEN,"") as ?def) (coalesce(?lX,?lEN,"") as ?label)
+                SELECT DISTINCT ?uri (coalesce(?dX,?dEN,"") as ?def) 
+                (coalesce(?lX,?lEN,"") as ?label) (coalesce(GROUP_CONCAT(?s; separator = ';'),"") as ?links)
                 WHERE {
                 <${URI}> skos:narrower* ?uri . 
                 optional {?uri skos:prefLabel ?lEN . filter(lang(?lEN)='en')}
                 optional {?uri skos:prefLabel ?lX . filter(lang(?lX)='${USER_LANG}')}
                 optional {?uri skos:definition ?dEN . filter(lang(?dEN)='en')}
                 optional {?uri skos:definition ?dX . filter(lang(?dX)='${USER_LANG}')}
-                }`);
+                optional {?uri <http://xmlns.com/foaf/0.1/page> ?s}
+                }
+                group by ?uri ?dX ?dEN ?lEN ?lX`);
 
         fetch(`https://resource.geolba.ac.at/PoolParty/sparql/geoera?query=${queryDownLoad}&format=application/json`)
             .then(res => res.json())
             .then(jsonData => {
                 //console.log(jsonData.results.bindings.map(a => a.uri.value.split('/').pop()));
 
-                let numbers = jsonData.results.bindings.map(a => [a.uri.value.split('/').pop(), a.label.value, a.def
-                    .value
-                ]);
+                let numbers = jsonData.results.bindings
+                    .map(a => [a.uri.value.split('/').pop(), a.label.value, a.def.value, a.links.value]);
 
                 let orPart = (numbers.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
                 let ogcFilter = `<ogc:Filter>
@@ -219,10 +227,12 @@
 
                                 let label = '';
                                 let def = '';
+                                let links = '';
                                 for (let i of numbers) {
                                     if (i[0] == $(this).find("ms\\:pv_link").text()) {
                                         label = i[1];
                                         def = i[2];
+                                        links = i[3];
                                     }
                                 }
 
@@ -232,7 +242,8 @@
                                             //smoothFactor: 1,
                                             weight: 5
                                         }).addTo(map)
-                                        .bindPopup(`<h2><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
+                                        .bindPopup(
+                                            `<h2><a href="${$(this).find("ms\\:projectvocaburi").text()}" target="_blank">
                                                     ${label}
                                                     </a></h2>
                                 ${(def.length>0)?(`<div class="popUpText">${def.substr(0,400)+'..'}</div>`):''}
@@ -256,7 +267,9 @@
                                                 </a><br>
                                 Reference surface: <a href="${$(this).find("ms\\:ref_surf_uri").text()}" target="_blank">
                                                 ${$(this).find("ms\\:ref_surf").text()}
-                                                </a><br>`)
+                                                </a><br>
+                                ${(links.length>0)?(`see also: <a href="${links.split(';').join('">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a><a href="')}">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a>`):''}`
+                                            )
                                         .bindTooltip(toolTipLabel, {
                                             permanent: showToolTip,
                                             className: "faultLabel",
