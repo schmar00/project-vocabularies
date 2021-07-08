@@ -141,7 +141,7 @@
             PREFIX geosparql:<http://www.opengis.net/ont/geosparql#>
             PREFIX foaf:<http://xmlns.com/foaf/0.1/>
             SELECT DISTINCT ?uri (MIN(?L) AS ?label) (MIN(?D) AS ?def) (MIN(?T) AS ?type)
-            (COALESCE(GROUP_CONCAT(?l; separator = ';'),"") as ?links)
+            (COALESCE(GROUP_CONCAT(DISTINCT ?l; separator = ';'),"") as ?links)
             WHERE {
             VALUES ?c {<${URI}>}
             VALUES ?rel {skos:related dcterms:relation geosparql:sfTouches skos:exactMatch skos:closeMatch}
