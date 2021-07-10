@@ -276,7 +276,7 @@
                                     .text());
                                 //console.log(selConcept);
 
-                                let titlePrefix = 'Other faults related to.. ';
+                                let titleSuffix = ``;
 
                                 try {
                                     let lineStyle = {};
@@ -286,7 +286,7 @@
                                             lineStyle.color = 'black';
                                             lineStyle.weight = 2;
                                             lineStyle.dashArray = '15, 7';
-                                            titlePrefix = 'Other faults related to.. ';
+                                            titleSuffix = `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
                                             break;
                                         default:
                                             lineStyle.color = 'red';
@@ -295,7 +295,7 @@
 
                                     L.polyline(latlang, lineStyle).addTo(map)
                                         .bindPopup(
-                                            `<h2>${titlePrefix}<a href="${feat.projectvocaburi}" target="_blank">${selConcept.label}</a></h2>
+                                            `<h2><a href="${feat.projectvocaburi}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
                                 ${(selConcept.def.length>0)?(`<div class="popUpText">${selConcept.def.substr(0,400)+'..'}</div>`):''}
                                 Fault type: <a href="${feat.fault_type_uri}" target="_blank">${feat.fault_type}</a>
                                 , Time: <a href="${feat.timing_uri}" target="_blank">${feat.timing}</a><br>
