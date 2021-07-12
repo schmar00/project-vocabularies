@@ -9,6 +9,7 @@
     <title>HIKE Fault Database</title>
     <meta name="" content="">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
@@ -100,7 +101,9 @@
 
 <body>
     <div id="map"></div>
-
+    <div id="loading" class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
     <script>
         let urlParams = new URLSearchParams(window.location.search);
         let USER_LANG = (navigator.language || navigator.language).substring(0, 2);
@@ -182,12 +185,12 @@
                 let ogcFilter = `<ogc:Filter>
                           ${orPart[0]}
                             <ogc:PropertyIsEqualTo>
-                              <ogc:PropertyName>ms:pv_link</ogc:PropertyName>
+                              <ogc:PropertyName>ms:concept_id</ogc:PropertyName>
                               <ogc:Literal>
                               ${selectedURIs.map(a=>a.id).join(`</ogc:Literal>
                                   </ogc:PropertyIsEqualTo>
                                   <ogc:PropertyIsEqualTo>
-                                    <ogc:PropertyName>ms:pv_link</ogc:PropertyName>
+                                    <ogc:PropertyName>ms:concept_id</ogc:PropertyName>
                                 <ogc:Literal>`)}
                               </ogc:Literal>
                             </ogc:PropertyIsEqualTo>
@@ -195,13 +198,13 @@
                         </ogc:Filter>`;
                 ogcFilter = ogcFilter.replace(/\r?\n|\r|\s/g, "");
                 //console.log(ogcFilter);
-
+                //https://egditest01.geus.dk/egdi/wfs/3034/?LAYERS=hike_faultdb_overview_pvtest&SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=hike_faultdb_overview_pvtest&MAXFEATURES=1000&
                 fetch(
-                        `https://egditest01.geus.dk/egdi/wfs/3034/?LAYERS=hike_faultdb_overview_pvtest&SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=hike_faultdb_overview_pvtest&MAXFEATURES=1000&Filter=${ogcFilter}`
+                        `https://data.geus.dk/egdi/wfs/3034/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=HIKE_FAULTDB_DETAIL_V12&MAXFEATURES=1000&Filter=${ogcFilter}`
                     )
                     .then(res => res.text())
                     .then(data => {
-                        //console.log(data); //****************************************original
+                        console.log(data); //****************************************original
 
                         let parser = new DOMParser(),
                             xmlDoc = parser.parseFromString(data, 'text/xml');
@@ -226,7 +229,7 @@
 
 
                         $(xmlDoc).find("gml\\:featureMember")
-                            .find("ms\\:HIKE_FaultDB_Overview_pvTest")
+                            .find("ms\\:HIKE_FAULTDB_DETAIL_V12")
                             .each(function () {
                                 let feat = {
                                     ogc_fid: $(this).find("ms\\:ogc_fid").text(),
@@ -272,7 +275,8 @@
                                 }
                                 //console.log(feat);
 
-                                let selConcept = selectedURIs.find(a => a.id == $(this).find("ms\\:pv_link")
+                                let selConcept = selectedURIs.find(a => a.id == $(this).find(
+                                        "ms\\:concept_id")
                                     .text());
                                 //console.log(selConcept);
 
@@ -286,7 +290,8 @@
                                             lineStyle.color = 'black';
                                             lineStyle.weight = 2;
                                             lineStyle.dashArray = '15, 7';
-                                            titleSuffix = `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
+                                            titleSuffix =
+                                                `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
                                             break;
                                         default:
                                             lineStyle.color = 'red';
@@ -314,10 +319,14 @@
                                             offset: [0, 0]
                                         });
                                 } catch (e) {
-                                    //console.log(e);
+                                    alert(e);
                                 }
+                                $('#loading').hide();
                             });
-                        console.log(data);
+                        //console.log(data);
+                    })
+                    .catch(function (err) {
+                        alert('too many features to query');//, err);
                     });
                 let popup = L.popup();
             });
