@@ -227,12 +227,14 @@
                             alert('map data not found');
                         }
 
+                        let idArr = []; //to take each id just once
 
                         $(xmlDoc).find("gml\\:featureMember")
                             .find("ms\\:HIKE_FAULTDB_DETAIL_V12")
                             .each(function () {
                                 let feat = {
                                     ogc_fid: $(this).find("ms\\:ogc_fid").text(),
+                                    id: $(this).find("ms\\:id").text(),
                                     concept_uri: $(this).find("ms\\:concept_uri").text(),
                                     concept_id: $(this).find("ms\\:concept_id").text(),
                                     local_name: $(this).find("ms\\:local_name").text(),
@@ -260,66 +262,55 @@
                                     depth: $(this).find("ms\\:depth").text()
                                 };
 
-                                let latlang = [];
-                                feat.geometry.each(function () {
-                                    let lineArr = $(this).find("gml\\:coordinates").text()
-                                        .split(' ').map(a => [parseFloat(a.split(',')[1]),
-                                            parseFloat(a.split(',')[0])
-                                        ]);
-                                    lineArr.pop();
-                                    latlang.push(lineArr);
-                                });
+                                if (!idArr.includes(feat.id)) {
+                                    idArr.push(feat.id);
 
-                                let toolTipLabel = feat.local_name;
-                                if (toolTipLabel.length > 25) {
-                                    toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
-                                        ' Subfault', '<br>Subfault');
-                                }
-                                //console.log(feat);
+                                    let latlang = [];
+                                    feat.geometry.each(function () {
+                                        let lineArr = $(this).find("gml\\:coordinates").text()
+                                            .split(' ').map(a => [parseFloat(a.split(',')[1]),
+                                                parseFloat(a.split(',')[0])
+                                            ]);
+                                        lineArr.pop();
+                                        latlang.push(lineArr);
+                                    });
 
-                                let selConcept = selectedURIs.find(a => a.id == $(this).find(
-                                        "ms\\:concept_id")
-                                    .text());
-                                //console.log(selConcept);
-
-                                let titleSuffix = ``;
-
-                                try {
-                                    let lineStyle = {};
-                                    let titlePrefix = '';
-                                    switch (selConcept.type) {
-                                        case "http://www.opengis.net/ont/geosparql#sfTouches":
-                                            lineStyle.color = 'black';
-                                            lineStyle.weight = 2;
-                                            lineStyle.dashArray = '15, 7';
-                                            titleSuffix =
-                                                `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
-                                            break;
-                                        default:
-                                            lineStyle.color = 'red';
-                                            lineStyle.weight = 5;
+                                    let toolTipLabel = feat.local_name;
+                                    if (toolTipLabel.length > 25) {
+                                        toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
+                                            ' Subfault', '<br>Subfault');
                                     }
+                                    //console.log(feat);
 
-                                    switch (true) {
-                                        case (feat.depth.length > 4):
-                                            lineStyle.weight = 1;
-                                            //lineStyle.opacity = 0.4;
-                                            lineStyle.color = 'Tomato';
-                                            break;
-                                        case (feat.depth.length > 3):
-                                            lineStyle.weight = 2;
-                                            //lineStyle.opacity = 0.4;
-                                            lineStyle.color = 'HotPink';
-                                            break;
-                                        default:
-                                    }
+                                    let selConcept = selectedURIs.find(a => a.id == $(this).find(
+                                            "ms\\:concept_id")
+                                        .text());
+                                    //console.log(selConcept);
+
+                                    let titleSuffix = ``;
+
+                                    //if (parseInt(feat.depth) > -50) {
+                                    try {
+                                        let lineStyle = {};
+                                        let titlePrefix = '';
+                                        switch (selConcept.type) {
+                                            case "http://www.opengis.net/ont/geosparql#sfTouches":
+                                                lineStyle.color = 'black';
+                                                lineStyle.weight = 2;
+                                                lineStyle.dashArray = '15, 7';
+                                                titleSuffix =
+                                                    `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
+                                                break;
+                                            default:
+                                                lineStyle.color = 'red';
+                                                lineStyle.weight = 5;
+                                        }
 
 
 
-
-                                    L.polyline(latlang, lineStyle).addTo(map)
-                                        .bindPopup(
-                                            `<h2><a href="${feat.concept_uri}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
+                                        L.polyline(latlang, lineStyle).addTo(map)
+                                            .bindPopup(
+                                                `<h2><a href="${feat.concept_uri}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
                                 ${(selConcept.def.length>0)?(`<div class="popUpText">${selConcept.def.substr(0,400)+'..'}</div>`):''}
                                 Fault type: <a href="${feat.fault_type_uri}" target="_blank">${feat.fault_type}</a>
                                 , Time: <a href="${feat.timing_uri}" target="_blank">${feat.timing}</a><br>
@@ -331,17 +322,18 @@
                                 Offset determination: <a href="${feat.offset_det_uri}" target="_blank">${feat.offset_det}</a><br>
                                 Reference surface: <a href="${feat.ref_surf_uri}" target="_blank">${feat.ref_surf}</a><br>
                                 ${(selConcept.links.length>0)?(`see also: <a href="${selConcept.links.split(';').join('">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a><a href="')}">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a>`):''}`
-                                        )
-                                        .bindTooltip(toolTipLabel, {
-                                            permanent: showToolTip,
-                                            className: "faultLabel",
-                                            offset: [0, 0]
-                                        });
-                                } catch (e) {
-                                    alert(e);
+                                            )
+                                            .bindTooltip(toolTipLabel, {
+                                                permanent: showToolTip,
+                                                className: "faultLabel",
+                                                offset: [0, 0]
+                                            });
+                                    } catch (e) {
+                                        alert(e);
+                                    }
                                 }
-                                $('#loading').hide();
                             });
+                        $('#loading').hide();
                         //console.log(data);
                     })
                     .catch(function (err) {
