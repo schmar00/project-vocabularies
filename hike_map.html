@@ -256,7 +256,8 @@
                                     ref_surf: $(this).find("ms\\:ref_surf").text(),
                                     ref_surf_uri: $(this).find("ms\\:ref_surf_uri").text(),
                                     scale_from: $(this).find("ms\\:scale_from").text(),
-                                    scale_to: $(this).find("ms\\:scale_to").text()
+                                    scale_to: $(this).find("ms\\:scale_to").text(),
+                                    depth: $(this).find("ms\\:depth").text()
                                 };
 
                                 let latlang = [];
@@ -299,6 +300,23 @@
                                             lineStyle.weight = 5;
                                     }
 
+                                    switch (true) {
+                                        case (feat.depth.length > 4):
+                                            lineStyle.weight = 1;
+                                            //lineStyle.opacity = 0.4;
+                                            lineStyle.color = 'Tomato';
+                                            break;
+                                        case (feat.depth.length > 3):
+                                            lineStyle.weight = 2;
+                                            //lineStyle.opacity = 0.4;
+                                            lineStyle.color = 'HotPink';
+                                            break;
+                                        default:
+                                    }
+
+
+
+
                                     L.polyline(latlang, lineStyle).addTo(map)
                                         .bindPopup(
                                             `<h2><a href="${feat.concept_uri}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
@@ -327,7 +345,7 @@
                         //console.log(data);
                     })
                     .catch(function (err) {
-                        alert('too many features to query');//, err);
+                        alert('too many features to query'); //, err);
                     });
                 let popup = L.popup();
             });
