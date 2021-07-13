@@ -80,7 +80,7 @@
         .popUpText {
             font-size: 80%;
             line-height: 100%;
-            margin-top: -10px;
+            margin-top: -5px;
             margin-bottom: 4px;
 
         }
@@ -233,11 +233,12 @@
                             .each(function () {
                                 let feat = {
                                     ogc_fid: $(this).find("ms\\:ogc_fid").text(),
+                                    concept_uri: $(this).find("ms\\:concept_uri").text(),
+                                    concept_id: $(this).find("ms\\:concept_id").text(),
                                     local_name: $(this).find("ms\\:local_name").text(),
                                     bounds: $(this).find("gml\\:Box").text(),
                                     geometry: $(this).find("ms\\:msGeometry"),
                                     country_cd: $(this).find("ms\\:country_cd").text(),
-                                    projectvocaburi: $(this).find("ms\\:projectvocaburi").text(),
                                     fault_type: $(this).find("ms\\:fault_type").text(),
                                     fault_type_uri: $(this).find("ms\\:fault_type_uri").text(),
                                     timing: $(this).find("ms\\:timing").text(),
@@ -257,7 +258,7 @@
                                     scale_from: $(this).find("ms\\:scale_from").text(),
                                     scale_to: $(this).find("ms\\:scale_to").text()
                                 };
-
+console.log(feat);
                                 let latlang = [];
                                 feat.geometry.each(function () {
                                     let lineArr = $(this).find("gml\\:coordinates").text()
@@ -300,7 +301,7 @@
 
                                     L.polyline(latlang, lineStyle).addTo(map)
                                         .bindPopup(
-                                            `<h2><a href="${feat.projectvocaburi}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
+                                            `<h2><a href="${feat.concept_uri}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
                                 ${(selConcept.def.length>0)?(`<div class="popUpText">${selConcept.def.substr(0,400)+'..'}</div>`):''}
                                 Fault type: <a href="${feat.fault_type_uri}" target="_blank">${feat.fault_type}</a>
                                 , Time: <a href="${feat.timing_uri}" target="_blank">${feat.timing}</a><br>
