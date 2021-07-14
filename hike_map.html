@@ -94,9 +94,8 @@
     <div class="loading">
         <span class="spinner-border text-primary" role="status"></span>
     </div>
-    <div class="loading">
-        <span>A</span>
-    </div>
+    <!-- <div class="loading" id="pc">
+    </div> -->
     <script>
         let urlParams = new URLSearchParams(window.location.search);
         let USER_LANG = (navigator.language || navigator.language).substring(0, 2);
@@ -205,6 +204,7 @@
                 });
 
                 Promise.all(promises).then(() => {
+                    console.log(wfsFeatures);
                     try {
                         let allCoords = wfsFeatures.map(a => a.geometry).filter(a => a.type ==
                             'MultiLineString').map(a => a.coordinates).flat(2).concat(wfsFeatures.map(
