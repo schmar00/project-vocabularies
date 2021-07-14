@@ -129,7 +129,7 @@
             WHERE {
             VALUES ?c {<${URI}>}
             VALUES ?rel {skos:related dcterms:relation geosparql:sfTouches skos:exactMatch skos:closeMatch}
-            VALUES ?attr {foaf:page}
+            VALUES ?attr {foaf:page foaf:depiction skos:exactMatch skos:closeMatch}
             {?c skos:narrower* ?n . BIND(?n AS ?uri) BIND(IF(?n=?c,"", skos:narrower) AS ?T)}
             UNION
             {?c ?rel ?r . BIND(?r AS ?uri) BIND(?rel AS ?T) FILTER(REGEX(STR(?r),"fault"))}
@@ -171,6 +171,7 @@
                 searchIDs.forEach(s_part => {
                     let orPart = (s_part.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
                     let ogcFilter = `<ogc:Filter>
+                         <ogc:And>
                           ${orPart[0]}
                             <ogc:PropertyIsEqualTo>
                               <ogc:PropertyName>ms:concept_id</ogc:PropertyName>
@@ -183,18 +184,28 @@
                               </ogc:Literal>
                             </ogc:PropertyIsEqualTo>
                           ${orPart[1]}
+                          <ogc:Or>
+                           <ogc:PropertyIsGreaterThan>
+                            <ogc:PropertyName>ms:depth</ogc:PropertyName>
+                            <ogc:Literal>-100</ogc:Literal>
+                           </ogc:PropertyIsGreaterThan>
+                           <ogc:PropertyIsNull>
+                            <ogc:PropertyName>ms:depth</ogc:PropertyName>
+                           </ogc:PropertyIsNull>
+                          </ogc:Or>
+                         </ogc:And>
                         </ogc:Filter>`;
 
                     promises.push(
                         fetch(
                             (`https://data.geus.dk/egdi/wfs/3034/
-                            ?SERVICE=WFS
-                            &VERSION=1.0.0
-                            &REQUEST=GetFeature
-                            &TYPENAME=HIKE_FAULTDB_DETAIL_V12
-                            &MAXFEATURES=1000
-                            &Filter=${ogcFilter}
-                            &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
+                                ?SERVICE=WFS
+                                &VERSION=1.0.0
+                                &REQUEST=GetFeature
+                                &TYPENAME=HIKE_FAULTDB_DETAIL_V12
+                                &MAXFEATURES=10000
+                                &Filter=${ogcFilter}
+                                &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
                         )
                         .then(res => res.json())
                         .then(data => { //console.log(data);
