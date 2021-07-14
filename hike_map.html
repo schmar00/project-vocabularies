@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="Map Viewer for HIKE Fault Database 2021" content="">
+    <meta name="Schiegl" content="">
     <title>HIKE Fault Database</title>
     <meta name="" content="">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -39,27 +39,17 @@
             background: white;
         }
 
-        #getFile {
-            position: absolute;
-            top: 0px;
-            right: 0px;
-            height: 70px;
-            width: 60px;
-            z-index: 500;
-            background: rgba(255, 255, 255, 0.7);
-            font-family: sans-serif;
-            font-size: 11px;
-            border: 0px;
-        }
 
-        #loading {
+        .loading {
             position: absolute;
             top: 50%;
             left: 50%;
             z-index: 1000;
-            color: aqua;
+            color: red;
             width: 3rem;
             height: 3rem;
+            text-align: center;
+            vertical-align: middle;
         }
 
         .faultLabel {
@@ -101,8 +91,11 @@
 
 <body>
     <div id="map"></div>
-    <div id="loading" class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
+    <div class="loading">
+        <span class="spinner-border text-primary" role="status"></span>
+    </div>
+    <div class="loading">
+        <span>A</span>
     </div>
     <script>
         let urlParams = new URLSearchParams(window.location.search);
@@ -118,7 +111,7 @@
 
         }
 
-        let map = L.map('map');
+        let map = L.map('map').setView([47, 11], 3);
 
         L.tileLayer.wms('https://ows.mundialis.de/services/service?', {
             'layers': 'OSM-WMS',
@@ -126,17 +119,6 @@
             'format': 'image/png',
             'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, <a href="https://geoera.eu/projects/hike10/"> GeoERA - HIKE Fault Database</a>'
         }).addTo(map);
-
-        L.tileLayer.wms('https://egditest01.geus.dk/egdi/wms/', {
-            'layers': 'hike_faultdb_overview',
-            'mapname': 'hike_preview',
-            'transparent': 'true',
-            'opacity': '0.4',
-            'format': 'image/png'
-        }).addTo(map);
-        //https://data.geoscience.earth/ncl/geoera/hike/faults/493 periadria, 502 Vienna
-
-
 
         let queryDownLoad = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
             PREFIX geoera:<https://data.geoscience.earth/ncl/geoera/>
@@ -172,22 +154,29 @@
                     def: a.def.value,
                     links: a.links.value
                 }));
-
+                //console.log(selectedURIs.length);
                 //console.log(selectedURIs);
                 let numbers = jsonData.results.bindings
                     .map(a => [a.uri.value.split('/').pop(), a.label.value, a.def.value, a.links.value, a.type
                         .value
                     ]);
-
-                //console.log(numbers);
-
-                let orPart = (selectedURIs.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
-                let ogcFilter = `<ogc:Filter>
+                //console.log(selectedURIs);
+                let wfsFeatures = [];
+                const nql = 40; //network query limit defined by SQL DB proxy => max length "where in"
+                let st = selectedURIs.map(a => a.id);
+                let searchIDs = new Array(Math.ceil(st.length / nql))
+                    .fill()
+                    .map(_ => st.splice(0, nql));
+                let promises = [];
+                //console.log(searchIDs);
+                searchIDs.forEach(s_part => {
+                    let orPart = (s_part.length > 1) ? ['<ogc:Or>', '</ogc:Or>'] : ['', ''];
+                    let ogcFilter = `<ogc:Filter>
                           ${orPart[0]}
                             <ogc:PropertyIsEqualTo>
                               <ogc:PropertyName>ms:concept_id</ogc:PropertyName>
                               <ogc:Literal>
-                              ${selectedURIs.map(a=>a.id).join(`</ogc:Literal>
+                              ${s_part.join(`</ogc:Literal>
                                   </ogc:PropertyIsEqualTo>
                                   <ogc:PropertyIsEqualTo>
                                     <ogc:PropertyName>ms:concept_id</ogc:PropertyName>
@@ -196,150 +185,114 @@
                             </ogc:PropertyIsEqualTo>
                           ${orPart[1]}
                         </ogc:Filter>`;
-                ogcFilter = ogcFilter.replace(/\r?\n|\r|\s/g, "");
-                //console.log(ogcFilter);
-                //https://egditest01.geus.dk/egdi/wfs/3034/?LAYERS=hike_faultdb_overview_pvtest&SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=hike_faultdb_overview_pvtest&MAXFEATURES=1000&
-                fetch(
-                        `https://data.geus.dk/egdi/wfs/3034/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=HIKE_FAULTDB_DETAIL_V12&MAXFEATURES=1000&Filter=${ogcFilter}`
-                    )
-                    .then(res => res.text())
-                    .then(data => {
-                        console.log(data); //****************************************original
 
-                        let parser = new DOMParser(),
-                            xmlDoc = parser.parseFromString(data, 'text/xml');
+                    promises.push(
+                        fetch(
+                            (`https://data.geus.dk/egdi/wfs/3034/
+                            ?SERVICE=WFS
+                            &VERSION=1.0.0
+                            &REQUEST=GetFeature
+                            &TYPENAME=HIKE_FAULTDB_DETAIL_V12
+                            &MAXFEATURES=1000
+                            &Filter=${ogcFilter}
+                            &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
+                        )
+                        .then(res => res.json())
+                        .then(data => { //console.log(data);
+                            wfsFeatures = wfsFeatures.concat(data.features);
+                        })
+                    );
+                });
 
+                Promise.all(promises).then(() => {
+                    try {
+                        let allCoords = wfsFeatures.map(a => a.geometry).filter(a => a.type ==
+                            'MultiLineString').map(a => a.coordinates).flat(2).concat(wfsFeatures.map(
+                            a => a.geometry).filter(a => a.type ==
+                            'LineString').map(a => a.coordinates).flat());
+
+                        let avg = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+                        map.setView([avg(allCoords.map(a => parseFloat(a[1]))), avg(allCoords.map(a =>
+                            parseFloat(a[0])))], 8);
+
+                        //console.log(wfsFeatures.map(a => a.properties.local_name));
                         let showToolTip = true;
-                        let labels = $(xmlDoc).find("ms\\:local_name");
-                        if ((labels.length - [...new Set(labels.text().split(' '))].length) > 20) {
+                        let labels = wfsFeatures.map(a => a.properties.local_name);
+                        if ((labels.length - [...new Set(labels)].length) > 20) {
                             showToolTip = false;
                         }
 
-                        let ext = $(xmlDoc).find("gml\\:coordinates").first().text().split(' ').map(a => a
-                            .split(','));
+                        for (let i of wfsFeatures) {
+                            let toolTipLabel = i.properties.local_name;
+                            if (toolTipLabel.length > 25) {
+                                toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
+                                    ' Subfault', '<br>Subfault');
+                            }
 
-                        try {
-                            let setView = [(parseFloat(ext[0][1]) + parseFloat(ext[1][1])) / 2,
-                                (parseFloat(ext[0][0]) + parseFloat(ext[1][0])) / 2
-                            ];
-                            map.setView(setView, 7);
-                        } catch (e) {
-                            alert('map data not found');
-                        }
+                            let coords = [];
+                            if (i.geometry.type == 'MultiLineString') {
+                                coords = i.geometry.coordinates;
+                            } else {
+                                coords.push(i.geometry.coordinates);
+                            }
 
-                        let idArr = []; //to take each id just once
+                            let titleSuffix = ``;
 
-                        $(xmlDoc).find("gml\\:featureMember")
-                            .find("ms\\:HIKE_FAULTDB_DETAIL_V12")
-                            .each(function () {
-                                let feat = {
-                                    ogc_fid: $(this).find("ms\\:ogc_fid").text(),
-                                    id: $(this).find("ms\\:id").text(),
-                                    concept_uri: $(this).find("ms\\:concept_uri").text(),
-                                    concept_id: $(this).find("ms\\:concept_id").text(),
-                                    local_name: $(this).find("ms\\:local_name").text(),
-                                    bounds: $(this).find("gml\\:Box").text(),
-                                    geometry: $(this).find("ms\\:msGeometry"),
-                                    country_cd: $(this).find("ms\\:country_cd").text(),
-                                    fault_type: $(this).find("ms\\:fault_type").text(),
-                                    fault_type_uri: $(this).find("ms\\:fault_type_uri").text(),
-                                    timing: $(this).find("ms\\:timing").text(),
-                                    timing_uri: $(this).find("ms\\:timing_uri").text(),
-                                    observ_meth: $(this).find("ms\\:observ_meth").text(),
-                                    observ_meth_uri: $(this).find("ms\\:observ_meth_uri").text(),
-                                    dip_angle: $(this).find("ms\\:dip_angle").text(),
-                                    dip_angle_uri: $(this).find("ms\\:dip_angle_uri").text(),
-                                    dip_direct: $(this).find("ms\\:dip_direct").text(),
-                                    strike: $(this).find("ms\\:strike").text(),
-                                    move_sense: $(this).find("ms\\:move_sense").text(),
-                                    move_sense_uri: $(this).find("ms\\:move_sense_uri").text(),
-                                    offset_det: $(this).find("ms\\:offset_det").text(),
-                                    offset_det_uri: $(this).find("ms\\:offset_det_uri").text(),
-                                    ref_surf: $(this).find("ms\\:ref_surf").text(),
-                                    ref_surf_uri: $(this).find("ms\\:ref_surf_uri").text(),
-                                    scale_from: $(this).find("ms\\:scale_from").text(),
-                                    scale_to: $(this).find("ms\\:scale_to").text(),
-                                    depth: $(this).find("ms\\:depth").text()
-                                };
+                            let lineStyle = {};
+                            let selConcept = selectedURIs.find(a => a.id == i.properties.concept_id);
 
-                                if (!idArr.includes(feat.id)) {
-                                    idArr.push(feat.id);
+                            switch (selConcept.type) {
+                                case "http://www.opengis.net/ont/geosparql#sfTouches":
+                                    lineStyle.color = 'black';
+                                    lineStyle.weight = 2;
+                                    lineStyle.dashArray = '15, 7';
+                                    titleSuffix =
+                                        `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
+                                    break;
+                                default:
+                                    lineStyle.color = 'red';
+                                    lineStyle.weight = 5;
+                            }
 
-                                    let latlang = [];
-                                    feat.geometry.each(function () {
-                                        let lineArr = $(this).find("gml\\:coordinates").text()
-                                            .split(' ').map(a => [parseFloat(a.split(',')[1]),
-                                                parseFloat(a.split(',')[0])
-                                            ]);
-                                        lineArr.pop();
-                                        latlang.push(lineArr);
-                                    });
-
-                                    let toolTipLabel = feat.local_name;
-                                    if (toolTipLabel.length > 25) {
-                                        toolTipLabel = toolTipLabel.replace(' Fault', '<br>Fault').replace(
-                                            ' Subfault', '<br>Subfault');
-                                    }
-                                    //console.log(feat);
-
-                                    let selConcept = selectedURIs.find(a => a.id == $(this).find(
-                                            "ms\\:concept_id")
-                                        .text());
-                                    //console.log(selConcept);
-
-                                    let titleSuffix = ``;
-
-                                    //if (parseInt(feat.depth) > -50) {
-                                    try {
-                                        let lineStyle = {};
-                                        let titlePrefix = '';
-                                        switch (selConcept.type) {
-                                            case "http://www.opengis.net/ont/geosparql#sfTouches":
-                                                lineStyle.color = 'black';
-                                                lineStyle.weight = 2;
-                                                lineStyle.dashArray = '15, 7';
-                                                titleSuffix =
-                                                    `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
-                                                break;
-                                            default:
-                                                lineStyle.color = 'red';
-                                                lineStyle.weight = 5;
-                                        }
-
-
-
-                                        L.polyline(latlang, lineStyle).addTo(map)
-                                            .bindPopup(
-                                                `<h2><a href="${feat.concept_uri}" target="_blank">${selConcept.label}</a></h2>${titleSuffix}
+                            for (let j of coords) {
+                                L.polyline(j.map(a => [a[1], a[0]]), lineStyle).addTo(map)
+                                    .bindPopup(`<h2><a href="${i.properties.concept_uri}" target="_blank">${selConcept.label}</a></h2>
+                                ${titleSuffix}
                                 ${(selConcept.def.length>0)?(`<div class="popUpText">${selConcept.def.substr(0,400)+'..'}</div>`):''}
-                                Fault type: <a href="${feat.fault_type_uri}" target="_blank">${feat.fault_type}</a>
-                                , Time: <a href="${feat.timing_uri}" target="_blank">${feat.timing}</a><br>
-                                Observation method: <a href="${feat.observ_meth_uri}" target="_blank">${feat.observ_meth}</a><br>
-                                Dip angle: ${feat.dip_angle}
-                                , Dip direction: ${feat.dip_direct}
-                                , Strike: ${feat.strike}<br>
-                                Movement sense: <a href="${feat.move_sense_uri}" target="_blank">${feat.move_sense}</a><br>
-                                Offset determination: <a href="${feat.offset_det_uri}" target="_blank">${feat.offset_det}</a><br>
-                                Reference surface: <a href="${feat.ref_surf_uri}" target="_blank">${feat.ref_surf}</a><br>
-                                ${(selConcept.links.length>0)?(`see also: <a href="${selConcept.links.split(';').join('">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a><a href="')}">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a>`):''}`
-                                            )
-                                            .bindTooltip(toolTipLabel, {
-                                                permanent: showToolTip,
-                                                className: "faultLabel",
-                                                offset: [0, 0]
-                                            });
-                                    } catch (e) {
-                                        alert(e);
-                                    }
-                                }
-                            });
-                        $('#loading').hide();
-                        //console.log(data);
-                    })
-                    .catch(function (err) {
-                        alert('too many features to query'); //, err);
-                    });
-                let popup = L.popup();
+                                Fault type: <a href="${i.properties.fault_type_uri}" target="_blank">${i.properties.fault_type}</a>
+                                , Time: <a href="${i.properties.timing_uri}" target="_blank">${i.properties.timing}</a><br>
+                                Observation method: <a href="${i.properties.observ_meth_uri}" target="_blank">${i.properties.observ_meth}</a><br>
+                                Dip angle: ${i.properties.dip_angle}
+                                , Dip direction: ${i.properties.dip_direct}
+                                , Strike: ${i.properties.strike}<br>
+                                Movement sense: <a href="${i.properties.move_sense_uri}" target="_blank">${i.properties.move_sense}</a><br>
+                                Offset determination: <a href="${i.properties.offset_det_uri}" target="_blank">${i.properties.offset_det}</a><br>
+                                Reference surface: <a href="${i.properties.ref_surf_uri}" target="_blank">${i.properties.ref_surf}</a><br>
+                                ${(selConcept.links.length>0)?
+                                    (`see also: <a target="_blank" href="${selConcept.links.split(';').join('">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a><a href="')}">&nbsp;<i class="fas fa-sm fa-external-link-alt"></i></a>`):
+                                    ''}`)
+                                    .bindTooltip(
+                                        toolTipLabel, {
+                                            permanent: showToolTip,
+                                            className: "faultLabel",
+                                            offset: [0, 0]
+                                        });
+                            }
+                        }
+                        L.tileLayer.wms('https://egditest01.geus.dk/egdi/wms/', {
+                            'layers': 'hike_faultdb_overview',
+                            'mapname': 'hike_preview',
+                            'transparent': 'true',
+                            'opacity': '0.4',
+                            'format': 'image/png'
+                        }).addTo(map);
+                        let popup = L.popup();
+                        $('.loading').hide();
+                    } catch (e) {
+                        $('.loading').hide();
+                        alert('map data not found');
+                    }
+                });
             });
     </script>
 </body>
