@@ -124,7 +124,7 @@
             PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
             PREFIX geosparql:<http://www.opengis.net/ont/geosparql#>
             PREFIX foaf:<http://xmlns.com/foaf/0.1/>
-            SELECT DISTINCT ?uri (MIN(?L) AS ?label) (MIN(?D) AS ?def) (MIN(?T) AS ?type)
+            SELECT DISTINCT ?uri (MIN(?L) AS ?label) (MIN(?D) AS ?def) (IF(MIN(BOUND(?cs)),skos:topConceptOf,MIN(?T)) AS ?type)
             (COALESCE(GROUP_CONCAT(DISTINCT ?l; separator = ';'),"") as ?links)
             WHERE {
             VALUES ?c {<${URI}>}
@@ -135,9 +135,10 @@
             {?c ?rel ?r . BIND(?r AS ?uri) BIND(?rel AS ?T) FILTER(REGEX(STR(?r),"fault"))}
             ?uri skos:prefLabel ?Len . filter(lang(?Len)='en')
             OPTIONAL {?uri skos:prefLabel ?Lx . filter(lang(?Lx)='${USER_LANG}')} BIND(coalesce(?Lx,?Len,"") as ?L)
-            OPTIONAL {?uri skos:definition ?Den . filter(lang(?dEN)='Den')}
+            OPTIONAL {?uri skos:definition ?Den . filter(lang(?Den)='en')}
             OPTIONAL {?uri skos:definition ?Dx . filter(lang(?Dx)='${USER_LANG}')} BIND(coalesce(?Dx,?Den,"") as ?D)
             OPTIONAL {?uri ?attr ?l}
+            OPTIONAL {?uri skos:topConceptOf ?cs}
             }
             GROUP BY ?uri`);
 
@@ -203,7 +204,7 @@
                                 &VERSION=1.0.0
                                 &REQUEST=GetFeature
                                 &TYPENAME=HIKE_FAULTDB_DETAIL_V12
-                                &MAXFEATURES=10000
+                                &MAXFEATURES=100000
                                 &Filter=${ogcFilter}
                                 &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
                         )
@@ -259,6 +260,10 @@
                                     lineStyle.dashArray = '15, 7';
                                     titleSuffix =
                                         `<h4>a delimitation of ${selectedURIs.find(a => a.type == '').label}</h4>`;
+                                    break;
+                                case "http://www.w3.org/2004/02/skos/core#topConceptOf":
+                                    lineStyle.color = '#33A3FF';
+                                    lineStyle.weight = 3;
                                     break;
                                 default:
                                     lineStyle.color = 'red';
