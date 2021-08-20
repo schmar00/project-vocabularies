@@ -341,7 +341,7 @@ const n = {
     rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
     dbpo: 'http://dbpedia.org/ontology/',
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    gc3d: 'http://resource.geolba.ac.at/schema/geoconnect3d#',
+    gc3d: 'https://data.geoscience.earth/def/geoconnect3d#',
     schema: 'https://schema.org/',
     geosparql: 'http://www.opengis.net/ont/geosparql#'
 };
