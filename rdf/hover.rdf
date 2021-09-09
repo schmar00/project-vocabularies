@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:skosxl="http://www.w3.org/2008/05/skos-xl#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:tags="http://www.holygoat.co.uk/owl/redwood/0.1/tags/"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:cycAnnot="http://sw.cyc.com/CycAnnotations_v1#"
+	xmlns:csw="http://semantic-web.at/ontologies/csw.owl#"
+	xmlns:dbpedia="http://dbpedia.org/resource/"
+	xmlns:freebase="http://rdf.freebase.com/ns/"
+	xmlns:opencyc="http://sw.opencyc.org/concept/"
+	xmlns:cyc="http://sw.cyc.com/concept/"
+	xmlns:ctag="http://commontag.org/ns#">
+<!-- RDF data export created by PoolParty. -->
+<!-- This file contains a hierarchical subtree of a SKOS thesaurus. -->
+<!-- Export date: Thu Sep 09 14:52:30 CEST 2021 -->
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem">
+	<csw:hierarchyRoot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</csw:hierarchyRoot>
+	<csw:hierarchyRootType rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+	<skos:definition xml:lang="en">Compounds of an hydrochemical sample.</skos:definition>
+	<dcterms:title xml:lang="en">hydrochemical compounds</dcterms:title>
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+	<skos:definition xml:lang="de">Inhaltsstoffe einer hydrochemischen Probe.</skos:definition>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.592Z</dcterms:created>
+	<dcterms:title xml:lang="de">Hydrochemische Inhaltsstoffe</dcterms:title>
+	<dcterms:description xml:lang="en">.. here should be a short, 3-line text - describing the relevant scheme and allow the user to get started with the topic via the listed top concepts ..</dcterms:description>
+	<skos:hasTopConcept rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261">
+	<skos:topConceptOf rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">trace parameters</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.921Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Spurenparameter</skos:prefLabel>
+	<skos:definition xml:lang="en">Trace parameters of an hydrochemical analysis.</skos:definition>
+	<skos:definition xml:lang="de">Spurenkomponenten einer hydrochemischen Analyse.</skos:definition>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1262"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1263"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1264"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1265"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1266"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1267"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1268"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1269"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1270"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1271"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1272"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1273"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1274"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1275"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1276"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1277"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1278"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1279"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1280"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1281"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1282"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1283"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1284"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1285"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1286"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1287"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1288"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1289"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1290"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1291"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1292"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1293"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1267">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">Carbonate</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.098Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Carbonat</skos:prefLabel>
+	<skos:notation>CO3</skos:notation>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1289">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">vanadium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.750Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Vanadium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of vanadium in a groundwater sample. The element vanadium has a standard atomic weight of 50,942 (IUPAC, 2018). Vanadium is mobil under oxidising redox condition but remains immobilzed under reducing conditions (Elster et al., 2018). Only very low concentrations of few µg/L are found in groundwater.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Vanadium in einer Grundwasserprobe. Das Element Vanadium hat eine relative Atommasse von 50,942 (IUPAC, 2018). Unter oxidierenden Bedingungen ist die Mobilität  hoch, im reduzierenden Milieu jedoch niedrig (Elster et al., 2018). Im Grundwasser sind jedoch zumeist nur sehr geringe Konzentrationen bis wenige µg/L nachweisbar.</skos:definition>
+	<skos:notation>V</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1302"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1268">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">fluoride</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.126Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Fluorid</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of flouride in a groundwater sample. The element fluorine has a standard atomic weight of 18,996 (IUPAC, 2018). In natural groundwater, the fluoride concentration is usually limited by the calcium concentration, but calcium fluoride (fluorite) is considered to be poorly soluble (Kölle, 2018). Most groundwaters show concentrations below 1 mg/L (Matthess, 1994).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Fluorid in einer Grundwasserprobe. Das Element Fluor hat eine relative Atommasse von 18,996 (IUPAC, 2018). In natürlichen Grundwässern wird die Fluoridkonzentration zumeist von der Calciumkonzentration limitiert, Calciumfluorid (Fluorit) gilt jedoch als schwer löslich (Kölle, 2010). In den meisten Grundwässern treten Konzentrationen von unter 1 mg/L auf (Matthess, 1994).</skos:definition>
+	<skos:notation>F</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1269">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">bromide</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.155Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Bromid</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of bromide in a groundwater sample. The element bromine has a standard atomic weight of 79,904 (IUPAC, 2018). Brom is present as bromide in groundwater and commonly accompanies chloride (Käss &amp; Käss, 2008). Elevated concentrations are usually linked to brines and hydrocarbon bearing groundwaters.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Bromid in einer Grundwasserprobe. Das Element Brom hat eine relative Atommasse von 79,904 (IUPAC, 2018). Brom ist in Grundwässern als Bromid-Ion vorhanden und als Begleiter von Chlorid meist nachweisbar (Käss &amp; Käss, 2008). Hohe Werte sind insbesondere bei Solen und Ölfeldwässer zu erwarten.</skos:definition>
+	<skos:notation>Br</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1304"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1263">
+	<skos:prefLabel xml:lang="en">total manganese</skos:prefLabel>
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.978Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Gesamtmangan</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of manganese in a groundwater sample. The element manganese has a standard atomic weight of 54,935 (IUPAC, 2018). The geochemical mobility of manganese is low, higher concentration can be present in groundwaters that are poor oxygen (Matthess, 1994).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Mangan in einer Grundwasserprobe. Das Element Mangan hat eine relative Atommasse von 54,935 (IUPAC, 2018). Die geochemische Mobilität von Mangan ist gering, doch in sauerstoffarmen Wässern können allgemein höhere Gehalte auftreten (Matthess, 1994).</skos:definition>
+	<skos:notation>Mn</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1285">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">mercury</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.633Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Quecksilber</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of mercury in a groundwater sample. The element mercury has a standard atomic weight of 200,59 (IUPAC, 2018). The concentration in groundwater is usually very low due to the low geochemical mobility (Matthess, 1994). Furthermore it tends to escape to the atmosphere.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Quecksilber in einer Grundwasserprobe. Das Element Quecksilber hat eine relative Atommasse von 200,59 (IUPAC, 2018). Aufgrund seiner geringen Mobilität tritt Quecksilber in Grundwässern in sehr geringen Konzentrationen auf (Matthess, 1994). Zudem neigt es dazu, die Atmosphäre zu entweichen.</skos:definition>
+	<skos:notation>Hg</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1264">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">strontium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.006Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Strontium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of strontium in a groundwater sample. The element strontium has a standard atomic weight of 87,62 (IUPAC, 2018). In most groundwaters, strontium levels are usually below 1 mg/L,  because solubility limits of strontium-bearing minerals are usually reached (Matthess, 1994). Higher concentrations may occur in calcium-sulfate-waters, brines and thermal waters.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Strontium in einer Grundwasserprobe. Das Element Strontium hat eine relative Atommasse von 87,62 (IUPAC, 2018). In den meisten Grundwässern liegen die Strontiumgehalte normalerweise unter 1 mg/l, da die Löslichkeitsgrenzen von strontiumführenden Mineralen erreicht werden (Matthess, 1994). Deutlich höhere Strontium-Konzentrationen  können mit Calcium-Sulfat-Wässern, Solen und Thermalwässern in Verbindung gebracht werden.</skos:definition>
+	<skos:notation>Sr</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1286">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">rubidium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.662Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Rubidium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of rubidium in a groundwater sample. The element rubidium has a standard atomic weight of 85,468 (IUPAC, 2018). The mobility in groundwater is low under all redox and pH conditions (Pirkl et al., 2015). There exists also a strong susceptibility to adsorption to clay minerals. Elevated concentrations up to 1 mg/L are known for brines.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Rubidium in einer Grundwasserprobe. Das Element Rubidium hat eine relative Atommasse von 85,468 (IUPAC, 2018). Die Mobilität ist unter allen Redox- und pH-Bedingungen gering, zudem besteht eine Sorptionsanfälligkeit an Tonminerale (Pirkl et al., 2015). Elevated concentrations up to 1 mg/L can be found at brines.</skos:definition>
+	<skos:notation>Rb</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1309"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1265">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">barium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.035Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Barium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of barium in a groundwater sample. The element barium has a standard atomic weight of 137,33 (IUPAC, 2018). Barium has a low geochemical mobility and higher concentrations of more than 1 g/L are only characteristic for groundwaters in contact with hydrocarbons and mine drainages with  low sulfate levels (Michel, 1997)</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Barium in einer Grundwasserprobe. Das Element Barium hat eine relative Atommasse von 137,33 (IUPAC, 2018). Barium weist eine geringe geochemische Mobilität auf und höhere Gehalte bis über 1 g/L sind nur für Erdölwässer und Grubenwässer mit einem geringen Sulfatgehalt charakteristisch (Michel, 1997).</skos:definition>
+	<skos:notation>Ba</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1307"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1287">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">selenium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.689Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Selen</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of selenium in a groundwater sample. The element selenium has a standard atomic weight of 78,971 (IUPAC, 2018). Selenium is  mobile under oxidizing conditions, but not under reducing conditions (Pirkl et al., 2015). It is mobile at both basic and acidic pH conditions, enrichments are found at organic material and there exists a strong suscepibitlity to adsorption to clay minerals and Fe-hydroxides. Concentrations in groundwater are usually up to a few tenths of µg/L.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Selen in einer Grundwasserprobe. Das Element Selen hat eine relative Atommasse von 78,971 (IUPAC, 2018). Die geochemische Mobilität ist unter oxidierenden Bedingungen deutlich höher als im reduzierenden Milieu und es gilt bei sauren, als auch basischen pH-Werten als mobil (Pirkl et al., 2015). Anreicherungen bestehen in der organischen Substanz und es ist sorptionsanfällig an Tonminerale und Fe-Hydroxide. In Grundwässern ist Selen maximal bis Zehner-μg/l vertreten (Michel, 1997).</skos:definition>
+	<skos:notation>Se</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1309"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1307"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1266">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">ammonium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.070Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Ammonium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of ammonium in a groundwater sample. It is the reduced form of nitrogen, in many cases ammonium that reaches the groundwater is already oxidized or adsorbed (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Ammonium in einer Grundwasserprobe. Es handelt sich um die reduzierte Form von Stickstoff, in Vielen Fällen wird Ammonium, das über den Boden in einen Grundwasserleiter gelangt oxidiert oder adsorbiert (Kölle, 2010).</skos:definition>
+	<skos:notation>NH4</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1288">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">uranium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.718Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Uran</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of uranium in a groundwater sample. The element uranium has a standard atomic weight of 238,03 (IUPAC, 2018). The mobility in groundwater is highly affected by redox conditions besides pH (Elster et al., 2018). Under oxidising conditions it is found as hexavalent uranyl-ion. In reducing environments, U is likely immobilized by precipitating tetravalent urany-ions. Dissolution from uranium bearing accessory minerals or an enrichment at redox barriers are common explanations for elevated uranium concentrations in groundwater.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Uran in einer Grundwasserprobe. Das Element Uran hat eine relative Atommasse von 238,03 (IUPAC, 2018). Für die hydrochemische Mobilität sind, abgesehen vom pH-Wert, die Redoxbedingungen von großer Bedeutung. So tritt Uran im oxidierenden Milieu als sechswertiges Uranyl-Ion auf und gilt im vierwertigen Zustand bei reduzierenden Bedingungen als immobil (Elster et al., 2018). Lösung aus uranführenden akzessorischen Mineralen, z.B. Uraninit, oder eine Anreicherung an Übergangsbereichen von oxidierenden zu reduzierenden Bereichen können erhöhte Konzentrationen im Grundwasser verursachen.</skos:definition>
+	<skos:notation>U</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1302"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1281">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">copper</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.508Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Kupfer</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of copper in a groundwater sample. The element copper has a standard atomic weight of 63,546 (IUPAC, 2018). The  mobility of copper in groundwater is heavily affected by redox conditions and pH (Philippitsch et al., 2012). Acidic conditons favour mobilisation and precipitation takes place in a basic milieu. Most concentrations in groundwater are below the detection limit.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Kupfer in einer Grundwasserprobe. Das Element Kupfer hat eine relative Atommasse von 63,546 (IUPAC, 2018). Die Mobilität von Kupfer im Grundwasser ist stark von Redoxbedingungen und dem pH-Wert abhängig (Philippitsch et al., 2012). Saure Bedingungen fördern die Löslichkeit und im basischen Milieu kommt es zu Ausfällungen. Die Konzentrationen im Grundwasser liegen meist unter der Nachweisgrenze.</skos:definition>
+	<skos:notation>Cu</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1308"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1282">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">lithium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.538Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Lithium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of lithium in a groundwater sample. The element lithium has a standard atomic weight of 6,94 (IUPAC, 2018). Concentration are usually below 0,5 mg/L, but elevated concentrations above 5 mg/L are known for thermal waters and brines (Matthess, 1994).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Lithium in einer Grundwasserprobe. Das Element Lithium hat eine relative Atommasse von 6,94 (IUPAC, 2018). Im Grundwasser betragen die Konzentrationen meist weniger als 0,5 mg/L (Matthess, 1994). Allerdings sind Gehalte über 5 mg/L bei Thermalwässern und Solen bekannt.</skos:definition>
+	<skos:notation>Li</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1283">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">molybdenum</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.573Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Molybdän</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of molybdenum in a groundwater sample. The element molybdenum has a standard atomic weight of 95,95 (IUPAC, 2018). Molybdenum in groundwater is more mobil under oxidizing conditions and there exists a strong susceptibility to adsorption to Fe-hydroxides (Matthess, 1994). Concentrations in groundwater are commonly only a few µg/L.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Molybdän in einer Grundwasserprobe. Das Element Molybdän hat eine relative Atommasse von 95,95 (IUPAC, 2018). Die Mobilität ist unter oxidierenden Bedingungen höher und es besteht eine Sorptionsanfälligkeit an Fe-Hydroxide (Matthess, 1994). Normalerweise betragen die Konzentrationen im Grundwasser nur wenige μg/L.</skos:definition>
+	<skos:notation>Mo</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1262">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">total iron</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.949Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Gesamteisen</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of total iron in an hydrochemical analysis. The element iron has a standard atomic weight of 55,842 (IUPAC, 2018). The mobilization of iron in groundwater is mainly determined by oxidation and reduction processes, pH conditions, solution and precipitation of hydroxides, carbonates and sulfides and by the presence of organic complexes (Elster et al., 2018). In aerobic conditions, iron is not mobile, since it is precipitated in its trivalent form as iron (III) hydroxide. Iron (III) can only stay mobilized in very acid conditions.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Eisen in einer Grundwasserprobe. Das Element Eisen hat eine relative Atommasse von 55,842 (IUPAC, 2018). Die Mobilisierung von Eisen im Grundwasser wird maßgeblich durch Oxidations- und Reduktionsprozesse, pH-Bedingungen, Lösung und Fällung von Hydroxiden, Karbonaten und Sulfiden und durch anwesende organische Komplexe bestimmt . Bei aeroben Bedingungen ist Eisen nicht mobil, da es in seiner dreiwertigen Form als Eisen(III)-Hydroxid ausfällt. Davon ausgenommen sind sehr saure Wässer, da auch dann Eisen(III) gelöst werden kann.</skos:definition>
+	<skos:notation>Fe</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1302"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1284">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">nickel</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.604Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Nickel</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of nickel in a groundwater sample. The element nickel has a standard atomic weight of 58,693 (IUPAC, 2018). The geochemical mobility is low and concentrations in groundwater are usually very low (Michel, 1997). Elevated values up to 100 µg/L can be found at very acid groundwaters or brines.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von NIckel in einer Grundwasserprobe. Das Element Nickel hat eine relative Atommasse von 58,693 (IUPAC, 2018). Nickel ist geochemisch nicht sonderlich mobil, deshalb sind die Konzentrationen im Grundwasser meistens äußerst gering (Michel, 1997). Bei sehr sauren Wässern und Solen sind erhöhte Werte bis 100 µg/L bekannt.</skos:definition>
+	<skos:notation>Ni</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1307"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1280">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">cobalt</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.479Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Kobalt</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of cobalt in a groundwater sample. The element cobalt has a standard atomic weight of 58,933 (IUPAC, 2018). Cobalt shows a low geochemical moblility and a strong susceptibility to adsorption to Fe- and Mn-hydroxides (Pirkl et al., 2015). Precipitation with sulfides can be found at reducing conditions and the element remains more mobile at acidic conditions. Most concentrations in groundwater are below the detection limit.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Kobalt in einer Grundwasserprobe. Das Element Kobalt hat eine relative Atommasse von 58,933 (IUPAC, 2018). Die geochemische Mobilität ist als gering einzustufen und es besteht eine starke Adsorptionsanfälligkeit an Fe- und Mn-Hydroxide (Pirkl et al., 2015). Im reduzierenden Milieu kommt es zu einer Fällung mit Sulfiden, aber bei sauren Bedingungen ist Cobalt deutlich mobiler. Die Konzentrationen liegen meist unter der Nachweisgrenze.</skos:definition>
+	<skos:notation>Co</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1309"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1278">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">caesium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.423Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Cäsium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of caesium in a groundwater sample. The element caesium has a standard atomic weight of 132,91 (IUPAC, 2018). Concentrations of caesium in groundwater are commonly very low and little is known about the geochemical mobility (Elster et al., 2018). Elevated concentrations above 1 mg/L are reported for brines.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Cäsium in einer Grundwasserprobe. Das Element Cäsium hat eine relative Atommasse von 132,91 (IUPAC, 2018). Cäsium tritt im Grundwasser in sehr geringen Spuren auf und über die Mobilität ist wenig bekannt (Elster et al., 2018). Erhöhte Werte bis über 1 mg/L sind bei Solen dokumentiert.</skos:definition>
+	<skos:notation>Cs</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1302"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1279">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">chromium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.451Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Chrom</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of chromium in a groundwater sample. The element chromium has a standard atomic weight of 51,996 (IUPAC, 2018). The geochemical mobility of chromium is low (Matthess, 1994). From six oxidation levels, only Chromium(III)-compounds appear in groundwater and best mobility is found at low pH values. Concentrations in groundwater are usually below 10 µg/L and elevated values can be anthropogenically induced.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Chrom in einer Grundwasserprobe. Das Element Chrom hat eine relative Atommasse von 51,996 (IUPAC, 2018). Es ist von einer schlechten Mobilisierung auszugehen (Matthess, 1994). So  treten von sechs möglichen Oxidationsstufen meist Chrom(III)-Verbindungen in Grundwässern auf. Diese sind nur bei niedrigen pH-Werten mobil. Die Konzentrationen liegen bei den meisten Grundwässern unter 10 µg/L, erhöhte Werte  können anthropogen bedingt sein.</skos:definition>
+	<skos:notation>Cr</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1274">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">arsenic</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.304Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Arsen</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of arsenic in a groundwater sample. The element arsenic has a standard atomic weight of 74,922 (IUPAC, 2018). The geochemical mobility of Arsenic is mainly determinded by dissolution processes or by oxidation processes that release it from Arsenic bearing sulfides (Kölle, 2010). Concentrations in groundwater are usually below 0,1 mg/L.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Arsen in einer Grundwasserprobe. Das Element Arsen hat eine relative Atommasse von 74,922 (IUPAC, 2018). Arsen kann entweder durch einfache Auflösungsprozesse in Lösung gehen, oder es wird aus arsenhaltigen Sulfiden durch Oxidationsprozesse freigesetzt (Kölle, 2010).</skos:definition>
+	<skos:notation>As</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<foaf:depiction rdf:resource="https://mcusercontent.com/3c77967bbc4854f3ced8ceb4f/images/4872965f-a4c7-4f5b-8738-a95d203391b9.jpg"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1275">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">beryllium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.332Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Beryllium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of beryllium in a groundwater sample. The element beryllium has a standard atomic weight of 9,0122 (IUPAC, 2018). Concentrations of beryllium in groundwater are usually below the detection limit, this an be explained by a very low geochemical mobility. Elevated concentration up to 200 µg/L can be found at very acid solutions, brines or deep groundwaters.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Beryllium in einer Grundwasserprobe. Das Element Beryllium hat eine relative Atommasse von 9,0122 (IUPAC, 2018). Konzentrationen von Beryllium liegen bei den meisten Grundwässern unter der Nachweisgrenze, somit ist die Mobilität als sehr gering einzustufen (Elster et al., 2018). Erhöhte Konzentrationen bis rund 200 µg/L sind bei sauren Wässern, Solen und Tiefenwässern bekannt.</skos:definition>
+	<skos:notation>Be</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1302"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1276">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">lead</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.360Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Blei</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of lead in a groundwater sample. The element lead has a standard atomic weight of 207,2 (IUPAC, 2018). Concentrations of lead in groundwater are often not detectable due to the low geochemical mobility and most concentration are lower than a few tenths of µg/L (Matthess, 1994). Elevated values can be caused by anthropogenic influences.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Blei in einer Grundwasserprobe. Das Element Blei hat eine relative Atommasse von 207,2 (IUPAC, 2018). Aufgrund der schlechten geochemischen Mobilität ist Blei im Grundwasser selten nachweisbar und geogen bedingte Konzentrationen liegen höchsten bei wenigen Zehner-µg/L (Matthess, 1994). Erhöhte Konzentrationen sind in vielen Fällen anthropogen bedingt.</skos:definition>
+	<skos:notation>Pb</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1277">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">cadmium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.388Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Cadmium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of cadmium in a groundwater sample. The element cadmium has a standard atomic weight of 112,41 (IUPAC, 2018). Concentrations of cadmium in groundwaters are usually below 1 µg/L and elevated concentrations might be caused from oxidation of cadmium bearing sulfides (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Cadmium in einer Grundwasserprobe. Das Element Cadmium hat eine relative Atommasse von 112,41 (IUPAC, 2018). In anthropogen unbelasteten Grundwässern wird eine Konzentration von 1 μg/l selten überschritten und erhöhte Gehalte sind meist auf die Oxidation von Sulfiden zurückzuführen (Kölle, 2010).</skos:definition>
+	<skos:notation>Cd</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1270">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">iodide</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.183Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Iodid</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of iodide in a groundwater sample. The element iod has a standard atomic weight of 126,90  (IUPAC, 2018). Iodine occurs as a biophilic element, elevated concentrations are often present in groundwaters that are in contact with hydrocarbons (Michel, 1997).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Iod in einer Grundwasserprobe. Das Element Iod hat eine relative Atommasse von 126,90 (IUPAC, 2018). Iod tritt als biophiles Element insbesondere bei jenen Grundwässern mit erhöhten Konzentrationen auf, die im Kontakt zu Kohlenwasserstoffen stehen (Michel, 1997).</skos:definition>
+	<skos:notation>I</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1307"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1292">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">m-silic acid</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.838Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Metakieselsäure</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of m-silic acid in a groundwater sample. The element silicon has a standard atomic weight of 28,085 (IUPAC, 2018). Dissolution and precipitation of silic acid is very slow under normal temperature conditions, however reaction speed accelerates at higher temperatures. Geothermometers can be used to determine formation temperatures if certain conditions are met (Stober &amp; Bucher, 2012).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Metakieselsäure in einer Grundwasserprobe. Das Element Silizium hat eine relative Atommasse von 28,085 (IUPAC, 2018). Die Lösung und Ausfällung von Kieselsäure geschieht bei normalen Temperaturen sehr langsam, doch erhöht sich die Reaktionsgeschwindigkeit bei höheren Temperaturen. Mithilfe von Geothermometern lassen sich aus den hydrochemischen Analysedaten unter bestimmten Bedingungen Rückschlüsse auf die Temperatur des Untergrundes ziehen (Stober &amp; Bucher, 2012).</skos:definition>
+	<skos:notation>H2Sio2</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1310"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1271">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">hydrogen sulfide</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.211Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Hydrogensulfid</skos:prefLabel>
+	<skos:notation>HS</skos:notation>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1293">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">o-boric acid</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.866Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Orthoborsäure</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of o-boric acid in a groundwater sample. The element boron has a standard atomic weight of 10,81 (IUPAC, 2018).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Orthoborsäure in einer Grundwasserprobe. Das Element Bor hat eine relative Atommasse von 10,81 (IUPAC, 2018). Bor tritt erhöht bei Solen und Ölfeldwässern auf,</skos:definition>
+	<skos:notation>H3BO3</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1272">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">aluminium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.247Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Aluminium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of aluminium in a groundwater sample. The element aluminium has a standard atomic weight of 26,982 (IUPAC, 2018). Concentrations in groundwater are usually a few hundredths or tenth mg/L  due to the low geochemical solubility, and valuese (Matthess, 1994). Concentrations above 1 mg/L are rare</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Aluminium in einer Grundwasserprobe. Das Element Aluminium hat eine relative Atommasse von 26,982 (IUPAC, 2018). Aufgrund der geringen geochemischen Löslichkeit beträgt der Aluminiumgehalt in den meisten Grundwässern nur wenige Hundertstel oder Zehntel mg/l (Matthess, 1994). Werte über 1 mg/l sind selten.</skos:definition>
+	<skos:notation>Al</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1273">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">antimony</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.275Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Antimon</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of antimony in a groundwater sample. The element antimony has a standard atomic weight of 121,76 (IUPAC, 2018). The geochemical mobility is lower at reducing condition compared to oxidisiung conditions and pH has a relatively low impact on mobility (Pirkl et al., 2015). Elevated concentrations up to 1 mg/L are known from thermal waters.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Antimon in einer Grundwasserprobe. Das Element Antimon hat eine relative Atommasse von 121,76 (IUPAC, 2018). Bei reduzierenden Bedingungen ist die Mobilität  geringer als bei oxidierenden und der pH-Wert beeinflusst die Mobilität relativ geringfügig (Pirkl et al., 2015). Erhöhte Konzentrationen bis 1 mg/l sind bei Thermalwässern bekannt.</skos:definition>
+	<skos:notation>Sb</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1309"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1290">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">zinc</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.782Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Zinc</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of zinc in a groundwater sample. The element zinc has a standard atomic weight of 65,38 (IUPAC, 2018). The concentration in groundwater is usually not determined by the mobility of zinc, but by availability (Matthess, 1994). It is mobile under acid pH conditions, and oxidation of zinc bearing sulfides is a common reason for elevated values. High concentrations can be also</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Zink in einer Grundwasserprobe. Das Element Zink hat eine relative Atommasse von 65,38 (IUPAC, 2018). Nach Matthess (1994) wird der Zinkgehalt selten durch die Löslichkeit, sondern eher durch die Verfügbarkeit bestimmt und insbesondere bei sauren pH-Werten gilt Zink als mobil. Kölle (2010) führt weiter an, dass erhöhte Konzentrationen im Grundwasser meist auf die Oxidation von Sulfiden zurückzuführen sind. Erhöhte Konzentrationen können auch anthropogen bedingt sein.</skos:definition>
+	<skos:notation>Zn</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1306"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1291">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">tin</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.810Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Tin</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of tin in a groundwater sample. The element tin has a standard atomic weight of 118,71 (IUPAC, 2018).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Zinn in einer Grundwasserprobe. Das Element Zinn hat eine relative Atommasse von 118,71 (IUPAC, 2018). Zinn ist bei allen pH- und Redoxbedingungen schwer mobilisierbar und somit bei den meisten hydrochemischen Analysen nicht nachweisbar (Elster et al., 2018). Erhöhte Werte bis 120 µg/L sind bei Ölfeldwässern dokumentiert (Kaess &amp; Kaess, 2008).</skos:definition>
+	<skos:notation>Sn</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1302"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1304"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem">
+	<skos:hasTopConcept rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252">
+	<skos:topConceptOf rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">main parameters</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.627Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Hauptparameter</skos:prefLabel>
+	<skos:definition xml:lang="en">Main parameters of a hydrochemical analysis.</skos:definition>
+	<skos:definition xml:lang="de">Hauptkomponenten einer hydrochemischen Analyse.</skos:definition>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1253"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1254"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1255"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1256"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1257"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1258"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1259"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1260"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1253">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">sodium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.674Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Natrium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of Sodium in a groundwater sample. The element Sodium has a standard atomic weight of 22,990 (IUPAC, 2018). Sodium and Chlorid appear commonly together, for example in deep groundwaters that are rich in chloride (Kölle, 2010). Sodium can be also released into groundwater due to ion exchange processes.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Natrium in einer Grundwasserprobe. Das Element Natrium hat eine relative Atommasse von 22,990 (IUPAC, 2018). Natrium und Chlorid treten häufig gemeinsam auf, z.B. chloridhaltige Tiefenwässer (Kölle, 2010). Natrium kann allerdings auch durch Ionenaustauschprozesse in das Grundwasser gelangen.</skos:definition>
+	<skos:notation>Na</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1254">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">potassium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.702Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Kalium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of Potassium in a groundwater sample. The element Potassium has a standard atomic weight of 39,098 (IUPAC, 2018). In groundwater, increased potassium concentrations can occur in many cases as a result of the neutralization of acids by potassium-containing clay minerals (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Kalium in einer Grundwasserprobe. Das Element Kalium hat eine relative Atommasse von 39,098 (IUPAC, 2018). In Grundwässern können erhöhte Kaliumkonzentrationen in vielen Fallen als Folge der Neutralisation von Säuren durch kaliumhaltige Tonminerale auftreten (Kölle, 2010).</skos:definition>
+	<skos:notation>K</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1255">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">calcium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.731Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Calcium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of Calcium in a groundwater sample. The element Calcium has a standard atomic weight of 40,078 (IUPAC, 2018). Geogenic calcium may enter groundwater due to the following reactions: dissolution of calcium carbonate by groundwater rich in carbon dioxide, dissolution of calcium sulfate from gypsum-bearing layers and neutralization reactions (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Calcium in einer Grundwasserprobe. Das Element Calcium hat eine relative Atommasse von 40,078 (IUPAC, 2018). Geogenes Calcium gelangt zumeist aufgrund der folgenden Reaktionen in Lösung: Auflösung von Calciumkarbonat durch kohlenstoffdioxidhaltige Wässer, Auflösung von Calciumsulfat aus gipsführenden Schichten und Neutralisationsreaktionen (Kölle, 2010).</skos:definition>
+	<skos:notation>Ca</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1260">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">nitrate</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.886Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Nitrat</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of nitrate in a groundwater sample. The presence of sulfate can be linked to natural and anthropogenic sources (nitrogen fertilization). in a groundwater sample, nitrogen is mobile under oxidizing conditions as nitrate (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Nitrat in einer Grundwasserprobe. Einträge von Sulfat in das Grundwasser können natürlich bedingt oder anthropogen (Stickstoffdüngung) sein. Im oxidierten Grundwasser ist Stickstoff in Form von Nitrat äußerst mobil (Kölle, 2010).</skos:definition>
+	<skos:notation>NO3</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1256">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">magnesium</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.768Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Magnesium</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of Magnesium in a groundwater sample. The element Magnesium has a standard atomic weight of 24,305 (IUPAC, 2018). Geogenic magnesium may enter groundwater due to the following reactions: dissolution of dolomite by groundwater rich in carbon dioxide and neutralization reactions (Kölle, 2010). The quotient of the molar concentration of magnesium and calcium must be considered for dissolution of calcium carbonate by groundwater rich in carbon dioxide</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Magnesium in einer Grundwasserprobe. Das Element Magnesium hat eine relative Atommasse von 24,305 (IUPAC, 2018). Geogenes Magnesium gelangt zumeist aufgrund folgender Reaktionen in Lösung: Auflösung von Dolomit durch kohlenstoffdioxidhaltige Wässer und Neutralisationsreaktionen (Kölle, 2010). Bei der Auflösung von Kalk ist  der Quotient der molaren Konzentration von Magnesium und Calcium zu beachten.</skos:definition>
+	<skos:notation>Mg</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1303"/>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1257">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">bicarbonate</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.797Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Hydrogencarbonat</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of bicarbonate in a groundwater sample. Bicarbonate, carbonate and carbon dioxide are members of the bicarbonate buffer system (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Hydrogencarbonat in einer Grundwasserprobe. Hydrogencabonat und Carbonat sind zusammen mit Kohlendioxid Bestandteil des Gleichgewichtssystems der Calcitsättigung (Kölle, 2010).</skos:definition>
+	<skos:notation>HCO3</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1258">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">chloride</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.825Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Chlorid</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of chloride in a groundwater sample. The element chlorine has a standard atomic weight of 35,450 (IUPAC, 2018). Chlorine appears in a groundwater samples almost entirely as chloride (Kölle, 2010). Sodium and Chlorid appear commonly together, for example in deep groundwaters that are rich in chloride.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Chlorid in einer Grundwasserprobe. Das Element Chlor hat eine relative Atommasse von 35,450 (IUPAC, 2018). In natürlichen Grundwässern tritt Chlor nahezu ausschließlich als Chlorid auf (Kölle, 2010). Natrium und Chlorid treten häufig gemeinsam auf, z.B. chloridhaltige Tiefenwässer.</skos:definition>
+	<skos:notation>Cl</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1259">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">sulfate</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:33.854Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Sulfat</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of sulfate in a groundwater sample. The presence of sulfate can be linked to natural and anthropogenic sources, redox conditions and biochemical conditions play an important role in sulfate reduction reactions (Kölle, 2010). In many cases, increased concentrations of sulfate in groundwater are due to gypsum-bearing geological layers.</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Sulfat in einer Grundwasserprobe. Einträge von Sulfat in das Grundwasser können natürlich bedingt oder anthropogen sein. Das Redox-Milieu und biochemische Bedingungen sind für die Sulfatreduktion zu berücksichtigen (Kölle, 2010). Erhöhte Konzentrationen von Sulfat im Grundwasser sind in vielen auf gipsführende geologische Schichten zurückzuführen.</skos:definition>
+	<skos:notation>SO4</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem">
+	<skos:hasTopConcept rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294">
+	<skos:topConceptOf rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">field parameter</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.894Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Feldparameter</skos:prefLabel>
+	<skos:definition xml:lang="en">Measured field parameter at the sampling site.</skos:definition>
+	<skos:definition xml:lang="de">Gemessener Feldparameter bei der Probenahme.</skos:definition>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1295"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1296"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1297"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1298"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1299"/>
+	<skos:narrower rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1300"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1296">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">Specific Conductance</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.963Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Elektrische Leitfähigkeit</skos:prefLabel>
+	<skos:definition xml:lang="en">Specific conductance of a groundwater sample. Specific conductance is an indirect measure of the collective concentration of dissolved ions in solution (USGS, 2019). The term “specific conductance” is correctly defined as the electrical conductance of 1 cubic centimeter of a solution at a specific temperature, usually 25 °C.</skos:definition>
+	<skos:definition xml:lang="de">Elektrische Leitfähigkeit einer Grundwasserprobe. Die elektrische Leitfähigkeit ist ein indirektes Maß für die gemeinsame Konzentration von gelöste Ionen einer Lösung (USGS, 2019). Die Definition basiert auf der elektrischen Leitfähigkeit von einem Kubikmeter Wasser bei einer bestimmten Temperatur, zumeist 25 °C.</skos:definition>
+	<skos:notation>EC</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1311"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1297">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">oxygen</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.993Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Sauerstoffgehalt</skos:prefLabel>
+	<skos:definition xml:lang="en">Concentration of oxygen in a groundwater sample. The presence of oxygen in a groundwater sample is important for the characterization of chemical, biological and ecological conditions, especially to destinguish between oxidising and reducing groundwater milieus (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Konzentration von Sauerstoff einer Grundwasserprobe. Die An- und Abwesenheit von Sauerstoff ist ein wichtiges Unterscheidungsmerkmal zur Charakterisierung unterschiedlicher chemischer, biologischer und ökologischer Situationen. Dies gilt inbesondere für die Differenzierung von reduzierenden und oxidierenden Milieus (Kölle, 2010).</skos:definition>
+	<skos:notation>O2</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1298">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">potential of hydrogen</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:35.021Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">pH-Wert</skos:prefLabel>
+	<skos:definition xml:lang="en">pH of a groundwater sample. The definition of pH is that it is a measure of the activity of the hydrogen ion (H+) and is reported as the reciprocal of the logarithm of the hydrogen ion activity (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">pH Wert einer Grundwasserprobe. Der pH-Wert ist definiert als negativer Logarithmus der Wasserstoffionenkonzentration (H+) (Kölle, 2010).</skos:definition>
+	<skos:notation>pH</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1299">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">redox potential</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:35.050Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Redoxspannung</skos:prefLabel>
+	<skos:definition xml:lang="en">Redox potential of a groundwater sample. The redox potential is a measure of the ratio between reducing and oxidizing components in groundwater.</skos:definition>
+	<skos:definition xml:lang="de">Redoxspannung einer Grundwasserprobe. Das Redoxpotential ist ein Maß für das Verhältnis zwischen reduzierenden und oxidierenden Wasserinhaltsstoffen.</skos:definition>
+	<skos:notation>Eh</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1295">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">water temperature</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:34.930Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Wassertemperatur</skos:prefLabel>
+	<skos:definition xml:lang="en">Temperature of a groundwater sample. Most groundwater is Central Europe have water temperatures of approximately 10 °C. Groundwater from deeper wells is generally warmer, the average geothermal gradient is 33 m / 1 °C (Kölle, 2010).</skos:definition>
+	<skos:definition xml:lang="de">Temperatur einer Grundwasserprobe. Die meisten Grundwassertemperaturen liegen bei  rund 10°C in Mitteleuropa. In tieferen Brunnen treten höhere Temperaturen auf, so liegt die geothermische Tiefenstufe durchschnittlich bei 33 m pro Grad Celsius (Kölle, 2010).</skos:definition>
+	<skos:notation>T</skos:notation>
+	<dcterms:references rdf:resource="https://data.geoscience.earth/ncl/geoera/ref/1305"/>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1300">
+	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:prefLabel xml:lang="en">discharge</skos:prefLabel>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-22T12:26:35.077Z</dcterms:created>
+	<skos:prefLabel xml:lang="de">Schüttung</skos:prefLabel>
+	<skos:definition xml:lang="en">Discharge of a source when taking a hydrochemical sample.</skos:definition>
+	<skos:definition xml:lang="de">Schüttung oder Förderrate einer Entnahmestelle bei hydrochemischer Probenahme.</skos:definition>
+	<skos:notation>Q</skos:notation>
+	<skos:inScheme rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1256">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1282">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1288">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1265">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1300">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1263">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1267">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1280">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1260">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1284">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1269">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1286">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1271">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1290">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1299">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1279">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1292">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1259">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1273">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1253">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1297">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1275">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1255">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1277">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1257">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1295">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1283">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1281">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1264">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1289">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1262">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1266">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1268">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1287">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1285">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1272">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1270">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1276">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1274">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1291">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1254">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1298">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1293">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1258">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1252"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1296">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1294"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1278">
+	<skos:broader rdf:resource="https://data.geoscience.earth/ncl/geoera/hover/hydrochem/1261"/>
+</rdf:Description>
+
+</rdf:RDF>

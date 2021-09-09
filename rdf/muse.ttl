@@ -1,0 +1,1135 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tags: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cycAnnot: <http://sw.cyc.com/CycAnnotations_v1#> .
+@prefix csw: <http://semantic-web.at/ontologies/csw.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix freebase: <http://rdf.freebase.com/ns/> .
+@prefix opencyc: <http://sw.opencyc.org/concept/> .
+@prefix cyc: <http://sw.cyc.com/concept/> .
+@prefix ctag: <http://commontag.org/ns#> .
+# RDF data export created by PoolParty.
+# This file contains a hierarchical subtree of a SKOS thesaurus.
+# Export date: Tue Sep 07 16:44:42 CEST 2021
+
+<https://data.geoscience.earth/ncl/geoera/muse/category> csw:hierarchyRoot true;
+  csw:hierarchyRootType skos:ConceptScheme;
+  dcterms:title "Concepts in the fields of geothermal energy, geology and hydogeology"@en;
+  dcterms:created "2021-02-10T08:00:52.596Z"^^xsd:dateTime;
+  dcterms:description "Concepts related to Geology, Hydrogeology, Soil and Mining - a geological science that study the distribution and movement of groundwater in the soil and rocks of the Earth's crust."@en;
+  a skos:ConceptScheme;
+  skos:hasTopConcept <https://data.geoscience.earth/ncl/geoera/muse/category/8690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8690> skos:topConceptOf <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:prefLabel "Concepts in the field of shallow geothermal energy"@en;
+  dcterms:created "2021-04-26T06:31:24.787Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8602>, <https://data.geoscience.earth/ncl/geoera/muse/category/8618>,
+    <http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy>, <https://data.geoscience.earth/ncl/geoera/muse/category/8654>;
+  skos:definition "Exploration pertaining to the utilization of geothermal energy resources and design of geothermal heat pumps."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8618> a skos:Concept;
+  skos:prefLabel "Possible limitations of shallow geothermal energy use"@en;
+  dcterms:created "2021-04-23T13:55:58.016Z"^^xsd:dateTime;
+  skos:definition "Areas where the use of shallow geothermal energy might be limited, due to geological, hydrogeological conditions or conflicts of use."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8619>, <https://data.geoscience.earth/ncl/geoera/muse/category/8620>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8623>, <https://data.geoscience.earth/ncl/geoera/muse/category/8629>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8630>, <https://data.geoscience.earth/ncl/geoera/muse/category/8634>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8642>, <https://data.geoscience.earth/ncl/geoera/muse/category/8643>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8644>, <https://data.geoscience.earth/ncl/geoera/muse/category/8653>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/7692>, <https://data.geoscience.earth/ncl/geoera/muse/category/7693>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/7687>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8768>, <https://data.geoscience.earth/ncl/geoera/muse/category/8771> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8629> a skos:Concept;
+  skos:prefLabel "Faults"@en;
+  dcterms:created "2021-04-23T13:55:58.060Z"^^xsd:dateTime;
+  skos:definition "A contact separating two bodies of material across which one body has slid past the other."@en;
+  skos:altLabel "fault zone"@en, "faulted contact"@en;
+  skos:closeMatch <http://resource.geosciml.org/classifier/cgi/contacttype/faulted_contact>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8619> a skos:Concept;
+  skos:prefLabel "Traffic light map for closed loop system"@en;
+  dcterms:created "2021-04-23T13:55:58.019Z"^^xsd:dateTime;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Overall evaluation of possible limitations and restrictions to the installation of closed loop systems based on a 3 colour  schemes (pink: no installation allowed, yellow: installation based on case to case decision, green: no restrictions known)"@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8623> a skos:Concept;
+  skos:prefLabel "Aquifer Type"@en;
+  dcterms:created "2021-04-23T13:55:58.036Z"^^xsd:dateTime;
+  skos:definition "Types of aquifers."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8624>, <https://data.geoscience.earth/ncl/geoera/muse/category/8625>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/AquiferTypeValue>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8624> a skos:Concept;
+  skos:prefLabel "Confined artesian"@en;
+  dcterms:created "2021-04-23T13:55:58.040Z"^^xsd:dateTime;
+  skos:definition "An aquifer containing water between to two relatively impermeable boundaries. The water level in a well tapping a confined aquifer stands above the top of the confined aquifer and can be higher or lower than the water table that may be present in the material above. The water level rises above the ground surface, yielding a flowing well."@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/AquiferTypeValue/confinedArtesian>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8625> a skos:Concept;
+  skos:prefLabel "Confined subartesian"@en;
+  dcterms:created "2021-04-23T13:55:58.044Z"^^xsd:dateTime;
+  skos:definition "An aquifer containing water between two relatively impermeable boundaries. The water level in a well tapping a confined aquifer stands above the top of the confined aquifer and can be higher or lower than the water table that may be present in the material above it. The water level does not rise above the ground surface."@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/AquiferTypeValue/confinedSubArtesian>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8634> a skos:Concept;
+  skos:prefLabel "Critical chemical composition of groundwater"@en;
+  dcterms:created "2021-04-23T13:55:58.080Z"^^xsd:dateTime;
+  skos:definition "Groundwater zones of problematic chemistry related to shallow geothermal energy"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8635>, <https://data.geoscience.earth/ncl/geoera/muse/category/8636>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8637>, <https://data.geoscience.earth/ncl/geoera/muse/category/8638>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8639>, <https://data.geoscience.earth/ncl/geoera/muse/category/8640>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8641>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8640> a skos:Concept;
+  skos:prefLabel "multiple risks"@en;
+  dcterms:created "2021-04-23T13:55:58.106Z"^^xsd:dateTime;
+  skos:definition "Multiple risks associated with manganes and iron scaling; carbonate scaling; metal and concrete corrosion."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8638> a skos:Concept;
+  skos:prefLabel "risk of metal corrosion"@en;
+  dcterms:created "2021-04-23T13:55:58.097Z"^^xsd:dateTime;
+  skos:definition "Acid conditions generally lead to corrosive attack on metallic objects places in groundwater. Susceptible metals include iron, steel, galvanized iron and brass."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8639> a skos:Concept;
+  skos:prefLabel "risk of concrete corrosion"@en;
+  dcterms:created "2021-04-23T13:55:58.101Z"^^xsd:dateTime;
+  skos:definition "Where the risk of concreter corrosion is likely."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8635> a skos:Concept;
+  skos:prefLabel "no chemical risk"@en;
+  dcterms:created "2021-04-23T13:55:58.084Z"^^xsd:dateTime;
+  skos:definition "No groundwater risks associated with manganes and iron scaling; carbonate scaling; metal and concrete corrosion."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8636> a skos:Concept;
+  skos:prefLabel "risk of manganese and iron scaling"@en;
+  dcterms:created "2021-04-23T13:55:58.088Z"^^xsd:dateTime;
+  skos:definition "Where precipitation of manganese and iron is likely in the presence of oxygen."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8637> a skos:Concept;
+  skos:prefLabel "risk of carbonate scaling"@en;
+  dcterms:created "2021-04-23T13:55:58.093Z"^^xsd:dateTime;
+  skos:definition "Usually results from the precipitation of carbonates, principally calcium carbonatre (lime scale) from groundwater in the proximity of the well screen."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8641> a skos:Concept;
+  skos:prefLabel "lack of chemical analysis of groundwater"@en;
+  dcterms:created "2021-04-23T13:55:58.110Z"^^xsd:dateTime;
+  skos:definition "Lack of data available to analyse the chemical properties of the of groundwater."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8584>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8768> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8775>;
+  dcterms:created "2021-07-22T06:58:20.904Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  a skos:Concept;
+  skos:prefLabel "Contaminated area"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8769>, <https://data.geoscience.earth/ncl/geoera/muse/category/8770>;
+  skos:definition "Sites with confirmed or suspected waste, landfills and/or underground pollution generated from domestic, construction and/or industrial activities that may have an impact on the installation of shallow geothermal energy systems."@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8770> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8777>;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-07-22T06:58:51.162Z"^^xsd:dateTime;
+  skos:prefLabel "potentially contaminated site"@en;
+  a skos:Concept;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Site which due to its use bears the risk of potentially contaminating the underground."@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8769> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8776>;
+  a skos:Concept;
+  dcterms:created "2021-07-22T06:58:33.797Z"^^xsd:dateTime;
+  skos:prefLabel "contaminated site"@en;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Site with proven contamination of the underground "@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8630> a skos:Concept;
+  skos:prefLabel "Mining Activity Type"@en;
+  dcterms:created "2021-04-23T13:55:58.064Z"^^xsd:dateTime;
+  skos:definition "The type of mining activity, processing activity, or production."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8631>, <https://data.geoscience.earth/ncl/geoera/muse/category/8632>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8633>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/MiningActivityTypeValue>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8631> a skos:Concept;
+  skos:prefLabel "Open pit"@en;
+  dcterms:created "2021-04-23T13:55:58.067Z"^^xsd:dateTime;
+  skos:definition "An open-sky excavation (also open-sky mine) for the extraction of metallic ores and /or commodities."@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/MiningActivityTypeValue/openPit>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8632> a skos:Concept;
+  skos:prefLabel "Open pit and underground"@en;
+  dcterms:created "2021-04-23T13:55:58.071Z"^^xsd:dateTime;
+  skos:definition "Covers both the open pit and underground mining activity"@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/MiningActivityTypeValue/openPitAndUnderground>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8633> a skos:Concept;
+  skos:prefLabel "Subsurface mining"@en;
+  dcterms:created "2021-04-23T13:55:58.075Z"^^xsd:dateTime;
+  skos:definition "Mining beneath the surface of the earth."@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/MiningActivityTypeValue/subsurfaceMining>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8620> a skos:Concept;
+  skos:prefLabel "Traffic light map for open loop system"@en;
+  dcterms:created "2021-04-23T13:55:58.023Z"^^xsd:dateTime;
+  skos:definition "Overall evaluation of possible limitations and restrictions to the installation of open loop systems based on a 3 colour  schemes (pink: no installation allowed, yellow: installation based on case to case decision, green: no  restrictions known)"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8642> a skos:Concept;
+  skos:prefLabel "area exposed to flood risk"@en;
+  dcterms:created "2021-04-23T13:55:58.115Z"^^xsd:dateTime;
+  skos:definition "area which is defined as exposed to flood risks"@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/SupplementaryRegulationValue/2_1_1_AreaExposedToFloodRisk>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8653> a skos:Concept;
+  skos:prefLabel "Landslide"@en;
+  dcterms:created "2021-04-23T13:55:58.158Z"^^xsd:dateTime;
+  skos:definition "Processes of downhill slope movements of soil, rock, and organic materials related to different types of ground failure."@en;
+  skos:closeMatch <http://inspire.ec.europa.eu/codelist/NaturalHazardCategoryValue/landslide>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8643> a skos:Concept;
+  skos:prefLabel "Nature protection"@en;
+  dcterms:created "2021-04-23T13:55:58.119Z"^^xsd:dateTime;
+  skos:definition "area which relates to the protection of nature"@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/SupplementaryRegulationValue/1_4_NatureProtection>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8644> a skos:Concept;
+  skos:prefLabel "subsurface infrastructure"@en;
+  dcterms:created "2021-04-23T13:55:58.123Z"^^xsd:dateTime;
+  skos:definition "Any subsurface installations which might lead to conflicts with well drilling and borehole heat exchangers."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8645>, <https://data.geoscience.earth/ncl/geoera/muse/category/8646>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8647>, <https://data.geoscience.earth/ncl/geoera/muse/category/8648>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8649>, <https://data.geoscience.earth/ncl/geoera/muse/category/8650>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8651>, <https://data.geoscience.earth/ncl/geoera/muse/category/8652>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8585>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8650> a skos:Concept;
+  skos:prefLabel "water and sewage infrastructure"@en;
+  dcterms:created "2021-04-23T13:55:58.147Z"^^xsd:dateTime;
+  skos:definition "Areas used for the extraction, collection, purification storage and distribution of water, collection and treatment of sewage (including the pipelines)."@en;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/HILUCSValue/4_3_2_WaterAndSewageInfrastructure>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8651> a skos:Concept;
+  skos:prefLabel "telecommunication"@en;
+  dcterms:created "2021-04-23T13:55:58.151Z"^^xsd:dateTime;
+  skos:definition "Telecommunications networks."@en;
+  skos:closeMatch <http://inspire.ec.europa.eu/codelist/UtilityNetworkTypeValue/telecommunications>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8649> a skos:Concept;
+  skos:prefLabel "district heating"@en;
+  dcterms:created "2021-04-23T13:55:58.143Z"^^xsd:dateTime;
+  skos:definition "The distribution of thermal energy in the form of steam, hot water or chilled liquids, from a central source of production through a network to multiple buildings or sites, for the use of space or process heating or cooling"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8588>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8645> a skos:Concept;
+  skos:prefLabel "unspecified"@en;
+  dcterms:created "2021-04-23T13:55:58.127Z"^^xsd:dateTime;
+  skos:definition "Unspecified subsurface infrastructure"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8585>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8646> a skos:Concept;
+  skos:prefLabel "tunnel (underground road or railway)"@en;
+  dcterms:created "2021-04-23T13:55:58.131Z"^^xsd:dateTime;
+  skos:definition "A passage built underground, for example to allow a road or railway to go through a hill, under a river, etc."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8586>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8647> a skos:Concept;
+  skos:prefLabel "electric lines"@en;
+  dcterms:created "2021-04-23T13:55:58.134Z"^^xsd:dateTime;
+  skos:definition "A utility link or link sequence used to convey electricity from one location to another"@en;
+  skos:closeMatch <http://inspire.ec.europa.eu/featureconcept/ElectricityCable>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8648> a skos:Concept;
+  skos:prefLabel "gas lines"@en;
+  dcterms:created "2021-04-23T13:55:58.139Z"^^xsd:dateTime;
+  skos:definition "A pipeline used to transport natural gas"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8587>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8652> a skos:Concept;
+  skos:prefLabel "underground car park"@en;
+  dcterms:created "2021-04-23T13:55:58.154Z"^^xsd:dateTime;
+  skos:definition "Underground car parking facility."@en;
+  skos:closeMatch <http://inspire.ec.europa.eu/codelist/RoadServiceTypeValue/parking>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7687> dcterms:created "2021-04-23T13:55:58.048Z"^^xsd:dateTime;
+  skos:definition "Areas dedicated to drinking water or curative water supply, which migh limit the use of shallow geothermal energy"@en;
+  skos:prefLabel "Groundwater protection"@en;
+  skos:closeMatch <http://www.eionet.europa.eu/gemet/en/concept/6747>;
+  a skos:Concept;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7692> skos:definition "Areas with rocks susceptible to karstification"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/7686>;
+  skos:closeMatch <http://inspire.ec.europa.eu/codelist/NaturalGeomorphologicFeatureTypeValue/karstChemicalWeathering>;
+  dcterms:created "2021-04-23T13:55:58.052Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:prefLabel "Potentially karstified zones"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7693> skos:prefLabel "Compressible ground"@en;
+  a skos:Concept;
+  dcterms:created "2021-04-23T13:55:58.056Z"^^xsd:dateTime;
+  skos:definition "Hazard for subsidence due to unconsolidated sediments"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8771> skos:prefLabel "Flood hazard"@en;
+  a skos:Concept;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-07-22T07:01:21.851Z"^^xsd:dateTime;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8772>, <https://data.geoscience.earth/ncl/geoera/muse/category/8773>;
+  skos:definition "Zones possibly affected by periodic flooding"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8778> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8772> dcterms:created "2021-07-22T07:01:33.915Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  skos:prefLabel "Flooded area in a 100-year-flood"@en;
+  a skos:Concept;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Zones possibly affected by a flood that statistically occurs once every 100 years"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8779> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8773> skos:prefLabel "Flooded area in a 300-year-flood"@en;
+  a skos:Concept;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-07-22T07:01:47.979Z"^^xsd:dateTime;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Zones possibly affected by a flood that statistically occurs once every 300 years"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8780> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8602> a skos:Concept;
+  skos:prefLabel "Resources for shallow geothermal energy"@en;
+  dcterms:created "2021-04-23T13:55:57.958Z"^^xsd:dateTime;
+  skos:definition "Thermal energy supply for the use of shallow geothermal energy"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8603>, <https://data.geoscience.earth/ncl/geoera/muse/category/8610>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8603> skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/12259>;
+  a skos:Concept;
+  skos:prefLabel "Resources for open loop systems"@en;
+  dcterms:created "2021-04-23T13:55:57.962Z"^^xsd:dateTime;
+  skos:definition "Shallow geothermal energy supply for open loop systems"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8604>, <https://data.geoscience.earth/ncl/geoera/muse/category/8605>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8606>, <https://data.geoscience.earth/ncl/geoera/muse/category/8607>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8608>, <https://data.geoscience.earth/ncl/geoera/muse/category/8609>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8579>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8609> a skos:Concept;
+  skos:prefLabel "Specific hydraulic productivity"@en;
+  dcterms:created "2021-04-23T13:55:57.981Z"^^xsd:dateTime;
+  skos:definition "Maximum yield or pumping rate of a groundwater well doublet per square meter at a given location."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/12259> skos:prefLabel "Mean groundwater temperature"@en;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-08-31T15:11:38.241Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Annual mean groundwater temperature"@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/12260> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8605> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/12260>;
+  a skos:Concept;
+  skos:prefLabel "Maximum groundwater temperature"@en;
+  dcterms:created "2021-04-23T13:55:57.969Z"^^xsd:dateTime;
+  skos:definition "Annual maximum groundwater temperature."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8606> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/12260>;
+  a skos:Concept;
+  skos:prefLabel "Minimum groundwater temperature"@en;
+  dcterms:created "2021-04-23T13:55:57.972Z"^^xsd:dateTime;
+  skos:definition "Annual minimum groundwater temperature."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8607> a skos:Concept;
+  skos:prefLabel "Specific thermal capacity - open loop systems"@en;
+  dcterms:created "2021-04-23T13:55:57.974Z"^^xsd:dateTime;
+  skos:definition "Thermal capacity of a well doublet for heating and/or cooling depending on the hydraulic productivity and the thermal productivity."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8764>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8608> a skos:Concept;
+  skos:prefLabel "Specific annual thermal load - open loop systems"@en;
+  dcterms:created "2021-04-23T13:55:57.978Z"^^xsd:dateTime;
+  skos:definition "Energy content available per year in a defined volume of a groundwater body for heating and/or cooling applications."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8764>, <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8604> a skos:Concept;
+  skos:prefLabel "Thermal productivity"@en;
+  dcterms:created "2021-04-23T13:55:57.965Z"^^xsd:dateTime;
+  skos:definition "The maximum temperature shift between the production and the injection well that is possible with regards to legal or ecological limitations."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8610> a skos:Concept;
+  skos:prefLabel "Resources for closed loop systems"@en;
+  dcterms:created "2021-04-23T13:55:57.985Z"^^xsd:dateTime;
+  skos:definition "Shallow geothermal energy supply for closed loop systems"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8611>, <https://data.geoscience.earth/ncl/geoera/muse/category/8612>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/7691>, <https://data.geoscience.earth/ncl/geoera/muse/category/8614>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8615>, <https://data.geoscience.earth/ncl/geoera/muse/category/8616>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8617>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8581>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8765>, <https://data.geoscience.earth/ncl/geoera/muse/category/8766>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8767> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7691> skos:definition "Temperature of the land surface on the top canopy layer"@en;
+  a skos:Concept;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/7685>;
+  skos:prefLabel "Land surface temperature"@en;
+  dcterms:created "2021-04-23T13:55:57.996Z"^^xsd:dateTime;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8616> a skos:Concept;
+  skos:prefLabel "Average interval temperature gradient"@en;
+  dcterms:created "2021-04-23T13:55:58.008Z"^^xsd:dateTime;
+  skos:definition "The average thermal gradient within a given depth interval."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8583>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8617> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8774>;
+  a skos:Concept;
+  skos:prefLabel "Annual thermal load - closed loop system"@en;
+  dcterms:created "2021-04-23T13:55:58.012Z"^^xsd:dateTime;
+  skos:definition "The annual amount of thermal energy available to be used with a closed loop system."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8612> a skos:Concept;
+  skos:prefLabel "Thermal conductivity at a specific geological unit"@en;
+  dcterms:created "2021-04-23T13:55:57.992Z"^^xsd:dateTime;
+  skos:definition "Thermal conductivity of a geological unit relevant for shallow geothermal energy use (e.g. bedrock)."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8766> skos:definition "Specific annual thermal energy content for heating and / or cooling referring per surface area for borehole heat exchangers at a defined length."@en;
+  skos:prefLabel "Specific annual thermal load - closed loop system"@en;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-07-22T06:56:56.497Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8767> skos:definition "Specific thermal capacity per surface area unit for borehole heat exchangers of a defined length."@en;
+  a skos:Concept;
+  dcterms:created "2021-07-22T06:57:13.989Z"^^xsd:dateTime;
+  skos:prefLabel "Specific thermal capacity - closed loop system"@en;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8614> a skos:Concept;
+  skos:prefLabel "Average interval bulk thermal conductivity"@en;
+  dcterms:created "2021-04-23T13:55:58.000Z"^^xsd:dateTime;
+  skos:definition "The ability of the ground to conduct heat within a given depth interval as an average value."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8615> a skos:Concept;
+  skos:prefLabel "Average interval subsurface temperature"@en;
+  dcterms:created "2021-04-23T13:55:58.004Z"^^xsd:dateTime;
+  skos:definition "Average temperature below ground level within a given depth interval."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8582>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8611> a skos:Concept;
+  skos:prefLabel "Formations suitable for borehole thermal energy storage (BTES)"@en;
+  dcterms:created "2021-04-23T13:55:57.988Z"^^xsd:dateTime;
+  skos:definition "Geological layers that are well suited to store thermal energy in the ground with borehole heat exchangers."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8765> skos:definition "Maximum heat transfer rate (heating, cooling) related to borehole heat exchangers (BHE) for a defined depth interval."@en;
+  a skos:Concept;
+  dcterms:created "2021-07-22T06:56:30.453Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  skos:prefLabel "Heat transfer rate"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy> foaf:isPrimaryTopicOf
+    <https://en.wikipedia.org/wiki/Geothermal_energy>;
+  skos:topConceptOf <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> a skos:ConceptScheme;
+  dcterms:created "2020-09-23T06:46:51.037Z"^^xsd:dateTime;
+  skos:altLabel "geothermal heat exchangers"@en;
+  skos:definition "Exploration pertaining to the utilization of geothermal energy resources and design of geothermal heat pumps."@en;
+  dcterms:title "geothermal energy"@en;
+  dcterms:description """Exploration pertaining to the utilization of geothermal energy resources and design of geothermal heat pumps.
+
+"""@en .
+
+<http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy> dcterms:created
+    "2020-09-23T06:50:03.488Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1321>;
+  skos:definition "Exploration pertaining to the utilization of geothermal energy resources and design of geothermal heat pumps."@en;
+  skos:prefLabel "geothermal energy"@en;
+  skos:altLabel "geothermal heat exchangers"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1321> foaf:isPrimaryTopicOf
+    <https://twitter.com/MuseGeoera>;
+  foaf:page <https://geoera.eu/blog/muse-differences-between-deep-and-shallow-geothermal-energy/>;
+  foaf:depiction <https://i1.wp.com/geoera.eu/wp-content/uploads/2020/07/grafik-2.png>;
+  a skos:Concept;
+  skos:prefLabel "shallow geothermal energy"@en;
+  dcterms:created "2020-09-23T07:07:58.735Z"^^xsd:dateTime;
+  skos:definition "Energy stored underground in a depth of up to 400 meters."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1322>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1329>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1322> foaf:isPrimaryTopicOf
+    <https://geoera.eu/projects/muse3/fact-sheets-of-shallow-geothermal-energy-concepts/>;
+  foaf:depiction <https://i1.wp.com/geoera.eu/wp-content/uploads/2021/01/Task_2.4_FS_0.png?w=1289&ssl=1>;
+  dcterms:source <https://geoera.eu/wp-content/uploads/2021/01/Task_2.4_FS_0.pdf>;
+  a skos:Concept;
+  skos:prefLabel "shallow geothermal energy system"@en;
+  dcterms:created "2020-09-23T07:07:58.763Z"^^xsd:dateTime;
+  skos:altLabel "ground source heat pump system"@en;
+  skos:definition "Installations that enable the use of the energy stored underground in a depth of up to 300 to 400 meters."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1323>,
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1326>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1330>, <https://data.geoscience.earth/ncl/geoera/ref/1329>,
+    <https://data.geoscience.earth/ncl/geoera/ref/1332>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1323> foaf:page
+    <https://geoera.eu/projects/muse3/fact-sheets-of-shallow-geothermal-energy-concepts/>,
+    <https://www.bbc.com/news/uk-wales-49579094>;
+  a skos:Concept;
+  skos:prefLabel "open loop system"@en;
+  dcterms:created "2020-09-23T07:07:58.791Z"^^xsd:dateTime;
+  skos:altLabel "groundwater heat pump"@en, "open loop geothermal system"@en;
+  skos:definition "A shallow geothermal open loop system extracts energy of a waterbody (usually ground water or surface water) to use it for heating and or cooling, domestic hot water or energy storage."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1324>,
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1325>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1329>, <https://data.geoscience.earth/ncl/geoera/ref/1332>,
+    <https://data.geoscience.earth/ncl/geoera/ref/1331>, <https://data.geoscience.earth/ncl/geoera/ref/1330>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1324> a skos:Concept;
+  skos:prefLabel "surface water heat exchanger"@en;
+  dcterms:created "2020-09-23T07:07:58.818Z"^^xsd:dateTime;
+  skos:definition "A surface water body provides energy for heating or cooling either directly (free cooling) or with a heat pump."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1331>, <https://data.geoscience.earth/ncl/geoera/ref/1329>,
+    <https://data.geoscience.earth/ncl/geoera/ref/1332>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1325> foaf:depiction
+    <https://i2.wp.com/geoera.eu/wp-content/uploads/2021/01/Task_2.4_FS_3.png?w=578&ssl=1>;
+  dcterms:source <https://geoera.eu/wp-content/uploads/2021/01/Task_2.4_FS_3.pdf>;
+  a skos:Concept;
+  skos:prefLabel "ground water heat exchanger"@en;
+  dcterms:created "2020-09-23T07:07:58.847Z"^^xsd:dateTime;
+  skos:definition "Groundwater provides energy for heating or cooling either directly (free cooling) or with a heat pump."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1330>, <https://data.geoscience.earth/ncl/geoera/ref/1329>,
+    <https://data.geoscience.earth/ncl/geoera/ref/1332>, <https://data.geoscience.earth/ncl/geoera/ref/1331>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1326> foaf:page
+    <https://geoera.eu/blog/muse-closed-loop-systems-requirements-advantages/>;
+  foaf:depiction <https://i2.wp.com/geoera.eu/wp-content/uploads/2020/09/figure_cls-scaled.jpg>;
+  foaf:page <https://twitter.com/MuseGeoera>;
+  a skos:Concept;
+  skos:prefLabel "closed loop system"@en;
+  dcterms:created "2020-09-23T07:07:58.875Z"^^xsd:dateTime;
+  skos:altLabel "closed loop geothermal system"@en;
+  skos:definition "A heat carrier fluid circulates in horizontally or vertically installed pipes to harness from or store heat into the underground. The system provides heating and cooling, domestic hot water or energy storage."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1327>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1329>, <https://data.geoscience.earth/ncl/geoera/ref/1332>,
+    <https://data.geoscience.earth/ncl/geoera/ref/1331>, <https://data.geoscience.earth/ncl/geoera/ref/1330>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1327> foaf:depiction
+    <https://i0.wp.com/geoera.eu/wp-content/uploads/2021/01/Task_2.4_FS_1.png?w=579&ssl=1>;
+  a skos:Concept;
+  skos:prefLabel "Borehole heat exchanger"@en;
+  dcterms:created "2020-09-23T07:07:58.914Z"^^xsd:dateTime;
+  skos:altLabel "vertical heat exchanger"@en;
+  skos:definition "A heat carrier fluid circulates in vertically installed pipes in a borehole to harness from or store heat into the underground."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/1329>, <https://data.geoscience.earth/ncl/geoera/ref/1332>,
+    <https://data.geoscience.earth/ncl/geoera/ref/1331>, <https://data.geoscience.earth/ncl/geoera/ref/1330>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>, <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8654> a skos:Concept;
+  skos:prefLabel "Decision support map for the use of shallow geothermal energy"@en;
+  dcterms:created "2021-04-23T13:55:58.161Z"^^xsd:dateTime;
+  skos:definition "General map evaluating the suitability and preference of open loop and closed loop shallow geothermal systems."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category> skos:hasTopConcept <https://data.geoscience.earth/ncl/geoera/muse/category/8688> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8688> skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:prefLabel "Concepts in the field of shallow geothermal energy related to Hydrogeology"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/7696>, <https://data.geoscience.earth/ncl/geoera/muse/category/8665>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/7694>;
+  skos:topConceptOf <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:created "2021-04-26T06:17:30.634Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:definition "Geological science that study the distribution and movement of groundwater in the soil and rocks of the Earth's crust."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8655>, <https://data.geoscience.earth/ncl/geoera/muse/category/7687> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7694> skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:created "2021-04-23T13:55:58.191Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:prefLabel "Area suited for groundwater disposal to surface water or municipal drains"@en;
+  skos:definition "Areas suited for groundwater disposal to surface water or municipal drains. Relevant for areas where thermally used groundwater may not be possible to be injected to the groundwater for legal or technical reasons."@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7696> skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/7695>;
+  skos:exactMatch <http://inspire.ec.europa.eu/featureconcept/GroundWaterBody>;
+  dcterms:created "2021-04-23T13:55:58.181Z"^^xsd:dateTime;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "A distinct volume of groundwater within an aquifer or system of aquifers, which is hydraulically isolated from nearby groundwater bodies."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8662>;
+  a skos:Concept;
+  skos:altLabel "Aquifer"@en;
+  skos:prefLabel "Groundwater body"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/7690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8662> a skos:Concept;
+  skos:prefLabel "Depth of aquifer"@en;
+  dcterms:created "2021-04-23T13:55:58.188Z"^^xsd:dateTime;
+  skos:definition "The depth to the top surface of an aquifer from the ground surface."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8589> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7690> skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  a skos:Concept;
+  skos:altLabel "Aquifer suitable for open-loop systems"@en;
+  dcterms:created "2021-04-23T13:55:58.184Z"^^xsd:dateTime;
+  skos:closeMatch <http://inspire.ec.europa.eu/featureconcept/GroundWaterBody>;
+  skos:definition "Outline of a distinct volume of groundwater within an aquifer or system of aquifers, which is hydraulically isolated from nearby groundwater bodies and provides enough yield with suitable temperatures for open-loop systems (groundwater heat exchangers) with and/or without thermal storage."@en;
+  skos:prefLabel "Groundwater body suitable for open-loop systems"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8781>, <https://data.geoscience.earth/ncl/geoera/muse/category/8782>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8783> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8781> skos:prefLabel "Groundwater body suitable for open-loop systems without thermal energy storage"@en;
+  a skos:Concept;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-07-22T07:21:55.942Z"^^xsd:dateTime;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Outline of a distinct volume of groundwater within an aquifer or system of aquifers, which is hydraulically isolated from nearby groundwater bodies and provides enough yield  with suitable temperatures for open-loop systems (groundwater heat exchangers) without thermal storage."@en;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8784> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8782> dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  skos:prefLabel "Groundwater body suitable for thermal energy storage at low temperatures"@en;
+  a skos:Concept;
+  dcterms:created "2021-07-22T07:22:13.912Z"^^xsd:dateTime;
+  skos:definition "Outline of a distinct volume of groundwater within an aquifer or system of aquifers, which is hydraulically isolated from nearby groundwater bodies and provides enough yield  with suitable temperatures for open-loop systems (groundwater heat exchangers) with thermal storage at low temperatures."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8785> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8783> skos:prefLabel "Groundwater body suitable for thermal energy storage at higher temperatures"@en;
+  a skos:Concept;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2021-07-22T07:22:24.430Z"^^xsd:dateTime;
+  skos:definition "Outline of a distinct volume of groundwater within an aquifer or system of aquifers, which is hydraulically isolated from nearby groundwater bodies and provides enough yield  with suitable temperatures for open-loop systems (groundwater heat exchangers) with thermal storage at higher temperatures."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8785> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7695> dcterms:created "2021-04-23T13:55:58.195Z"^^xsd:dateTime;
+  a skos:Concept;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:prefLabel "Net aquifer thickness"@en;
+  skos:definition "Water saturated thickness of a groundwater body"@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8665> a skos:Concept;
+  skos:prefLabel "Well"@en;
+  dcterms:created "2021-04-23T13:55:58.199Z"^^xsd:dateTime;
+  skos:definition "A shaft or hole sunk, dug or drilled into the Earth to observe, extract or inject water"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8666>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8590>;
+  skos:closeMatch <http://inspire.ec.europa.eu/featureconcept/ActiveWell> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8666> a skos:Concept;
+  skos:prefLabel "observed property"@en;
+  dcterms:created "2021-04-23T13:55:58.203Z"^^xsd:dateTime;
+  skos:example "Groundwater level"@en;
+  skos:definition "Phenomenon being observed."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8667>, <https://data.geoscience.earth/ncl/geoera/muse/category/8668>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8670>, <https://data.geoscience.earth/ncl/geoera/muse/category/8671>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8672>, <https://data.geoscience.earth/ncl/geoera/muse/category/8673>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8674>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8590> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8670> a skos:Concept;
+  skos:prefLabel "Hydraulic transmissivity"@en;
+  dcterms:created "2021-04-23T13:55:58.220Z"^^xsd:dateTime;
+  skos:definition "The rate of groundwater flow laterally through an aquifer, determined by hydraulic conductivity and container thickness."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8590> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8671> a skos:Concept;
+  skos:prefLabel "electrical conductivity"@en;
+  dcterms:created "2021-04-23T13:55:58.224Z"^^xsd:dateTime;
+  skos:definition "Measured electric conductivity of the groundwater at a defined depth interval or for a single point in depth."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8591> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8672> a skos:Concept;
+  skos:prefLabel "groundwater temperature"@en;
+  dcterms:created "2021-04-23T13:55:58.228Z"^^xsd:dateTime;
+  skos:definition "Observed groundwater temperature at a defined depth interval or for a single point."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8592> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8673> a skos:Concept;
+  skos:prefLabel "Groundwater depth"@en;
+  dcterms:created "2021-04-23T13:55:58.232Z"^^xsd:dateTime;
+  skos:definition "The depth below ground level at which the surface of groundwater stands."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8593> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8667> a skos:Concept;
+  skos:prefLabel "hydraulic conductivity"@en;
+  dcterms:created "2021-04-23T13:55:58.208Z"^^xsd:dateTime;
+  skos:definition "Hydraulic conductivity measures how easily a fluid can move through the voids in a material"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8590> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8668> skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/12261>;
+  a skos:Concept;
+  skos:prefLabel "Yield Type"@en;
+  dcterms:created "2021-04-23T13:55:58.212Z"^^xsd:dateTime;
+  skos:example "specific yield, safe yield"@en;
+  skos:definition "Type of aquifer yields"@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8669>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8590> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/12261> a skos:Concept;
+  dcterms:created "2021-08-31T15:28:13.505Z"^^xsd:dateTime;
+  skos:prefLabel "Specific capacity"@en;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:definition "Extracted water volume per hour and meter drawdown for a defined well diameter."@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8669> dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/12262>;
+  a skos:Concept;
+  skos:prefLabel "Specific yield"@en;
+  dcterms:created "2021-04-23T13:55:58.216Z"^^xsd:dateTime;
+  skos:definition "Ratio of the volume of water that a given mass of saturated rock will yield by gravity to the volume of that mass."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8674> a skos:Concept;
+  skos:prefLabel "Groundwater level"@en;
+  dcterms:created "2021-04-23T13:55:58.236Z"^^xsd:dateTime;
+  skos:definition "The elevation above or below sea level at which the surface of groundwater stands"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8593> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8655> a skos:Concept;
+  skos:prefLabel "Active Well Type"@en;
+  dcterms:created "2021-04-23T13:55:58.164Z"^^xsd:dateTime;
+  skos:definition "Types of active wells."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8656>, <https://data.geoscience.earth/ncl/geoera/muse/category/8657>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8658>, <https://data.geoscience.earth/ncl/geoera/muse/category/8659>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/ActiveWellTypeValue> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8656> a skos:Concept;
+  skos:prefLabel "exploitation"@en;
+  dcterms:created "2021-04-23T13:55:58.168Z"^^xsd:dateTime;
+  skos:definition "The extraction of groundwater from an aquifer for various purposes (domestic, industrial, water supply intake and other)."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/ActiveWellTypeValue/exploitation> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8657> a skos:Concept;
+  skos:prefLabel "observation"@en;
+  dcterms:created "2021-04-23T13:55:58.171Z"^^xsd:dateTime;
+  skos:example "polution monitoring, etc."@en;
+  skos:definition "A well used for observation purposes."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/ActiveWellTypeValue/observation> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8658> a skos:Concept;
+  skos:prefLabel "Other"@en;
+  dcterms:created "2021-04-23T13:55:58.175Z"^^xsd:dateTime;
+  skos:definition "Any other usage of a well."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/ActiveWellTypeValue/other> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8659> a skos:Concept;
+  skos:prefLabel "water supply"@en;
+  dcterms:created "2021-04-23T13:55:58.178Z"^^xsd:dateTime;
+  skos:example "drinking water supply"@en;
+  skos:definition "Well used to supply water for various usages."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:exactMatch <https://inspire.ec.europa.eu/codelist/ActiveWellTypeValue/waterSupply> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category> skos:hasTopConcept <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8689> skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8675>, <https://data.geoscience.earth/ncl/geoera/muse/category/8677>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8680>, <https://data.geoscience.earth/ncl/geoera/muse/category/8681>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8682>, <https://data.geoscience.earth/ncl/geoera/muse/category/8683>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8684>, <https://data.geoscience.earth/ncl/geoera/muse/category/8685>,
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8686>;
+  skos:prefLabel "Concepts in the field of shallow geothermal energy related to Geology"@en;
+  a skos:Concept;
+  skos:topConceptOf <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:created "2021-04-26T06:17:56.234Z"^^xsd:dateTime;
+  skos:definition "knowledge about the physical properties and composition of geologic materials (rocks and sediments), their structure and their age as depicted in geological maps, as well as landforms (geomorphological features). The model also covers boreholes - another important source of information for interpreting the subsurface geology."@en .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8681> a skos:Concept;
+  skos:prefLabel "Elevation of geological boundary"@en;
+  dcterms:created "2021-04-23T13:55:58.267Z"^^xsd:dateTime;
+  skos:definition "The elevation of a geological boundary in meters above sea level"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8682> a skos:Concept;
+  skos:prefLabel "Geomagnetic characterization"@en;
+  dcterms:created "2021-04-23T13:55:58.270Z"^^xsd:dateTime;
+  skos:definition "Patterns of magnetic anomalies attributable to rock magnetism"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8597> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8683> a skos:Concept;
+  skos:prefLabel "Measured subsurface temperature profile"@en;
+  dcterms:created "2021-04-23T13:55:58.274Z"^^xsd:dateTime;
+  skos:definition "The measured temperature below ground level changes as a function of depth."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8598> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8684> a skos:Concept;
+  skos:prefLabel "In-situ thermal conductivity of unconsolidated sediments"@en;
+  dcterms:created "2021-04-23T13:55:58.278Z"^^xsd:dateTime;
+  skos:definition "The intrinsic ability of unconsolidated sediment to conduct heat."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8599> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8680> a skos:Concept;
+  skos:prefLabel "Depth of geological boundary"@en;
+  dcterms:created "2021-04-23T13:55:58.261Z"^^xsd:dateTime;
+  skos:definition "The depth of a geological boundary below ground level"@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8685> a skos:Concept;
+  skos:prefLabel "Thermal conductivity of hard rock samples"@en;
+  dcterms:created "2021-04-23T13:55:58.282Z"^^xsd:dateTime;
+  skos:definition "The intrinsic ability of hard rock samples to conduct heat."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8600> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8675> a skos:Concept;
+  skos:prefLabel "Borehole"@en;
+  dcterms:created "2021-04-23T13:55:58.241Z"^^xsd:dateTime;
+  skos:definition "Penetration into the sub-surface with removal of soil/rock material by using, for instance, a hollow tube-shaped tool, in order to carry out profile descriptions, sampling and/or field tests."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8676>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  skos:exactMatch <http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/borehole> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8676> a skos:Concept;
+  skos:prefLabel "Borehole Profile"@en;
+  dcterms:created "2021-04-23T13:55:58.245Z"^^xsd:dateTime;
+  skos:definition "The geological profile depicted within a borehole log."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8686> a skos:Concept;
+  skos:prefLabel "Interval thermal conductivity measurements"@en;
+  dcterms:created "2021-04-23T13:55:58.285Z"^^xsd:dateTime;
+  skos:definition "Measured effective average interval thermal conductivity also accounting for advective heat transport caused by groundwater. The data are obtained from Thermal Response Tests."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8687>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8601> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8687> a skos:Concept;
+  skos:prefLabel "Thermal Response Tests (TRT)"@en;
+  dcterms:created "2021-04-23T13:55:58.289Z"^^xsd:dateTime;
+  skos:definition "Thermal response test (TRT) is the customary method to determine ground thermal conductivity in situ."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8601> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8677> a skos:Concept;
+  skos:prefLabel "Geological cross-sections"@en;
+  dcterms:created "2021-04-23T13:55:58.249Z"^^xsd:dateTime;
+  skos:definition "A geological cross-section is a graphic representation of the intersection of the geological bodies in the subsurface with a vertical plane of a certain orientation."@en;
+  skos:narrower <https://data.geoscience.earth/ncl/geoera/muse/category/8678>, <https://data.geoscience.earth/ncl/geoera/muse/category/8679>;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8594> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8678> a skos:Concept;
+  skos:prefLabel "Lithological cross-sections"@en;
+  dcterms:created "2021-04-23T13:55:58.253Z"^^xsd:dateTime;
+  skos:definition "A geological cross-section constructed based on the observed physical characteristics of a geological sequence."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8595> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8679> a skos:Concept;
+  skos:prefLabel "Stratigraphic cross-sections"@en;
+  dcterms:created "2021-04-23T13:55:58.257Z"^^xsd:dateTime;
+  skos:definition "Stratigraphic cross-sections are constructed with a stratigraphic horizon, such as an unconformity or formation boundary, as the datum. The datum is drawn as a horizontal line in spite of topographic or structural irregularities."@en;
+  skos:inScheme <https://data.geoscience.earth/ncl/geoera/muse/category>;
+  dcterms:references <https://data.geoscience.earth/ncl/geoera/ref/8596> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8634> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8772> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8771> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8640> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8611> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8766> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7693> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8646> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8606> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7695> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/7696> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8654> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8665> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8688> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8669> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8668> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8667> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8685> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8625> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8623> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1321> skos:broader
+    <http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8619> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8620> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8649> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8658> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8655> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7687> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8679> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8677> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8610> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8602> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8614> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8609> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8682> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1326> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1322> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8650> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8639> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8673> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8782> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/7690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7691> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8617> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7687> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8688> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8604> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1327> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1326> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7690> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/7696> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1323> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1322> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8670> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/12259> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8769> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8768> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8637> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8770> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8768> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8773> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8771> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8612> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8767> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7696> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8688> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8607> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8643> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8623> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8684> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1325> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1323> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8676> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8675> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8652> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8633> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8630> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8662> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/7696> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8678> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8677> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8638> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8615> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8681> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8666> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8665> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8651> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8644> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8653> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8655> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8688> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8630> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8672> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8783> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/7690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8675> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8686> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8635> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8641> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7694> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8688> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/7692> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8605> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8629> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8647> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8618> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8687> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8686> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8771> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8631> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8630> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8765> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8657> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8655> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8636> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8634> .
+
+<http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/category/8690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8642> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8608> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8603> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8683> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8648> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8674> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8603> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8602> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8632> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8630> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/12261> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8668> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1324> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1323> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8656> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8655> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1322> skos:broader
+    <https://data.geoscience.earth/ncl/geoera/muse/BoreholePurposeValue/1321> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8768> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8618> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8677> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8781> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/7690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8616> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8610> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8668> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8680> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8689> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8645> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8644> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8624> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8623> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8602> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8690> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8671> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8666> .
+
+<https://data.geoscience.earth/ncl/geoera/muse/category/8659> skos:broader <https://data.geoscience.earth/ncl/geoera/muse/category/8655> .
