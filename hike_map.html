@@ -212,6 +212,9 @@
                         .then(data => { //console.log(data);
                             wfsFeatures = wfsFeatures.concat(data.features);
                         })
+                        .catch(error => {
+                            alert('Error when querying the WFS');
+                        })
                     );
                 });
 
