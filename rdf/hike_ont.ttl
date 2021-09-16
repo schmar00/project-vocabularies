@@ -1,0 +1,112 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix swc: <http://schema.semantic-web.at/ppt/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.geoscience.earth/def/hike> a owl:Ontology;
+  dcterms:contributor <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2020-11-28T13:50:26.467Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:modified "2020-12-01T09:23:57.090Z"^^xsd:dateTime;
+  swc:BaseUrl "https://data.geoscience.earth/def";
+  swc:ResourceSeparator "#";
+  swc:containsAttributeProperty <https://data.geoscience.earth/def/hike#citation>, <https://data.geoscience.earth/def/hike#definition>,
+    <https://data.geoscience.earth/def/hike#id>, <https://data.geoscience.earth/def/hike#label>;
+  swc:containsCustomType <https://data.geoscience.earth/def/hike#GeologicalSetting>,
+    <https://data.geoscience.earth/def/hike#HazardAnalysis>, <https://data.geoscience.earth/def/hike#HazardCause>,
+    <https://data.geoscience.earth/def/hike#HazardMechanism>, <https://data.geoscience.earth/def/hike#ImpactType>,
+    <https://data.geoscience.earth/def/hike#KSP>;
+  swc:containsDirectedProperty <https://data.geoscience.earth/def/hike#seeAlso>;
+  swc:containsSymmetricProperty <https://data.geoscience.earth/def/hike#related>;
+  swc:hasLanguagePreference <urn:node1enj0jt7rx421717>;
+  swc:identifier "hike";
+  swc:visible "PUBLIC";
+  rdfs:comment "HIKE knowledge share point";
+  rdfs:label "hike" .
+
+<urn:node1enj0jt7rx421717> a swc:LanguagePreference;
+  swc:languagePreferencePriority "0"^^xsd:int;
+  swc:languagePreferenceValue "mis" .
+
+<https://data.geoscience.earth/def/hike#HazardCause> a owl:Class;
+  dcterms:created "2020-11-30T10:28:21.522Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "HazardCause";
+  rdfs:subClassOf <https://data.geoscience.earth/def/hike#KSP> .
+
+<https://data.geoscience.earth/def/hike#KSP> a owl:Class;
+  dcterms:created "2020-11-30T10:10:21.102Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:comment "Knowledge Share Point concept is a keyword used for HIKE KSP documents in the GeoERA document repository. ";
+  rdfs:label "KSP concept" .
+
+<https://data.geoscience.earth/def/hike#HazardMechanism> a owl:Class;
+  dcterms:created "2020-11-30T10:26:33.822Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "HazardMechanism";
+  rdfs:subClassOf <https://data.geoscience.earth/def/hike#KSP> .
+
+<https://data.geoscience.earth/def/hike#GeologicalSetting> a owl:Class;
+  dcterms:created "2020-11-30T10:29:35.583Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "GeologicalSetting";
+  rdfs:subClassOf <https://data.geoscience.earth/def/hike#KSP> .
+
+<https://data.geoscience.earth/def/hike#HazardAnalysis> a owl:Class;
+  dcterms:created "2020-11-30T10:29:16.648Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "HazardAnalysis";
+  rdfs:subClassOf <https://data.geoscience.earth/def/hike#KSP> .
+
+<https://data.geoscience.earth/def/hike#ImpactType> a owl:Class;
+  dcterms:created "2020-11-30T10:28:47.407Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "ImpactType";
+  rdfs:subClassOf <https://data.geoscience.earth/def/hike#KSP> .
+
+<https://data.geoscience.earth/def/hike#seeAlso> a owl:ObjectProperty;
+  dcterms:created "2021-01-26T17:11:27.782Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/hike#KSP>;
+  rdfs:label "seeAlso";
+  rdfs:range skos:Concept .
+
+<https://data.geoscience.earth/def/hike#related> a owl:SymmetricProperty;
+  dcterms:created "2021-01-26T17:07:18.573Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/hike#KSP>;
+  rdfs:label "related";
+  rdfs:range <https://data.geoscience.earth/def/hike#KSP> .
+
+<https://data.geoscience.earth/def/hike#id> a owl:DatatypeProperty, owl:FunctionalProperty;
+  dcterms:created "2020-12-01T09:16:26.861Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  swc:singleLineInput true;
+  rdfs:domain <https://data.geoscience.earth/def/hike#KSP>;
+  rdfs:label "id";
+  rdfs:range xsd:string .
+
+<https://data.geoscience.earth/def/hike#citation> a owl:DatatypeProperty;
+  dcterms:created "2020-11-30T10:42:09.068Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/hike#KSP>;
+  rdfs:label "citation";
+  rdfs:range xsd:string .
+
+<https://data.geoscience.earth/def/hike#label> a swc:FunctionalLanguageProperty, owl:DatatypeProperty;
+  dcterms:created "2020-11-30T10:40:06.192Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/hike#KSP>;
+  rdfs:label "label";
+  rdfs:range rdfs:Literal .
+
+<https://data.geoscience.earth/def/hike#definition> a swc:FunctionalLanguageProperty,
+    owl:DatatypeProperty;
+  dcterms:created "2020-11-30T10:41:15.036Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/hike#KSP>;
+  rdfs:label "definition";
+  rdfs:range rdfs:Literal .

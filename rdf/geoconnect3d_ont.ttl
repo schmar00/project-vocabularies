@@ -1,0 +1,160 @@
+@prefix csw: <http://semantic-web.at/ontologies/csw.owl#> .
+@prefix ctag: <http://commontag.org/ns#> .
+@prefix cyc: <http://sw.cyc.com/concept/> .
+@prefix cycAnnot: <http://sw.cyc.com/CycAnnotations_v1#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix freebase: <http://rdf.freebase.com/ns/> .
+@prefix opencyc: <http://sw.opencyc.org/concept/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix swc: <http://schema.semantic-web.at/ppt/> .
+@prefix tags: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.geoscience.earth/def/geoconnect3d> a owl:Ontology;
+  dcterms:contributor <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:created "2020-10-28T09:09:59.581Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  dcterms:modified "2021-09-10T11:56:21.272Z"^^xsd:dateTime;
+  swc:BaseUrl "https://data.geoscience.earth/def/";
+  swc:ResourceSeparator "#";
+  swc:containsCustomType <https://data.geoscience.earth/def/geoconnect3d#Basin>, <https://data.geoscience.earth/def/geoconnect3d#Contact>,
+    <https://data.geoscience.earth/def/geoconnect3d#Fault>, <https://data.geoscience.earth/def/geoconnect3d#Limit>,
+    <https://data.geoscience.earth/def/geoconnect3d#LimitTypeValue>, <https://data.geoscience.earth/def/geoconnect3d#Lineament>,
+    <https://data.geoscience.earth/def/geoconnect3d#MagmaticRock>, <https://data.geoscience.earth/def/geoconnect3d#Orogen>,
+    <https://data.geoscience.earth/def/geoconnect3d#OrogenicFront>, <https://data.geoscience.earth/def/geoconnect3d#Plate>,
+    <https://data.geoscience.earth/def/geoconnect3d#PlateBoundary>, <https://data.geoscience.earth/def/geoconnect3d#Unconformity>,
+    <https://data.geoscience.earth/def/geoconnect3d#Unit>, <https://data.geoscience.earth/def/geoconnect3d#UnitTypeValue>;
+  swc:containsDirectedProperty <https://data.geoscience.earth/def/geoconnect3d#limitType>,
+    <https://data.geoscience.earth/def/geoconnect3d#unitType>;
+  swc:containsPropertyWithInverse <https://data.geoscience.earth/def/geoconnect3d#limitTo>;
+  swc:hasLanguagePreference <urn:node1ff4kman5x49125>;
+  swc:identifier "geoconnect3d";
+  swc:containsPropertyWithInverse <https://data.geoscience.earth/def/geoconnect3d#limitedBy>;
+  swc:visible "PRIVATE";
+  rdfs:label "geoconnect3d" .
+
+<urn:node1ff4kman5x49125> a swc:LanguagePreference;
+  swc:languagePreferencePriority "0"^^xsd:int;
+  swc:languagePreferenceValue "mis" .
+
+<https://data.geoscience.earth/def/geoconnect3d#Unconformity> a owl:Class;
+  dcterms:created "2020-10-28T09:51:13.463Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Unconformity";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Limit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Limit> a owl:Class;
+  dcterms:created "2020-10-28T09:11:27.116Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:comment "We are focussed in getting geological information understandable for stakeholders, which include those without a background in the discipline. For this, the basic required level of our project vocabulary provides simplified information focussed on the classes ‘Limit’ and ‘Unit’, and their subclasses.",
+    """limit class (simple classification) - basic elements of limiting structures (basic classification for stakeholders and experts)
+E.g. Limit -> Fault, PlateBoundary, DeformationFront, Contact """;
+  rdfs:label "Limit" .
+
+<https://data.geoscience.earth/def/geoconnect3d#PlateBoundary> a owl:Class;
+  dcterms:created "2020-10-28T09:52:56.658Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "PlateBoundary";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Limit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Basin> a owl:Class;
+  dcterms:created "2020-10-28T09:53:31.238Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Basin";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Unit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Unit> a owl:Class;
+  dcterms:created "2020-10-28T09:12:03.513Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Unit" .
+
+<https://data.geoscience.earth/def/geoconnect3d#Orogen> a owl:Class;
+  dcterms:created "2020-10-28T09:56:45.780Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Orogen";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Unit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Plate> a owl:Class;
+  dcterms:created "2020-10-28T09:54:00.039Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Plate";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Unit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Contact> a owl:Class;
+  dcterms:created "2020-10-28T09:50:34.128Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Contact";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Limit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Lineament> a owl:Class;
+  dcterms:created "2020-10-28T09:50:04.579Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Lineament";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Limit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#OrogenicFront> a owl:Class;
+  dcterms:created "2020-10-28T09:49:10.581Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "OrogenicFront";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Limit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#MagmaticRock> a owl:Class;
+  dcterms:created "2020-10-28T09:55:03.605Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "MagmaticRock";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Unit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#Fault> a owl:Class;
+  dcterms:created "2020-10-28T09:48:06.400Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "Fault";
+  rdfs:subClassOf <https://data.geoscience.earth/def/geoconnect3d#Limit> .
+
+<https://data.geoscience.earth/def/geoconnect3d#LimitTypeValue> a owl:Class;
+  dcterms:created "2020-10-28T16:21:26.926Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "LimitTypeValue" .
+
+<https://data.geoscience.earth/def/geoconnect3d#UnitTypeValue> a owl:Class;
+  dcterms:created "2020-10-28T16:21:54.513Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:label "UnitTypeValue" .
+
+<https://data.geoscience.earth/def/geoconnect3d#limitType> a owl:FunctionalProperty,
+    owl:ObjectProperty;
+  dcterms:created "2020-10-28T16:23:25.375Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/geoconnect3d#Limit>;
+  rdfs:label "limitType";
+  rdfs:range <https://data.geoscience.earth/def/geoconnect3d#LimitTypeValue> .
+
+<https://data.geoscience.earth/def/geoconnect3d#unitType> a owl:FunctionalProperty,
+    owl:ObjectProperty;
+  dcterms:created "2020-10-28T16:24:09.247Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/geoconnect3d#Unit>;
+  rdfs:label "unitType";
+  rdfs:range <https://data.geoscience.earth/def/geoconnect3d#UnitTypeValue> .
+
+<https://data.geoscience.earth/def/geoconnect3d#limitTo> a owl:ObjectProperty;
+  dcterms:created "2020-10-28T09:36:12.730Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/geoconnect3d#Limit>;
+  rdfs:label "limitTo";
+  rdfs:range <https://data.geoscience.earth/def/geoconnect3d#Unit>;
+  owl:inverseOf <https://data.geoscience.earth/def/geoconnect3d#limitedBy> .
+
+<https://data.geoscience.earth/def/geoconnect3d#limitedBy> a owl:ObjectProperty;
+  dcterms:created "2020-10-28T09:36:12.731Z"^^xsd:dateTime;
+  dcterms:creator <http://resource.geolba.ac.at/user/schmar>;
+  rdfs:domain <https://data.geoscience.earth/def/geoconnect3d#Unit>;
+  rdfs:label "limitedBy";
+  rdfs:range <https://data.geoscience.earth/def/geoconnect3d#Limit>;
+  owl:inverseOf <https://data.geoscience.earth/def/geoconnect3d#limitTo> .
