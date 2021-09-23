@@ -199,11 +199,11 @@
 
                     promises.push(
                         fetch(
-                            (`https://data.geus.dk/egdi/wfs/3034/
+                            (`https://geusegdi01.geus.dk/egdi/wfs/3034/
                                 ?SERVICE=WFS
                                 &VERSION=1.0.0
                                 &REQUEST=GetFeature
-                                &TYPENAME=HIKE_FAULTDB_DETAIL
+                                &TYPENAME=hike_faultdb_all
                                 &MAXFEATURES=100000
                                 &Filter=${ogcFilter}
                                 &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
