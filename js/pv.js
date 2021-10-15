@@ -479,11 +479,7 @@ function details(divID, uri) { //build the web page content
 
                 insertConceptBrowser(divID, uri, 50);
             } else if (uri.indexOf('keyword') > 0) {
-                $('#' + divID).append(`<hr><div class="alert alert-dismissible alert-warning">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <h4 class="alert-heading">Can´t open the page!</h4>
-                            <p class="mb-0">please visit <a href="https://data.geoscience.earth/ncl/geoera">European Geoscience Registry</a><br>${uri}</p>
-                        </div>`);
+                window.location.href = 'https://geolba.github.io/project-vocabularies/?uri='+uri;
             } else if (uri.indexOf('https://data.geoscience.earth/ncl/geoera') == 0) {
                 //console.log('javascript:window.location.href = BASE;');
                 window.location.href = BASE;
