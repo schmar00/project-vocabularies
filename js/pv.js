@@ -459,7 +459,7 @@ function details(divID, uri) { //build the web page content
                         <br>
                         <table id="details"></table>
                         </div>`);
-                
+
                 let mapCheckArr = jsonData.results.bindings.map(a => [a.p.value, a.o.value]);
                 if (mapCheckArr.find(b => b[1] == 'https://data.geoscience.earth/ncl/geoera/hike/faults')) {
                     if (mapCheckArr.find(c => c[0] == 'http://www.w3.org/2004/02/skos/core#topConceptOf') == undefined) {
@@ -478,6 +478,15 @@ function details(divID, uri) { //build the web page content
                 $('#' + divID).append('');
 
                 insertConceptBrowser(divID, uri, 50);
+            } else if (uri.indexOf('keyword') > 0) {
+                $('#' + divID).append(`<hr><div class="alert alert-dismissible alert-warning">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <h4 class="alert-heading">Can´t open the page!</h4>
+                            <p class="mb-0">please visit <a href="https://data.geoscience.earth/ncl/geoera">European Geoscience Registry</a><br>${uri}</p>
+                        </div>`);
+            } else if (uri.indexOf('https://data.geoscience.earth/ncl/geoera') == 0) {
+                //console.log('javascript:window.location.href = BASE;');
+                window.location.href = BASE;
             } else {
                 $('#' + divID).append(`<hr><div class="alert alert-dismissible alert-warning">
                           <button type="button" class="close" data-dismiss="alert">&times;</button>
