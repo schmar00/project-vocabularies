@@ -477,18 +477,22 @@ function details(divID, uri) { //build the web page content
                 $('#' + divID).append('');
 
                 insertConceptBrowser(divID, uri, 50);
-            
-            } else if (uri=='https://data.geoscience.earth/ncl/geoera/keyword') { alert(uri);
+
+            } else if (uri == 'https://data.geoscience.earth/ncl/geoera/keyword') {
+                //alert(uri);
                 window.location.href = 'https://github.com/GeoEra-GIP/WP4-Semantics/blob/master/Keyword%20Thesaurus/GeoERA-Keyword-Thesaurus_v21.zip';
-            
-            } else if (uri.indexOf('keyword') > 0) { alert(uri);
-                window.location.href = 'https://geolba.github.io/project-vocabularies/?uri='+uri;
-            
-            } else if (uri.indexOf('https://data.geoscience.earth/ncl/geoera') == 0) { console.log(uri);
+
+            } else if (uri.indexOf('keyword') > 0) {
+                //alert(uri);
+                window.location.href = 'https://schmar00.github.io/keyword/?uri=' + uri;
+
+            } else if (uri.indexOf('https://data.geoscience.earth/ncl/geoera') == 0) {
+                //console.log(uri);
                 //console.log('javascript:window.location.href = BASE;');
                 window.location.href = BASE;
-            
-            } else { console.log(uri);
+
+            } else {
+                console.log(uri);
                 $('#' + divID).append(`<hr><div class="alert alert-dismissible alert-warning">
                           <button type="button" class="close" data-dismiss="alert">&times;</button>
                           <h4 class="alert-heading">Can´t open the page!</h4>
