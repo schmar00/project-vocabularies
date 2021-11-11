@@ -26,8 +26,9 @@ $(document).ready(function () {
         insertPageDesc(); //general intro
         insertVocDesc(vocProjects, 'proj_desc');
         insertProjCards('proj_links', vocProjects);
+        
     }
-
+    
     initSearch(); //provides js for fuse search
 });
 
@@ -43,7 +44,6 @@ function insertPageDesc() {
 //*********************descriptions insert of vocabularies for the start page******************************
 
 function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT überarbeiten
-
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
                                     PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
                                     SELECT ?cs ?Title ?Desc (COUNT(?c) AS ?count) (SUM(?x) AS ?new)
@@ -95,6 +95,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                 </div>`);
                 });
             }
+            $('.progress').hide();
         });
 }
 
