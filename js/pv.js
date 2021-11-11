@@ -95,7 +95,8 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                 </div>`);
                 });
             }
-            $('.progress').hide();
+            $('.progress-bar').css('width', '100%').attr('aria-valuenow', 100);
+            setTimeout(() => {$('.progress').hide();}, 300);
         });
 }
 
