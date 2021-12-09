@@ -208,9 +208,9 @@
                                 &Filter=${ogcFilter}
                                 &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
                         )
-                        .then(res => res.json())
-                        .then(data => { //console.log(data);
-                            wfsFeatures = wfsFeatures.concat(data.features);
+                        .then(res => res.text())
+                        .then(data => { //console.log(JSON.parse(data.toString()).features);
+                            wfsFeatures = wfsFeatures.concat(JSON.parse(data.toString()).features);
                         })
                         .catch(error => {
                             alert('Error when querying the WFS');
@@ -219,7 +219,7 @@
                 });
 
                 Promise.all(promises).then(() => {
-                    console.log(wfsFeatures);
+                    //console.log(wfsFeatures);
                     try {
                         let allCoords = wfsFeatures.map(a => a.geometry).filter(a => a.type ==
                             'MultiLineString').map(a => a.coordinates).flat(2).concat(wfsFeatures.map(
