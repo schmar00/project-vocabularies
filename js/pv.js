@@ -36,8 +36,8 @@ $(document).ready(function () {
 
 function insertPageDesc() {
 
-    $('#page_desc').append('<br><h1 id="title">GeoERA Project Vocabularies</h1>');
-    $('#page_desc').append('<h4>EGDI - European Geological Data Infrastructure</h4>');
+    $('#page_desc').append('<br><h1 id="title">EGDI Vocabularies</h1>');
+    $('#page_desc').append('<h4>European Geological Data Infrastructure</h4>');
     $('#page_desc').append('<p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>');
 }
 
