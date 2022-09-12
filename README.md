@@ -19,6 +19,7 @@ preview https://schmar00.github.io/project-vocabularies/
 
 ## Authors
 * **Martin Schiegl** - *Initial work* 
+* **Mira Janata** - *reengineering*  
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
