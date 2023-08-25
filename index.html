@@ -6,210 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>project vocabularies</title>
+    <title>Project Vocabularies</title>
 
     <link rel="stylesheet" id="bootswatch" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="css/FontAwesome/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.3.0/fuse.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="js/pv_config.js"></script>
     <script src="js/pv.js"></script>
-
-    <style>
-        #banner {
-            background-color: rgba(222, 255, 51, 0.7);
-            width: 280px;
-            position: fixed;
-            top: 40px;
-            right: -84px;
-            padding: 10px;
-            text-align: center;
-            box-shadow: 1px 1px 5px grey;
-            -moz-transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-            z-index: 999;
-        }
-
-        a {
-            color: #3498DB;
-        }
-
-        .dropdown-item:hover {
-            background-color: gray !important;
-        }
-
-        #allConcepts {
-            min-height: 380px;
-        }
-
-        .cardHeaderRight {
-            /*right, left buttons*/
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-        }
-
-        #allConceptsHeader {
-            padding-right: 5rem;
-        }
-
-        .card-body:not(#searchCard) {
-            font-size: small;
-        }
-
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        @media screen and (min-width: 1000px) {
-            #title {
-                font-size: 3vw;
-            }
-        }
-
-        #dropdown {
-            background-color: white;
-            min-width: 200px;
-            position: relative;
-            z-index: 999;
-        }
-
-        #dropdown a {
-            color: black;
-        }
-
-        #dropdown td {
-            padding: .1rem;
-            padding-left: .75rem;
-        }
-
-        .searchLink {
-            color: black;
-            cursor: pointer;
-        }
-
-        .searchPropTyp {
-            color: #777;
-            font-size: small;
-            font-weight: 700;
-        }
-
-        .searchResultText {
-            font-size: small;
-        }
-
-        .addVoc {
-            font-size: small;
-            color: gray;
-        }
-
-        ul.altLabel,
-        ul.notation {
-            list-style-position: inside;
-            display: inline-block;
-            padding: 0;
-            margin-bottom: -0.2rem;
-        }
-
-        ul.altLabel li,
-        ul.notation li {
-            display: inline;
-            float: left;
-            padding-right: 15px;
-        }
+    <script src="./js/Editor.js"></script>
 
 
-
-        .skosRel {
-            background: #eee;
-            width: 120px;
-            text-align: center;
-            border: 3px solid white;
-        }
-
-        .skosRel-1 {
-            background: lightgray;
-            width: 120px;
-            text-align: center;
-            border: 3px solid white;
-        }
-
-        .skosRelUl {
-            padding: 0.5rem 0rem 0rem 1rem;
-        }
-
-        .datatype {
-            display: inline-block;
-            padding: 2px;
-            font-size: 60%;
-            border-radius: 2px;
-            color: white;
-            background: #444;
-        }
-
-        .lang {
-            display: inline-block;
-            padding: 0px 2px;
-            font-size: 60%;
-            font-weight: 600;
-            border-radius: 2px;
-            color: white;
-            background: #444;
-        }
-
-        .propTech {
-            padding-right: 5px;
-        }
-
-        #details th {
-            text-align: left;
-            padding-top: 0.3rem;
-        }
-
-        #details td {
-            vertical-align: middle;
-            padding-bottom: 0.7rem;
-        }
-
-        #details ul {
-            margin-bottom: 0rem;
-        }
-
-        .tooltip-inner {
-            text-align: left;
-            background-color: #27292b;
-        }
-
-        .plusSign {
-            color: gray;
-            font-size: 60%;
-        }
-
-        .uriImp {
-            color: #3498db;
-            /*            font-size: 90%;*/
-        }
-
-        /*         .uriOrg {
-                        color: green;
-                        font-size: 90%;
-        } 
-*/
-
-        .card-header a {
-            color: white;
-        }
-
-        #searchCard {
-            background-color: #425d79;
-        }
-    </style>
 
 </head>
 
@@ -271,26 +81,8 @@
                 <div id="proj_links"></div>
             </div>
         </div>
-
-        <!-- <div>
-        view this page in different styles like <a href="javascript:refreshCSS('cosmo')">cosmo</a>,
-            <a href="javascript:refreshCSS('lumen')">lumen</a>,
-            <a href="javascript:refreshCSS('simplex')">simplex</a>,
-            <a href="javascript:refreshCSS('yeti')">yeti</a>,
-            <a href="javascript:refreshCSS('minty')">minty</a>,
-            <a href="javascript:refreshCSS('materia')">materia</a>,
-            <a href="javascript:refreshCSS('united')">united</a>, or
-            <a href="javascript:refreshCSS('sandstone')">sandstone</a>
-        </div><br> -->
     </div>
 
-
-    <script>
-        refreshCSS = a => { //https://bootswatch.com/4/flatly/bootstrap.min.css
-            let link = document.getElementById('bootswatch');
-            link.setAttribute('href', 'https://bootswatch.com/4/' + a + '/bootstrap.min.css');
-        }
-    </script>
 </body>
 
 </html>
