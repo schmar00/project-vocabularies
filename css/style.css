@@ -1,0 +1,239 @@
+/*To organise better */
+
+
+
+body {
+    font-size: .9rem;
+}
+
+.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active {
+    background-color: #464E2E;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+a:hover {
+    color:#464E2E;
+    text-decoration: none;
+}
+
+.badge-info{
+    background-color: #ACB992;
+}
+
+#banner {
+    background-color: rgba(222, 255, 51, 0.7);
+    width: 280px;
+    position: fixed;
+    top: 40px;
+    right: -84px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 1px 1px 5px grey;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 999;
+}
+
+.progress-bar {
+    background-color: #362706;
+    color: white;
+}
+
+a {
+    color: #ACB992;
+}
+
+.dropdown-item:hover {
+    background-color: gray !important;
+}
+
+#allConcepts {
+    min-height: 380px;
+}
+
+.cardHeaderRight {
+    /*right, left buttons*/
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+#allConceptsHeader {
+    padding-right: 5rem;
+}
+
+.card-body:not(#searchCard) {
+    font-size: small;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@media screen and (min-width: 1000px) {
+    #title {
+        font-size: 3vw;
+    }
+}
+
+#dropdown {
+    background-color: white;
+    min-width: 200px;
+    position: relative;
+    z-index: 999;
+}
+
+    #dropdown a {
+        color: black;
+    }
+
+    #dropdown td {
+        padding: .1rem;
+        padding-left: .75rem;
+    }
+
+.searchLink {
+    color: black;
+    cursor: pointer;
+}
+
+.searchPropTyp {
+    color: #777;
+    font-size: small;
+    font-weight: 700;
+}
+
+.searchResultText {
+    font-size: small;
+}
+
+.addVoc {
+    font-size: small;
+    color: gray;
+}
+
+ul.altLabel,
+ul.notation {
+    list-style-position: inside;
+    display: inline-block;
+    padding: 0;
+    margin-bottom: -0.2rem;
+}
+
+    ul.altLabel li,
+    ul.notation li {
+        display: inline;
+        float: left;
+        padding-right: 15px;
+    }
+
+
+
+.skosRel {
+    background: #eee;
+    width: 120px;
+    text-align: center;
+    border: 3px solid white;
+}
+
+.skosRel-1 {
+    background: lightgray;
+    width: 120px;
+    text-align: center;
+    border: 3px solid white;
+}
+
+.skosRelUl {
+    padding: 0.5rem 0rem 0rem 1rem;
+}
+
+.datatype {
+    display: inline-block;
+    padding: 2px;
+    font-size: 60%;
+    border-radius: 2px;
+    color: white;
+    background: #444;
+}
+
+.lang {
+    display: inline-block;
+    padding: 0px 2px;
+    font-size: 60%;
+    font-weight: 600;
+    border-radius: 2px;
+    color: white;
+    background: #444;
+}
+
+.propTech {
+    padding-right: 5px;
+}
+
+#details th {
+    text-align: left;
+    padding-top: 0.3rem;
+}
+
+#details td {
+    vertical-align: middle;
+    padding-bottom: 0.7rem;
+}
+
+#details ul {
+    margin-bottom: 0rem;
+}
+
+.tooltip-inner {
+    text-align: left;
+    background-color: #27292b;
+}
+
+.plusSign {
+    color: gray;
+    font-size: 60%;
+}
+
+.uriImp {
+    color: #3498db;
+    /*            font-size: 90%;*/
+}
+
+/*         .uriOrg {
+                        color: green;
+                        font-size: 90%;
+        }
+*/
+
+.card-header a {
+    color: white;
+}
+
+#searchCard {
+    background-color: #E9E5D6;
+}
+
+#search_widget{
+    background-color: #ACB992;
+}
+
+
+/*bootstrap overriding*/
+/*to merge?*/
+btn-info:not(:disabled):not(.disabled).active,
+.btn-info:not(:disabled):not(.disabled):active,
+.show>.btn-info.dropdown-toggle, .btn-info:not(:disabled):not(.disabled).active:focus,
+.btn-info:not(:disabled):not(.disabled):active:focus,
+.show>.btn-info.dropdown-toggle:focus {
+    background-color: #464E2E;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+/*end*/
