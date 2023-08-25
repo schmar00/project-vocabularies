@@ -1,10 +1,113 @@
 /*To organise better */
 
 
-
+/* General */
 body {
     font-size: .9rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f2f2f2;
 }
+
+#title {
+    color: #99582A;
+}
+
+#title, h1, h5, h4 {
+    font-family: "Georgia";
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Header Styling */
+.navbar {
+    background-color: #464E2E;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* Card and Widget Styling */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #464E2E;
+    color: #fff;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 0.9rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #ACB992;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #464E2E;
+}
+
+/* Search Widget Styling */
+#searchCard {
+    background-color: #ACB992;
+    border: none;
+}
+
+#searchInput {
+    border-radius: 25px;
+}
+
+#searchBtn {
+    border-radius: 25px;
+    background-color: #464E2E;
+    border: none;
+}
+
+#searchBtn:hover {
+    background-color: #39422B;
+}
+
+
+
+/* Links Styling */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #258dd1;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+/**/
+
 
 .btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active {
     background-color: #464E2E;
@@ -237,3 +340,22 @@ btn-info:not(:disabled):not(.disabled).active,
     box-shadow: none;
 }
 /*end*/
+
+
+
+
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #banner {
+        display: none;
+    }
+
+    .navbar-nav {
+        margin-top: 10px;
+    }
+
+    .card-header {
+        font-size: 1rem;
+    }
+}
