@@ -432,10 +432,7 @@ function details(divID, uri) { //build the web page content
 
                 let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
                             <span style="margin-right:7px;">
-                            <img
-                            src="img/rdf_flyer.svg"
-                            alt="rdf"
-                            width="17" />
+                            <i class="fas fa-cube"></i>
                             </span>
                         </a>
                         <a href="${ENDPOINT}?query=${encodeURIComponent(CONCEPTSLIST_QUERY.replace('§', uri))}&format=text/html" title="HTML list">
@@ -457,9 +454,10 @@ function details(divID, uri) { //build the web page content
                         <div style="cursor: pointer; color: #777;" id="detailsBtn"
                         onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"><i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;read more ..</em>
                         </div>
-                        <div style="display:none;" id="detailsToggle">
+                        <div style="display:none;position: relative;" id="detailsToggle">
                         <br>
                         <table id="details"></table>
+                        <a id="editorLink" href="#editorLink" onclick="Editor.start();" style="position:absolute;top:0px;right:50px;"><i class="fas fa-pen"></i>&nbsp;Edit</a>
                         </div>`);
 
                 let mapCheckArr = jsonData.results.bindings.map(a => [a.p.value, a.o.value]);

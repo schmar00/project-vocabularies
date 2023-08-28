@@ -142,9 +142,15 @@ a:hover {
     z-index: 999;
 }
 
-.progress-bar {
+/* .progress-bar {
     background-color: #362706;
     color: white;
+} */
+
+.progress {
+    background-color: #fff;
+    justify-content: center;
+    height: 2rem;
 }
 
 a {
