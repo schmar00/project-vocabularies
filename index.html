@@ -31,29 +31,13 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div id="pageContent" class="col-lg-8">
+            <div id="pageContent" class="">
                 <!-- Page description -->
-                <div id="page_desc"></div>
-                <hr>
-                <!-- Project descriptions -->
-                <div id="proj_desc">
-                    <div class="progress">
-                        <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <!-- other descriptions -->
-                <div id="other_desc"></div>
-                <br>
-            </div>
-            <!-- Sidebar Widgets Column -->
-            <div class="col-md-4">
+                <div id="page_desc" class=" text-center"></div>
                 <!-- Search Widget -->
-                <div id="search_widget" class="card my-4 text-white bg-primary mb-3">
-                    <h5 class="card-header">
-                        <div style="text-align: left;"><a href="javascript:window.location.href = BASE;">home</a> |
+                <div id="search_widget">
+                    <h5 class="text-center">
+                        <div><a href="javascript:window.location.href = BASE;">home</a> |
                             <a
                                 href="https://github.com/GeoEra-GIP/WP4-Semantics/tree/master/Project%20Vocabularies">docs</a>
                             |
@@ -72,11 +56,28 @@
                                     type="button">Go!</button></span>
                         </div>
                     </div>
+                </div> 
+                <hr>
+                <!-- Project descriptions -->
+                <div id="proj_desc">
+                    <div class="progress">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                 </div>
+                <hr>
+                <!-- other descriptions -->
+                <div id="other_desc"></div>
+                <br>
+            </div>
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+                
                 <!-- Side Widgets -->
                 <div id="image_links"></div>
-                <!-- Side Widgets -->
-                <div id="proj_links"></div>
+                <!-- Side Widgets 
+                <div id="proj_links"></div> -->
             </div>
         </div>
     </div>
