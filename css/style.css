@@ -21,8 +21,14 @@ body {
     font-family: "Playfair Display";
 }
 
+body {
+    background-image: url(/img/header.jpg);
+    background-repeat: no-repeat;
+  background-size: auto;
+}
+
 .container {
-    background-color: #fff;
+    background-color: #ffffffdb;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
