@@ -4,6 +4,12 @@
     font-family: "Playfair Display";
     src: url(/css/fonts/PlayfairDisplay.ttf);
   }
+  
+@font-face {
+    font-family: "Montserrat";
+    src: url(/css/fonts/Montserrat.ttf);
+  }
+
 
 
 /* General */
@@ -11,21 +17,39 @@ body {
     font-size: .9rem;
     font-family: 'Helvetica Neue', sans-serif;
     background-color: #f2f2f2;
+    color: #2A2B2A;
+
+    background-image: url(/img/header2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #title {
     color: #708090;
 }
 
-#title, h1, h5, h4 {
+#title, h1 {
     font-family: "Playfair Display";
 }
 
-body {
-    background-image: url(/img/header.jpg);
-    background-repeat: no-repeat;
-  background-size: auto;
+#sub-title{
+    color: #98a0a8;
+    margin-bottom: 1em;
 }
+
+h4, h5 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#menu {
+    margin-bottom: 1em;
+}
+
+#menu a {
+    
+}
+
+
 
 .container {
     background-color: #ffffffdb;
@@ -78,8 +102,9 @@ body {
 
 /* Search Widget Styling */
 #searchCard {
-    background-color: #ACB992;
+    background-color: #e3e3e3;
     border: none;
+    margin-left: -5px; margin-right: -5px;
 }
 
 #searchInput {
@@ -100,13 +125,13 @@ body {
 
 /* Links Styling */
 a {
-    color: #3498db;
+    color: #8B9556;
     text-decoration: none;
 }
 
 a:hover {
-    color: #258dd1;
-    text-decoration: underline;
+    color:#464E2E;
+    text-decoration: none;
 }
 
 
@@ -125,13 +150,10 @@ a:hover {
     box-shadow: none;
 }
 
-a:hover {
-    color:#464E2E;
-    text-decoration: none;
-}
+
 
 .badge-info{
-    background-color: #ACB992;
+    background-color: #848E52;
 }
 
 #banner {
@@ -156,10 +178,6 @@ a:hover {
     background-color: #fff;
     justify-content: center;
     height: 2rem;
-}
-
-a {
-    color: #ACB992;
 }
 
 .dropdown-item:hover {
@@ -329,10 +347,6 @@ ul.notation {
     color: white;
 }
 
-#searchCard {
-    background-color: #E9E5D6;
-}
-
 /*#search_widget{
     background-color: #ACB992;
 } */
@@ -354,6 +368,11 @@ btn-info:not(:disabled):not(.disabled).active,
 .row {
     display: block;
 }
+
+.text-muted {
+    color: #474B1B !important;
+}
+
 /*end*/
 
 

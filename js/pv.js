@@ -37,7 +37,7 @@ $(document).ready(function () {
 function insertPageDesc() {
 
     $('#page_desc').append('<br><h1 id="title">EGDI Vocabularies</h1>');
-    $('#page_desc').append('<h4>European Geological Data Infrastructure</h4>');
+    $('#page_desc').append('<h5 id="sub-title">European Geological Data Infrastructure</h5>');
     $('#page_desc').append('<p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>');
 }
 
@@ -85,7 +85,7 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                             <strong>Top concepts:</strong> ${topConcepts}
                                             <br>
                                             <strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
-                                            ${(item.new.value>0)?('&nbsp;&nbsp;('+item.new.value+' in scheme)'):''}
+                                            
                                             &nbsp;&nbsp;&nbsp;
                                             <strong>Created:</strong> ${item.modified.value.split('T')[0]}
                                             &nbsp;&nbsp;&nbsp;
