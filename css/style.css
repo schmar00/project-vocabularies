@@ -1,4 +1,20 @@
-/*To organise better */
+/* INDEX 
+
+1. Fonts
+2. General
+3. Header
+4. Button
+5. Search
+6. Body
+7. Inner
+8. Card
+9. Bootstrap
+10. Responsive
+
+*/
+
+
+/* 1. Fonts*/
 
 @font-face {
     font-family: "Playfair Display";
@@ -12,7 +28,16 @@
 
 
 
-/* General */
+/* 2. General */
+
+.container {
+    background-color: #ffffffdb;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
 body {
     font-size: .9rem;
     font-family: 'Helvetica Neue', sans-serif;
@@ -24,11 +49,51 @@ body {
     background-size: cover;
 }
 
+#banner {
+    background-color: rgba(222, 255, 51, 0.7);
+    width: 280px;
+    position: fixed;
+    top: 40px;
+    right: -84px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 1px 1px 5px grey;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 999;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+a {
+    color: #8B9556;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#464E2E;
+    text-decoration: none;
+}
+
+i {
+    color: #8B9556 !important;
+}
+
+
+
+/* Top - Header */
+
 #title {
     color: #708090;
 }
 
-#title, h1 {
+#title, h1, h2 {
     font-family: "Playfair Display";
 }
 
@@ -49,17 +114,6 @@ h4, h5 {
     
 }
 
-
-
-.container {
-    background-color: #ffffffdb;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Header Styling */
 .navbar {
     background-color: #464E2E;
 }
@@ -73,22 +127,6 @@ h4, h5 {
     color: #fff;
 }
 
-/* Card and Widget Styling */
-.card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-    background-color: #464E2E;
-    color: #fff;
-    font-weight: bold;
-}
-
-.card-body {
-    font-size: 0.9rem;
-}
 
 /* Button Styling */
 .btn-primary {
@@ -100,118 +138,35 @@ h4, h5 {
     background-color: #464E2E;
 }
 
-/* Search Widget Styling */
+
+
+/* Search Styling */
 #searchCard {
     background-color: #e3e3e3;
     border: none;
-    margin-left: -5px; margin-right: -5px;
+    margin-left: -1.35em; margin-right: -1.35em;
 }
 
 #searchInput {
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 #searchBtn {
-    border-radius: 25px;
-    background-color: #464E2E;
+    border-radius: 10px;
+    background-color: #435b72;
+    margin-left: 5px;
     border: none;
 }
 
 #searchBtn:hover {
-    background-color: #39422B;
+    background-color: #3b5063;
 }
-
-
-
-/* Links Styling */
-a {
-    color: #8B9556;
-    text-decoration: none;
-}
-
-a:hover {
-    color:#464E2E;
-    text-decoration: none;
-}
-
-
-
-
-
-
-
-/**/
-
 
 .btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active {
     background-color: #464E2E;
     background-image: none;
     border: none;
     box-shadow: none;
-}
-
-
-
-.badge-info{
-    background-color: #848E52;
-}
-
-#banner {
-    background-color: rgba(222, 255, 51, 0.7);
-    width: 280px;
-    position: fixed;
-    top: 40px;
-    right: -84px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 1px 1px 5px grey;
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    z-index: 999;
-}
-
-
-.progress {
-    background-color: #fff;
-    justify-content: center;
-    height: 2rem;
-}
-
-.dropdown-item:hover {
-    background-color: gray !important;
-}
-
-#allConcepts {
-    min-height: 380px;
-}
-
-.cardHeaderRight {
-    /*right, left buttons*/
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-}
-
-#allConceptsHeader {
-    padding-right: 5rem;
-}
-
-.card-body:not(#searchCard) {
-    font-size: small;
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-@media screen and (min-width: 1000px) {
-    #title {
-        font-size: 3vw;
-    }
 }
 
 #dropdown {
@@ -230,6 +185,10 @@ ul {
         padding-left: .75rem;
     }
 
+.dropdown-item:hover {
+        background-color: gray !important;
+}
+
 .searchLink {
     color: black;
     cursor: pointer;
@@ -244,6 +203,46 @@ ul {
 .searchResultText {
     font-size: small;
 }
+    
+
+
+/* Body */
+
+.badge-info{
+    background-color: #848E52;
+}
+
+.progress {
+    background-color: inherit;
+    justify-content: center;
+    height: 2rem;
+}
+
+#pageContent {
+    margin: 1em;
+}
+
+
+
+
+/* Inner pages */
+
+#allConcepts {
+    min-height: 380px;
+}
+
+.cardHeaderRight {
+    /*right, left buttons*/
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+#allConceptsHeader {
+    padding-right: 5rem;
+}
+
+
 
 .addVoc {
     font-size: small;
@@ -264,8 +263,6 @@ ul.notation {
         float: left;
         padding-right: 15px;
     }
-
-
 
 .skosRel {
     background: #eee;
@@ -334,26 +331,39 @@ ul.notation {
 
 .uriImp {
     color: #3498db;
-    /*            font-size: 90%;*/
 }
 
-/*         .uriOrg {
-                        color: green;
-                        font-size: 90%;
-        }
-*/
+
+/* Card and Widget Styling */
+
+.card-body:not(#searchCard) {
+    font-size: small;
+}
+
 
 .card-header a {
     color: white;
 }
 
-/*#search_widget{
-    background-color: #ACB992;
-} */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #464E2E;
+    color: #fff;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 0.9rem;
+}
 
 
-/*bootstrap overriding*/
-/*to merge?*/
+/* Bootstrap overriding*/
+
 btn-info:not(:disabled):not(.disabled).active,
 .btn-info:not(:disabled):not(.disabled):active,
 .show>.btn-info.dropdown-toggle, .btn-info:not(:disabled):not(.disabled).active:focus,
@@ -370,11 +380,9 @@ btn-info:not(:disabled):not(.disabled).active,
 }
 
 .text-muted {
-    color: #474B1B !important;
+    /* color: #474B1B !important; */
+    color: #1B324B !important;
 }
-
-/*end*/
-
 
 
 
@@ -391,5 +399,11 @@ btn-info:not(:disabled):not(.disabled).active,
 
     .card-header {
         font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    #title {
+        font-size: 3vw;
     }
 }

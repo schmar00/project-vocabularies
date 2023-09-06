@@ -23,7 +23,7 @@ $(document).ready(function () {
         }
 
     } else {
-        insertPageDesc(); //general intro
+       // insertPageDesc(); //general intro
         insertVocDesc(vocProjects, 'proj_desc');
         insertProjCards('proj_links', vocProjects);
         
@@ -33,13 +33,15 @@ $(document).ready(function () {
 });
 
 //********set the title of PV homepage********************************************************************
-
+/*
 function insertPageDesc() {
 
     $('#page_desc').append('<br><h1 id="title">EGDI Vocabularies</h1>');
     $('#page_desc').append('<h5 id="sub-title">European Geological Data Infrastructure</h5>');
     $('#page_desc').append('<p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>');
 }
+
+*/
 
 //*********************descriptions insert of vocabularies for the start page******************************
 
@@ -529,7 +531,7 @@ function createFrontPart(divID, uri, data, props) {
                 case 'prefLabel':
                     //console.log(ul);
                     pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
-                    html += `<h1 id="prefLabel" class="mt-4${(uri.search('geoscience.earth')<0?` text-muted`:'')}">${pL}</h1>`;
+                    html += `<h2 id="prefLabel" class="mt-4${(uri.search('geoscience.earth')<0?` text-muted`:'')}">${pL}</h2>`;
 
                     html += `<p class="${(uri.search('geoscience.earth')<0?' text-muted">':'">')}
                         <button

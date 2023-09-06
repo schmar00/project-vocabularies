@@ -31,21 +31,25 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div id="pageContent" class="">
-                <!-- Page description -->
-                <div id="page_desc" class=" text-center"></div>
+            <!-- Page description -->
+            <div id="page_desc" class=" text-center">
+                <h1 id="title">EGDI Vocabularies</h1>
+                <h5 id="sub-title">European Geological Data Infrastructure</h5>
+                <p>Establishing the European Geological Surveys Research Area to deliver a Geological Service for Europe</p>
+                <h5 id="menu" class="text-center">
+                    <div><a href="javascript:window.location.href = BASE;">home</a> |
+                        <a
+                            href="https://github.com/GeoEra-GIP/WP4-Semantics/tree/master/Project%20Vocabularies">docs</a>
+                        |
+                        <a href="https://resource.geosphere.at/graphdb/sparql">API</a> |
+                        <a
+                            href="https://github.com/schmar00/project-vocabularies/raw/master/rdf/GeoERA_GIP-P_WP4_ProjectVocabularies_Oct2021.zip">download</a>
+                    </div>
+                </h5>
+            </div>
+            <div id="pageContent" class="">                
                 <!-- Search Widget -->
                 <div id="search_widget">
-                    <h5 id="menu" class="text-center">
-                        <div><a href="javascript:window.location.href = BASE;">home</a> |
-                            <a
-                                href="https://github.com/GeoEra-GIP/WP4-Semantics/tree/master/Project%20Vocabularies">docs</a>
-                            |
-                            <a href="https://resource.geosphere.at/graphdb/sparql">API</a> |
-                            <a
-                                href="https://github.com/schmar00/project-vocabularies/raw/master/rdf/GeoERA_GIP-P_WP4_ProjectVocabularies_Oct2021.zip">download</a>
-                        </div>
-                    </h5>
                     <div id="searchCard" class="card-body">
                         <div id="searchGroup" class="input-group">
                             <input id="searchInput" type="text" class="form-control" placeholder="Search for...">
@@ -53,7 +57,7 @@
                                 <table id="dropdown" class="table table-hover"></table>
                             </div>
                             <span class="input-group-btn"><button id="searchBtn" class="btn btn-info"
-                                    type="button">Go!</button></span>
+                                    type="button">Go</button></span>
                         </div>
                     </div>
                 </div> 
@@ -61,9 +65,7 @@
                 <!-- Project descriptions -->
                 <div id="proj_desc">
                     <div class="progress">
-                        <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
+                        <div class="spinner-border" role="status"></div>
                     </div>
                 </div>
                 <hr>
@@ -76,8 +78,8 @@
                 
                 <!-- Side Widgets -->
                 <div id="image_links"></div>
-                <!-- Side Widgets 
-                <div id="proj_links"></div> -->
+                <!-- Side Widgets -->
+                <div id="proj_links"></div> 
             </div>
         </div>
     </div>
