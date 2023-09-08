@@ -228,7 +228,13 @@ h4, h5 {
 /* Inner pages */
 
 #allConcepts {
-    min-height: 380px;
+   /* min-height: 380px;*/
+}
+
+#allConceptsHeader {
+    padding-right: 5rem;
+    background-color: #848E52;
+    border-bottom: white;
 }
 
 .cardHeaderRight {
@@ -238,11 +244,9 @@ h4, h5 {
     right: 0.5rem;
 }
 
-#allConceptsHeader {
-    padding-right: 5rem;
+#proj_links, #image_links  {
+   margin: 15px;
 }
-
-
 
 .addVoc {
     font-size: small;
@@ -377,12 +381,15 @@ btn-info:not(:disabled):not(.disabled).active,
 
 .row {
     display: block;
+    
 }
 
 .text-muted {
     /* color: #474B1B !important; */
     color: #1B324B !important;
 }
+
+
 
 
 

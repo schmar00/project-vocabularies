@@ -636,7 +636,7 @@ function insertImage(links, divID) {
     links.forEach((i) => {
         let capt = i.split('\/').pop().split('.')[0].replace(/_/g, ' ').replace(/%20/g, ' ');
         $('#' + divID).append(`
-                <div class="card my-4">
+                <div class="card my-4 box-b">
                     <div class="card-body">
                         <figure>
                             <a href="${i}">
@@ -832,7 +832,7 @@ function insertConceptBrowser(divID, uri, offset) {
 
     $('#' + divID).append(`
         <hr>
-        <div class="card my-4">
+        <div class="card my-4 concept">
             <ul id="coBr" class="pagination mb-4 cardHeaderRight">
                 <li>
                     <button type="button" id="leftBtn" class="btn btn-outline-secondary btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)-50)">
@@ -911,6 +911,7 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
             }
         });
 }
+
 
 //***********************************************************************************************************
 //********************************END************************************************************************
