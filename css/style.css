@@ -18,12 +18,12 @@
 
 @font-face {
     font-family: "Playfair Display";
-    src: url(/css/fonts/PlayfairDisplay.ttf);
+    src: url(fonts/PlayfairDisplay.ttf);
   }
   
 @font-face {
     font-family: "Montserrat";
-    src: url(/css/fonts/Montserrat.ttf);
+    src: url(fonts/Montserrat.ttf);
   }
 
 
@@ -44,7 +44,7 @@ body {
     background-color: #f2f2f2;
     color: #2A2B2A;
 
-    background-image: url(/img/header2.jpg);
+    background-image: url(./img/header2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
