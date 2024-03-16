@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+
+<body>
+    <div>
+        <div id="404page"></div>
+    </div>
+
+    <script>
+        const voc = 'https://voc.europe-geology.eu';
+        const regex = /^[a-zA-Z0-9\-_\/]+$/; // allowed only a-z A-Z - _ /
+        let uri = window.location.href;
+        let new_path = uri.replace(voc, '');
+
+        if (regex.test(new_path)) {
+            window.location.replace('https://pv.geoinformation.dev?uri=' + voc + new_path);
+        } else {
+            document.getElementById('404page').innerHTML = `<h1>404</h1>
+            <p> <strong>Opps!</strong> Page not found.</p>
+            <p>${uri}</p>
+            <p>The page you're looking for doesn't exist.</p>
+            <a href="index.html">EGDI Vocabularies page</a>`;
+        }
+    </script>
+
+</body>
+
+</html>
