@@ -1,0 +1,259 @@
+/* bebas-neue-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/bebas-neue-v14-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+/* lato-300 - latin_latin-ext */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/lato-v24-latin_latin-ext-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* lato-300italic - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 300;
+    src: url('../fonts/lato-v24-latin_latin-ext-300italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* lato-regular - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/lato-v24-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* lato-italic - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/lato-v24-latin_latin-ext-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* lato-900 - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../fonts/lato-v24-latin_latin-ext-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* lato-900italic - latin_latin-ext */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 900;
+    src: url('../fonts/lato-v24-latin_latin-ext-900italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+.progress {
+    background-color: #fff;
+    justify-content: center;
+    height: 2rem;
+}
+
+a {
+    color: rgb(6, 74, 143);
+    text-decoration: none;
+    
+}
+
+a:hover {
+    border-bottom: 5px solid #df0a0a;
+    /* background-color: #e8e8e9; */
+    /* border-bottom: 5px solid rgb(210, 1, 1); */
+}
+
+.fas .fab {
+    color: rgb(6, 74, 143);
+}
+
+#uriBtn:hover:before {
+    content:"copy ";
+}
+
+.dropdown-item:hover {
+    background-color: gray !important;
+}
+
+#allConcepts {
+    min-height: 380px;
+}
+
+.cardHeaderRight {
+    /*right, left buttons*/
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+#allConceptsHeader {
+    padding-right: 5rem;
+}
+
+.card-body:not(#searchCard) {
+    font-size: small;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@media screen and (min-width: 1000px) {
+    #title {
+        font-size: 3vw;
+    }
+}
+
+#title {
+    font-family: 'Bebas Neue';
+    font-size: 4rem;
+}
+
+#dropdown {
+    background-color: white;
+    min-width: 200px;
+    position: relative;
+    z-index: 999;
+}
+
+#dropdown a {
+    color: black;
+}
+
+#dropdown td {
+    padding: .1rem;
+    padding-left: .75rem;
+}
+
+.searchLink {
+    color: black;
+    cursor: pointer;
+}
+
+.searchPropTyp {
+    color: #999;
+    font-weight: 700;
+}
+
+.addVoc {
+    font-size: small;
+    color: gray;
+}
+
+ul.altLabel,
+ul.notation {
+    list-style-position: inside;
+    display: inline-block;
+    padding: 0;
+    margin-bottom: -0.2rem;
+}
+
+ul.altLabel li,
+ul.notation li {
+    display: inline;
+    float: left;
+    padding-right: 15px;
+}
+
+
+
+.skosRel {
+    background: #eee;
+    width: 120px;
+    text-align: center;
+    border: 3px solid white;
+}
+
+.skosRel-1 {
+    background: lightgray;
+    width: 120px;
+    text-align: center;
+    border: 3px solid white;
+}
+
+.skosRelUl {
+    padding: 0.5rem 0rem 0rem 1rem;
+}
+
+.datatype {
+    display: inline-block;
+    padding: 2px;
+    font-size: 60%;
+    border-radius: 2px;
+    color: white;
+    background: #444;
+}
+
+.lang {
+    display: inline-block;
+    padding: 0px 2px;
+    font-size: 60%;
+    font-weight: 600;
+    border-radius: 2px;
+    color: white;
+    background: #444;
+}
+
+.propTech {
+    padding-right: 5px;
+}
+
+#details th {
+    text-align: left;
+    padding-top: 0.3rem;
+}
+
+#details td {
+    vertical-align: middle;
+    padding-bottom: 0.7rem;
+}
+
+#details ul {
+    margin-bottom: 0rem;
+}
+
+.tooltip-inner {
+    text-align: left;
+    background-color: #27292b;
+}
+
+.plusSign {
+    color: gray;
+    font-size: 60%;
+}
+
+.card-header a {
+    color: white;
+}
+
+.editorLink {
+    color: rgb(199, 3, 3);
+}
+
+#search_widget {
+    /* background-color: #425d79; */
+    background: #fcee21;
+    background: -moz-linear-gradient(135deg, #fcee21 0%, #009245 100%);
+    background: -webkit-linear-gradient(135deg, #fcee21 0%, #009245 100%);
+    background: linear-gradient(135deg, #fcee21 0%, #009245 100%);
+    background: #00537e;
+    background: -moz-linear-gradient(to bottom, #00537e 0%, #3aa17e 100%);
+    background: -webkit-linear-gradient(to bottom, #00537e 0%, #3aa17e 100%);
+    background: linear-gradient(to bottom, #00537e 0%, #3aa17e 100%);
+    }
+
+ 
+
+/* GO #94c425 #444444 */

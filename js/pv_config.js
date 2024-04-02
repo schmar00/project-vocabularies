@@ -1,4 +1,5 @@
-let ENDPOINT = 'https://resource.geolba.ac.at/PoolParty/sparql/geoera';
+//let ENDPOINT = 'https://resource.geolba.ac.at/PoolParty/sparql/geoera';
+let ENDPOINT = 'https://resource.geosphere.at/graphdb/repositories/GSEU';
 
 function addVocProj(vocProjects) {
 
@@ -6,7 +7,7 @@ function addVocProj(vocProjects) {
         acronym: 'GeoConnect³d',
         title: 'Cross-border, cross-thematic multiscale framework for combining geological models and data for resource appraisal and policy support',
         description: 'The GeoConnect³d project develops and tests a new methodological approach to prepare and disclose geological information for policy support and subsurface management. The improved approach uses two regional case studies – the Roer-to-Rhine region and the Pannonian Basin. These regional, cross-border case studies are chosen to be complementary and sufficiently different in geological setting and degree of implementation of subsurface exploitation and management, in order to maximize their pan-European relevance. A novel bottom-up approach introduces two concepts that increase the geological understanding of an area and are aimed at providing a coherent geological context for evaluating subsurface applications and resolving subsurface management issues. The first new concept is the structural framework as a means of joining existing models of different scale and resolution to clarify the importance of planar structures in a way that makes the geology understandable to stakeholders involved in subsurface management. The second concept is that of geomanifestations. These specific expressions of geological processes are important sources of information for improving geological understanding. The structural framework models annotated with geomanifestations allow the integration and evaluation of complex cross-thematic research. The two bottom-up regional case studies form the study material for a top-down, more generic evaluation of potentially interacting subsurface activities that allows revisiting and refining state-of-the-art methods. Valorisation of regional results at pan-European level is ensured by testing the methodologies in two smaller pilot areas in Germany and Ireland.',
-        image: 'geoconnect3d.png',
+        image: 'geoera.png',
         project_page: 'https://geoera.eu/projects/geoconnect3d6/',
         rdf_download: ['geoconnect3d.rdf', 'geoconnect3d.ttl']
     });
@@ -15,7 +16,7 @@ function addVocProj(vocProjects) {
         acronym: 'HIKE',
         title: 'Hazard and Impact Knowledge for Europe',
         description: 'The HIKE project aims to support research and assessments of induced hazards and impacts that are related to the exploitation of subsurface resources and capacities throughout Europe. This will be achieved through development, demonstration and implementation of harmonized subsurface data sets and methodologies, investigation of applied use cases, and facilitation of knowledge shared between geological surveys and stakeholders. WP-2 focuses on the development of a European fault database covering a comprehensive set of static and dynamic geological and physical characteristics needed for the assessment of seismic hazards, ground movements, leakage and fluid migration, sealing capacities, fluid flow and other types of dynamic behaviour. This database will be developed, populated and tested in conjunction with several other GeoERA projects and external stakeholder involvement. WP-3 establishes novel hazard and impact research methods and investigates the added value of the established fault information in several case studies and geological settings across Europe. WP-4 concludes the research activities with future recommendations and the establishment of a share point for information, knowledge and preferred practices related to hazard and impact research. This share point is intended to provide a collaboration and knowledge exchange platform for future research by geological surveys and other stakeholders. WP-5 governs the embedding of the results into the GeoERA Information Platform.',
-        image: 'geoera.png',
+        image: 'rock.webp',
         project_page: 'https://geoera.eu/projects/hike10/',
         rdf_download: ['hike.rdf', 'hike.ttl']
     });
@@ -24,7 +25,7 @@ function addVocProj(vocProjects) {
         acronym: 'HotLime',
         title: 'Mapping and Assessment of Geothermal Plays in Deep Carbonate Rocks – Cross-domain Implications and Impacts',
         description: 'Hydrothermal systems in deep carbonate rocks are the most promising low-enthalpy geothermal systems across Europe. Their assessment requires the mapping and characterization of the fault network, as fault density determines the groundwater yield of the reservoirs, thus the capability of the hydrothermal system. As the only one of crucial factors that can be a reliably assessed at the forefront of exploration, the detailed inventory of tectonic boundaries has been prime focus of HotLime.',
-        image: 'hotlime.png',
+        image: 'rock.webp',
         project_page: 'https://geoera.eu/projects/hotlime6/',
         rdf_download: ['hotlime.rdf', 'hotlime.ttl']
     });
@@ -33,7 +34,7 @@ function addVocProj(vocProjects) {
         acronym: 'HOVER',
         title: 'Hydrological processes and Geological settings over Europe controlling dissolved geogenic and anthropogenic elements in groundwater of relevance to human health and the status of dependent ecosystems',
         description: 'The challenge is to gain understanding of the controls on groundwater quality across Europe using the combined expertise and data held by member states. The project will address groundwater management issues related to drinking water, human and ecosystem health across Europe in relation to both geogenic elements and anthropogenic pollutants by data sharing, technical and scientific exchange between European GSOs[1]. We will link our knowledge of geological settings and understanding of hydrogeological processes to the natural variability of groundwater quality and to the risk of transfer of anthropogenic dissolved compounds to aquifers. For natural water quality this will include evaluating health risks and spatial variability of concentrations of geogenic elements and using a common approach to assessing thermal and mineral water. For diffuse pollutant behaviour we will increase understanding of ecology and microbial diversity controls on transforming pollutants at groundwater-surface water transition zones, quantify groundwater age distributions and nitrate and pesticide travel times in the subsurface and their attenuation patterns for evaluating the efficiency of programme of measures, the design and assessment of monitoring programmes, pollution trends, and create EU-wide aquifer vulnerability maps by comparing assessment methods across Europe. New compounds will be addressed by developing a consistent approach to groundwater monitoring for organic emerging contaminants. Common standards, databases and maps will be developed and project outputs will include thematic maps and web service tools at pan-European scale and databases available through the Information Platform to increase political and public awareness and improve groundwater management at the EU scale.',
-        image: 'geoera_groundwater.png',
+        image: 'water.webp',
         project_page: 'https://geoera.eu/projects/hover8/',
         rdf_download: ['hover.rdf', 'hover.ttl']
     });

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>EGDI vocabularies - table</title>
+</head>
+
+<body>
+    <div id="heading"></div>
+    <div id="table"></div>
+
+    <script>
+        let query = `PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+        select distinct ?URI ?Label
+        (GROUP_CONCAT(distinct ?n; separator = '; ') as ?Notation)
+        (GROUP_CONCAT(distinct ?D; separator = '; ') as ?Definition)
+        (GROUP_CONCAT(distinct ?P; separator = '; ') as ?Parents)
+        (GROUP_CONCAT(distinct ?N; separator = '; ') as ?scopeNote)
+        where {
+        {<§> skos:hasTopConcept ?tc . ?tc skos:narrower* ?URI }
+        UNION {<§> skos:narrower* ?URI }
+        ?URI skos:prefLabel ?Label filter(lang(?Label)="en")
+        optional {?URI skos:notation ?n}
+        optional {?URI skos:definition ?D filter(lang(?D)="en")}
+        optional {?URI skos:scopeNote ?N filter(lang(?N)="en")}
+        optional {?URI skos:broader ?o . ?o skos:prefLabel ?P filter(lang(?P)="en")}
+        }
+        group by ?URI ?Label
+        order by ?Label`;
+
+        let urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('uri')) {
+            let uri = decodeURI(urlParams.get('uri').replace(/["';><]/gi, ''));
+            document.getElementById('heading').innerHTML = `<h2>"${uri}" incl. narrower terms</h2>`;
+            htmlTable(query.replace(/§/g, uri));
+        }
+
+        //***********************HTML Table download***************************************
+
+        function htmlTable(qry){ 
+            fetch('https://resource.geosphere.at/graphdb/repositories/GSEU?query=' + encodeURIComponent(qry) + '&Accept=application%2Fsparql-results%2Bjson')
+                    .then(res => res.json())
+                    .then(jsonData => {
+                        let s = 'border: 1px solid black; border-collapse: collapse; word-wrap: break-all; padding:5px;';
+                        let rows = jsonData.head.vars; //console.log(rows);
+                        let tbl = `<table style="${s}" class="table table-hover">
+                                        <thead>
+                                        <tr style="${s}">
+                                            <th style="${s}">${rows.join(`</th><th style="${s}">`)}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        ${jsonData.results.bindings
+                                            .map(a => `<tr style="${s}">` + 
+                                            rows.map(c => `<td style="${s}${c=='Definition'||c=='scopeNote'?'font-size:70%;':''}">` + 
+                                            createLink(a[c].value) + '</td>').join() + '</tr>').join()}
+                                        </tbody>
+                                    </table>`;
+                        document.getElementById('table').innerHTML = tbl.replace(/,/g,'');
+                    });
+        }
+
+        function createLink(txt){
+            return txt.substring(0, 4) == 'http' ? '<a href="' + txt + '">' + txt + '</a>' : txt
+        }
+
+    </script>
+
+
+</body>
+
+</html>
