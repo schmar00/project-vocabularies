@@ -18,7 +18,7 @@
         let new_path = uri.replace(voc, '');
 
         if (regex.test(new_path)) {
-            window.location.replace('https://pv.geoinformation.dev?uri=' + voc + new_path);
+            window.location.replace('https://voc.europe-geology.eu?uri=' + voc + new_path);
         } else {
             document.getElementById('404page').innerHTML = `<h1>404</h1>
             <p> <strong>Opps!</strong> Page not found.</p>
