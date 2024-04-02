@@ -278,7 +278,7 @@
 
                             for (let j of coords) {
                                 L.polyline(j.map(a => [a[1], a[0]]), lineStyle).addTo(map)
-                                    .bindPopup(`<h2><a href="https://schmar00.github.io/egdi-vocabularies/?uri=${i.properties.concept_uri}" target="_blank">${selConcept.label}</a></h2>
+                                    .bindPopup(`<h2><a href="https://schmar00.github.io/project-vocabularies/?uri=${i.properties.concept_uri}" target="_blank">${selConcept.label}</a></h2>
                                 ${titleSuffix}
                                 ${(selConcept.def.length>0)?(`<div class="popUpText">${selConcept.def.substr(0,400)+'..'}</div>`):''}
                                 Fault type: <a href="${i.properties.fault_type_uri}" target="_blank">${i.properties.fault_type}</a>
