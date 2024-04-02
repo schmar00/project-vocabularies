@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>404</title>
+    <link rel="stylesheet" href="css/bootstrap.css"> <!-- bootswatch simplex modified-->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <div>
+<body style="background: #dedede;">
+    <div style="padding-top: 200px;">
         <div id="404page"></div>
     </div>
 
@@ -20,11 +23,18 @@
         if (regex.test(new_path)) {
             window.location.replace('https://voc.europe-geology.eu?uri=' + voc + new_path);
         } else {
-            document.getElementById('404page').innerHTML = `<h1>404</h1>
-            <p> <strong>Opps!</strong> Page not found.</p>
-            <p>${uri}</p>
-            <p>The page you're looking for doesn't exist.</p>
-            <a href="https://voc.europe-geology.eu">EGDI Vocabularies page</a>`;
+            document.getElementById('404page').innerHTML = `<div class="page-wrap d-flex flex-row align-items-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <span class="display-1 d-block">404</span>
+                                    <p>${uri}</p>
+                                    <div class="mb-4 lead">The page you are looking for was not found.</div>
+                                    <a href="https://voc.europe-geology.eu" class="btn btn-link">Back to EGDI Vocabularies page</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
         }
     </script>
 
