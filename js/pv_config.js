@@ -3,6 +3,15 @@ let ENDPOINT = 'https://resource.geosphere.at/graphdb/repositories/GSEU';
 
 function addVocProj(vocProjects) {
 
+    vocProjects.set('gseu', {
+        acronym: 'GSEU',
+        title: 'Bringing the Subsurface into the Light - drawing together the baseline data and knowledge needed to manage Europes natural resources and reach Net Zero',
+        description: 'We aim to contribute to the European Green Deal, the UN Sustainable Development Goals and the Horizon Europe objectives through the development of a Geological Service for Europe, which focuses on the planet itself: the earth beneath our feet. The subsurface holds indispensable resources for European industries and opportunities to decarbonise our economy, but also requires careful management to preserve a healthy and safe living environment for Europe’s citizens. Structurally addressing the EU dimension in geological services is needed because the scale of many societally and economically relevant geological features exceeds that of individual countries. Addressing transnational and continental-scale problems requires innovation, standardisation, harmonisation as well as a shared vision. We aim to build the Geological Service for Europe based on Europe’s best practices and implement the Service with the backing of the Union. Existing geological surveys, the national custodians of geological information, have amassed huge legacies of data and information that are difficult to merge. This project will continue the harmonisation and standardisation effort initiated in earlier projects. We aim to create joint services that can support acceleration of the energy and climate transitions, as well as a larger critical mass of intra-European cooperation through convergence of our research agendas, as key steps to increase the amount and quality of results we are aiming for. A common thread in this project is innovation in ways in which subsurface information is conceptualised, organised, visualised, delivered and translated to the needs of a wide range of audiences, and the methodologies to achieve this. Building on the groundwork laid in the GeoERA program, we will scale up and out, not only scientifically, but also in involving national stakeholders in the network, in order to create support and eventually obtain a mandate for a European Service on a permanent basis.',
+        image: '',
+        project_page: 'https://www.geologicalservice.eu',
+        rdf_download: []
+    });
+
     vocProjects.set('geoconnect3d', {
         acronym: 'GeoConnect³d',
         title: 'Cross-border, cross-thematic multiscale framework for combining geological models and data for resource appraisal and policy support',
