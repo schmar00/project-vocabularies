@@ -18,7 +18,12 @@
         const voc = 'https://voc.europe-geology.eu';
         const regex = /^[a-zA-Z0-9\-_\/]+$/; // allowed only a-z A-Z - _ /
         let uri = window.location.href;
-        let new_path = uri.replace(voc, '');
+        let new_path = uri.replace(voc, ''); 
+        
+        if ((uri.indexOf('/ont/') > -1) && (uri.indexOf('#') > -1)) {
+            alert(uri.split('#')[0] + '.ttl');
+            //window.location.replace(uri.split('#')[0] + '.ttl');
+        }
 
         if (regex.test(new_path)) {
             window.location.replace('https://voc.europe-geology.eu?uri=' + voc + new_path);
