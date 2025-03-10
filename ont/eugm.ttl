@@ -1,0 +1,570 @@
+#################################################################
+###  Generated with the experimental alpha version of the TTL exporter of WebVOWL (version 1.1.7)  http://visualdataweb.de/webvowl/   ###
+#################################################################
+
+@prefix : 		<https://voc.europe-geology.eu/ont/eugm#> .
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: 		<http://www.w3.org/2002/07/owl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: 		<http://purl.org/dc/elements/1.1/> .
+@prefix xml: 		<http://www.w3.org/XML/1998/namespace> .
+@prefix skos: 		<http://www.w3.org/2004/02/skos/core#> .
+@prefix : 		<https://voc.europe-geology.eu/ont/gph#> .
+@prefix dct: 		<http://purl.org/dc/terms/> .
+@prefix foaf: 		<http://xmlns.com/foaf/0.1/> .
+@base 			<https://voc.europe-geology.eu/ont/eugm#> .
+
+<https://voc.europe-geology.eu/ont/eugm#> rdf:type owl:Ontology ;
+                                dc:title "Ontology for EUGM"@en; 
+                                dc:description "Simplified ontology for EUGM, 2025.01.24"@en; 
+                                dc:creator "Sőrés László, SARA" . 
+#################################################################
+
+###  Property Definitions (Number of Property) 91 ###
+#  --------------------------- Property 0------------------------- 
+:numberOfGlobalOutliers rdf:type owl:DatatypeProperty ;
+                        rdfs:label "numberOfGlobalOutliers"@IRI-based; 
+                        rdfs:domain :RegularizedTimeseries;
+                        rdfs:range xsd:integer . 
+#  --------------------------- Property 1------------------------- 
+:highestDroughtIntensity rdf:type owl:DatatypeProperty ;
+                         rdfs:label "highestDroughtIntensity"@IRI-based; 
+                         rdfs:domain :StandardizedTimeseries;
+                         rdfs:range xsd:string . 
+#  --------------------------- Property 2------------------------- 
+:relatedParty rdf:type owl:DatatypeProperty ;
+              rdfs:label "relatedParty"@IRI-based; 
+              rdfs:domain :MonitoringPoint;
+              rdfs:range xsd:string . 
+#  --------------------------- Property 3------------------------- 
+:temperatureEffectUsed rdf:type owl:DatatypeProperty ;
+                       rdfs:label "temperatureEffectUsed"@IRI-based; 
+                       rdfs:domain :RegularizedTimeseries;
+                       rdfs:range xsd:boolean . 
+#  --------------------------- Property 4------------------------- 
+:clusterCategory rdf:type owl:DatatypeProperty ;
+                 rdfs:label "clusterCategory"@IRI-based; 
+                 rdfs:domain :ForecastedTimeseries;
+                 rdfs:range xsd:integer . 
+#  --------------------------- Property 5------------------------- 
+:deployment rdf:type owl:ObjectProperty ;
+            rdfs:label "deployment"@IRI-based; 
+            rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor>;
+            rdfs:range :Deployment . 
+#  --------------------------- Property 6------------------------- 
+:atDepth rdf:type owl:DatatypeProperty ;
+         rdfs:label "atDepth"@IRI-based; 
+         rdfs:domain :Deployment;
+         rdfs:range xsd:float . 
+#  --------------------------- Property 7------------------------- 
+owl:topObjectProperty rdf:type owl:ObjectProperty ;
+                      rdfs:label "topObjectProperty"@IRI-based . 
+#  --------------------------- Property 8------------------------- 
+:gapFill rdf:type owl:DatatypeProperty ;
+         rdfs:label "gapFill"@IRI-based; 
+         rdfs:domain :ForecastedTimeseries;
+         rdfs:range xsd:float . 
+#  --------------------------- Property 9------------------------- 
+:fillingMethod rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :forecastingCodelistProperty;
+               rdfs:label "fillingMethod"@IRI-based; 
+               rdfs:domain :ForecastedTimeseries;
+               rdfs:range :FillingMethodValue . 
+#  --------------------------- Property 10------------------------- 
+:memory rdf:type owl:DatatypeProperty ;
+        rdfs:label "memory"@IRI-based; 
+        rdfs:domain :StandardizedTimeseries;
+        rdfs:range xsd:float . 
+#  --------------------------- Property 11------------------------- 
+:droughtVulnerability rdf:type owl:DatatypeProperty ;
+                      rdfs:label "droughtVulnerability"@IRI-based; 
+                      rdfs:domain :StandardizedTimeseries;
+                      rdfs:range xsd:float . 
+#  --------------------------- Property 12------------------------- 
+:wetDurationMedian rdf:type owl:DatatypeProperty ;
+                   rdfs:label "wetDurationMedian"@IRI-based; 
+                   rdfs:domain :StandardizedTimeseries;
+                   rdfs:range xsd:float . 
+#  --------------------------- Property 13------------------------- 
+:aquiferName rdf:type owl:DatatypeProperty ;
+             rdfs:label "aquiferName"@IRI-based; 
+             rdfs:domain :Aquifer;
+             rdfs:range xsd:string . 
+#  --------------------------- Property 14------------------------- 
+:varianceByFixedEffects rdf:type owl:DatatypeProperty ;
+                        rdfs:label "varianceByFixedEffects"@IRI-based; 
+                        rdfs:domain :RegularizedTimeseries;
+                        rdfs:range xsd:float . 
+#  --------------------------- Property 15------------------------- 
+:aquiferProperty rdf:type owl:DatatypeProperty ;
+                 rdfs:label "aquiferProperty"@IRI-based; 
+                 rdfs:range rdfs:Literal . 
+#  --------------------------- Property 16------------------------- 
+:droughtDurationMean rdf:type owl:DatatypeProperty ;
+                     rdfs:label "droughtDurationMean"@IRI-based; 
+                     rdfs:domain :StandardizedTimeseries;
+                     rdfs:range xsd:float . 
+#  --------------------------- Property 17------------------------- 
+:droughtResilienceRecover rdf:type owl:DatatypeProperty ;
+                          rdfs:label "droughtResilienceRecover"@IRI-based; 
+                          rdfs:domain :StandardizedTimeseries;
+                          rdfs:range xsd:float . 
+#  --------------------------- Property 18------------------------- 
+:autoCorrelation rdf:type owl:DatatypeProperty ;
+                 rdfs:label "autoCorrelation"@IRI-based; 
+                 rdfs:domain :StandardizedTimeseries;
+                 rdfs:range xsd:float . 
+#  --------------------------- Property 19------------------------- 
+:screenLength rdf:type owl:DatatypeProperty ;
+              rdfs:label "screenLength"@IRI-based; 
+              rdfs:domain :Borehole;
+              rdfs:range xsd:float . 
+#  --------------------------- Property 20------------------------- 
+:seasonality rdf:type owl:DatatypeProperty ;
+             rdfs:label "seasonality"@IRI-based; 
+             rdfs:domain :ForecastedTimeseries;
+             rdfs:range xsd:float . 
+#  --------------------------- Property 21------------------------- 
+:varianceByWholeModel rdf:type owl:DatatypeProperty ;
+                      rdfs:label "varianceByWholeModel"@IRI-based; 
+                      rdfs:domain :RegularizedTimeseries;
+                      rdfs:range xsd:float . 
+#  --------------------------- Property 22------------------------- 
+:trendUsed rdf:type owl:DatatypeProperty ;
+           rdfs:label "trendUsed"@IRI-based; 
+           rdfs:domain :RegularizedTimeseries;
+           rdfs:range xsd:boolean . 
+#  --------------------------- Property 23------------------------- 
+:entropy rdf:type owl:DatatypeProperty ;
+         rdfs:label "entropy"@IRI-based; 
+         rdfs:domain :ForecastedTimeseries;
+         rdfs:range xsd:float . 
+#  --------------------------- Property 24------------------------- 
+:droughtSustainability rdf:type owl:DatatypeProperty ;
+                       rdfs:label "droughtSustainability"@IRI-based; 
+                       rdfs:domain :StandardizedTimeseries;
+                       rdfs:range xsd:float . 
+#  --------------------------- Property 25------------------------- 
+:performanceR2 rdf:type owl:DatatypeProperty ;
+               rdfs:label "performanceR2"@IRI-based; 
+               rdfs:domain :ForecastedTimeseries;
+               rdfs:range xsd:float . 
+#  --------------------------- Property 26------------------------- 
+:screenComponentFrom rdf:type owl:DatatypeProperty ;
+                     rdfs:label "screenComponentFrom"@IRI-based; 
+                     rdfs:domain :Borehole;
+                     rdfs:range xsd:float . 
+#  --------------------------- Property 27------------------------- 
+owl:topDataProperty rdf:type owl:DatatypeProperty ;
+                    rdfs:label "topDataProperty"@IRI-based; 
+                    rdfs:range rdfs:Literal . 
+#  --------------------------- Property 28------------------------- 
+:droughtReliability rdf:type owl:DatatypeProperty ;
+                    rdfs:label "droughtReliability"@IRI-based; 
+                    rdfs:domain :StandardizedTimeseries;
+                    rdfs:range xsd:integer . 
+#  --------------------------- Property 29------------------------- 
+:regularizationProperty rdf:type owl:DatatypeProperty ;
+                        rdfs:label "regularizationProperty"@IRI-based; 
+                        rdfs:range rdfs:Literal . 
+#  --------------------------- Property 30------------------------- 
+:standardizationProperty rdf:type owl:DatatypeProperty ;
+                         rdfs:label "standardizationProperty"@IRI-based; 
+                         rdfs:range rdfs:Literal . 
+#  --------------------------- Property 31------------------------- 
+:observingProcedure rdf:type owl:ObjectProperty ;
+                    rdfs:label "observingProcedure"@IRI-based; 
+                    rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream>;
+                    rdfs:range :ObservingProcedure . 
+#  --------------------------- Property 32------------------------- 
+:pumpingEffect rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :monitoringPointCodelistProperty;
+               rdfs:label "pumpingEffect"@IRI-based; 
+               rdfs:domain :MonitoringPoint;
+               rdfs:range :PumpingEffectValue . 
+#  --------------------------- Property 33------------------------- 
+:monitoringPointType rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :monitoringPointCodelistProperty;
+                     rdfs:label "monitoringPointType"@IRI-based; 
+                     rdfs:domain :MonitoringPoint;
+                     rdfs:range :MonitoringPointTypeValue . 
+#  --------------------------- Property 34------------------------- 
+:mediaType rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :aquiferCodelistProperty;
+           rdfs:label "mediaType"@IRI-based; 
+           rdfs:domain :Aquifer;
+           rdfs:range <https://inspire.ec.europa.eu/codelist/AquiferMediaTypeValue> . 
+#  --------------------------- Property 35------------------------- 
+:numberOfLocalOutliers rdf:type owl:DatatypeProperty ;
+                       rdfs:label "numberOfLocalOutliers"@IRI-based; 
+                       rdfs:domain :RegularizedTimeseries;
+                       rdfs:range xsd:integer . 
+#  --------------------------- Property 36------------------------- 
+:measurementType rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :monitoringPointCodelistProperty;
+                 rdfs:label "measurementType"@IRI-based; 
+                 rdfs:domain :MonitoringPoint;
+                 rdfs:range :MeasurementTypeValue . 
+#  --------------------------- Property 37------------------------- 
+:screenComponentTo rdf:type owl:DatatypeProperty ;
+                   rdfs:label "screenComponentTo"@IRI-based; 
+                   rdfs:domain :Borehole;
+                   rdfs:range xsd:float . 
+#  --------------------------- Property 38------------------------- 
+:wetDurationMinimum rdf:type owl:DatatypeProperty ;
+                    rdfs:label "wetDurationMinimum"@IRI-based; 
+                    rdfs:domain :StandardizedTimeseries;
+                    rdfs:range xsd:float . 
+#  --------------------------- Property 39------------------------- 
+:wetDurationMean rdf:type owl:DatatypeProperty ;
+                 rdfs:label "wetDurationMean"@IRI-based; 
+                 rdfs:domain :StandardizedTimeseries;
+                 rdfs:range xsd:float . 
+#  --------------------------- Property 40------------------------- 
+:shortestDroughtYears rdf:type owl:DatatypeProperty ;
+                      rdfs:label "shortestDroughtYears"@IRI-based; 
+                      rdfs:domain :StandardizedTimeseries;
+                      rdfs:range xsd:float . 
+#  --------------------------- Property 41------------------------- 
+:nearRealTime rdf:type owl:DatatypeProperty ;
+              rdfs:label "nearRealTime"@IRI-based; 
+              rdfs:domain :MonitoringPoint;
+              rdfs:range xsd:boolean . 
+#  --------------------------- Property 42------------------------- 
+:droughtDurationMedian rdf:type owl:DatatypeProperty ;
+                       rdfs:label "droughtDurationMedian"@IRI-based; 
+                       rdfs:domain :StandardizedTimeseries;
+                       rdfs:range xsd:float . 
+#  --------------------------- Property 43------------------------- 
+:landCover rdf:type owl:DatatypeProperty ;
+           rdfs:label "landCover"@IRI-based; 
+           rdfs:domain :ForecastedTimeseries;
+           rdfs:range xsd:string . 
+#  --------------------------- Property 44------------------------- 
+:droughtDurationMaximum rdf:type owl:DatatypeProperty ;
+                        rdfs:label "droughtDurationMaximum"@IRI-based; 
+                        rdfs:domain :StandardizedTimeseries;
+                        rdfs:range xsd:float . 
+#  --------------------------- Property 45------------------------- 
+:longestDroughtYears rdf:type owl:DatatypeProperty ;
+                     rdfs:label "longestDroughtYears"@IRI-based; 
+                     rdfs:domain :StandardizedTimeseries;
+                     rdfs:range xsd:float . 
+#  --------------------------- Property 46------------------------- 
+:monitoringPointCodelistProperty rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf owl:topObjectProperty;
+                                 rdfs:label "monitoringPointCodelistProperty"@IRI-based . 
+#  --------------------------- Property 47------------------------- 
+:droughtResilienceCapacity rdf:type owl:DatatypeProperty ;
+                           rdfs:label "droughtResilienceCapacity"@IRI-based; 
+                           rdfs:domain :StandardizedTimeseries;
+                           rdfs:range xsd:float . 
+#  --------------------------- Property 48------------------------- 
+:deviceType rdf:type owl:ObjectProperty ;
+            rdfs:label "deviceType"@IRI-based; 
+            rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor>;
+            rdfs:range :DeviceTypeValue . 
+#  --------------------------- Property 49------------------------- 
+:aquiferCodelistProperty rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty;
+                         rdfs:label "aquiferCodelistProperty"@IRI-based . 
+#  --------------------------- Property 50------------------------- 
+:accumulationPeriod rdf:type owl:DatatypeProperty ;
+                    rdfs:label "accumulationPeriod"@IRI-based; 
+                    rdfs:domain :StandardizedTimeseries;
+                    rdfs:range xsd:float . 
+#  --------------------------- Property 51------------------------- 
+:performanceNSE rdf:type owl:DatatypeProperty ;
+                rdfs:label "performanceNSE"@IRI-based; 
+                rdfs:domain :ForecastedTimeseries;
+                rdfs:range xsd:float . 
+#  --------------------------- Property 52------------------------- 
+:trainingStart rdf:type owl:DatatypeProperty ;
+               rdfs:label "trainingStart"@IRI-based; 
+               rdfs:domain :ForecastedTimeseries;
+               rdfs:range xsd:date . 
+#  --------------------------- Property 53------------------------- 
+:crossCorrelationMaximum rdf:type owl:DatatypeProperty ;
+                         rdfs:label "crossCorrelationMaximum"@IRI-based; 
+                         rdfs:domain :StandardizedTimeseries;
+                         rdfs:range xsd:float . 
+#  --------------------------- Property 54------------------------- 
+:alternativeId rdf:type owl:DatatypeProperty ;
+               rdfs:label "alternativeId"@IRI-based; 
+               rdfs:domain :MonitoringPoint;
+               rdfs:range xsd:string . 
+#  --------------------------- Property 55------------------------- 
+:deploymentProperty rdf:type owl:DatatypeProperty ;
+                    rdfs:label "deploymentProperty"@IRI-based; 
+                    rdfs:range rdfs:Literal . 
+#  --------------------------- Property 56------------------------- 
+:meteoDataType rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :forecastingCodelistProperty;
+               rdfs:label "meteoDataType"@IRI-based; 
+               rdfs:domain :ForecastedTimeseries;
+               rdfs:range :MeteoDataTypeValue . 
+#  --------------------------- Property 57------------------------- 
+:droughtPeriods rdf:type owl:DatatypeProperty ;
+                rdfs:label "droughtPeriods"@IRI-based; 
+                rdfs:domain :StandardizedTimeseries;
+                rdfs:range xsd:float . 
+#  --------------------------- Property 58------------------------- 
+:numberOfMaximumGap rdf:type owl:DatatypeProperty ;
+                    rdfs:label "numberOfMaximumGap"@IRI-based; 
+                    rdfs:domain :RegularizedTimeseries;
+                    rdfs:range xsd:integer . 
+#  --------------------------- Property 59------------------------- 
+:thing rdf:type owl:ObjectProperty; 
+       owl:inverseOf :datastreams ;
+       rdfs:label "thing"@IRI-based; 
+       rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream>;
+       rdfs:range <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing> . 
+#  --------------------------- Property 60------------------------- 
+:highestWetIntensity rdf:type owl:DatatypeProperty ;
+                     rdfs:label "highestWetIntensity"@IRI-based; 
+                     rdfs:domain :StandardizedTimeseries;
+                     rdfs:range xsd:string . 
+#  --------------------------- Property 61------------------------- 
+:rainfallEffectUsed rdf:type owl:DatatypeProperty ;
+                    rdfs:label "rainfallEffectUsed"@IRI-based; 
+                    rdfs:domain :RegularizedTimeseries;
+                    rdfs:range xsd:boolean . 
+#  --------------------------- Property 62------------------------- 
+:aquiferType rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :aquiferCodelistProperty;
+             rdfs:label "aquiferType"@IRI-based; 
+             rdfs:domain :Aquifer;
+             rdfs:range <https://inspire.ec.europa.eu/codelist/AquiferTypeValue> . 
+#  --------------------------- Property 63------------------------- 
+:performanceBIAS rdf:type owl:DatatypeProperty ;
+                 rdfs:label "performanceBIAS"@IRI-based; 
+                 rdfs:domain :ForecastedTimeseries;
+                 rdfs:range xsd:float . 
+#  --------------------------- Property 64------------------------- 
+:longestWetPeriodYears rdf:type owl:DatatypeProperty ;
+                       rdfs:label "longestWetPeriodYears"@IRI-based; 
+                       rdfs:domain :StandardizedTimeseries;
+                       rdfs:range xsd:float . 
+#  --------------------------- Property 65------------------------- 
+:medianOfTheta rdf:type owl:DatatypeProperty ;
+               rdfs:label "medianOfTheta"@IRI-based; 
+               rdfs:domain :RegularizedTimeseries;
+               rdfs:range xsd:float . 
+#  --------------------------- Property 66------------------------- 
+:forecastingMethod rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :forecastingCodelistProperty;
+                   rdfs:label "forecastingMethod"@IRI-based; 
+                   rdfs:domain :ForecastedTimeseries;
+                   rdfs:range :ForecastingMethodValue . 
+#  --------------------------- Property 67------------------------- 
+:wetPeriods rdf:type owl:DatatypeProperty ;
+            rdfs:label "wetPeriods"@IRI-based; 
+            rdfs:domain :StandardizedTimeseries;
+            rdfs:range xsd:float . 
+#  --------------------------- Property 68------------------------- 
+:elevation rdf:type owl:DatatypeProperty ;
+           rdfs:label "elevation"@IRI-based; 
+           rdfs:domain :Borehole;
+           rdfs:range xsd:float . 
+#  --------------------------- Property 69------------------------- 
+:trainingEnd rdf:type owl:DatatypeProperty ;
+             rdfs:label "trainingEnd"@IRI-based; 
+             rdfs:domain :ForecastedTimeseries;
+             rdfs:range xsd:date . 
+#  --------------------------- Property 70------------------------- 
+:meanOfTheta rdf:type owl:DatatypeProperty ;
+             rdfs:label "meanOfTheta"@IRI-based; 
+             rdfs:domain :RegularizedTimeseries;
+             rdfs:range xsd:float . 
+#  --------------------------- Property 71------------------------- 
+:boreholeProperty rdf:type owl:DatatypeProperty ;
+                  rdfs:label "boreholeProperty"@IRI-based; 
+                  rdfs:range rdfs:Literal . 
+#  --------------------------- Property 72------------------------- 
+:wetDurationMaximum rdf:type owl:DatatypeProperty ;
+                    rdfs:label "wetDurationMaximum"@IRI-based; 
+                    rdfs:domain :StandardizedTimeseries;
+                    rdfs:range xsd:float . 
+#  --------------------------- Property 73------------------------- 
+:forecastingCodelistProperty rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf owl:topObjectProperty;
+                             rdfs:label "forecastingCodelistProperty"@IRI-based . 
+#  --------------------------- Property 74------------------------- 
+:deploymentTime rdf:type owl:DatatypeProperty ;
+                rdfs:label "deploymentTime"@IRI-based; 
+                rdfs:domain :Deployment;
+                rdfs:range xsd:date . 
+#  --------------------------- Property 75------------------------- 
+:sensor rdf:type owl:ObjectProperty ;
+        rdfs:label "sensor"@IRI-based; 
+        rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream>;
+        rdfs:range <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor> . 
+#  --------------------------- Property 76------------------------- 
+:shortestWetPeriodYears rdf:type owl:DatatypeProperty ;
+                        rdfs:label "shortestWetPeriodYears"@IRI-based; 
+                        rdfs:domain :StandardizedTimeseries;
+                        rdfs:range xsd:float . 
+#  --------------------------- Property 77------------------------- 
+:datastreams rdf:type owl:ObjectProperty; 
+             owl:inverseOf :thing ;
+             rdfs:label "datastreams"@IRI-based; 
+             rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing>;
+             rdfs:range <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> . 
+#  --------------------------- Property 78------------------------- 
+:host rdf:type owl:ObjectProperty ;
+      rdfs:label "host"@IRI-based; 
+      rdfs:domain :Deployment;
+      rdfs:range <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing> . 
+#  --------------------------- Property 79------------------------- 
+:observations rdf:type owl:ObjectProperty ;
+              rdfs:label "observations"@IRI-based; 
+              rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream>;
+              rdfs:range <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation> . 
+#  --------------------------- Property 80------------------------- 
+:monitoringPointProperty rdf:type owl:DatatypeProperty ;
+                         rdfs:label "monitoringPointProperty"@IRI-based; 
+                         rdfs:range rdfs:Literal . 
+#  --------------------------- Property 81------------------------- 
+:seasonalVariationUsed rdf:type owl:DatatypeProperty ;
+                       rdfs:label "seasonalVariationUsed"@IRI-based; 
+                       rdfs:domain :RegularizedTimeseries;
+                       rdfs:range xsd:boolean . 
+#  --------------------------- Property 82------------------------- 
+:forecastingProperty rdf:type owl:DatatypeProperty ;
+                     rdfs:label "forecastingProperty"@IRI-based; 
+                     rdfs:range rdfs:Literal . 
+#  --------------------------- Property 83------------------------- 
+:lagPeriod rdf:type owl:DatatypeProperty ;
+           rdfs:label "lagPeriod"@IRI-based; 
+           rdfs:domain :StandardizedTimeseries;
+           rdfs:range xsd:integer . 
+#  --------------------------- Property 84------------------------- 
+:distanceToRiver rdf:type owl:DatatypeProperty ;
+                 rdfs:label "distanceToRiver"@IRI-based; 
+                 rdfs:domain :ForecastedTimeseries;
+                 rdfs:range xsd:float . 
+#  --------------------------- Property 85------------------------- 
+:autocorrelation rdf:type owl:DatatypeProperty ;
+                 rdfs:label "autocorrelation"@IRI-based; 
+                 rdfs:domain :ForecastedTimeseries;
+                 rdfs:range xsd:float . 
+#  --------------------------- Property 86------------------------- 
+:numberOfMonths rdf:type owl:DatatypeProperty ;
+                rdfs:label "numberOfMonths"@IRI-based; 
+                rdfs:domain :RegularizedTimeseries;
+                rdfs:range xsd:integer . 
+#  --------------------------- Property 87------------------------- 
+:observedProperty rdf:type owl:ObjectProperty ;
+                  rdfs:label "observedProperty"@IRI-based; 
+                  rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream>;
+                  rdfs:range :eugmObservedProperty . 
+#  --------------------------- Property 88------------------------- 
+:optimizationMethod rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :forecastingCodelistProperty;
+                    rdfs:label "optimizationMethod"@IRI-based; 
+                    rdfs:domain :ForecastedTimeseries;
+                    rdfs:range :OptimizationMethodValue . 
+#  --------------------------- Property 89------------------------- 
+:timeResolution rdf:type owl:ObjectProperty ;
+                rdfs:label "timeResolution"@IRI-based; 
+                rdfs:domain <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor>;
+                rdfs:range :TimeResolutionValue . 
+#  --------------------------- Property 90------------------------- 
+:droughtDurationMinimum rdf:type owl:DatatypeProperty ;
+                        rdfs:label "droughtDurationMinimum"@IRI-based; 
+                        rdfs:domain :StandardizedTimeseries;
+                        rdfs:range xsd:float . 
+###  Class Definitions (Number of Classes) 26 ###
+#  --------------------------- Class  0------------------------- 
+:MonitoringPoint rdf:type owl:Class; 
+                 rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing> ;
+                 rdfs:label "MonitoringPoint"@IRI-based . 
+#  --------------------------- Class  1------------------------- 
+:MeasuredTimeseries rdf:type owl:Class; 
+                    rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> ;
+                    rdfs:label "MeasuredTimeseries"@IRI-based . 
+#  --------------------------- Class  2------------------------- 
+:ObservingProcedure rdf:type owl:Class; 
+                    owl:equivalentClass :eugmProcess ;
+                    rdfs:label "ObservingProcedure"@IRI-based . 
+#  --------------------------- Class  3------------------------- 
+<http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor> rdf:type owl:Class; 
+                                                                   rdfs:label "sensor"@IRI-based; 
+                                                                   rdfs:label "Sensor"@en . 
+#  --------------------------- Class  4------------------------- 
+:MonitoringPointTypeValue rdf:type owl:Class; 
+                          rdfs:label "MonitoringPointTypeValue"@IRI-based . 
+#  --------------------------- Class  5------------------------- 
+:PumpingEffectValue rdf:type owl:Class; 
+                    rdfs:label "PumpingEffectValue"@IRI-based . 
+#  --------------------------- Class  6------------------------- 
+:Deployment rdf:type owl:Class; 
+            rdfs:label "Deployment"@IRI-based . 
+#  --------------------------- Class  7------------------------- 
+:PostProcessedTimeseries rdf:type owl:Class; 
+                         rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> ;
+                         rdfs:label "PostProcessedTimeseries"@IRI-based . 
+#  --------------------------- Class  8------------------------- 
+:ForecastingMethodValue rdf:type owl:Class; 
+                        rdfs:label "ForecastingMethodValue"@IRI-based . 
+#  --------------------------- Class  9------------------------- 
+<http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> rdf:type owl:Class; 
+                                                                       rdfs:label "datastream"@IRI-based; 
+                                                                       rdfs:label "Datastream"@en . 
+#  --------------------------- Class  10------------------------- 
+:FillingMethodValue rdf:type owl:Class; 
+                    rdfs:label "FillingMethodValue"@IRI-based . 
+#  --------------------------- Class  11------------------------- 
+:ForecastedTimeseries rdf:type owl:Class; 
+                      rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> ;
+                      rdfs:label "ForecastedTimeseries"@IRI-based . 
+#  --------------------------- Class  12------------------------- 
+:DeviceTypeValue rdf:type owl:Class; 
+                 rdfs:label "DeviceTypeValue"@IRI-based . 
+#  --------------------------- Class  13------------------------- 
+<http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing> rdf:type owl:Class; 
+                                                                  rdfs:label "thing"@IRI-based; 
+                                                                  rdfs:label "Thing"@en . 
+#  --------------------------- Class  14------------------------- 
+:Borehole rdf:type owl:Class; 
+          rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing> ;
+          rdfs:label "Borehole"@IRI-based . 
+#  --------------------------- Class  15------------------------- 
+:TimeResolutionValue rdf:type owl:Class; 
+                     rdfs:label "TimeResolutionValue"@IRI-based . 
+#  --------------------------- Class  16------------------------- 
+<https://inspire.ec.europa.eu/codelist/AquiferMediaTypeValue> rdf:type owl:Class; 
+                                                              rdfs:label "AquiferMediaTypeValue"@IRI-based . 
+#  --------------------------- Class  17------------------------- 
+:eugmObservedProperty rdf:type owl:Class; 
+                      owl:equivalentClass <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observedproperty> ;
+                      rdfs:label "eugmObservedProperty"@IRI-based . 
+#  --------------------------- Class  18------------------------- 
+:OptimizationMethodValue rdf:type owl:Class; 
+                         rdfs:label "OptimizationMethodValue"@IRI-based . 
+#  --------------------------- Class  19------------------------- 
+<http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation> rdf:type owl:Class; 
+                                                                        rdfs:label "observation"@IRI-based; 
+                                                                        rdfs:label "Observation"@en . 
+#  --------------------------- Class  20------------------------- 
+:MeasurementTypeValue rdf:type owl:Class; 
+                      rdfs:label "MeasurementTypeValue"@IRI-based . 
+#  --------------------------- Class  21------------------------- 
+:MeteoDataTypeValue rdf:type owl:Class; 
+                    rdfs:label "MeteoDataTypeValue"@IRI-based . 
+#  --------------------------- Class  22------------------------- 
+:StandardizedTimeseries rdf:type owl:Class; 
+                        rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> ;
+                        rdfs:label "StandardizedTimeseries"@IRI-based . 
+#  --------------------------- Class  23------------------------- 
+:RegularizedTimeseries rdf:type owl:Class; 
+                       rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream> ;
+                       rdfs:label "RegularizedTimeseries"@IRI-based . 
+#  --------------------------- Class  24------------------------- 
+:Aquifer rdf:type owl:Class; 
+         rdfs:subClassOf <http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing> ;
+         rdfs:label "Aquifer"@IRI-based . 
+#  --------------------------- Class  25------------------------- 
+<https://inspire.ec.europa.eu/codelist/AquiferTypeValue> rdf:type owl:Class; 
+                                                         rdfs:label "AquiferTypeValue"@IRI-based . 
