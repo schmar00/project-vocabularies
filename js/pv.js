@@ -361,7 +361,8 @@ const n = {
     rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     gc3d: 'https://data.geoscience.earth/def/geoconnect3d#',
     schema: 'https://schema.org/',
-    geosparql: 'http://www.opengis.net/ont/geosparql#'
+    geosparql: 'http://www.opengis.net/ont/geosparql#',
+    prov: 'http://www.w3.org/ns/prov#'
 };
 
 const PREF_LABEL = [n.skos + 'prefLabel'];
@@ -377,7 +378,7 @@ const REF_LINKS = [n.dcterms + 'references'];
 const RELATIONS_1 = [n.skos + 'broader', n.skos + 'narrower', n.skos + 'related'];
 const RELATIONS_2 = [n.skos + 'exactMatch', n.skos + 'closeMatch', n.skos + 'relatedMatch', n.skos + 'broadMatch', n.skos + 'narrowMatch'];
 const RELATIONS_3 = [n.dbpo + 'category', n.rdfs + 'seeAlso', n.owl + 'sameAs', n.dcterms + 'relation', n.dcterms + 'hasPart', n.dcterms + 'isPartOf', n.dcterms + 'conformsTo'];
-const RELATIONS_EGDI = [n.gc3d + 'limitedBy', n.gc3d + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects'];
+const RELATIONS_EGDI = [n.gc3d + 'limitedBy', n.gc3d + 'limitTo', n.geosparql + 'sfTouches', n.geosparql + 'sfCrosses', n.geosparql + 'sfIntersects', n.prov + 'atLocation'];
 const WEB_LINK = [n.dcterms + 'source', n.dcterms + 'isReferencedBy', n.dcterms + 'subject', n.dcterms + 'isRequiredBy', n.dcterms + 'identifier', n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page', n.schema + 'hasMap'];
 const ICONS = [n.foaf + 'isPrimaryTopicOf', n.schema + 'subjectOf', n.foaf + 'page', n.dcterms + 'isPartOf', n.dcterms + 'hasPart'];
 const MAPS = [n.schema + 'hasMap'];
@@ -640,7 +641,7 @@ function createFrontPart(divID, uri, data, props, voc_uri) {
                         html += '<hr><h4 style="margin-bottom: 1rem;">Concept relations</h4>';
                     }
                     //hyperlinksAbstract = hyperlinksAbstract.concat(Array.from(ul).map(a => a.split('</a>')[0].split('href="')[1].split('&lang=en">')));
-                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.gc3d, '').replace(n.geosparql, '') + '</td><td class="skosRelUl"><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
+                    html += '<table><tr><td class="skosRel' + i.search('Match') + ' skosRel">' + i.replace(n.skos, '').replace(n.gc3d, '').replace(n.geosparql, '').replace(n.prov, '') + '</td><td class="skosRelUl"><ul><li>' + shortenText(Array.from(ul).join('</li><li>')) + '</li></ul></td></tr></table>';
 
                     //hyperlinksAbstract = hyperlinksAbstract.sort((a, b) => b[1].length - a[1].length);
                     //console.log(hyperlinksAbstract);
