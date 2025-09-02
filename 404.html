@@ -27,10 +27,11 @@
         }
 
         if ((uri.indexOf(ontPath) == 0) && (uri.indexOf('#') > -1)) {
+            console.log(uri.split('#')[0] + '.ttl');
             //window.location.replace(uri.split('#')[0] + '.ttl');
             fileExists(uri).then(exists => {
             if (exists) {
-                alert(uri.split('#')[0] + '.html#' + uri);
+                console.log(uri.split('#')[0] + '.html#' + uri);
                 //window.location.replace(uri.split('#')[0] + '.html#' + uri);
             } else {
                 alert('File does not exist.');
