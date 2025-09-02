@@ -18,10 +18,33 @@
         const voc = 'https://voc.europe-geology.eu';
         const regex = /^[a-zA-Z0-9\-_\/]+$/; // allowed only a-z A-Z - _ /
         let uri = window.location.href;
-        let new_path = uri.replace(voc, ''); 
+        let new_path = uri.replace(voc, '');
+        let ontPath = 'https://voc.europe-geology.eu/ont/';
 
-        if ((uri.indexOf('/ont/') > -1) && (uri.indexOf('#') > -1)) {
-            window.location.replace(uri.split('#')[0] + '.ttl');
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g,
+                c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        if ((uri.indexOf(ontPath) == 0) && (uri.indexOf('#') > -1)) {
+            //window.location.replace(uri.split('#')[0] + '.ttl');
+            fileExists(uri).then(exists => {
+            if (exists) {
+                alert(uri.split('#')[0] + '.html#' + uri);
+                //window.location.replace(uri.split('#')[0] + '.html#' + uri);
+            } else {
+                alert('File does not exist.');
+            }
+            });
+        }
+
+        async function fileExists(url) {
+        try {
+            const response = await fetch(url, { method: 'HEAD' });
+            return response.ok; // true if status is 200–299
+            } catch (error) {
+                return false;
+            }
         }
 
         if (regex.test(new_path)) {
@@ -32,7 +55,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-12 text-center">
                                     <span class="display-1 d-block">404</span>
-                                    <p>${uri}</p>
+                                    <p>${escapeHTML(uri)}</p>
                                     <div class="mb-4 lead">The page you are looking for was not found.</div>
                                     <a href="https://voc.europe-geology.eu" class="btn btn-link">Back to EGDI Vocabularies page</a>
                                 </div>

@@ -456,17 +456,26 @@ function details(divID, uri, voc_uri) { //build the web page content
 
                 // RDF download icon added to apps (notation div or altLabel div)
                 let r_links = jsonData.results.bindings.map(a => [a.p.value, '<' + a.o.value + '>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
-
+                console.log(jsonData.results.bindings.filter(a => a.p.value == 'http://www.w3.org/2004/02/skos/core#narrower'));
                 let r = `<span style="margin-right:7px;">
                             <a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
                                 <i class="fas fa-cube"></i>
                             </a>
-                        </span>
-                        <span style="margin-right:15px;">
+                        </span>`;
+
+                if (jsonData.results.bindings.filter(a => a.p.value == 'http://www.w3.org/2004/02/skos/core#narrower').length > 0) {
+                    r += `<span style="margin-right:3px;">
                             <a href="tbl.html?uri=${uri}" title="table view" target="_blank">
                                 <i class="far fa-list-alt"></i>
                             </a>
+                        </span>
+                        <span style="margin-right:15px;">
+                            <a href="diagram.html?uri=${uri}" title="table view" target="_blank">
+                                <i class="fas fa-sitemap fa-rotate-270"></i>
+                            </a>
                         </span>`;
+                }
+                
 
                 if ($('#appsInsert').length > 0) {
                     $('#appsInsert').append(r);
@@ -483,7 +492,7 @@ function details(divID, uri, voc_uri) { //build the web page content
                 
                 $('#' + divID).append(`<hr>
                         <div style="cursor: pointer; color: #777;" id="detailsBtn"
-                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'read more\');"><i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;read more ..</em>
+                        onclick="javascript: toggleRead(\'detailsBtn\', \'detailsToggle\', \'RDF statements\');"><i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;RDF statements</em>
                         </div>
                         <div style="display:none;position: relative;" id="detailsToggle">
                         <br>
@@ -536,7 +545,7 @@ function details(divID, uri, voc_uri) { //build the web page content
 //************************toggle the hidden details / because HTML5 is not fully supported by MS Edge**************
 
 function toggleRead(divBtn, divTxt, text) {
-    let txt = $('#' + divTxt).is(':visible') ? '<i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;' + text + ' ..</em>' : '<i class="fas fa-caret-down fa-lg"></i><em>&nbsp;&nbsp;' + text + ' ..</em>';
+    let txt = $('#' + divTxt).is(':visible') ? '<i class="fas fa-caret-right fa-lg"></i><em>&nbsp;&nbsp;' + text + '</em>' : '<i class="fas fa-caret-down fa-lg"></i><em>&nbsp;&nbsp;' + text + '</em>';
     $('#' + divBtn).html(txt);
     $('#' + divTxt).slideToggle();
 }
@@ -660,14 +669,14 @@ function createFrontPart(divID, uri, data, props, voc_uri) {
 
 function insertImage(links, divID) {
     links.forEach((i) => {
-        let capt = i.split('\/').pop().split('.')[0].replace(/_/g, ' ').replace(/%20/g, ' ');
+        let capt = decodeURIComponent(i.split('\/').pop().split('.')[0]).replace(/_/g, ' ');
         $('#' + divID).append(`
                 <div class="card my-4">
                     <div class="card-body">
                         <figure>
                             <a href="${i}">
                               <img class="img-fluid" src="${i}" alt="Chania" title="">
-                              <figcaption>${capt}</figcaption>
+                              <figcaption>${i.indexOf('wikimedia')>0?'<img src="../img/wikimedia.png" alt="Wikimedia" height="12">':''} ${capt}</figcaption>
                             </a>
                         </figure>
                     </div>
@@ -839,20 +848,22 @@ function iPC(project, divID, startPage) {
                     <hr>
                 </div>`);
     } else {
+        console.log(project);
+
         $('#' + divID).append(`
-                <div class="card my-4">
-                    <h5 class="card-header">
-                        <strong>${project.acronym}</strong><small> - ${project.title}</small>
-                    </h5>
-                    <div class="card-body">
-                        ${project.description.slice(0, 490)}..<br>
-                        <div class="text-muted" style="margin-top: 5px;">
-                            <strong>Website:</strong>
-                            <a title="website" href="${project.project_page}"><i class="fas fa-external-link-alt uriImp"></i></a>&nbsp;&nbsp;
-                            <strong>Download:</strong> ${rdf_dl}
-                        </div>
-                    </div>
-                </div>`);
+        <div class="card my-4">
+            <h5 class="card-header">
+                <strong>${project.acronym}</strong><small> - ${project.title}</small>
+            </h5>
+            <div class="card-body">
+                ${project.description.slice(0, 490)}..<br>
+                <div class="text-muted" style="margin-top: 5px;">
+                    <strong>Website:</strong>
+                    <a title="website" href="${project.project_page}"><i class="fas fa-external-link-alt uriImp"></i></a>&nbsp;&nbsp;
+                    <strong>Download:</strong> ${rdf_dl}
+                </div>
+            </div>
+        </div>`);        
     }
 }
 
@@ -862,6 +873,21 @@ function iPC(project, divID, startPage) {
 function insertConceptBrowser(divID, uri, offset) {
 
     $('#' + divID).append(`
+        <hr>
+        
+            <details>
+            <summary>
+            <i class="fas fa-caret-right fa-lg caret"></i>
+            <em id="allConceptsHeader" style="display:inline-block;"></em>
+            </summary>
+            <div id="allConcepts" class="card-body"></div>
+            </details>
+        <hr>
+		`);
+
+    provideAll('allConcepts', uri, 0);
+
+    /* $('#' + divID).append(`
         <hr>
         <div class="card my-4">
             <ul id="coBr" class="pagination mb-4 cardHeaderRight" style="margin-top: -3px;">
@@ -878,12 +904,80 @@ function insertConceptBrowser(divID, uri, offset) {
             </ul>
             <h5 id="allConceptsHeader" class="card-header"></h5>
             <div id="allConcepts" class="card-body"></div>
-        </div>`);
+        </div>`); */
     provideAll('allConcepts', uri, 0);
 }
 //*******************the query to provide all concept links within a concept scheme****************************************************
 
 function provideAll(divID, uri, offset) { //provide all available concepts for navigation
+    let AT = "";
+    let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
+                                    PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+                                    PREFIX dbpo:<http://dbpedia.org/ontology/>
+                                    SELECT DISTINCT ?c (COALESCE(?l, ?lEN) AS ?Label) (COALESCE(?csl, ?cslEN) AS ?Title)
+                                    (COALESCE(?csd, ?csdEN, "") AS ?Desc) (EXISTS{?cs skos:hasTopConcept ?c} AS ?isTopConcept)
+                                    (COALESCE(?sC, '') AS ?sColor)
+                                    WHERE {
+                                    ?cs a skos:ConceptScheme; skos:hasTopConcept ?tc; dcterms:title ?cslEN . FILTER(lang(?cslEN)="en") .
+                                    <${uri}> skos:broader* ?tc . ?cs skos:hasTopConcept ?tc2 .
+                                    ?c skos:broader* ?tc2; skos:prefLabel ?lEN . FILTER(lang(?lEN)="en")
+                                    OPTIONAL {?c skos:prefLabel ?l . FILTER(lang(?l)="${USER_LANG}")}
+                                    OPTIONAL {?cs dcterms:title ?csl . FILTER(lang(?csl)="${USER_LANG}")}
+                                    OPTIONAL {?cs dcterms:description ?csd . FILTER(lang(?csd)="${USER_LANG}")}
+                                    OPTIONAL {?cs dcterms:description ?csdEN . FILTER(lang(?csdEN)="en")}
+                                    OPTIONAL {?c dbpo:colourHexCode ?sC}
+                                    }
+                                    ORDER BY ?Label
+                                    LIMIT 100
+                                    OFFSET ${offset}`);
+
+    fetch(ENDPOINT + '?query=' + query + '&Accept=application%2Fsparql-results%2Bjson')
+        .then(res => res.json())
+        .then(jsonData => {
+            let data = jsonData;
+            var allConcepts = $('#allConcepts');
+            let a = [];
+            $('#' + divID).append('');
+            if (offset == 0) {
+                $('#allConceptsHeader').html(data.results.bindings[0].Title.value + ' (alphabetical list of concepts)');
+                allConcepts.empty().append('<div class="allConceptsPerex">' + data.results.bindings[0].Desc.value.slice(0, 400) + '</div><br>');
+                data.results.bindings.forEach((i) => {
+                    let color = i.sColor && i.sColor.value ? ' style="background-color:' + i.sColor.value + ';" ' : '';
+                    if (i.isTopConcept.value == 'true') {
+                        a.push('<div' + color + '><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="<h4>' + i.Label.value + '</h4>' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '"><strong>' + i.Label.value + '</strong></a> (&#8658; top concept)</div>');
+                    } else {
+                        a.push('<div' + color + '><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="<h4>' + i.Label.value + '</h4>' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '">' + i.Label.value + '</a></div>');
+                    }
+
+                });
+                let links = a.join('\n\n');
+                allConcepts.append('<div class="allConceptsCards">' + links + '</div>');
+                allConcepts.append(`<div id="coBr" style="justify-content: center; display:flex; margin:5px;">
+                    <button type="button" id="rightBtn" class="btn" style="background-color: #004953; color:white;" onclick="provideAll('allConcepts', '${uri}', Number(this.value)+100)">
+                        Show next 100...
+                    </button>
+            </div>
+                `);
+            } else {
+                data.results.bindings.forEach((i) => {
+                    if (i.isTopConcept.value == 'true') {
+                        a.push('<div><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="<h4>' + i.Label.value + '</h4>' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '"><strong>' + i.Label.value + '</strong></a> (&#8658; top concept)</div>');
+                    } else {
+                        a.push('<div><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="<h4>' + i.Label.value + '</h4>' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '">' + i.Label.value + '</a></div>');
+                    }
+
+                });
+                let links = a.join('\n\n');
+                $(".allConceptsCards").append(links);
+            }
+            document.getElementById("rightBtn").value = offset;
+            if (Object.keys(jsonData.results.bindings).length < 100) {
+                $("#coBr").hide();
+            }
+        });
+}
+
+/* function provideAll(divID, uri, offset) { //provide all available concepts for navigation
 
     let query = encodeURIComponent(`PREFIX dcterms:<http://purl.org/dc/terms/>
                                     PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
@@ -940,7 +1034,7 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
                 $('#allConcepts').append(' ...');
             }
         });
-}
+} */
 
 //***********************************************************************************************************
 //********************************END************************************************************************

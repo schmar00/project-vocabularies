@@ -1,0 +1,3812 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+		<link rel="stylesheet" href="main.css" type="text/css" media="screen">
+		<title>EUGM</title>
+	</head>
+	<body>
+		<h1>EUGM</h1>
+		<h2>Ontology for EUGM</h2>
+		Author(s): Sőrés László, SZTFH (SARA)<br>
+		Version: v1.0,2025.04.25<br><p style="width:800">This ontolgy contains Classes and Properties used in the SensorThings API implementation of the EUGM database. 
+	    It describes mapping between the original GSEU WP4 datamodel and the FROST dissemination database.
+	    EUGM classes are specialized from SensorThings API classes. Monitoring Point, Borehole and Aquifer are subclasses of STA Thing.
+	    Different Timeseries types (measured, processed, forecasted) are sublasses of STA Datastream. Timeseries characteristics are encoded as Datastream json properties.
+	    </p>
+		<p><b>downloads</b>: <a href="https://geonetwork.geoservices.hu/test/eugm.v1.0.owl.xml">RDF/XML</a> | <a href="https://geonetwork.geoservices.hu/test/eugm.v1.0.ttl">ttl</a><br><b>visualize</b>: <a href="https://service.tib.eu/webvowl/#iri=https://geonetwork.geoservices.hu/test/eugm.v1.0.owl.xml">WebVOWL Tool</a></p>
+		<hr>
+		<h2>Table of Content</h2>
+		<ol>
+			<li><a href="#Classes">Classes</a></li>
+			<li><a href="#PropertyNames">Properties</a></li>
+			<ul>
+				<li><a href="#ObjectProperties">ObjectProperties</a></li>
+				<li><a href="#DataProperties">DataProperties</a></li>
+			</ul>
+		</ol>
+		<hr>
+		<h2 id="Classes">Classes</h2>
+		<p>Here you can navigate to SensorThings or  EUGM Class descriptions.</p>
+		<table border="1">
+			<tr>
+				<td>sta:<a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">datastream</a></td>
+				<td>OGC SensorThings API Datastream</td>
+			</tr>
+			<tr>
+				<td>sta:<a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation">observation</a></td>
+				<td>OGC SensorThings API Observation</td>
+			</tr>
+			<tr>
+				<td>sta:<a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observedproperty">observedproperty</a></td>
+				<td>OGC SensorThings API ObservedProperty</td>
+			</tr>
+			<tr>
+				<td>sta:<a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor">sensor</a></td>
+				<td>OGC SensorThings API Sensor</td>
+			</tr>
+			<tr>
+				<td>sta:<a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">thing</a></td>
+				<td>OGC SensorThings API Thing</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#Aquifer">Aquifer</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#Borehole">Borehole</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#ClassificationObservation">ClassificationObservation</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#Deployment">Deployment</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#DeviceTypeValue">DeviceTypeValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#eugmObservedProperty">eugmObservedProperty</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#eugmProcess">eugmProcess</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#FillingMethodValue">FillingMethodValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">ForecastedTimeseries</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#ForecastingMethodValue">ForecastingMethodValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#ForecastingObservation">ForecastingObservation</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#MeasuredTimeseries">MeasuredTimeseries</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#MeteoDataTypeValue">MeteoDataTypeValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">MonitoringPoint</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPointTypeValue">MonitoringPointTypeValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#MpMeasurementTypeValue">MpMeasurementTypeValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#ObservingProcedure">ObservingProcedure</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#OptimizationMethodValue">OptimizationMethodValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#PostProcessedTimeseries">PostProcessedTimeseries</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#PumpingEffectValue">PumpingEffectValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">RegularizedTimeseries</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">StandardizedTimeseries</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#TimeResolutionValue">TimeResolutionValue</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">TrendAnalysis</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>eugm:<a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysisMethodValue">TrendAnalysisMethodValue</a></td>
+				<td></td>
+			</tr>
+		</table>
+		<hr>
+		<h2>sta:datastream</h2>
+		<h3 id="http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>A Datastream groups a collection of Observations measuring the same ObservedProperty and produced by the same Sensor.</td>
+				</tr>
+				<tr>
+					<th align="left">dc:title</th>
+					<td>OGC SensorThings API Datastream</td>
+				</tr>
+				<tr>
+					<th align="left">rdf:label</th>
+					<td>Datastream</td>
+				</tr>
+				<tr>
+					<th align="left">skos:prefLabel</th>
+					<td>Datastream</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>datastream properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#observations">observations</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#observedProperty">observedProperty</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#observingProcedure">observingProcedure</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#sensor">sensor</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#thing">thing</a></li>
+		</ul>
+		<hr>
+		<h2>sta:observation</h2>
+		<h3 id="http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>An Observation is the act of measuring or otherwise determining the value of a property</td>
+				</tr>
+				<tr>
+					<th align="left">dc:title</th>
+					<td>OGC SensorThings API Observation</td>
+				</tr>
+				<tr>
+					<th align="left">rdf:label</th>
+					<td>Observation</td>
+				</tr>
+				<tr>
+					<th align="left">skos:prefLabel</th>
+					<td>Observation</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>sta:observedproperty</h2>
+		<h3 id="http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observedproperty">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observedproperty</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">owl:equivalentClass</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#eugmObservedProperty">https://voc.europe-geology.eu/ont/eugm#eugmObservedProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>An ObservedProperty specifies the phenomenon of an Observation.</td>
+				</tr>
+				<tr>
+					<th align="left">dc:title</th>
+					<td>OGC SensorThings API ObservedProperty</td>
+				</tr>
+				<tr>
+					<th align="left">rdf:label</th>
+					<td>ObservedProperty</td>
+				</tr>
+				<tr>
+					<th align="left">skos:prefLabel</th>
+					<td>ObservedProperty</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>sta:sensor</h2>
+		<h3 id="http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property</td>
+				</tr>
+				<tr>
+					<th align="left">dc:title</th>
+					<td>OGC SensorThings API Sensor</td>
+				</tr>
+				<tr>
+					<th align="left">rdf:label</th>
+					<td>Sensor</td>
+				</tr>
+				<tr>
+					<th align="left">skos:prefLabel</th>
+					<td>Sensor</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>sensor properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#deployment">deployment</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#deviceType">deviceType</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#timeResolution">timeResolution</a></li>
+		</ul>
+		<hr>
+		<h2>sta:thing</h2>
+		<h3 id="http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Thing is an object of the physical world (physical things) or the information world (virtual things) that is capable of being identified and integrated into communication networks </td>
+				</tr>
+				<tr>
+					<th align="left">dc:title</th>
+					<td>OGC SensorThings API Thing</td>
+				</tr>
+				<tr>
+					<th align="left">rdf:label</th>
+					<td>Thing</td>
+				</tr>
+				<tr>
+					<th align="left">skos:prefLabel</th>
+					<td>Thing</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>thing properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#datastreams">datastreams</a></li>
+		</ul>
+		<hr>
+		<h3 id="https://inspire.ec.europa.eu/codelist/AquiferMediaTypeValue">https://inspire.ec.europa.eu/codelist/AquiferMediaTypeValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody />
+		</table>
+		<hr>
+		<h3 id="https://inspire.ec.europa.eu/codelist/AquiferTypeValue">https://inspire.ec.europa.eu/codelist/AquiferTypeValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody />
+		</table>
+		<hr>
+		<h2>eugm:Aquifer</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#Aquifer">https://voc.europe-geology.eu/ont/eugm#Aquifer</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Aquifer properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferType">aquiferType</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#mediaType">mediaType</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferName">aquiferName</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:Borehole</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#Borehole">https://voc.europe-geology.eu/ont/eugm#Borehole</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Borehole properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#elevation">elevation</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#screenComponentFrom">screenComponentFrom</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#screenComponentTo">screenComponentTo</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#screenLength">screenLength</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:ClassificationObservation</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#ClassificationObservation">https://voc.europe-geology.eu/ont/eugm#ClassificationObservation</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>ClassificationObservation properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#monthInYear">monthInYear</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#percentile">percentile</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#referenceEnd">referenceEnd</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#referenceStart">referenceStart</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:Deployment</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#Deployment">https://voc.europe-geology.eu/ont/eugm#Deployment</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody />
+		</table>
+		<h3>Deployment properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#host">host</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#atDepth">atDepth</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#deploymentTime">deploymentTime</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:DeviceTypeValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#DeviceTypeValue">https://voc.europe-geology.eu/ont/eugm#DeviceTypeValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/777">https://voc.europe-geology.eu/gseu/eugm/777</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:FillingMethodValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#FillingMethodValue">https://voc.europe-geology.eu/ont/eugm#FillingMethodValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/797">https://voc.europe-geology.eu/gseu/eugm/797</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:ForecastedTimeseries</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>ForecastedTimeseries properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingMethod">forecastingMethod</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#imputationMethod">imputationMethod</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#meteoDataType">meteoDataType</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#optimizationMethod">optimizationMethod</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#autocorrelation">autocorrelation</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#clusterCategory">clusterCategory</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#distanceToRiver">distanceToRiver</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#entropy">entropy</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#imputation">imputation</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#landCover">landCover</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#performanceBIAS">performanceBIAS</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#performanceNSE">performanceNSE</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#performanceR2">performanceR2</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#seasonality">seasonality</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#trainingEnd">trainingEnd</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#trainingStart">trainingStart</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:ForecastingMethodValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#ForecastingMethodValue">https://voc.europe-geology.eu/ont/eugm#ForecastingMethodValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/804">https://voc.europe-geology.eu/gseu/eugm/804</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:ForecastingObservation</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#ForecastingObservation">https://voc.europe-geology.eu/ont/eugm#ForecastingObservation</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>ForecastingObservation properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#imputedValue">imputedValue</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#levelShift">levelShift</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#outlier">outlier</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:MeasuredTimeseries</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#MeasuredTimeseries">https://voc.europe-geology.eu/ont/eugm#MeasuredTimeseries</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:MeteoDataTypeValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#MeteoDataTypeValue">https://voc.europe-geology.eu/ont/eugm#MeteoDataTypeValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/819">https://voc.europe-geology.eu/gseu/eugm/819</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:MonitoringPoint</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>MonitoringPoint properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#measurementType">measurementType</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointType">monitoringPointType</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#pumpingEffect">pumpingEffect</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#alternativeId">alternativeId</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#nearRealTime">nearRealTime</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#relatedParty">relatedParty</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:MonitoringPointTypeValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#MonitoringPointTypeValue">https://voc.europe-geology.eu/ont/eugm#MonitoringPointTypeValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/787">https://voc.europe-geology.eu/gseu/eugm/787</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:MpMeasurementTypeValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#MpMeasurementTypeValue">https://voc.europe-geology.eu/ont/eugm#MpMeasurementTypeValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/783">https://voc.europe-geology.eu/gseu/eugm/783</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:ObservingProcedure</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#ObservingProcedure">https://voc.europe-geology.eu/ont/eugm#ObservingProcedure</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">owl:equivalentClass</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#eugmProcess">https://voc.europe-geology.eu/ont/eugm#eugmProcess</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:OptimizationMethodValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#OptimizationMethodValue">https://voc.europe-geology.eu/ont/eugm#OptimizationMethodValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/812">https://voc.europe-geology.eu/gseu/eugm/812</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:PostProcessedTimeseries</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#PostProcessedTimeseries">https://voc.europe-geology.eu/ont/eugm#PostProcessedTimeseries</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:PumpingEffectValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#PumpingEffectValue">https://voc.europe-geology.eu/ont/eugm#PumpingEffectValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/793">https://voc.europe-geology.eu/gseu/eugm/793</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:RegularizedTimeseries</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>RegularizedTimeseries properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#meanOfTheta">meanOfTheta</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#medianOfTheta">medianOfTheta</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfGlobalOutliers">numberOfGlobalOutliers</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfLocalOutliers">numberOfLocalOutliers</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfMaximumGap">numberOfMaximumGap</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfMonths">numberOfMonths</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#precipitationEffectUsed">precipitationEffectUsed</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#rainfallEffectUsed">rainfallEffectUsed</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#seasonalVariationUsed">seasonalVariationUsed</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#trendUsed">trendUsed</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#varianceByFixedEffects">varianceByFixedEffects</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#varianceByWholeModel">varianceByWholeModel</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:StandardizedTimeseries</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>StandardizedTimeseries properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#accumulationPeriod">accumulationPeriod</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#autoCorrelation">autoCorrelation</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#crossCorrelationMaximum">crossCorrelationMaximum</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMaximum">droughtDurationMaximum</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMean">droughtDurationMean</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMedian">droughtDurationMedian</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMinimum">droughtDurationMinimum</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtPeriods">droughtPeriods</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtReliability">droughtReliability</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtResilienceCapacity">droughtResilienceCapacity</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtResilienceRecover">droughtResilienceRecover</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtSustainability">droughtSustainability</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#droughtVulnerability">droughtVulnerability</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#highestDroughtIntensity">highestDroughtIntensity</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#highestWetIntensity">highestWetIntensity</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#lagPeriod">lagPeriod</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#longestDroughtYears">longestDroughtYears</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#longestWetPeriodYears">longestWetPeriodYears</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#memory">memory</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#shortestDroughtYears">shortestDroughtYears</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#shortestWetPeriodYears">shortestWetPeriodYears</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMaximum">wetDurationMaximum</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMean">wetDurationMean</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMedian">wetDurationMedian</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMinimum">wetDurationMinimum</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#wetPeriods">wetPeriods</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:TimeResolutionValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#TimeResolutionValue">https://voc.europe-geology.eu/ont/eugm#TimeResolutionValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/771">https://voc.europe-geology.eu/gseu/eugm/771</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:TrendAnalysis</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subClassOf</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>TrendAnalysis properties</h3>
+		<ul>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisMethod">trendAnalysisMethod</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#endDate">endDate</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#kendallConfidenceInterval">kendallConfidenceInterval</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#kendallP">kendallP</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#kendallS">kendallS</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#kendallTau">kendallTau</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#kendallZ">kendallZ</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#senConfidenceInterval">senConfidenceInterval</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#senSlope">senSlope</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#simpleTrend">simpleTrend</a></li>
+			<li><a href="#https://voc.europe-geology.eu/ont/eugm#startDate">startDate</a></li>
+		</ul>
+		<hr>
+		<h2>eugm:TrendAnalysisMethodValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#TrendAnalysisMethodValue">https://voc.europe-geology.eu/ont/eugm#TrendAnalysisMethodValue</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">dct:conformsTo</th>
+					<td><a href="https://voc.europe-geology.eu/gseu/eugm/834">https://voc.europe-geology.eu/gseu/eugm/834</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:eugmObservedProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#eugmObservedProperty">https://voc.europe-geology.eu/ont/eugm#eugmObservedProperty</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody />
+		</table>
+		<hr>
+		<h2>eugm:eugmProcess</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#eugmProcess">https://voc.europe-geology.eu/ont/eugm#eugmProcess</h3>
+		<h3>owl:Class</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody />
+		</table>
+		<hr>
+		<hr>
+		<hr>
+		<h2 id="PropertyNames">Properties</h2>
+		<p>Here you can navigate to property descriptions either by using the GSEU WP4 or the standardised EUGM terms. Property descriptions contain GSEU WP4 terms as <b>skos:altLabel</b>-s.</p>
+		<table border="1">
+			<th>WP4</th>
+			<th>EUGM</th>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#percentile"></a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#percentile">percentile</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#mediaType">aquiferMediaType</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#mediaType">mediaType</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferType">aquiferType</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferType">aquiferType</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#autocorrelation">autocorrelation</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#autocorrelation">autocorrelation</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#performanceBIAS">bias</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#performanceBIAS">performanceBIAS</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#screenComponentTo">bottomOfScreen</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#screenComponentTo">screenComponentTo</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#clusterCategory">cluster_cat</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#clusterCategory">clusterCategory</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#deploymentTime">constructionDate</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#deploymentTime">deploymentTime</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#atDepth">depth</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#atDepth">atDepth</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#distanceToRiver">dist_river</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#distanceToRiver">distanceToRiver</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#highestDroughtIntensity">drought_intensity</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#highestDroughtIntensity">highestDroughtIntensity</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMaximum">drought_max_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMaximum">droughtDurationMaximum</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#longestDroughtYears">drought_max_dur_yrs</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#longestDroughtYears">longestDroughtYears</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMean">drought_mean_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMean">droughtDurationMean</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMedian">drought_med_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMedian">droughtDurationMedian</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#shortestDroughtYears">drought_min_dru_yrs</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#shortestDroughtYears">shortestDroughtYears</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMinimum">drought_min_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtDurationMinimum">droughtDurationMinimum</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtPeriods">drought_number</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtPeriods">droughtPeriods</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtReliability">drought_reliability</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtReliability">droughtReliability</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtResilienceCapacity">drought_resilience1</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtResilienceCapacity">droughtResilienceCapacity</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtResilienceRecover">drought_resilience2</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtResilienceRecover">droughtResilienceRecover</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtSustainability">drought_sustainability</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtSustainability">droughtSustainability</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtVulnerability">drought_vulnerability</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#droughtVulnerability">droughtVulnerability</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#elevation">elevation</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#elevation">elevation</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#entropy">entropy</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#entropy">entropy</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#imputedValue">filled_value</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#imputedValue">imputedValue</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#imputation">gapFill</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#imputation">imputation</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#landCover">land_cover</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#landCover">landCover</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#levelShift">level_shift</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#levelShift">levelShift</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#deviceType">measuringType</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#deviceType">deviceType</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#memory">memory</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#memory">memory</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#meteoDataType">meteoData</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#meteoDataType">meteoDataType</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#imputationMethod">methodFill</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#imputationMethod">imputationMethod</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingMethod">methodForecast</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingMethod">forecastingMethod</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#monthInYear">month_in_year</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#monthInYear">monthInYear</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointType">mpType</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointType">monitoringPointType</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#measurementType">mpTypeMeasurements</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#measurementType">measurementType</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#nearRealTime">nrt</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#nearRealTime">nearRealTime</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#performanceNSE">nse</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#performanceNSE">performanceNSE</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#optimizationMethod">optimization</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#optimizationMethod">optimizationMethod</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#outlier">outlier_flag</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#outlier">outlier</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#pumpingEffect">pumping</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#pumpingEffect">pumpingEffect</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#performanceR2">r2</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#performanceR2">performanceR2</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#referenceEnd">reference_end</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#referenceEnd">referenceEnd</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#referenceStart">reference_start</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#referenceStart">referenceStart</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#varianceByWholeModel">regul_all_exp</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#varianceByWholeModel">varianceByWholeModel</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#varianceByFixedEffects">regul_fe_exp</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#varianceByFixedEffects">varianceByFixedEffects</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfGlobalOutliers">regul_global</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfGlobalOutliers">numberOfGlobalOutliers</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfLocalOutliers">regul_local</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfLocalOutliers">numberOfLocalOutliers</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfMaximumGap">regul_max_gap</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfMaximumGap">numberOfMaximumGap</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#meanOfTheta">regul_mean_theta</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#meanOfTheta">meanOfTheta</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#medianOfTheta">regul_med_theta</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#medianOfTheta">medianOfTheta</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfMonths">regul_obs</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#numberOfMonths">numberOfMonths</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#precipitationEffectUsed">regul_precip</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#precipitationEffectUsed">precipitationEffectUsed</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#rainfallEffectUsed">regul_rain</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#rainfallEffectUsed">rainfallEffectUsed</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#seasonalVariationUsed">regul_seas</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#seasonalVariationUsed">seasonalVariationUsed</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendUsed">regul_trend</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendUsed">trendUsed</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferName">relatedAquifer</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferName">aquiferName</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#relatedParty">relatedParty</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#relatedParty">relatedParty</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#alternativeId">relatedParty_idMP</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#alternativeId">alternativeId</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#screenLength">screenLength</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#screenLength">screenLength</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#seasonality">seasonality</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#seasonality">seasonality</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#autoCorrelation">stsc_autocorr</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#autoCorrelation">autoCorrelation</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#crossCorrelationMaximum">stsc_ccmax</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#crossCorrelationMaximum">crossCorrelationMaximum</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#lagPeriod">stsc_lagmax</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#lagPeriod">lagPeriod</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#accumulationPeriod">stsc_qmax</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#accumulationPeriod">accumulationPeriod</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#endDate">tac_end</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#endDate">endDate</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisMethod">tac_method</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisMethod">trendAnalysisMethod</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#simpleTrend">tac_simpletrend</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#simpleTrend">simpleTrend</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#senSlope">tac_slope</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#senSlope">senSlope</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#senConfidenceInterval">tac_slopeCI</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#senConfidenceInterval">senConfidenceInterval</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#startDate">tac_start</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#startDate">startDate</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallConfidenceInterval">tac_testCI</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallConfidenceInterval">kendallConfidenceInterval</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallP">tac_testP</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallP">kendallP</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallS">tac_testS</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallS">kendallS</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallTau">tac_testTau</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallTau">kendallTau</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallZ">tac_testZ</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#kendallZ">kendallZ</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#timeResolution">timeResolution</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#timeResolution">timeResolution</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#screenComponentFrom">topOfScreen</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#screenComponentFrom">screenComponentFrom</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trainingEnd">trainend</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trainingEnd">trainingEnd</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trainingStart">trainini</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#trainingStart">trainingStart</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMaximum">wet_max_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMaximum">wetDurationMaximum</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#longestWetPeriodYears">wet_max_dur_yrs</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#longestWetPeriodYears">longestWetPeriodYears</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMean">wet_mean_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMean">wetDurationMean</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMedian">wet_med_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMedian">wetDurationMedian</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#shortestWetPeriodYears">wet_min_dru_yrs</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#shortestWetPeriodYears">shortestWetPeriodYears</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMinimum">wet_min_dur</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetDurationMinimum">wetDurationMinimum</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetPeriods">wet_number</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#wetPeriods">wetPeriods</a></td>
+			</tr>
+			<tr>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#highestWetIntensity">wet_period_intensity</a></td>
+				<td><a href="#https://voc.europe-geology.eu/ont/eugm#highestWetIntensity">highestWetIntensity</a></td>
+			</tr>
+		</table>
+		<hr>
+		<h2 id="ObjectProperties">Object Properties</h2>
+		<h2>eugm:aquiferCodelistProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#aquiferCodelistProperty">https://voc.europe-geology.eu/ont/eugm#aquiferCodelistProperty</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topObjectProperty">http://www.w3.org/2002/07/owl#topObjectProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:aquiferType</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#aquiferType">https://voc.europe-geology.eu/ont/eugm#aquiferType</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferCodelistProperty">https://voc.europe-geology.eu/ont/eugm#aquiferCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Aquifer">https://voc.europe-geology.eu/ont/eugm#Aquifer</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://inspire.ec.europa.eu/codelist/AquiferTypeValue">https://inspire.ec.europa.eu/codelist/AquiferTypeValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">aquiferType</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:datastreams</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#datastreams">https://voc.europe-geology.eu/ont/eugm#datastreams</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">owl:inverseOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#thing">https://voc.europe-geology.eu/ont/eugm#thing</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:deployment</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#deployment">https://voc.europe-geology.eu/ont/eugm#deployment</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Deployment">https://voc.europe-geology.eu/ont/eugm#Deployment</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:deviceType</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#deviceType">https://voc.europe-geology.eu/ont/eugm#deviceType</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#DeviceTypeValue">https://voc.europe-geology.eu/ont/eugm#DeviceTypeValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">measuringType</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:forecastingCodelistProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty">https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topObjectProperty">http://www.w3.org/2002/07/owl#topObjectProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:forecastingMethod</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#forecastingMethod">https://voc.europe-geology.eu/ont/eugm#forecastingMethod</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty">https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastingMethodValue">https://voc.europe-geology.eu/ont/eugm#ForecastingMethodValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">methodForecast</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:host</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#host">https://voc.europe-geology.eu/ont/eugm#host</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Deployment">https://voc.europe-geology.eu/ont/eugm#Deployment</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:imputationMethod</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#imputationMethod">https://voc.europe-geology.eu/ont/eugm#imputationMethod</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty">https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#FillingMethodValue">https://voc.europe-geology.eu/ont/eugm#FillingMethodValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">methodFill</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:measurementType</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#measurementType">https://voc.europe-geology.eu/ont/eugm#measurementType</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MpMeasurementTypeValue">https://voc.europe-geology.eu/ont/eugm#MpMeasurementTypeValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">mpTypeMeasurements</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:mediaType</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#mediaType">https://voc.europe-geology.eu/ont/eugm#mediaType</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferCodelistProperty">https://voc.europe-geology.eu/ont/eugm#aquiferCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Aquifer">https://voc.europe-geology.eu/ont/eugm#Aquifer</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://inspire.ec.europa.eu/codelist/AquiferMediaTypeValue">https://inspire.ec.europa.eu/codelist/AquiferMediaTypeValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">aquiferMediaType</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:meteoDataType</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#meteoDataType">https://voc.europe-geology.eu/ont/eugm#meteoDataType</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty">https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MeteoDataTypeValue">https://voc.europe-geology.eu/ont/eugm#MeteoDataTypeValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">meteoData</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:monitoringPointCodelistProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topObjectProperty">http://www.w3.org/2002/07/owl#topObjectProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:monitoringPointType</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#monitoringPointType">https://voc.europe-geology.eu/ont/eugm#monitoringPointType</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPointTypeValue">https://voc.europe-geology.eu/ont/eugm#MonitoringPointTypeValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">mpType</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:observations</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#observations">https://voc.europe-geology.eu/ont/eugm#observations</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observation</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:observedProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#observedProperty">https://voc.europe-geology.eu/ont/eugm#observedProperty</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observedproperty">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#observedproperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:observingProcedure</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#observingProcedure">https://voc.europe-geology.eu/ont/eugm#observingProcedure</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ObservingProcedure">https://voc.europe-geology.eu/ont/eugm#ObservingProcedure</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:optimizationMethod</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#optimizationMethod">https://voc.europe-geology.eu/ont/eugm#optimizationMethod</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty">https://voc.europe-geology.eu/ont/eugm#forecastingCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#OptimizationMethodValue">https://voc.europe-geology.eu/ont/eugm#OptimizationMethodValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">optimization</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:pumpingEffect</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#pumpingEffect">https://voc.europe-geology.eu/ont/eugm#pumpingEffect</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#PumpingEffectValue">https://voc.europe-geology.eu/ont/eugm#PumpingEffectValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">pumping</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:sensor</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#sensor">https://voc.europe-geology.eu/ont/eugm#sensor</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:thing</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#thing">https://voc.europe-geology.eu/ont/eugm#thing</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastream</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#thing</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:timeResolution</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#timeResolution">https://voc.europe-geology.eu/ont/eugm#timeResolution</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor">http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#sensor</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TimeResolutionValue">https://voc.europe-geology.eu/ont/eugm#TimeResolutionValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">timeResolution</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:trendAnalysisCodelistProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#trendAnalysisCodelistProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisCodelistProperty</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topObjectProperty">http://www.w3.org/2002/07/owl#topObjectProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:trendAnalysisMethod</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#trendAnalysisMethod">https://voc.europe-geology.eu/ont/eugm#trendAnalysisMethod</h3>
+		<h3>owl:ObjectProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisCodelistProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisCodelistProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysisMethodValue">https://voc.europe-geology.eu/ont/eugm#TrendAnalysisMethodValue</a></td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_method</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<hr>
+		<hr>
+		<h2 id="DataProperties">Data Properties</h2>
+		<h2>eugm:accumulationPeriod</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#accumulationPeriod">https://voc.europe-geology.eu/ont/eugm#accumulationPeriod</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Accumulation period associated with stsc_ccmax</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">stsc_qmax</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:alternativeId</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#alternativeId">https://voc.europe-geology.eu/ont/eugm#alternativeId</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>name of monitoring point at the source of the information</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">relatedParty_idMP</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:aquiferName</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#aquiferName">https://voc.europe-geology.eu/ont/eugm#aquiferName</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#aquiferProperty">https://voc.europe-geology.eu/ont/eugm#aquiferProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Aquifer">https://voc.europe-geology.eu/ont/eugm#Aquifer</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>name of the hidrogeological unit or aquifer to which the MP is related to</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">relatedAquifer</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:aquiferProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#aquiferProperty">https://voc.europe-geology.eu/ont/eugm#aquiferProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:atDepth</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#atDepth">https://voc.europe-geology.eu/ont/eugm#atDepth</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#deploymentProperty">https://voc.europe-geology.eu/ont/eugm#deploymentProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Deployment">https://voc.europe-geology.eu/ont/eugm#Deployment</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Vertical depth of monitoring point in meters (from the surface, so without considering the well head or well-curb)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">depth</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:autoCorrelation</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#autoCorrelation">https://voc.europe-geology.eu/ont/eugm#autoCorrelation</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Autocorrelation of the TS</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">stsc_autocorr</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:autocorrelation</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#autocorrelation">https://voc.europe-geology.eu/ont/eugm#autocorrelation</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Measure of  time series autocorrelation with a lag of 9 moths.</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">autocorrelation</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:boreholeProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#boreholeProperty">https://voc.europe-geology.eu/ont/eugm#boreholeProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:classificationProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#classificationProperty">https://voc.europe-geology.eu/ont/eugm#classificationProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:clusterCategory</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#clusterCategory">https://voc.europe-geology.eu/ont/eugm#clusterCategory</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Categorical value of each time series refering to the clustering based on defined method.</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">cluster_cat</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:crossCorrelationMaximum</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#crossCorrelationMaximum">https://voc.europe-geology.eu/ont/eugm#crossCorrelationMaximum</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Value of maximum cross-correlation with SPI TS </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">stsc_ccmax</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:deploymentProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#deploymentProperty">https://voc.europe-geology.eu/ont/eugm#deploymentProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:deploymentTime</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#deploymentTime">https://voc.europe-geology.eu/ont/eugm#deploymentTime</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#deploymentProperty">https://voc.europe-geology.eu/ont/eugm#deploymentProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Deployment">https://voc.europe-geology.eu/ont/eugm#Deployment</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Year of the monitoring point con-struction in yyyy format</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">constructionDate</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:distanceToRiver</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#distanceToRiver">https://voc.europe-geology.eu/ont/eugm#distanceToRiver</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Distance of the monitoring point to the closest river.</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">dist_river</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtDurationMaximum</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtDurationMaximum">https://voc.europe-geology.eu/ont/eugm#droughtDurationMaximum</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Maximum duration of drought episodes (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_max_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtDurationMean</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtDurationMean">https://voc.europe-geology.eu/ont/eugm#droughtDurationMean</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Average duration of all drought episode (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_mean_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtDurationMedian</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtDurationMedian">https://voc.europe-geology.eu/ont/eugm#droughtDurationMedian</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Median duration of all episodes (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_med_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtDurationMinimum</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtDurationMinimum">https://voc.europe-geology.eu/ont/eugm#droughtDurationMinimum</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Minum duration of drought episode (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_min_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtPeriods</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtPeriods">https://voc.europe-geology.eu/ont/eugm#droughtPeriods</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Number of drought periods based on SGI</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_number</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtReliability</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtReliability">https://voc.europe-geology.eu/ont/eugm#droughtReliability</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>How likely a system is to not fail = no. of satisfactory conditions / total no. of conditions = 1-fail frequency (SGI thresholds)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_reliability</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtResilienceCapacity</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtResilienceCapacity">https://voc.europe-geology.eu/ont/eugm#droughtResilienceCapacity</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Capacity to return to satisfactory conditions from failure = no. of times a satisfactory condition follows and unsatisfactory condition / total no. of unsatisfactory conditions </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_resilience1</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtResilienceRecover</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtResilienceRecover">https://voc.europe-geology.eu/ont/eugm#droughtResilienceRecover</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>how quickly it recovers from failure = 1/Drought_mean_dur</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_resilience2</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtSustainability</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtSustainability">https://voc.europe-geology.eu/ont/eugm#droughtSustainability</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Drought_sustainability = Drought_Reliability * Drought_Resilience1 * (1-Drought_vulnerablity ) </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_sustainability</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:droughtVulnerability</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#droughtVulnerability">https://voc.europe-geology.eu/ont/eugm#droughtVulnerability</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Probabilistic measure accounting for the extent and magnitude of an unsatisfactory condition; Sum of is the magnitude (or severity) of the unsatisfactory condition
+multiplied by the probability of that magnitude during the span of the timeseries</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_vulnerability</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:elevation</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#elevation">https://voc.europe-geology.eu/ont/eugm#elevation</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#boreholeProperty">https://voc.europe-geology.eu/ont/eugm#boreholeProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Borehole">https://voc.europe-geology.eu/ont/eugm#Borehole</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Altitude in m.a.s.l. (meters above sea level) of the surface where the monitoring point is located (not at the top of the well head or well-curb understood as the part of the well that is visible above ground). </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">elevation</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:endDate</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#endDate">https://voc.europe-geology.eu/ont/eugm#endDate</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>end date of the trend analysis period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_end</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:entropy</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#entropy">https://voc.europe-geology.eu/ont/eugm#entropy</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Measure of time series sample entropy.</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">entropy</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:forecastingProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:highestDroughtIntensity</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#highestDroughtIntensity">https://voc.europe-geology.eu/ont/eugm#highestDroughtIntensity</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>YYYY-MM of highest drought intensity (lowest SGI of the time series)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_intensity</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:highestWetIntensity</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#highestWetIntensity">https://voc.europe-geology.eu/ont/eugm#highestWetIntensity</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>YYYY-MM of highest wet period intensity (hightest SGI of the time series)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_period_intensity</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:imputation</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#imputation">https://voc.europe-geology.eu/ont/eugm#imputation</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Percentage of gap-filled data</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">gapFill</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:imputedValue</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#imputedValue">https://voc.europe-geology.eu/ont/eugm#imputedValue</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastingObservation">https://voc.europe-geology.eu/ont/eugm#ForecastingObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indicates whether the value is observed or imputed. TRUE if the value was imputed or FALSE when not</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">filled_value</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:kendallConfidenceInterval</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#kendallConfidenceInterval">https://voc.europe-geology.eu/ont/eugm#kendallConfidenceInterval</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Kendall confidence intervall in %</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_testCI</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:kendallP</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#kendallP">https://voc.europe-geology.eu/ont/eugm#kendallP</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Kendall p-value</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_testP</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:kendallS</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#kendallS">https://voc.europe-geology.eu/ont/eugm#kendallS</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Kendall’s S statistic</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_testS</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:kendallTau</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#kendallTau">https://voc.europe-geology.eu/ont/eugm#kendallTau</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Kendall's Tau</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_testTau</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:kendallZ</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#kendallZ">https://voc.europe-geology.eu/ont/eugm#kendallZ</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Kendall's Z statistic</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_testZ</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:lagPeriod</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#lagPeriod">https://voc.europe-geology.eu/ont/eugm#lagPeriod</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Lag period associated with stsc_ccmax</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">stsc_lagmax</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:landCover</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#landCover">https://voc.europe-geology.eu/ont/eugm#landCover</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Main land cover category associated with the monitoring point. </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">land_cover</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:levelShift</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#levelShift">https://voc.europe-geology.eu/ont/eugm#levelShift</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastingObservation">https://voc.europe-geology.eu/ont/eugm#ForecastingObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indicates whether at a given time there is a shift on the GWL observations. TRUE if there is a shift on the TS and FALSE when not</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">level_shift</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:longestDroughtYears</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#longestDroughtYears">https://voc.europe-geology.eu/ont/eugm#longestDroughtYears</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Year(s) in which the longest drought event occurred</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_max_dur_yrs</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:longestWetPeriodYears</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#longestWetPeriodYears">https://voc.europe-geology.eu/ont/eugm#longestWetPeriodYears</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Year(s) in which the longest wet period event occurred</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_max_dur_yrs</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:meanOfTheta</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#meanOfTheta">https://voc.europe-geology.eu/ont/eugm#meanOfTheta</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>mean theta </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_mean_theta</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:medianOfTheta</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#medianOfTheta">https://voc.europe-geology.eu/ont/eugm#medianOfTheta</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>median theata</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_med_theta</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:memory</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#memory">https://voc.europe-geology.eu/ont/eugm#memory</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Maximum significant autocorrelation for SGI time series mmax </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">memory</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:monitoringPointProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:monthInYear</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#monthInYear">https://voc.europe-geology.eu/ont/eugm#monthInYear</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#classificationProperty">https://voc.europe-geology.eu/ont/eugm#classificationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ClassificationObservation">https://voc.europe-geology.eu/ont/eugm#ClassificationObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>serial number of month </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">month_in_year</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:nearRealTime</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#nearRealTime">https://voc.europe-geology.eu/ont/eugm#nearRealTime</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>If the monitoring point is equiped as a Near-Real-Time observation point  (true or false)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">nrt</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:numberOfGlobalOutliers</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#numberOfGlobalOutliers">https://voc.europe-geology.eu/ont/eugm#numberOfGlobalOutliers</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>number of global outliers </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_global</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:numberOfLocalOutliers</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#numberOfLocalOutliers">https://voc.europe-geology.eu/ont/eugm#numberOfLocalOutliers</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>number of local outliers </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_local</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:numberOfMaximumGap</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#numberOfMaximumGap">https://voc.europe-geology.eu/ont/eugm#numberOfMaximumGap</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Number of maximum gap in measured time series over the Regularized time period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_max_gap</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:numberOfMonths</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#numberOfMonths">https://voc.europe-geology.eu/ont/eugm#numberOfMonths</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Number of months in measured time series over the Regularized time period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_obs</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:outlier</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#outlier">https://voc.europe-geology.eu/ont/eugm#outlier</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastingObservation">https://voc.europe-geology.eu/ont/eugm#ForecastingObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indicates whether a given value in the time series is classified as an outlier based on a predefined detection method. TRUE if there is an outlier detected on the TS and FALSE when not.</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">outlier_flag</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:percentile</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#percentile">https://voc.europe-geology.eu/ont/eugm#percentile</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#classificationProperty">https://voc.europe-geology.eu/ont/eugm#classificationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ClassificationObservation">https://voc.europe-geology.eu/ont/eugm#ClassificationObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>limit of probability</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td><a href="#"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:performanceBIAS</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#performanceBIAS">https://voc.europe-geology.eu/ont/eugm#performanceBIAS</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>BIAS</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">bias</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:performanceNSE</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#performanceNSE">https://voc.europe-geology.eu/ont/eugm#performanceNSE</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Nash-Sutcliffe efficiency (NSE)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">nse</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:performanceR2</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#performanceR2">https://voc.europe-geology.eu/ont/eugm#performanceR2</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Coefficient of determination (R2)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">r2</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:precipitationEffectUsed</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#precipitationEffectUsed">https://voc.europe-geology.eu/ont/eugm#precipitationEffectUsed</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indication if precipitation effect was used in data model (true or false)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_precip</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:rainfallEffectUsed</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#rainfallEffectUsed">https://voc.europe-geology.eu/ont/eugm#rainfallEffectUsed</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indication if rainfall effect was used in data model (true or false)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_rain</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:referenceEnd</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#referenceEnd">https://voc.europe-geology.eu/ont/eugm#referenceEnd</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#classificationProperty">https://voc.europe-geology.eu/ont/eugm#classificationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ClassificationObservation">https://voc.europe-geology.eu/ont/eugm#ClassificationObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>End date of the reference time period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">reference_end</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:referenceStart</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#referenceStart">https://voc.europe-geology.eu/ont/eugm#referenceStart</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#classificationProperty">https://voc.europe-geology.eu/ont/eugm#classificationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ClassificationObservation">https://voc.europe-geology.eu/ont/eugm#ClassificationObservation</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Start date of the reference time period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">reference_start</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:regularizationProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:relatedParty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#relatedParty">https://voc.europe-geology.eu/ont/eugm#relatedParty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty">https://voc.europe-geology.eu/ont/eugm#monitoringPointProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#MonitoringPoint">https://voc.europe-geology.eu/ont/eugm#MonitoringPoint</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>organitzation related to the monitoring point</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">relatedParty</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:screenComponentFrom</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#screenComponentFrom">https://voc.europe-geology.eu/ont/eugm#screenComponentFrom</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#boreholeProperty">https://voc.europe-geology.eu/ont/eugm#boreholeProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Borehole">https://voc.europe-geology.eu/ont/eugm#Borehole</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>top of screen</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">topOfScreen</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:screenComponentTo</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#screenComponentTo">https://voc.europe-geology.eu/ont/eugm#screenComponentTo</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#boreholeProperty">https://voc.europe-geology.eu/ont/eugm#boreholeProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Borehole">https://voc.europe-geology.eu/ont/eugm#Borehole</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>bottom of screen</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">bottomOfScreen</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:screenLength</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#screenLength">https://voc.europe-geology.eu/ont/eugm#screenLength</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#boreholeProperty">https://voc.europe-geology.eu/ont/eugm#boreholeProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#Borehole">https://voc.europe-geology.eu/ont/eugm#Borehole</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>length of the screen of the well or piezometer in meters</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">screenLength</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:seasonalVariationUsed</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#seasonalVariationUsed">https://voc.europe-geology.eu/ont/eugm#seasonalVariationUsed</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indication if seasonalal variation was used in data model (true or false)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_seas</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:seasonality</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#seasonality">https://voc.europe-geology.eu/ont/eugm#seasonality</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Measure of time series seasonality based on defined method. </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">seasonality</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:senConfidenceInterval</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#senConfidenceInterval">https://voc.europe-geology.eu/ont/eugm#senConfidenceInterval</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Sen's Slope confidence interval in %</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_slopeCI</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:senSlope</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#senSlope">https://voc.europe-geology.eu/ont/eugm#senSlope</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Sen's Slope estimate in m/yr</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_slope</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:shortestDroughtYears</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#shortestDroughtYears">https://voc.europe-geology.eu/ont/eugm#shortestDroughtYears</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Year(s) in which the shortest drought event occurred</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">drought_min_dru_yrs</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:shortestWetPeriodYears</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#shortestWetPeriodYears">https://voc.europe-geology.eu/ont/eugm#shortestWetPeriodYears</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Year(s) in which the shortest wet period event occurred</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_min_dru_yrs</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:simpleTrend</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#simpleTrend">https://voc.europe-geology.eu/ont/eugm#simpleTrend</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Percent change during period </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_simpletrend</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:standardizationProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:startDate</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#startDate">https://voc.europe-geology.eu/ont/eugm#startDate</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#TrendAnalysis">https://voc.europe-geology.eu/ont/eugm#TrendAnalysis</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Initial date of the trend analysis period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">tac_start</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:trainingEnd</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#trainingEnd">https://voc.europe-geology.eu/ont/eugm#trainingEnd</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>End date of the training period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">trainend</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:trainingStart</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#trainingStart">https://voc.europe-geology.eu/ont/eugm#trainingStart</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#forecastingProperty">https://voc.europe-geology.eu/ont/eugm#forecastingProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries">https://voc.europe-geology.eu/ont/eugm#ForecastedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#date">http://www.w3.org/2001/XMLSchema#date</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Initial date of the training period</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">trainini</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:trendAnalysisProperty</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty">https://voc.europe-geology.eu/ont/eugm#trendAnalysisProperty</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#http://www.w3.org/2002/07/owl#topDataProperty">http://www.w3.org/2002/07/owl#topDataProperty</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:trendUsed</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#trendUsed">https://voc.europe-geology.eu/ont/eugm#trendUsed</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Indication if trend was used in data model (true or false)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_trend</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:varianceByFixedEffects</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#varianceByFixedEffects">https://voc.europe-geology.eu/ont/eugm#varianceByFixedEffects</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>proportion of the variance explained by the model’s fixed effects</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_fe_exp</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:varianceByWholeModel</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#varianceByWholeModel">https://voc.europe-geology.eu/ont/eugm#varianceByWholeModel</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#regularizationProperty">https://voc.europe-geology.eu/ont/eugm#regularizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries">https://voc.europe-geology.eu/ont/eugm#RegularizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>proportion of variance explained by the whole model </td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">regul_all_exp</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:wetDurationMaximum</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#wetDurationMaximum">https://voc.europe-geology.eu/ont/eugm#wetDurationMaximum</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Maximum duration of wet period episodes (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_max_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:wetDurationMean</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#wetDurationMean">https://voc.europe-geology.eu/ont/eugm#wetDurationMean</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Average duration of all wet period episode (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_mean_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:wetDurationMedian</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#wetDurationMedian">https://voc.europe-geology.eu/ont/eugm#wetDurationMedian</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Median duration of all episodes (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_med_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:wetDurationMinimum</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#wetDurationMinimum">https://voc.europe-geology.eu/ont/eugm#wetDurationMinimum</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Minum duration of wet period episode (in months)</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_min_dur</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>eugm:wetPeriods</h2>
+		<h3 id="https://voc.europe-geology.eu/ont/eugm#wetPeriods">https://voc.europe-geology.eu/ont/eugm#wetPeriods</h3>
+		<h3>owl:DatatypeProperty</h3>
+		<table bgcolor="lightgrey" border="0" width="600">
+			<tbody>
+				<tr>
+					<th align="left">rdfs:subPropertyOf</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#standardizationProperty">https://voc.europe-geology.eu/ont/eugm#standardizationProperty</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:domain</th>
+					<td><a href="#https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries">https://voc.europe-geology.eu/ont/eugm#StandardizedTimeseries</a></td>
+				</tr>
+				<tr>
+					<th align="left">rdfs:range</th>
+					<td><a href="#http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></td>
+				</tr>
+				<tr>
+					<th align="left">dc:description</th>
+					<td>Number of wet period periods based on SGI</td>
+				</tr>
+				<tr>
+					<th align="left">skos:altLabel</th>
+					<td bgcolor="lightgreen">wet_number</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+	</body>
+</html>

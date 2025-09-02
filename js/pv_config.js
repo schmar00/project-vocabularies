@@ -1,8 +1,26 @@
 //let ENDPOINT = 'https://resource.geolba.ac.at/PoolParty/sparql/geoera';
 let ENDPOINT = 'https://resource.geosphere.at/graphdb/repositories/GSEU';
 
+var config = {
+    init: function (any) {
+        config.projects = [];
+
+        for (const [projectId, project] of Object.entries(config.projectConfiguration)) {
+            config.projects.push(project);
+        }
+    },
+    getProject: function (uri) {
+        let p = uri.split('/')[3];
+        p = p.split('-')[0];
+        return p;
+    }
+};
+
 function addVocProj(vocProjects) {
 
+    config.projectConfiguration = vocProjects;
+    config.init(false);
+    
     vocProjects.set('gseu', {
         acronym: 'GSEU',
         title: 'Bringing the Subsurface into the Light - drawing together the baseline data and knowledge needed to manage Europes natural resources and reach Net Zero',

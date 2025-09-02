@@ -145,7 +145,7 @@
             }
             GROUP BY ?uri`);
 
-        fetch(`https://resource.geolba.ac.at/PoolParty/sparql/geoera?query=${queryDownLoad}&format=application/json`)
+        fetch(`https://resource.geosphere.at/graphdb/repositories/GSEU?query=${queryDownLoad}&Accept=application%2Fsparql-results%2Bjson`)
             .then(res => res.json())
             .then(jsonData => {
 
@@ -207,12 +207,12 @@
                                 &VERSION=1.0.0
                                 &REQUEST=GetFeature
                                 &TYPENAME=hike_all_faults_layer
-                                &MAXFEATURES=100000
-                                &Filter=${ogcFilter}
+                                &CQL_FILTER=concept_uri='https://data.geoscience.earth/ncl/geoera/hike/faults/8156'
+                                &MAXFEATURES=10
                                 &outputformat=geojson`).replace(/\r?\n|\r|\s/g, "")
                         )
                         .then(res => res.text())
-                        .then(data => { //console.log(JSON.parse(data.toString()).features);
+                        .then(data => { console.log(JSON.parse(data.toString()).features);
                             wfsFeatures = wfsFeatures.concat(JSON.parse(data.toString()).features);
                         })
                         .catch(error => {
