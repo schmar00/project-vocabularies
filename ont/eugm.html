@@ -5,7 +5,15 @@
 		<link rel="stylesheet" href="main.css" type="text/css" media="screen">
 		<title>EUGM</title>
 	</head>
+
 	<body>
+		<script>
+			let uri = window.location.href;
+			if (uri.split('#').length == 2) {
+				window.location.replace('https://voc.europe-geology.eu/ont/eugm.html#' + uri);
+			}
+		</script>
+
 		<h1>EUGM</h1>
 		<h2>Ontology for EUGM</h2>
 		Author(s): Sőrés László, SZTFH (SARA)<br>
