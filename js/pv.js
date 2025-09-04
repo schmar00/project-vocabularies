@@ -499,13 +499,13 @@ function details(divID, uri, voc_uri) { //build the web page content
                         <table id="details"></table>
                         ${updateBtn}
                         </div>`);
-
+                //https://schmar00.github.io/HIKE/hike_map.html?uri=https://data.geoscience.earth/ncl/geoera/hike/faults/7495
                 let mapCheckArr = jsonData.results.bindings.map(a => [a.p.value, a.o.value]);
                 if (mapCheckArr.find(b => b[1] == 'https://voc.europe-geology.eu/hike/faults')) {
                     if (mapCheckArr.find(c => c[0] == 'http://www.w3.org/2004/02/skos/core#topConceptOf') == undefined) {
                         console.log('OK');
                         $('#appsInsert').append(`<span style="margin-right:15px; margin-left: -8px;">
-                                                    <a href="hike_map.html?uri=${uri}" title="HIKE map" target="_blank">
+                                                    <a href="https://schmar00.github.io/HIKE/hike_map.html?uri=${uri.replace('voc.europe-geology.eu','data.geoscience.earth/ncl/geoera')}" title="HIKE map" target="_blank">
                                                         <i class="fas fa-map-marked-alt"></i>
                                                     </a>
                                                 </span>`);
