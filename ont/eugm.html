@@ -8,9 +8,9 @@
 
 	<body>
 		<script>
-			let uri = window.location.href;
-			if (uri.split('#').length == 2) {
-				window.location.replace('https://voc.europe-geology.eu/ont/eugm.html#' + uri);
+			let ontFile = 'https://voc.europe-geology.eu/ont/eugm';
+			if (window.location.href.split('#').length == 2) {
+				window.location.replace(`${ontFile}.html#${ontFile}#${encodeURIComponent(window.location.hash.slice(1))}`)
 			}
 		</script>
 
