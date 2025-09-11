@@ -640,7 +640,8 @@ function createFrontPart(divID, uri, data, props, voc_uri) {
                     html += '<br><p class="text-secondary">Interpretation:<br>' + Array.from(ul).map(a => a.split('<')[0]).join('<br><br>') + '</p>';
                     break;
                 case 'citation':
-                    let a = []; //console.log(ul);
+                    let a = []; 
+                    if (uri.indexOf('ref')>1){ html += '<br>' }
                     for (let i of ul) {
                         let pdf = '';
                         for (let k of sourceLinks) {
