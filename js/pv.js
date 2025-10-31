@@ -302,7 +302,11 @@ function search(searchText, vocProjects) {
             jsonData.results.bindings.forEach(function (a) { // insert project name ${vocProjects.get(a.s.value.split('\/')[3]).acronym}
                 let projName = '';
                 try {
-                    projName = '(' + vocProjects.get(a.s.value.split('\/')[3]).acronym + ')';
+                    if (a.s.value.indexOf('data.geoscience.earth')>0){
+                        projName = '(' + vocProjects.get(a.s.value.split('\/')[5]).acronym + ')';
+                    } else {
+                        projName = '(' + vocProjects.get(a.s.value.split('\/')[3]).acronym + ')';
+                    }
                 } catch (e) {
                     //Catch Statement
                 }
@@ -321,10 +325,11 @@ function search(searchText, vocProjects) {
                                             ${createSearchResultsText(a.text.value, searchText)}
                                         </p>
                                         </li>`);
-                if ($('#searchresults li').length > 99) {
+            });
+            $('#hits').html(HITS_SEARCHRESULTS.replace('0', $('#searchresults li').length) + '\"' + searchText + '\"');
+            if ($('#searchresults li').length > 99) {
                     $('#hits').prepend('>');
                 }
-            });
 
         }).catch(function (error) {
             //console.log(error);
