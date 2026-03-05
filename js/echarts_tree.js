@@ -74,10 +74,9 @@
     if (node.itemStyle.color === "") node.itemStyle.color = "#383838";
     if (node.color === "") node.color = "#383838";
 
-    for (let i = 0; i < node.children.length; i++) {
-      const childnode = node.children[i];
-      if (childnode.children) {
-        addColor(childnode);
+    if (node.children) {
+      for (let i = 0; i < node.children.length; i++) {
+        addColor(node.children[i]);
       }
     }
   }
