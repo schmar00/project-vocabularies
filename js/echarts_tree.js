@@ -32,7 +32,7 @@
         initialTreeDepth: 1,
         expandAndCollapse: true,
         top: "1%",
-        left: "150",
+        left: "180",
         bottom: "1%",
         right: "20%",
         symbol: "emptyCircle",

@@ -12,7 +12,6 @@
     <script src="js/pv_config.js"></script>
     <script src="js/ws.js"></script>
     <script src="js/d3_data.js"></script>
-    <!-- <script src="js/d3_tree.js"></script> -->
     <script src="js/echarts.js"></script>
     <script src="js/echarts_tree.js"></script>
 
@@ -37,110 +36,10 @@
         background-color: #f8f9fa;
       }
 
-      /* Prevent body scroll when a panel is maximized */
-      body.panel-maximized {
-        overflow: hidden;
-      }
-
-      .site-header {
-        background-color: #343a40;
-        color: white;
-        padding: 0.1rem;
-        border-bottom: 4px solid #007bff;
-        transition: transform 0.3s ease;
-      }
-
       .main-content {
         flex-grow: 1;
         display: flex;
         align-items: stretch;
-      }
-
-      .panel-container {
-        width: 100%;
-      }
-
-      .panel {
-        position: relative; /* Needed for absolute positioning of the control button */
-        background-color: #ffffff;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 300px;
-      }
-
-      .panel:not(.maximized):hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-      }
-
-      /* Styles for the maximized panel */
-      .panel.maximized {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-        z-index: 1050; /* High z-index to be on top of everything */
-        overflow: auto; /* Allow content to scroll if it overflows */
-      }
-
-      /* Hide other elements when a panel is maximized for a clean view */
-      body.panel-maximized .site-header,
-      body.panel-maximized .site-footer,
-      body.panel-maximized .panel:not(.maximized) {
-        display: none;
-      }
-
-      .panel h3 {
-        color: #007bff;
-      }
-
-      .panel p {
-        color: #6c757d;
-      }
-
-      /* Panel control button for maximize/restore */
-      .panel-controls {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        z-index: 10; /* Ensure it's above panel content */
-      }
-
-      .btn-toggle-size {
-        background-color: rgba(255, 255, 255, 0.7);
-        border: 1px solid #ddd;
-        backdrop-filter: blur(2px);
-      }
-
-      .site-footer {
-        background-color: #343a40;
-        color: white;
-        padding: 1rem;
-        text-align: center;
-        margin-top: auto;
-        transition: transform 0.3s ease;
-      }
-
-      #mynetwork {
-        position: absolute;
-        top: 24px;
-        left: 0px;
-        right: 0px;
-        bottom: 24px;
-        overflow: hidden; /* Prevents overflow */
-      }
-
-      p.lead {
-        margin-top: -8px;
-        margin-bottom: 4px;
       }
     </style>
 
@@ -153,10 +52,7 @@
     <main class="main-content">
       <div class="w-100 d-flex flex-column pt-2 text-center bg-white">
         <h5 id="stackContent" class=""></h5>
-        <div
-          id="divDiagram"
-          class="w-100 h-100 flex-grow-1"
-          style="height: 120px"></div>
+        <div id="divDiagram" class="w-100 h-100 flex-grow-1"></div>
         <div
           id="controls"
           class="w-100 border border-1 p-2 d-flex flex-column text-left"></div>
