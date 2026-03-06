@@ -511,20 +511,20 @@ function details(divID, uri, voc_uri) { //build the web page content
                         <table id="details"></table>
                         ${updateBtn}
                         </div>`);
+
                 //https://schmar00.github.io/HIKE/hike_map.html?uri=https://data.geoscience.earth/ncl/geoera/hike/faults/7495
-                let mapCheckArr = jsonData.results.bindings.map(a => [a.p.value, a.o.value]);
+                /* let mapCheckArr = jsonData.results.bindings.map(a => [a.p.value, a.o.value]);
                 if (mapCheckArr.find(b => b[1] == 'https://voc.europe-geology.eu/hike/faults')) {
                     if (mapCheckArr.find(c => c[0] == 'http://www.w3.org/2004/02/skos/core#topConceptOf') == undefined) {
-                        //console.log('mapCheckArr', mapCheckArr);
+                        console.log('mapCheckArr', mapCheckArr);
                         $('#appsInsert').append(`<span style="margin-right:15px; margin-left: -8px;">
                                                     <a href="https://schmar00.github.io/HIKE/hike_map.html?uri=${uri.replace('voc.europe-geology.eu','data.geoscience.earth/ncl/geoera')}" title="HIKE map" target="_blank">
                                                         <i class="fas fa-map-marked-alt"></i>
                                                     </a>
                                                 </span>`);
                     }
-                }
+                } */
                 //console.log('jsonData: ', jsonData.results.bindings);
-
 
                 for (key in TECHNICAL_LIST) createTechnicalPart('details', jsonData, Array.from(TECHNICAL_LIST[key].values()));
                 $('#' + divID).append('');
@@ -935,26 +935,6 @@ function insertConceptBrowser(divID, uri, offset) {
 		`);
 
     provideAll('allConcepts', uri, 0);
-
-    /* $('#' + divID).append(`
-        <hr>
-        <div class="card my-4">
-            <ul id="coBr" class="pagination mb-4 cardHeaderRight" style="margin-top: -3px;">
-                <li>
-                    <button type="button" id="leftBtn" class="btn btn-outline-dark btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)-50)">
-                        <i class="fas fa-caret-left fa-lg"></i>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" id="rightBtn" class="btn btn-outline-dark btn-sm" onclick="provideAll('allConcepts', '${uri}', Number(this.value)+50)">
-                        <i class="fas fa-caret-right fa-lg"></i>
-                    </button>
-                </li>
-            </ul>
-            <h5 id="allConceptsHeader" class="card-header"></h5>
-            <div id="allConcepts" class="card-body"></div>
-        </div>`); */
-    provideAll('allConcepts', uri, 0);
 }
 //*******************the query to provide all concept links within a concept scheme****************************************************
 
@@ -990,16 +970,16 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
                 console.log(data.results.bindings.length);
                 $('#conceptsList').hide();
             } else if (offset == 0) {
+                //console.log(data.results.bindings);
+
                 $('#allConceptsHeader').html(data.results.bindings[0].Title.value + ' (alphabetical list of concepts)');
                 allConcepts.empty().append('<div class="allConceptsPerex">' + data.results.bindings[0].Desc.value.slice(0, 400) + '</div><br>');
-                data.results.bindings.forEach((i) => {
+
+                ([...new Map(data.results.bindings.map(({ c, sColor, Label, Desc }) => ({ c, sColor, Label, Desc })).map(item => [item.c.value, item])).values()]).forEach((i) => {
                     let color = i.sColor && i.sColor.value ? ' style="background-color:' + i.sColor.value + ';" ' : '';
-                      if (i.isTopConcept.value == 'true') {
-                        a.push('<div' + color + '><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="' + i.Label.value + ' - ' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '"><strong>' + i.Label.value + '</strong></a> (&#8658; top concept)</div>');
-                        } else {
-                            a.push('<div' + color + '><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="' + i.Label.value + ' - ' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '">' + i.Label.value + '</a></div>');
-                        }  
+                    a.push('<div' + color + '><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="' + i.Label.value + ' - ' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '">' + trnc(i.Label.value) + '</a></div>');
                 });
+
                 let links = a.join('\n\n');
                 allConcepts.append('<div class="allConceptsCards">' + links + '</div>');
                 allConcepts.append(`<div id="coBr" style="justify-content: center; display:flex; margin:5px;">
@@ -1009,13 +989,10 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
             </div>
                 `);
             } else {
-                data.results.bindings.forEach((i) => {
-                    if (i.isTopConcept.value == 'true') {
-                        a.push('<div><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="' + i.Label.value + ' - ' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '"><strong>' + i.Label.value + '</strong></a> (&#8658; top concept)</div>');
-                    } else {
-                        a.push('<div><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="' + i.Label.value + ' - ' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '">' + i.Label.value + '</a></div>');
-                    }
-
+                //console.log(data.results.bindings);
+                ([...new Map(data.results.bindings.map(({ c, sColor, Label, Desc }) => ({ c, sColor, Label, Desc })).map(item => [item.c.value, item])).values()]).forEach((i) => {
+                    let color = i.sColor && i.sColor.value ? ' style="background-color:' + i.sColor.value + ';" ' : '';
+                    a.push('<div' + color + '><a ' + AT + 'data-toggle="tooltip" data-placement="right" data-html="true" title="' + i.Label.value + ' - ' + i.Desc.value.slice(0, 230) + '.." href="' + BASE + '?uri=' + i.c.value + '&lang=' + USER_LANG + '">' + trnc(i.Label.value) + '</a></div>');
                 });
                 let links = a.join('\n\n');
                 $(".allConceptsCards").append(links);
@@ -1027,6 +1004,16 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
         });
 }
 
+
+function trnc(label) {
+    return label.split(" ").map(function(word) {
+        if (word.length > 14) {
+        // Keep 10 characters and add ".." for a total of 14
+        return word.substring(0, 12) + "..";
+        }
+        return word;
+    }).join(" ");
+}
 
 function dataViewerInsert() {
     
